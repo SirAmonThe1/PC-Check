@@ -1,0 +1,36 @@
+16:00:59 - System.IO.IOException: Failed to detect your Steam installation. Launch Steam, exit it gracefully, and try again. ---> System.ArgumentNullException: Der Wert darf nicht NULL sein.
+Parametername: fullCommand
+   bei SteamHelper.Misc.SeparateArgsFromCommand(String fullCommand)
+   bei SteamHelper.SteamInstallation.FindSteamInstallationLocation()
+   --- Ende der internen Ausnahmestapelüberwachung ---
+   bei SteamHelper.SteamInstallation.FindSteamInstallationLocation()
+   bei SteamHelper.SteamInstallation..ctor()
+   bei SteamHelper.SteamInstallation.get_Instance()
+   bei SteamHelper.Program.Main(String[] args)
+16:44:52 - System.IO.IOException: Failed to detect your Steam installation. Launch Steam, exit it gracefully, and try again. ---> System.ArgumentNullException: Der Wert darf nicht NULL sein.
+Parametername: fullCommand
+   bei SteamHelper.Misc.SeparateArgsFromCommand(String fullCommand)
+   bei SteamHelper.SteamInstallation.FindSteamInstallationLocation()
+   --- Ende der internen Ausnahmestapelüberwachung ---
+   bei SteamHelper.SteamInstallation.FindSteamInstallationLocation()
+   bei SteamHelper.SteamInstallation..ctor()
+   bei SteamHelper.SteamInstallation.get_Instance()
+   bei SteamHelper.Program.Main(String[] args)
+16:46:48 - System.IO.IOException: Failed to detect your Steam installation. Launch Steam, exit it gracefully, and try again. ---> System.ArgumentNullException: Der Wert darf nicht NULL sein.
+Parametername: fullCommand
+   bei SteamHelper.Misc.SeparateArgsFromCommand(String fullCommand)
+   bei SteamHelper.SteamInstallation.FindSteamInstallationLocation()
+   --- Ende der internen Ausnahmestapelüberwachung ---
+   bei SteamHelper.SteamInstallation.FindSteamInstallationLocation()
+   bei SteamHelper.SteamInstallation..ctor()
+   bei SteamHelper.SteamInstallation.get_Instance()
+   bei SteamHelper.Program.Main(String[] args)
+16:47:54 - System.IO.IOException: Failed to detect your Steam installation. Launch Steam, exit it gracefully, and try again. ---> System.ArgumentNullException: Der Wert darf nicht NULL sein.
+Parametername: fullCommand
+   bei SteamHelper.Misc.SeparateArgsFromCommand(String fullCommand)
+   bei SteamHelper.SteamInstallation.FindSteamInstallationLocation()
+   --- Ende der internen Ausnahmestapelüberwachung ---
+   bei SteamHelper.SteamInstallation.FindSteamInstallationLocation()
+   bei SteamHelper.SteamInstallation..ctor()
+   bei SteamHelper.SteamInstallation.get_Instance()
+   bei SteamHelper.Program.Main(String[] args)
