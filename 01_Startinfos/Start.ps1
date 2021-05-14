@@ -1,5 +1,3 @@
-Set-ExecutionPolicy Bypass -Scope Process -Force
-
 #at top of script
 if (!
     #current role
