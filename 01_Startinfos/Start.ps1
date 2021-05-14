@@ -24,4 +24,4 @@ if (!
 
 # start-transcript
 Set-ExecutionPolicy Bypass -Scope Process -Force
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/SirAmonThe1/PC-Check/master/01_Startinfos/Startinfos.ps1'))}
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/SirAmonThe1/PC-Check/master/01_Startinfos/Startinfos.ps1'))
