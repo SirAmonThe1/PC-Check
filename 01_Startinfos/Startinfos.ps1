@@ -1,22 +1,5 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
-
-# Leistungsindex 
-Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Leistungsindex erstellen"
-Write-Host
-Write-Host -ForegroundColor Red ">>> Leistungsindex wird gestartet"
-
-winsat formal
-
-clear
-
-# Logging starten
-Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wird gestartet"
-
-$PCname = hostname
-$date0 = Get-Date
-$LogName = "Datenerhebung_1_fuer_$PCname"
-
 # Settings
 $repoUri = 'https://github.com/SirAmonThe1/PC-Check.git'
 $setupPath = "./!_Checkup"
@@ -25,33 +8,6 @@ Push-Location "/"
 if (Test-Path -Path $setupPath) {
     Remove-Item $setupPath -Recurse -Force
 }
-
-
-start-transcript C:\!_Checkup\$LogName.txt
-Write-Host
-
-Write-Host "############################################################"
-Write-Host
-write-host $LogName
-Write-Host
-Write-Host "############################################################"
-
-Write-Host
-
-
-# Systemwiederherstellung
-Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Systemwiederherstellung"
-Write-Host
-Write-Host -ForegroundColor Red ">>> Aktivieren fuer Laufwerk C:\"
-Write-Host
-Enable-ComputerRestore "C:\"
-Write-Host -ForegroundColor Red ">>> Neuen Wiederherstellungspunkt erstellen"
-Write-Host
-Checkpoint-Computer -Description "PC-Checkup Initial"
-Write-Host -ForegroundColor Red ">>> Alle Wiederherstellungspunkte anzeigen"
-Write-Host
-Get-ComputerRestorePoint
-Write-Host
 
 Write-Host "############################################################"
 Write-Host "############################################################"
@@ -89,6 +45,55 @@ Write-Host
 Get-ChildItem .\10_modules\*.psm1 | Import-Module -Force
 
 Write-Host
+
+cup gsudo -y -limit-output
+
+read-host
+
+# Leistungsindex 
+Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Leistungsindex erstellen"
+Write-Host
+Write-Host -ForegroundColor Red ">>> Leistungsindex wird gestartet"
+
+winsat formal
+
+clear
+
+# Logging starten
+Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wird gestartet"
+
+$PCname = hostname
+$date0 = Get-Date
+$LogName = "Datenerhebung_1_fuer_$PCname"
+
+
+start-transcript C:\!_Checkup\$LogName.txt
+Write-Host
+
+Write-Host "############################################################"
+Write-Host
+write-host $LogName
+Write-Host
+Write-Host "############################################################"
+
+Write-Host
+
+
+# Systemwiederherstellung
+Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Systemwiederherstellung"
+Write-Host
+Write-Host -ForegroundColor Red ">>> Aktivieren fuer Laufwerk C:\"
+Write-Host
+Enable-ComputerRestore "C:\"
+Write-Host -ForegroundColor Red ">>> Neuen Wiederherstellungspunkt erstellen"
+Write-Host
+Checkpoint-Computer -Description "PC-Checkup Initial"
+Write-Host -ForegroundColor Red ">>> Alle Wiederherstellungspunkte anzeigen"
+Write-Host
+Get-ComputerRestorePoint
+Write-Host
+
+
 
 Write-Host "############################################################"
 Write-Host "############################################################"
