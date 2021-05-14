@@ -1,5 +1,27 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
+#at top of script
+if (!
+    #current role
+    (New-Object Security.Principal.WindowsPrincipal(
+        [Security.Principal.WindowsIdentity]::GetCurrent()
+    #is admin?
+    )).IsInRole(
+        [Security.Principal.WindowsBuiltInRole]::Administrator
+    )
+) {
+    #elevate script and exit current non-elevated runtime
+    Start-Process `
+        -FilePath 'powershell' `
+        -ArgumentList (
+            #flatten to single array
+            '-File', $MyInvocation.MyCommand.Source, $args `
+            | %{ $_ }
+        ) `
+        -Verb RunAs
+    exit
+}
+
 # Settings
 $repoUri = 'https://github.com/SirAmonThe1/PC-Check.git'
 $setupPath = "./!_Checkup"
@@ -47,8 +69,6 @@ Get-ChildItem .\10_modules\*.psm1 | Import-Module -Force
 Write-Host
 
 cup gsudo -y -limit-output
-
-read-host
 
 # Leistungsindex 
 Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Leistungsindex erstellen"
