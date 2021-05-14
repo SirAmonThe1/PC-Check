@@ -1,5 +1,6 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
+
 # Leistungsindex 
 Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Leistungsindex erstellen"
 Write-Host
@@ -15,6 +16,16 @@ Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wi
 $PCname = hostname
 $date0 = Get-Date
 $LogName = "Datenerhebung_1_fuer_$PCname"
+
+# Settings
+$repoUri = 'https://github.com/SirAmonThe1/PC-Check.git'
+$setupPath = "./!_Checkup"
+Push-Location "/"
+# Clean if necessary
+if (Test-Path -Path $setupPath) {
+    Remove-Item $setupPath -Recurse -Force
+}
+
 
 start-transcript C:\!_Checkup\$LogName.txt
 Write-Host
@@ -40,6 +51,43 @@ Checkpoint-Computer -Description "PC-Checkup Initial"
 Write-Host -ForegroundColor Red ">>> Alle Wiederherstellungspunkte anzeigen"
 Write-Host
 Get-ComputerRestorePoint
+Write-Host
+
+Write-Host "############################################################"
+Write-Host "############################################################"
+
+Write-Host
+Write-Host  -BackgroundColor Magenta -ForegroundColor White "Repository auf das Laufwerk C:\ downloaden"
+
+
+Write-Host "Installiere chocolately"
+Write-Host 
+
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+# Install git
+Write-Host "Installiere git"
+Write-Host 
+
+& choco install git --confirm --limit-output
+
+# Reset the path environment
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
+
+# Clone the setup repository
+& git clone $repoUri $setupPath
+
+# Enter inside the repository and invoke the real set-up process
+Write-Host "Wechsle in Setup-Pfad"
+Write-Host 
+
+Push-Location $setupPath
+write-host $setupPath
+
+Write-Host "Importiere Module"
+Write-Host 
+Get-ChildItem .\10_modules\*.psm1 | Import-Module -Force
+
 Write-Host
 
 Write-Host "############################################################"
