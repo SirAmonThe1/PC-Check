@@ -1,7 +1,7 @@
 Function Protect-Privacy {
             
     #Disables Windows Feedback Experience
-    Write-Output -ForegroundColor DarkGrey "Disabling Windows Feedback Experience program"
+    Write-Host -ForegroundColor DarkGrey "Disabling Windows Feedback Experience program"
     $Advertising = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo"
     If (Test-Path $Advertising) {
         Set-ItemProperty $Advertising Enabled -Value 0 
@@ -9,7 +9,7 @@ Function Protect-Privacy {
             
     #Stops Cortana from being used as part of your Windows Search Function
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Stopping Cortana from being used as part of your Windows Search Function"
+	Write-Host -ForegroundColor DarkGrey "Stopping Cortana from being used as part of your Windows Search Function"
     $Search = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
     If (Test-Path $Search) {
         Set-ItemProperty $Search AllowCortana -Value 0 
@@ -17,7 +17,7 @@ Function Protect-Privacy {
 
     #Disables Web Search in Start Menu
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Disabling Bing Search in Start Menu"
+	Write-Host -ForegroundColor DarkGrey "Disabling Bing Search in Start Menu"
     $WebSearch = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
     Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" BingSearchEnabled -Value 0 
     If (!(Test-Path $WebSearch)) {
@@ -27,7 +27,7 @@ Function Protect-Privacy {
             
     #Stops the Windows Feedback Experience from sending anonymous data
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Stopping the Windows Feedback Experience program"
+	Write-Host -ForegroundColor DarkGrey "Stopping the Windows Feedback Experience program"
     $Period = "HKCU:\Software\Microsoft\Siuf\Rules"
     If (!(Test-Path $Period)) { 
         New-Item $Period
@@ -36,7 +36,7 @@ Function Protect-Privacy {
 
     #Prevents bloatware applications from returning and removes Start Menu suggestions               
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Adding Registry key to prevent bloatware apps from returning"
+	Write-Host -ForegroundColor DarkGrey "Adding Registry key to prevent bloatware apps from returning"
     $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
     $registryOEM = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"
     If (!(Test-Path $registryPath)) { 
@@ -56,7 +56,7 @@ Function Protect-Privacy {
     
     #Preping mixed Reality Portal for removal    
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Setting Mixed Reality Portal value to 0 so that you can uninstall it in Settings"
+	Write-Host -ForegroundColor DarkGrey "Setting Mixed Reality Portal value to 0 so that you can uninstall it in Settings"
     $Holo = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Holographic"    
     If (Test-Path $Holo) {
         Set-ItemProperty $Holo  FirstRunSucceeded -Value 0 
@@ -64,7 +64,7 @@ Function Protect-Privacy {
 
     #Disables Wi-fi Sense
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Disabling Wi-Fi Sense"
+	Write-Host -ForegroundColor DarkGrey "Disabling Wi-Fi Sense"
     $WifiSense1 = "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting"
     $WifiSense2 = "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots"
     $WifiSense3 = "HKLM:\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config"
@@ -80,7 +80,7 @@ Function Protect-Privacy {
         
     #Disables live tiles
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Disabling live tiles"
+	Write-Host -ForegroundColor DarkGrey "Disabling live tiles"
     $Live = "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications"    
     If (!(Test-Path $Live)) {      
         New-Item $Live
@@ -89,7 +89,7 @@ Function Protect-Privacy {
         
     #Turns off Data Collection via the AllowTelemtry key by changing it to 0
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Turning off Data Collection"
+	Write-Host -ForegroundColor DarkGrey "Turning off Data Collection"
     $DataCollection1 = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection"
     $DataCollection2 = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
     $DataCollection3 = "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection"    
@@ -105,7 +105,7 @@ Function Protect-Privacy {
     
     #Disabling Location Tracking
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Disabling Location Tracking"
+	Write-Host -ForegroundColor DarkGrey "Disabling Location Tracking"
     $SensorState = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}"
     $LocationConfig = "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration"
     If (!(Test-Path $SensorState)) {
@@ -119,7 +119,7 @@ Function Protect-Privacy {
         
     #Disables People icon on Taskbar
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Disabling People icon on Taskbar"
+	Write-Host -ForegroundColor DarkGrey "Disabling People icon on Taskbar"
     $People = 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People'
     If (Test-Path $People) {
         Set-ItemProperty $People -Name PeopleBand -Value 0
@@ -127,7 +127,7 @@ Function Protect-Privacy {
         
     #Disables scheduled tasks that are considered unnecessary 
     Write-Host
-	Write-Output -ForegroundColor DarkGrey "Disabling scheduled tasks"
+	Write-Host -ForegroundColor DarkGrey "Disabling scheduled tasks"
     Get-ScheduledTask  XblGameSaveTaskLogon | Disable-ScheduledTask -ErrorAction silentlyContinue | Select-Object TaskName
     Get-ScheduledTask  XblGameSaveTask | Disable-ScheduledTask -ErrorAction silentlyContinue | Select-Object TaskName
     Get-ScheduledTask  Consolidator | Disable-ScheduledTask -ErrorAction silentlyContinue | Select-Object TaskName
