@@ -9,6 +9,9 @@ gsudo
 write-host
 
 $setupPath = "C:/!_Checkup_Install"
+$modulesPath = "C:/!_Checkup_Install/10_modules"
+$registryPath = "C:/!_Checkup_Install/11_registry"
+$softwarePath = "C:/!_Checkup_Install/12_software"
 
 Write-Host -ForegroundColor Red "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -71,11 +74,11 @@ $confirmation = Read-Host ">>> Diesen Computer jetzt umbenennen? [y/n]"
 
 # Install chocolately, the minimum requirement
 
-	Write-Output "****"
-	Write-Output "#####################"
-	Write-Output "# ----- Install chocolately, the minimum requirement"
-	Write-Output "#####################"
-	Write-Output "****"
+	Write-Host "****"
+	Write-Host "#####################"
+	Write-Host "# ----- Install chocolately, the minimum requirement"
+	Write-Host "#####################"
+	Write-Host "****"
 
 
 Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -92,13 +95,13 @@ Get-ChildItem .\modules\*.psm1 | Import-Module -Force
 	#####################
 	
 Write-Host
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "# ----- Vorbereitung für den Checkup"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
+	Write-Host "****"
+	Write-Host "****"
+	Write-Host "****"
+	Write-Host "# ----- Vorbereitung für den Checkup"
+	Write-Host "****"
+	Write-Host "****"
+	Write-Host "****"
 	
 Write-Host
 	
@@ -106,22 +109,21 @@ Write-Host
 	# Windows-Einstellungen
 	#####################
 	
-	Write-Output "****"
-	Write-Output "#####################"
-	Write-Output "# ----- Windows-Einstellungen"
-	Write-Output "#####################"
-	Write-Output "****"
+	Write-Host "****"
+	Write-Host "#####################"
+	Write-Host "# ----- Windows-Einstellungen"
+	Write-Host "#####################"
+	Write-Host "****"
 	Write-Host
-	
-	# !!! KOPIEREN AUS DEM EINSTELLUNGEN-SKRIPT 
-	# Z:\daniel\Drive\1 Dokumente\20 Arbeit\02 IT-Service Remke\01_Organisation\07_Checklisten+Tools\11_Einstellungen
 
-	Write-Output "## Set-HidePeopleOnTaskbar $true"
+	Write-Host "## Set-HidePeopleOnTaskbar $true"
     Set-HidePeopleOnTaskbar $true
+	write-host "OK"
     
 	Write-Host
-	Write-Output "## Set-ShowSearchOnTaskbar $value"
+	Write-Host "## Set-ShowSearchOnTaskbar $value"
     Set-ShowSearchOnTaskbar "1"
+	write-host "OK"
 	
 		<#SearchboxTaskbarMode:
 		0 = In der Taskleiste wird kein Suchfeld und kein Suchsymbol angezeugt.
@@ -130,78 +132,93 @@ Write-Host
 		#>
 	
 	Write-Host
-	Write-Output "## Set-AllowCortana $value"
+	Write-Host "## Set-AllowCortana $value"
     Set-AllowCortana "0"
+	write-host "OK"
 		#0 = Disable / 1 or delete = Enable
     
-	#Write-Output "## Set-SmallButtonsOnTaskbar $true"
+	#Write-Host "## Set-SmallButtonsOnTaskbar $true"
     #Set-SmallButtonsOnTaskbar $true
     
 	Write-Host
-	Write-Output "## Set-MultiMonitorTaskbarMode "2""
+	Write-Host "## Set-MultiMonitorTaskbarMode "2""
     Set-MultiMonitorTaskbarMode "2"
+	write-host "OK"
     
 	Write-Host
-	Write-Output "## Set-DisableWindowsDefender $true"
+	Write-Host "## Set-DisableWindowsDefender $true"
     Set-DisableWindowsDefender $false
+	write-host "OK"
     
 	Write-Host
-	Write-Output "## Set-DarkTheme $true"
+	Write-Host "## Set-DarkTheme $true"
     Set-DarkTheme $true
+	write-host "OK"
 
-	#Write-Output "## Set-ColorTheme $true"
+	#Write-Host "## Set-ColorTheme $true"
     #Set-ColouTheme $true
     
 	Write-Host
-	Write-Output "## Set-DisableLockScreen $true"
+	Write-Host "## Set-DisableLockScreen $true"
     Set-DisableLockScreen $true
+	write-host "OK"
     
 	Write-Host
-	Write-Output "## Set-DisableAeroShake $true"
+	Write-Host "## Set-DisableAeroShake $true"
     Set-DisableAeroShake $true
+	write-host "OK"
     
 	Write-Host
-	Write-Output "## Set-EnableLongPathsForWin32 $true"
+	Write-Host "## Set-EnableLongPathsForWin32 $true"
     Set-EnableLongPathsForWin32 $true
+	write-host "OK"
     
 	Write-Host
-	Write-Output "## Set-OtherWindowsStuff"
+	Write-Host "## Set-OtherWindowsStuff"
     Set-OtherWindowsStuff
+	write-host "OK"
 	        
-	## Write-Output "## Disable-AdministratorSecurityPrompt"
+	## Write-Host "## Disable-AdministratorSecurityPrompt"
     ## Disable-AdministratorSecurityPrompt
 	
 	Write-Host
-	Write-Output "## Disable-BingSearchInStartMenu"
+	Write-Host "## Disable-BingSearchInStartMenu"
 	Disable-BingSearchInStartMenu
+	write-host "OK"
     
 	Write-Host
-	Write-Output "## Disable-UselessServices"
+	Write-Host "## Disable-UselessServices"
     Disable-UselessServices
+	write-host "OK"
 	
 	Write-Host
-	Write-Output "## Disable-EasyAccessKeyboard"
+	Write-Host "## Disable-EasyAccessKeyboard"
     Disable-EasyAccessKeyboard
+	write-host "OK"
     
 	Write-Host
-	Write-Output "## Set-FolderViewOptions"
+	Write-Host "## Set-FolderViewOptions"
     Set-FolderViewOptions
+	write-host "OK"
     
 	Write-Host
-	Write-Output "## Disable-AeroShaking"
+	Write-Host "## Disable-AeroShaking"
     Disable-AeroShaking
+	write-host "OK"
 	
 	Write-Host
 	Write-host "## Enable Photo Viewer"
-	reg import $scriptFolder\registys\enable-photo-viewer.reg
+	reg import $registryPath\enable-photo-viewer.reg
+	write-host "OK"
 	
 	Write-Host
 	Write-host "## Remove 3D Objects from This PC"
-	Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
-	Remove-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
+	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
+	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
+	write-host "OK"
 	
 	Write-Host
-	Write-Output "## Deactivate XPS and FAX-Services"
+	Write-Host "## Deactivate XPS and FAX-Services"
     @(
         "Printing-XPSServices-Features"
         "Printing-XPSServices-Features"
@@ -210,32 +227,29 @@ Write-Host
 
 ### Energieeinstellungen setzen
 	Write-Host
-	Write-Output "## Schnellstart deaktivieren"
+	Write-Host "## Schnellstart deaktivieren"
 	powercfg /hibernate off 
+	write-host "OK"
 
 	powercfg -setactive 381b4222-f694-41f0-9685-ff5bb260df2e  # (Ausbalanciert)
 	# powercfg -duplicatescheme  a1841308-3541-4fab-bc81-f71556f20b4a  # (Energiesparmodus)
 	# powercfg -duplicatescheme  8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c  # (Höchstleistung)
 	powercfg -duplicatescheme  94bd7b55-a0ae-4c21-9de4-96bebb1ba1d6  # (Ultimative Leistung)
 
-	
-Stop-Process -ProcessName explorer	
-	
+	write-host "Explorer neu starten"
+	Stop-Process -ProcessName explorer	
+	write-host "OK"
+		
 	
 #####################
 # SOFTWARE
 #####################
 
-	Write-Output "****"
-	Write-Output "#####################"
-	Write-Output "# ----- SOFTWARE"
-	Write-Output "#####################"
-	Write-Output "****"
-
-	
-Write-Host	
-Write-Host "############################################################"
-Write-Host "############################################################"
+	Write-Host "****"
+	Write-Host "#####################"
+	Write-Host "# ----- SOFTWARE"
+	Write-Host "#####################"
+	Write-Host "****"
 
 Write-Host
 Write-Host -ForegroundColor Red ">>> Installierte Programme vor der Bereinigung"
@@ -249,7 +263,7 @@ Write-Host "############################################################"
 
 Write-Host 
 Write-Host -ForegroundColor Red "Wichtige Software wird installiert"
-Write-Host "Pakete: PSWindowsUpdate PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt"
+Write-Host -ForegroundColor DarkGray "Pakete: PSWindowsUpdate PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt"
 Write-Host
 	
 	# Installationen 
@@ -262,7 +276,7 @@ Write-Host -ForegroundColor Magenta ">>> Virenschutz bitte jetzt installieren"
     [console]::beep(2000,250)
 $confirmation = Read-Host ">>> Kaspersky Internet Security installieren? [y/n]"
     if ($confirmation -eq 'y') {
-		start-process .\software\Kaspersky\kis.exe}
+		start-process $softwarePath\Kaspersky\kis.exe}
 	if ($confirmation -eq 'n') {
 		Write-Host "Bitte einen anderen Virenschutz aktivieren (evtl. Windows Defender)"}
 
@@ -277,26 +291,17 @@ Write-Host "############################################################"
 # Windows Update
 #####################
 
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "#####################"
-	Write-Output "# ----- Windows-Update"
-	Write-Output "#####################"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Host
+Write-Host
+	Write-Host "****"
+	Write-Host "#####################"
+	Write-Host "# ----- Windows-Update"
+	Write-Host "#####################"
+	Write-Host "****"
 	Write-Host 
-	Write-Host 
-	Write-Output "PSWindowsUpdate installieren"
+	
+	
+	Write-Host "PSWindowsUpdate installieren"
 	Install-Module -Name PSWindowsUpdate -Force -allowclobber
-	Write-Output "Get-WindowsUpdate"
-	Add-WUServiceManager -ServiceID "7971f918-a847-4430-9279-4a52d1efe18d" -AddServiceFlag 7
 	
 	Write-Host -ForegroundColor Red ">>> Checking for Windows Updates"
 	Write-Host -ForegroundColor DarkGray "This will take a while ..."
@@ -308,25 +313,32 @@ Write-Host "############################################################"
 	} else {
 		Write-Host -ForegroundColor Green ">>> No Windows Updates available!"
 	}
-	Write-Host
 
+Write-Host
 Write-Host "############################################################"
 Write-Host "############################################################"
 Write-Host 
 
-Write-Output "## Uninstall-StoreApps"
+Write-Host "## Uninstall-StoreApps"
 write-host
 Uninstall-StoreApps
 
 Write-Host
-Write-Host "BCUninstaller wird gestartet"
+Write-Host "############################################################"
+Write-Host "############################################################"
+Write-Host 
+Write-Host "Unnötige Software manuell deinstallieren"
+Write-Host 
+Write-Host -ForegroundColor DarkGray "BCUninstaller wird gestartet"
 
-start-process .\software\BCUninstaller\BCUninstaller.exe -windowstyle Maximized
+start-process $softwarePath\BCUninstaller\BCUninstaller.exe -windowstyle Maximized
 
+write-host
 Write-Host -ForegroundColor Magenta ">>> Unnötige Software bitte jetzt deinstallieren"
     [console]::beep(2000,250)
     [console]::beep(2000,250)
 Read-Host -Prompt "Fertig deinstalliert? [Enter]"
+write-host
 
 Write-Host "############################################################"
 Write-Host "############################################################"
@@ -343,25 +355,14 @@ Write-Host "############################################################"
 
 write-host
 	
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "#####################"
-	Write-Output "# ----- Fertig"
-	Write-Output "# ----- Fertig"
-	Write-Output "# ----- Fertig"
-	Write-Output "# ----- Fertig"
-	Write-Output "# ----- Fertig"
-	Write-Output "#####################"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Output "****"
-	Write-Host
-	Write-Host
+	Write-Host "****"
+	Write-Host "#####################"
+	Write-Host "# "
+	Write-Host "# ----- Fertig"
+	Write-Host "# "
+	Write-Host "#####################"
+	Write-Host "****"
+	write-host
 	
 	[console]::beep(2000,250)
     [console]::beep(2000,250)

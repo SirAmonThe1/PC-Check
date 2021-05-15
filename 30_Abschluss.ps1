@@ -9,6 +9,9 @@ gsudo
 write-host
 
 $setupPath = "C:/!_Checkup_Install"
+$modulesPath = "C:/!_Checkup_Install/10_modules"
+$registryPath = "C:/!_Checkup_Install/11_registry"
+$softwarePath = "C:/!_Checkup_Install/12_software"
 
 Write-Host -ForegroundColor Red "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path

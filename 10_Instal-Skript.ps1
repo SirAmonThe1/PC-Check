@@ -9,6 +9,9 @@ gsudo
 write-host
 
 $setupPath = "C:/!_Checkup_Install"
+$modulesPath = "C:/!_Checkup_Install/10_modules"
+$registryPath = "C:/!_Checkup_Install/11_registry"
+$softwarePath = "C:/!_Checkup_Install/12_software"
 
 Write-Host -ForegroundColor Red "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -189,13 +192,13 @@ Write-Host
 	
 	Write-Host
 	Write-host "## Enable Photo Viewer"
-	reg import $scriptFolder\registys\enable-photo-viewer.reg
+	reg import $registryPath\enable-photo-viewer.reg
 	write-host "OK"
 	
 	Write-Host
 	Write-host "## Remove 3D Objects from This PC"
-	Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
-	Remove-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
+	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
+	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
 	write-host "OK"
 	
 	Write-Host
@@ -248,7 +251,7 @@ Write-Host -ForegroundColor Magenta ">>> Virenschutz bitte jetzt installieren"
     [console]::beep(2000,250)
 $confirmation = Read-Host ">>> Kaspersky Internet Security installieren? [y/n]"
     if ($confirmation -eq 'y') {
-		start-process .\software\Kaspersky\kis.exe}
+		start-process $softwarePath\Kaspersky\kis.exe}
 	if ($confirmation -eq 'n') {
 		Write-Host "Bitte einen anderen Virenschutz aktivieren (evtl. Windows Defender)"}
 

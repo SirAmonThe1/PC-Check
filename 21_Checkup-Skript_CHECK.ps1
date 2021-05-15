@@ -9,6 +9,9 @@ gsudo
 write-host
 
 $setupPath = "C:/!_Checkup_Install"
+$modulesPath = "C:/!_Checkup_Install/10_modules"
+$registryPath = "C:/!_Checkup_Install/11_registry"
+$softwarePath = "C:/!_Checkup_Install/12_software"
 
 Write-Host -ForegroundColor Red "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -192,7 +195,8 @@ write-host
 #### Festplatte auf übergroße Dateien prüfen
 
 Write-Host
-Write-Host "TreeSizeFree wird gestartet"
+write-host "Speicherplatz auf Festplatten pruefen"
+Write-Host -ForegroundColor DarkGray ">>> TreeSizeFree wird gestartet und zudem Infos gelogged"
 
 start-process "C:\Program Files (x86)\JAM Software\TreeSize Free\treesizefree.exe" -windowstyle Maximized -verb runas
 
@@ -241,17 +245,17 @@ write-host
 
 $confirmation = Read-Host ">>> Hat der Scan fehlgeschlagen? [y/n]"
     if ($confirmation -eq 'y') {
-	
-Write-Host -ForegroundColor Red ">>> Windows Health Check wird gestartet"
-dism /Online /Cleanup-Image /ScanHealth
-Write-Host -ForegroundColor Red ">>> Checkup wird gestartet"
-Dism /Online /Cleanup-Image /CheckHealth
-$confirmation = Read-Host ">>> Fehler beheben? --> NUR WENN FEHLER GEFUNDEN WURDEN AUSFÜHREN!!! [y/n]"
-    if ($confirmation -eq 'y') {
-        dism /Online /Cleanup-Image /RestoreHealth
+		Write-Host -ForegroundColor Red ">>> Windows Health Check wird gestartet"
+		dism /Online /Cleanup-Image /ScanHealth
+		Write-Host -ForegroundColor Red ">>> Checkup wird gestartet"
+		Dism /Online /Cleanup-Image /CheckHealth
+		[console]::beep(2000,250)
+		[console]::beep(2000,250)
+		$confirmation = Read-Host ">>> Fehler beheben? --> NUR WENN FEHLER GEFUNDEN WURDEN AUSFÜHREN!!! [y/n]"
+		if ($confirmation -eq 'y') {
+			dism /Online /Cleanup-Image /RestoreHealth
+		}
 	}
-
-}
 
 write-host	
 Write-Host "############################################################"
@@ -280,7 +284,7 @@ write-host
 
 Write-Host "DriverStoreExplorer wird gestartet"
 
-start-process .\software\DriverStoreExplorer\rapr.exe -windowstyle Maximized
+start-process $softwarePath\DriverStoreExplorer\rapr.exe -windowstyle Maximized
 
 Read-Host -Prompt "Geprüft? [Enter]"
 
@@ -323,9 +327,10 @@ write-host
 	# Logging beenden
 Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wird beendet"
 
-stop-transcript
 $stoppuhr1
 $stoppuhr1.stop()
+stop-transcript
+
 Write-Host
 
 Write-Host "AdwCleaner --> mögliche Bereinigung jetzt durchführen"
@@ -334,7 +339,15 @@ start-process adwcleaner -windowstyle Maximized
 
 Read-Host -Prompt "Geprüft? [Enter]"
 
-
+write-host
+	Write-Host "****"
+	Write-Host "#####################"
+	Write-Host "# "
+	Write-Host "# ----- Fertig"
+	Write-Host "# "
+	Write-Host "#####################"
+	Write-Host "****"
+	write-host
 	
 	# Reboot
 	Write-Host -BackgroundColor Red -ForegroundColor White "##### --- REBOOT STATUS"
