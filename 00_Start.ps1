@@ -140,7 +140,7 @@ write-host
 
 write-host "Arbeitsverzeichnis: $setupPath"
 write-host "Starte .bat-Datei: $setupPath\$x.ps1"
-start-process $setupPath\$x.bat
+start-process $setupPath\$x.bat -WindowStyle Maximized
 
 write-host
 $confirmation = Read-Host ">>> Weiteres Skript waehlen? [y/n]"
