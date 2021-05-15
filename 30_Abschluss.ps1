@@ -5,7 +5,7 @@ write-host
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "PowerShell-Prozess mit Admin-Rechten ausfuehren"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "PowerShell-Prozess mit Admin-Rechten ausfuehren"
 [console]::beep(2000,250)
 [console]::beep(2000,250)
 gsudo
@@ -16,11 +16,11 @@ $modulesPath = "C:/!_Checkup_Install/10_modules"
 $registryPath = "C:/!_Checkup_Install/11_registry"
 $softwarePath = "C:/!_Checkup_Install/12_software"
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "Aktueller Pfad"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
 Write-Host $scriptFolder
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "Install Pfad"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Install Pfad"
 Write-Host $setupPath
 
 if (Test-Path -Path $setupPath\10_modules) {
@@ -29,7 +29,7 @@ if (Test-Path -Path $setupPath\10_modules) {
 	write-host "Importiert aus Install Pfad"
 } else {
 	write-host
-	Write-Host -BackgroundColor Blue -ForegroundColor Green "Bitte zuerst das Start-Skript '00_Start.ps1' ausfueheren"
+	Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Bitte zuerst das Start-Skript '00_Start.ps1' ausfueheren"
 	$confirmation = Read-Host ">>> jetzt ausfuehren? [y/n]"
     if ($confirmation -eq 'y') {
 		iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/SirAmonThe1/PC-Check/master/00_Start.ps1'))
@@ -43,13 +43,13 @@ write-host
 #### Virenscan
 
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "Bitte jetzt den Virenscan starten"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Bitte jetzt den Virenscan starten"
 Write-Host
 Read-Host -BackgroundColor Blue -ForegroundColor DarkGray ">>> Lauuft der Scan? [Enter]"
 
 write-host	
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"	
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"	
 write-host
 
 # Leistungsindex 
@@ -71,44 +71,44 @@ $LogName = "Infoblatt_fuer_$PCname"
 start-transcript C:\!_Checkup\$LogName.txt
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green $LogName
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta $LogName
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
 
 
 
 # PC-Informationen
-Write-Host -BackgroundColor Blue -ForegroundColor Green "##### --- Systeminfos"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "##### --- Systeminfos"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Windows"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Windows"
 Write-Host
 
 Get-ComputerInfo |
   Select-Object -Property OsName,OsArchitecture,OsBuildNumber,OsLanguage,CsPCSystemType,OsSerialNumber,WindowsInstallDateFromRegistry
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>>  Windows Lizenz-Auslesen (evtl. nicht erfolgreich)"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>>  Windows Lizenz-Auslesen (evtl. nicht erfolgreich)"
 Write-Host
 
 wmic path softwarelicensingservice get OA3xOriginalProductKey
 
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "--- Microsoft Office Lizenz auslesen"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "--- Microsoft Office Lizenz auslesen"
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> 32-Bit Systeme"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> 32-Bit Systeme"
 cscript "C:\Program Files (x86)\Microsoft Office\Office16\OSPP.VBS" /dstatus
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> 64-Bit Systeme"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> 64-Bit Systeme"
 cscript "C:\Program Files\Microsoft Office\Office16\OSPP.VBS" /dstatus
 
 Write-Host
@@ -117,57 +117,57 @@ Write-Host "############################################################"
 Write-Host "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "--- ausstehende Windows Updates"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "--- ausstehende Windows Updates"
 Write-Host
 
 Get-WUList | Format-Table
 
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "--- Benutzerkonten"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "--- Benutzerkonten"
 Write-Host
 
 Get-LocalUser | Format-Table
 
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "--- BIOS"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "--- BIOS"
 Write-Host
 
 Get-ComputerInfo | Format-List -Property BiosManufacturer,BiosName,BiosVersion,BiosReleaseDate,BiosFirmwareType,SerialNumber
 
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "--- Hardware"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "--- Hardware"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Mainboard"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Mainboard"
 
 Get-WmiObject Win32_BaseBoard | Format-List -Property Manufacturer,Product,SerialNumber
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Prozessor"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Prozessor"
 
 Get-WmiObject win32_processor | Format-List -Property Name,NumberOfCores,NumberOfLogicalProcessors,MaxClockSpeed,SocketDesignation
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Grafikkarte"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Grafikkarte"
 
 Get-Wmiobject Win32_VideoController | Format-List -Property DeviceID,Caption,@{n='AdapterRAM (Gb)' ;e={"{0:n2}" -f ($_.AdapterRAM/1gb)}},VideoModeDescription,AdapterCompatibility,DriverVersion
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Arbeitsspeicher (RAM)"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Arbeitsspeicher (RAM)"
 Write-Host
 
 Get-WMIObject -class Win32_Physicalmemory | Format-Table -Property PartNumber, @{n='Capacity (Gb)' ;e={"{0:n2}" -f ($_.capacity/1gb)}}, Speed, ConfiguredVoltage, DeviceLocator, Tag
@@ -176,7 +176,7 @@ Write-Host
 $date = Get-Date; $date=$date.AddDays(-1)
 get-eventlog system -erroraction silentlycontinue -after $date -source Microsoft-Windows-MemoryDiagnostics-Results | Select EntryType,InstanceID,Message | format-list 
 
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Festplatten"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Festplatten"
 Write-Host
 
 $FullSize = 
@@ -200,18 +200,18 @@ $PercentFree =
 Get-WmiObject -Class Win32_LogicalDisk | Where-Object {$_.VolumeName -ne 'Remke IT-Service'} | Format-Table -autosize -Property DeviceID, VolumeName, FileSystem, Description, $FullSize, $Freespace, $PercentFree
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Netzwerk"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Netzwerk"
 Write-Host
 
 Get-CimInstance -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=$true | Format-List Description, MACAddress,IPSubnet,DefaultIPGateway,DNSServerSearchOrder, IPAddress
 
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "--- Treiber"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "--- Treiber"
 Write-Host
 
 Get-WmiObject Win32_PnPSignedDriver | Where-Object {$_.DeviceClass -ne $null} | Where-Object {$_.Manufacturer -notlike '*USB*'} | Where-Object {$_.DeviceName -ne 'Volume'} | Where-Object {!(($_.DeviceClass -eq 'System') -and ($_.Manufacturer -eq 'Microsoft'))} | Where-Object {$_.DeviceName -notlike 'HID*'} | Where-Object {$_.DeviceName -notlike 'WAN Miniport*'} | Where-Object {$_.Manufacturer -ne '(Standard system devices)'} | Where-Object {$_.DeviceName -ne 'Generic software device'} | Where-Object {$_.DeviceName -ne 'Generic volume shadow copy'} | Sort-Object -Property DeviceClass,DeviceName,FriendlyName | Format-Table -groupby DeviceClass -autosize -Property DeviceName,FriendlyName,Manufacturer
@@ -219,11 +219,11 @@ Get-WmiObject Win32_PnPSignedDriver | Where-Object {$_.DeviceClass -ne $null} | 
 
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "--- Virenschutz"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "--- Virenschutz"
 Write-Host
 
 
@@ -279,28 +279,28 @@ Get-AntiVirusProduct | Format-List
 
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "--- Installierte Programme"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "--- Installierte Programme"
 Write-Host
 
 Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Green "--- Systempower Bericht"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "--- Systempower Bericht"
 Write-Host
 
 powercfg /systempowerreport /output "C:\!_Checkup\02_Systempowerreport_1_fuer_$PCname.html"
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
 
@@ -308,15 +308,15 @@ Write-Host
 
 
 # Leistungsindex abrufen
-Write-Host -BackgroundColor Blue -ForegroundColor Green "##### --- Leistungsindex"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "##### --- Leistungsindex"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Leistungsindex Ergebnis"
+Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Leistungsindex Ergebnis"
 
 gwmi win32_winsat | fl *score
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
 
 Write-Host
 
