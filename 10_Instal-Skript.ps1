@@ -136,8 +136,7 @@ Write-Host
     
 	Write-Host
 	Write-Host "## Set-DarkTheme $true"
-    #Set-DarkTheme $true
-	Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
+    Set-DarkTheme $true
 	write-host "OK"
 
 	#Write-Host "## Set-ColorTheme $true"
