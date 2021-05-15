@@ -83,13 +83,13 @@ function Set-DisableWindowsDefender([bool]$enable) {
     Set-RegistryValue "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender" "DisableAntiSpyware" "1"
 }
 
-function Set-DarkTheme([bool]$enable) {
-    Set-RegistryBool "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "AppsUseLightTheme" ($enable -eq -$false)
+function Set-DarkTheme($value) {
+    New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes" -Name "Personalize" –Force
+	New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes" -Name "Personalize" –Force
+	New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value "$value" -PropertyType "Dword"
+	New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value "$value" -PropertyType "Dword"
 }
 
-function Set-ColorTheme([string]$color) {
-    Set-RegistryBool "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "AppsUseLightTheme" !$enable
-}
 
 function Disable-AdministratorSecurityPrompt() {
     # This option SHOULD be used to disable the automatic detection of installation packages that require elevation to install.
