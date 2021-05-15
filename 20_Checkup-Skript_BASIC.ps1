@@ -152,7 +152,7 @@ Write-Host
     
 	Write-Host
 	Write-Host "## Set-DarkTheme"
-    Set-DarkTheme "0" # 0=Dark / 1=Color
+    Set-DarkTheme
 	write-host "OK"
 
 	#Write-Host "## Set-ColorTheme $true"
