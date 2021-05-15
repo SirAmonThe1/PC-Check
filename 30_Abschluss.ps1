@@ -45,7 +45,7 @@ write-host
 write-host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte jetzt den Virenscan starten"
 Write-Host
-Read-Host -ForegroundColor DarkGray ">>> Lauuft der Scan? [Enter]"
+Read-Host ">>> Lauuft der Scan? [Enter]"
 
 write-host	
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"

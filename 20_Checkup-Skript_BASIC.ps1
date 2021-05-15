@@ -272,11 +272,11 @@ Write-Host
 	cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
 	cup PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt --ignore-checksums --limit-output -y
 
-
+write-host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Virenschutz bitte jetzt installieren"
     [console]::beep(2000,250)
     [console]::beep(2000,250)
-$confirmation = Read-Host -ForegroundColor DarkGray ">>> Kaspersky Internet Security installieren? [y/n]"
+$confirmation = Read-Host ">>> Kaspersky Internet Security installieren? [y/n]"
     if ($confirmation -eq 'y') {
 		start-process $softwarePath\Kaspersky\kis.exe}
 	if ($confirmation -eq 'n') {
@@ -348,7 +348,7 @@ write-host
 Write-Host -BackgroundColor Blue -ForegroundColor White ">>>  Unnoetige Software bitte jetzt deinstallieren"
     [console]::beep(2000,250)
     [console]::beep(2000,250)
-Read-Host -ForegroundColor DarkGray "Fertig deinstalliert? [Enter]"
+Read-Host "Fertig deinstalliert? [Enter]"
 write-host
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"

@@ -140,7 +140,7 @@ Write-Host -BackgroundColor Blue -ForegroundColor White ">>> CCleaner wird gesta
 
 start-process ccleaner -windowstyle Maximized
 
-Read-Host -ForegroundColor DarkGray ">>> Mit CCleaner fertig aufgeraeumt? [Enter]"
+Read-Host ">>> Mit CCleaner fertig aufgeraeumt? [Enter]"
 
 write-host	
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
@@ -153,7 +153,7 @@ Write-Host -BackgroundColor Blue -ForegroundColor White ">>> HWInfo wird gestart
 
 start-process hwinfo -windowstyle Maximized
 
-Read-Host -ForegroundColor DarkGray ">>> Report unter C:\!_Checkup erstellt? [Enter]"
+Read-Host ">>> Report unter C:\!_Checkup erstellt? [Enter]"
 
 write-host	
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
@@ -209,13 +209,13 @@ Write-Host -ForegroundColor DarkGray "Sammeln der Infos kann etwas dauern ..."
 Get-DirectoryTreeSize -BasePath "C:\Users\$Env:USERNAME" | Sort-Object 'Size(Bytes)' -Descending | Select 'Size(GB)', 'FullPath'  | Where-Object {$_.'Size(GB)' -gt 3}
 
 do{
-	$confirmation = Read-Host -ForegroundColor DarkGray ">>> Weitere Festplatte geprueft werden? [y/n]"
+	$confirmation = Read-Host ">>> Weitere Festplatte geprueft werden? [y/n]"
     if ($confirmation -eq 'n') {
         Write-Host
         break
         }
     if ($confirmation -eq 'y') {
-		$LWBuchstabe = Read-Host -ForegroundColor DarkGray ">>> Von welcher Festplatte soll noch geprueft werden? Bitte Laufwerksbuchstaben eingeben"
+		$LWBuchstabe = Read-Host ">>> Von welcher Festplatte soll noch geprueft werden? Bitte Laufwerksbuchstaben eingeben"
 		Write-Host
 		Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Auflistung aller Ordner ueber 3 GB auf der Festplatte ${LWBuchstabe}:\"
 		write-host
@@ -246,7 +246,7 @@ write-host San beendet
 write-host
 
 
-$confirmation = Read-Host -ForegroundColor White ">>> Hat der Scan fehlgeschlagen? [y/n]"
+$confirmation = Read-Host ">>> Hat der Scan fehlgeschlagen? [y/n]"
     if ($confirmation -eq 'y') {
 		Write-Host -ForegroundColor Red ">>> Windows Health Check wird gestartet"
 		dism /Online /Cleanup-Image /ScanHealth
@@ -254,7 +254,7 @@ $confirmation = Read-Host -ForegroundColor White ">>> Hat der Scan fehlgeschlage
 		Dism /Online /Cleanup-Image /CheckHealth
 		[console]::beep(2000,250)
 		[console]::beep(2000,250)
-		$confirmation = Read-Host -ForegroundColor White ">>> Fehler beheben? --> NUR WENN FEHLER GEFUNDEN WURDEN AUSFueHREN!!! [y/n]"
+		$confirmation = Read-Host ">>> Fehler beheben? --> NUR WENN FEHLER GEFUNDEN WURDEN AUSFueHREN!!! [y/n]"
 		if ($confirmation -eq 'y') {
 			dism /Online /Cleanup-Image /RestoreHealth
 		}
@@ -291,7 +291,7 @@ Write-Host -BackgroundColor Blue -ForegroundColor White ">>> DriverStoreExplorer
 
 start-process $softwarePath\DriverStoreExplorer\rapr.exe -windowstyle Maximized
 
-Read-Host -ForegroundColor White ">>> Geprueft? [Enter]"
+Read-Host ">>> Geprueft? [Enter]"
 
 write-host	
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
@@ -309,7 +309,7 @@ Write-Host -BackgroundColor Blue -ForegroundColor White ">>> AdwCleaner wird ges
 
 start-process adwcleaner -windowstyle Maximized
 
-Read-Host -ForegroundColor White ">>> Geprueft? [Enter]"
+Read-Host ">>> Geprueft? [Enter]"
 
 write-host	
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
@@ -347,7 +347,7 @@ Write-Host -BackgroundColor Blue -ForegroundColor White ">>> AdwCleaner --> moeg
 
 start-process adwcleaner -windowstyle Maximized
 
-Read-Host -ForegroundColor White ">>> Geprueft? [Enter]"
+Read-Host ">>> Geprueft? [Enter]"
 
 write-host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
