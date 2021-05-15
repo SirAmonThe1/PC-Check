@@ -137,7 +137,7 @@ write-host "Gewaehlt: $x"
 write-host
 
 write-host "Arbeitsverzeichnis: $setupPath"
-write-host "Starte .bat-Datei: $setupPath\$x.bat"
+write-host "Starte .bat-Datei: $setupPath\$x.ps1"
 start-process $setupPath\$x.bat
 
 read-host

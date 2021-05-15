@@ -1,7 +1,7 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
-write-host "PowerShell-Prozess mit Admin-Rechten ausführen"
+write-host "PowerShell-Prozess mit Admin-Rechten ausfuehren"
 [console]::beep(2000,250)
 [console]::beep(2000,250)
 gsudo

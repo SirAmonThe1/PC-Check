@@ -2,7 +2,7 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
-write-host "PowerShell-Prozess mit Admin-Rechten ausführen"
+write-host "PowerShell-Prozess mit Admin-Rechten ausfuehren"
 [console]::beep(2000,250)
 [console]::beep(2000,250)
 gsudo
@@ -24,7 +24,7 @@ if (Test-Path -Path $setupPath\10_modules) {
 } else {
 	write-host
 	write-host "Bitte zuerst das Start-Skript '00_Start.ps1' ausfueheren"
-	$confirmation = Read-Host ">>> jetzt ausführen? [y/n]"
+	$confirmation = Read-Host ">>> jetzt ausfuehren? [y/n]"
     if ($confirmation -eq 'y') {
 		iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/SirAmonThe1/PC-Check/master/00_Start.ps1'))
 	} else {
