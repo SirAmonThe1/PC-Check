@@ -1,27 +1,27 @@
 # Begrüßung
 
-write-host -BackgroundColor Magenta -ForegroundColor White "Willkommen beim PC-Check"
+write-host -BackgroundColor Green -ForegroundColor White "Willkommen beim PC-Check"
 write-host
-write-host "Pruefe Grundlagen fuer weitere Bearbeitung"
+Write-Host -BackgroundColor Blue -ForegroundColor White "Pruefe Grundlagen fuer weitere Bearbeitung"
 write-host
 
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
-write-host "Teste Internetverbindung"
+Write-Host -BackgroundColor Blue -ForegroundColor White "Teste Internetverbindung"
 
 if (-not (Test-Connection -ComputerName www.google.com -Quiet)){
- Write-Host -ForegroundColor red "Keine Internetverbindung!"
+ Write-Host -BackgroundColor Blue -ForegroundColor red "Keine Internetverbindung!"
  read-host "Hier manuelle Kopie vom Stick einfügen per robocopy"
 } else {
-	write-host -ForegroundColor green "Internetverbindung steht!"
+	Write-Host -BackgroundColor Blue -ForegroundColor green "Internetverbindung steht!"
 }
 
 # Settings
 $repoUri = 'https://github.com/SirAmonThe1/PC-Check.git'
 $setupPath = "C:/!_Checkup_Install"
 
-write-host "$setupPath fuer die benoetigten Dateien bereinigen"
+Write-Host -BackgroundColor Blue -ForegroundColor White "$setupPath fuer die benoetigten Dateien bereinigen"
 
 Push-Location "/"
 # Clean if necessary
@@ -30,19 +30,24 @@ if (Test-Path -Path $setupPath) {
 }
 
 write-host
-Write-Host "############################################################"
-Write-Host "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor White "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor White "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Magenta -ForegroundColor White "Repository auf das Laufwerk C:\ downloaden"
+Write-Host -BackgroundColor Blue -ForegroundColor White "Repository auf das Laufwerk C:\ downloaden"
 write-host
-Write-Host "Installiere chocolately"
+Write-Host -BackgroundColor Blue -ForegroundColor DarkGray ">>> Installiere chocolately"
 Write-Host 
 
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
+write-host
+Write-Host -BackgroundColor Blue -ForegroundColor DarkGray ">>> Installiere gsudo (Tool zum privilegieren von PowerShell-Instanzen)"
+Write-Host 
+
+cup gsudo -y -limit-output
 # Install git
-Write-Host "Installiere git"
+Write-Host -BackgroundColor Blue -ForegroundColor DarkGray ">>> Installiere git"
 Write-Host 
 
 & choco install git --confirm --limit-output
@@ -51,7 +56,7 @@ Write-Host
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 
 Write-Host 
-Write-Host "Repository Clonen"
+Write-Host -BackgroundColor Blue -ForegroundColor DarkGray ">>> Repository Clonen"
 Write-Host 
 
 # Clone the setup repository
@@ -59,22 +64,18 @@ Write-Host
 
 # Enter inside the repository and invoke the real set-up process
 write-host
-Write-Host "Wechsle in Setup-Pfad"
+Write-Host -BackgroundColor Blue -ForegroundColor White "Wechsle in Setup-Pfad"
 Write-Host 
 
 Push-Location $setupPath
 write-host $setupPath
 
-Write-Host "Importiere Module"
+Write-Host -BackgroundColor Blue -ForegroundColor White "Importiere Module"
 Write-Host 
 Get-ChildItem .\10_modules\*.psm1 | Import-Module -Force
 
 Write-Host
 
-Write-Host "Installiere gsudo (Tool zum privilegieren von PowerShell-Instanzen)"
-Write-Host 
-
-cup gsudo -y -limit-output
 
 # Skript auswählen
 
@@ -135,11 +136,11 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
     $x = $listBox.SelectedItem
 }
 
-write-host "Gewaehlt: $x"
+Write-Host -BackgroundColor Blue -ForegroundColor White "Gewaehlt: $x"
 write-host
 
-write-host "Arbeitsverzeichnis: $setupPath"
-write-host "Starte .bat-Datei: $setupPath\$x.ps1"
+Write-Host -BackgroundColor Blue -ForegroundColor White "Arbeitsverzeichnis: $setupPath"
+Write-Host -BackgroundColor Blue -ForegroundColor White "Starte .bat-Datei: $setupPath\$x.ps1"
 start-process $setupPath\$x.bat -WindowStyle Maximized
 
 write-host
