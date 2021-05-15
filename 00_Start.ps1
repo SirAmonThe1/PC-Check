@@ -80,6 +80,8 @@ cup gsudo -y -limit-output
 
 # $sel = "01_Startinfos", "10_Instal-Skript", "20_Checkup-Skript_BASIC", "21_Checkup-Skript_CHECK", "30_Abschluss", "TESTSKRIPT" | Out-GridView -PassThru -Title "Arbeitsschritt wählen"
 
+do{
+
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
@@ -140,4 +142,7 @@ write-host "Arbeitsverzeichnis: $setupPath"
 write-host "Starte .bat-Datei: $setupPath\$x.ps1"
 start-process $setupPath\$x.bat
 
-read-host
+write-host
+$confirmation = Read-Host ">>> Weiteres Skript waehlen? [y/n]"
+
+} while ($confirmation -eq 'y')
