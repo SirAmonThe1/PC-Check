@@ -5,7 +5,7 @@ write-host
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "PowerShell-Prozess mit Admin-Rechten ausfuehren"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit Admin-Rechten ausfuehren"
 [console]::beep(2000,250)
 [console]::beep(2000,250)
 gsudo
@@ -16,11 +16,11 @@ $modulesPath = "C:/!_Checkup_Install/10_modules"
 $registryPath = "C:/!_Checkup_Install/11_registry"
 $softwarePath = "C:/!_Checkup_Install/12_software"
 
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "Aktueller Pfad"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
 Write-Host $scriptFolder
 
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "Install Pfad"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "Install Pfad"
 Write-Host $setupPath
 
 if (Test-Path -Path $setupPath\10_modules) {
@@ -29,7 +29,7 @@ if (Test-Path -Path $setupPath\10_modules) {
 	write-host "Importiert aus Install Pfad"
 } else {
 	write-host
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta "Bitte zuerst das Start-Skript '00_Start.ps1' ausfueheren"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte zuerst das Start-Skript '00_Start.ps1' ausfueheren"
 	$confirmation = Read-Host ">>> jetzt ausfuehren? [y/n]"
     if ($confirmation -eq 'y') {
 		iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/SirAmonThe1/PC-Check/master/00_Start.ps1'))
@@ -49,18 +49,18 @@ $LogName = "Checkup-Log_fuer_$PCname_(Checkup)"
 start-transcript C:\!_Checkup\$LogName.txt
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "---- $LogName"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "---- $LogName"
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "Ausfuehrung des Skriptes in $scriptFolder"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "Ausfuehrung des Skriptes in $scriptFolder"
 Write-Host
 
 # PC-Rename
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "##### --- PC-Rename"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- PC-Rename"
 Write-Host
 Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Aktueller Computername"
 
@@ -80,13 +80,13 @@ Get-ChildItem .\modules\*.psm1 | Import-Module -Force
 	#####################
 	
 
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "# ----- Starte den PC-Check"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "# ----- Starte den PC-Check"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
 
 
 #####################
@@ -94,11 +94,11 @@ Get-ChildItem .\modules\*.psm1 | Import-Module -Force
 #####################
 	
 	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "# ----- Windows-Update"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta  "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "# ----- Windows-Update"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
 	Write-Host
 
 	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Checking for Windows Updates"
@@ -106,7 +106,7 @@ Get-ChildItem .\modules\*.psm1 | Import-Module -Force
 	Write-Host
 	$updates = Get-WUlist -MicrosoftUpdate
 	if ($updates) {
-		Write-Host -BackgroundColor Black -ForegroundColor Magenta ">>> Updates found:"
+		Write-Host -BackgroundColor Black -ForegroundColor Cyan ">>> Updates found:"
 		Write-Host ($updates | Format-Table | Out-String)
 		Get-WindowsUpdate -Install -MicrosoftUpdate -AcceptAll -IgnoreReboot
 	} else {
@@ -116,25 +116,25 @@ Get-ChildItem .\modules\*.psm1 | Import-Module -Force
 	
 	
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
 
 #### benoetigte SW install
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "--- Installiere notwendige Software fuer den Checkup"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installiere notwendige Software fuer den Checkup"
 Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>>Pakete: hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree"
 write-host
 
 cup hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree --ignore-checksums --limit-output -y
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "--- Schrit fuer Schritt Checkup"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Schrit fuer Schritt Checkup"
 Write-Host
 Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> CCleaner wird gestartet"
 
@@ -143,8 +143,8 @@ start-process ccleaner -windowstyle Maximized
 Read-Host -ForegroundColor DarkGray ">>> Mit CCleaner fertig aufgeraeumt? [Enter]"
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
 #### HWInfo
@@ -156,13 +156,13 @@ start-process hwinfo -windowstyle Maximized
 Read-Host -ForegroundColor DarkGray ">>> Report unter C:\!_Checkup erstellt? [Enter]"
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
 #### smart test
 
-Write-Host -BackgroundColor Black -ForegroundColor Magenta ">>> S.M.A.R.T Festplatteninfos auslesen mit CrystalDiskInfo"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan ">>> S.M.A.R.T Festplatteninfos auslesen mit CrystalDiskInfo"
 
 #We start CrystalDiskInfo with the COPYEXIT parameter. This just collects the SMART information in DiskInfo.txt
 $DiskInfoLoc = "C:\ProgramData\chocolatey\lib\crystaldiskinfo.portable\tools"
@@ -190,14 +190,14 @@ write-host
 get-content "$DiskInfoLoc\DiskInfo.txt" | select-string "model" -Context 4,25
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
 #### Festplatte auf uebergroße Dateien pruefen
 
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "Speicherplatz auf Festplatten pruefen"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "Speicherplatz auf Festplatten pruefen"
 Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> TreeSizeFree wird gestartet und zudem Infos gelogged"
 
 start-process "C:\Program Files (x86)\JAM Software\TreeSize Free\treesizefree.exe" -windowstyle Maximized -verb runas
@@ -226,8 +226,8 @@ do{
 
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
 
@@ -235,7 +235,7 @@ write-host
 #### Festplattentest sfc /Scannow
 
 
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "--- Festplattentest"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Festplattentest"
 Write-Host
 Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Festplatten-Scan (sfc /Scannow) wird gestartet"
 sfc /scannow
@@ -261,13 +261,13 @@ $confirmation = Read-Host -ForegroundColor White ">>> Hat der Scan fehlgeschlage
 	}
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
 #### ram test + ergebnisse abrufen
 
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "--- RAM-Test"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- RAM-Test"
 Write-Host
 Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> mdsched Ergebnisse werden abgerufen"
 
@@ -275,14 +275,14 @@ Get-winevent -FilterHashTable @{logname='System'; id='1101'}|?{$_.providername -
 Get-winevent -FilterHashTable @{logname='System'; id='1201'}|?{$_.providername -match 'MemoryDiagnostics-Results'}
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
 
 #### Treiber altdateien pruefen
 
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "--- Treiber Pruefen"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Treiber Pruefen"
 
     [console]::beep(2000,250)
     [console]::beep(2000,250)
@@ -294,13 +294,13 @@ start-process $softwarePath\DriverStoreExplorer\rapr.exe -windowstyle Maximized
 Read-Host -ForegroundColor White ">>> Geprueft? [Enter]"
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
 #### adwcleaner check
 
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "--- AdWare Pruefen"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- AdWare Pruefen"
 
     [console]::beep(2000,250)
     [console]::beep(2000,250)
@@ -312,23 +312,23 @@ start-process adwcleaner -windowstyle Maximized
 Read-Host -ForegroundColor White ">>> Geprueft? [Enter]"
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
 
 
 #### benoetigte SW deinstall
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "--- Deinstalliere temporaer fuer den Checkup installierte Software"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Deinstalliere temporaer fuer den Checkup installierte Software"
 Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Pakete: hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree"
 write-host
 
 choco uninstall hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree --ignore-checksums --limit-output -y
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"	
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 write-host
 
     [console]::beep(2000,250)
@@ -350,13 +350,13 @@ start-process adwcleaner -windowstyle Maximized
 Read-Host -ForegroundColor White ">>> Geprueft? [Enter]"
 
 write-host
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta "# "
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta "# ----- Fertig"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta "# "
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Magenta "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Fertig"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
 	write-host
 	
 	# Reboot
