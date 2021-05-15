@@ -36,18 +36,18 @@ Write-Host -BackgroundColor Black -ForegroundColor Cyan "#######################
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Repository auf das Laufwerk C:\ downloaden"
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Installiere chocolately"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere chocolately"
 Write-Host 
 
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Installiere gsudo (Tool zum privilegieren von PowerShell-Instanzen)"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere gsudo (Tool zum privilegieren von PowerShell-Instanzen)"
 Write-Host 
 
 cup gsudo -y -limit-output
 # Install git
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Installiere git"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere git"
 Write-Host 
 
 & choco install git --confirm --limit-output
@@ -56,7 +56,7 @@ Write-Host
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 
 Write-Host 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Repository Clonen"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Repository Clonen"
 Write-Host 
 
 # Clone the setup repository

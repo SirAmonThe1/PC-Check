@@ -62,7 +62,7 @@ Write-Host
 # PC-Rename
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- PC-Rename"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Aktueller Computername"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Aktueller Computername"
 
 hostname
 
@@ -123,12 +123,12 @@ Get-ChildItem .\modules\*.psm1 | Import-Module -Force
 
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-HidePeopleOnTaskbar $true"
     Set-HidePeopleOnTaskbar $true
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-ShowSearchOnTaskbar $value"
     Set-ShowSearchOnTaskbar "1"
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 	
 		<#SearchboxTaskbarMode:
 		0 = In der Taskleiste wird kein Suchfeld und kein Suchsymbol angezeugt.
@@ -139,83 +139,83 @@ Get-ChildItem .\modules\*.psm1 | Import-Module -Force
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-AllowCortana $value"
     Set-AllowCortana "0"
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 		#0 = Disable / 1 or delete = Enable
     
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-SmallButtonsOnTaskbar $true"
     Set-SmallButtonsOnTaskbar $true
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-MultiMonitorTaskbarMode "2""
     Set-MultiMonitorTaskbarMode "2"
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-DisableWindowsDefender $true"
     Set-DisableWindowsDefender $false
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-DarkTheme"
     Set-DarkTheme 
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-DisableLockScreen $true"
     Set-DisableLockScreen $true
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-DisableAeroShake $true"
     Set-DisableAeroShake $true
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-EnableLongPathsForWin32 $true"
     Set-EnableLongPathsForWin32 $true
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-OtherWindowsStuff"
     Set-OtherWindowsStuff
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Disable-BingSearchInStartMenu"
 	Disable-BingSearchInStartMenu
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Disable-UselessServices"
     Disable-UselessServices
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 	
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Disable-EasyAccessKeyboard"
     Disable-EasyAccessKeyboard
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-FolderViewOptions"
     Set-FolderViewOptions
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 	
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Privacy Settings einstellen"
     Protect-Privacy
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 	
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Enable Photo Viewer"
 	reg import $registryPath\enable-photo-viewer.reg
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 	
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Remove 3D Objects from This PC"
 	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
 	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 	
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Deactivate XPS and FAX-Services"
@@ -229,7 +229,7 @@ Get-ChildItem .\modules\*.psm1 | Import-Module -Force
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Schnellstart deaktivieren"
 	powercfg /hibernate off 
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 
 	powercfg -setactive 381b4222-f694-41f0-9685-ff5bb260df2e  # (Ausbalanciert)
 	# powercfg -duplicatescheme  a1841308-3541-4fab-bc81-f71556f20b4a  # (Energiesparmodus)
@@ -239,7 +239,7 @@ Get-ChildItem .\modules\*.psm1 | Import-Module -Force
 	write-host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Explorer neu starten"
 	Stop-Process -ProcessName explorer	
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> OK"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 	
 	
 #####################
@@ -264,7 +264,7 @@ Write-Host -BackgroundColor Black -ForegroundColor Cyan "#######################
 
 Write-Host 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Wichtige Software wird installiert"
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Pakete: PSWindowsUpdate PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: PSWindowsUpdate PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt"
 Write-Host
 	
 	# Installationen 
@@ -280,7 +280,7 @@ $confirmation = Read-Host -ForegroundColor DarkGray ">>> Kaspersky Internet Secu
     if ($confirmation -eq 'y') {
 		start-process $softwarePath\Kaspersky\kis.exe}
 	if ($confirmation -eq 'n') {
-		Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Bitte einen anderen Virenschutz aktivieren (evtl. Windows Defender)"
+		Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Bitte einen anderen Virenschutz aktivieren (evtl. Windows Defender)"
 	}
     [console]::beep(2000,250)
     [console]::beep(2000,250)
@@ -308,7 +308,7 @@ Write-Host
 	Install-Module -Name PSWindowsUpdate -Force -allowclobber
 	
 	Write-Host
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Checking for Windows Updates"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Checking for Windows Updates"
 	Write-Host -ForegroundColor DarkGray "This will take a while ..."
 	Write-Host
 	$updates = Get-WUlist -MicrosoftUpdate
@@ -340,12 +340,12 @@ Write-Host -BackgroundColor Black -ForegroundColor Cyan "#######################
 Write-Host 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Unnoetige Software manuell deinstallieren"
 Write-Host 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> BCUninstaller wird gestartet"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> BCUninstaller wird gestartet"
 
 start-process $softwarePath\BCUninstaller\BCUninstaller.exe -windowstyle Maximized
 
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>>  Unnoetige Software bitte jetzt deinstallieren"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>>  Unnoetige Software bitte jetzt deinstallieren"
     [console]::beep(2000,250)
     [console]::beep(2000,250)
 Read-Host -ForegroundColor DarkGray "Fertig deinstalliert? [Enter]"

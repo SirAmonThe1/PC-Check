@@ -62,7 +62,7 @@ Write-Host
 # PC-Rename
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- PC-Rename"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Aktueller Computername"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Aktueller Computername"
 
 hostname
 
@@ -101,7 +101,7 @@ Get-ChildItem .\modules\*.psm1 | Import-Module -Force
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
 	Write-Host
 
-	Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Checking for Windows Updates"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Checking for Windows Updates"
 	Write-Host -ForegroundColor DarkGray "This will take a while ..."
 	Write-Host
 	$updates = Get-WUlist -MicrosoftUpdate
@@ -124,7 +124,7 @@ write-host
 #### benoetigte SW install
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installiere notwendige Software fuer den Checkup"
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>>Pakete: hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>>Pakete: hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree"
 write-host
 
 cup hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree --ignore-checksums --limit-output -y
@@ -136,7 +136,7 @@ write-host
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Schrit fuer Schritt Checkup"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> CCleaner wird gestartet"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> CCleaner wird gestartet"
 
 start-process ccleaner -windowstyle Maximized
 
@@ -149,7 +149,7 @@ write-host
 
 #### HWInfo
 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> HWInfo wird gestartet"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> HWInfo wird gestartet"
 
 start-process hwinfo -windowstyle Maximized
 
@@ -198,12 +198,12 @@ write-host
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Speicherplatz auf Festplatten pruefen"
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> TreeSizeFree wird gestartet und zudem Infos gelogged"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> TreeSizeFree wird gestartet und zudem Infos gelogged"
 
 start-process "C:\Program Files (x86)\JAM Software\TreeSize Free\treesizefree.exe" -windowstyle Maximized -verb runas
 
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Auflistung aller Ordner ueber 3 GB im Verzeichniss C:\Users\$Env:USERNAME"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Auflistung aller Ordner ueber 3 GB im Verzeichniss C:\Users\$Env:USERNAME"
 Write-Host -ForegroundColor DarkGray "Sammeln der Infos kann etwas dauern ..."
 
 Get-DirectoryTreeSize -BasePath "C:\Users\$Env:USERNAME" | Sort-Object 'Size(Bytes)' -Descending | Select 'Size(GB)', 'FullPath'  | Where-Object {$_.'Size(GB)' -gt 3}
@@ -217,7 +217,7 @@ do{
     if ($confirmation -eq 'y') {
 		$LWBuchstabe = Read-Host -ForegroundColor DarkGray ">>> Von welcher Festplatte soll noch geprueft werden? Bitte Laufwerksbuchstaben eingeben"
 		Write-Host
-		Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Auflistung aller Ordner ueber 3 GB auf der Festplatte ${LWBuchstabe}:\"
+		Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Auflistung aller Ordner ueber 3 GB auf der Festplatte ${LWBuchstabe}:\"
 		write-host
 		Get-DirectoryTreeSize -BasePath "${LWBuchstabe}:\" | Sort-Object 'Size(Bytes)' -Descending | Select 'Size(GB)', 'FullPath'  | Where-Object {$_.'Size(GB)' -gt 3}
 		write-host
@@ -237,7 +237,7 @@ write-host
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Festplattentest"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Festplatten-Scan (sfc /Scannow) wird gestartet"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Festplatten-Scan (sfc /Scannow) wird gestartet"
 sfc /scannow
 
 write-host San beendet
@@ -269,7 +269,7 @@ write-host
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- RAM-Test"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> mdsched Ergebnisse werden abgerufen"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> mdsched Ergebnisse werden abgerufen"
 
 Get-winevent -FilterHashTable @{logname='System'; id='1101'}|?{$_.providername -match 'MemoryDiagnostics-Results'}
 Get-winevent -FilterHashTable @{logname='System'; id='1201'}|?{$_.providername -match 'MemoryDiagnostics-Results'}
@@ -287,7 +287,7 @@ Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Treiber Pruefen"
     [console]::beep(2000,250)
     [console]::beep(2000,250)
 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> DriverStoreExplorer wird gestartet"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> DriverStoreExplorer wird gestartet"
 
 start-process $softwarePath\DriverStoreExplorer\rapr.exe -windowstyle Maximized
 
@@ -305,7 +305,7 @@ Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- AdWare Pruefen"
     [console]::beep(2000,250)
     [console]::beep(2000,250)
 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> AdwCleaner wird gestartet --> Bitte Pruefen aber Bereinigung NICHT durchfuehren"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> AdwCleaner wird gestartet --> Bitte Pruefen aber Bereinigung NICHT durchfuehren"
 
 start-process adwcleaner -windowstyle Maximized
 
@@ -321,7 +321,7 @@ write-host
 #### benoetigte SW deinstall
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Deinstalliere temporaer fuer den Checkup installierte Software"
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Pakete: hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree"
 write-host
 
 choco uninstall hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree --ignore-checksums --limit-output -y
@@ -343,7 +343,7 @@ stop-transcript
 
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> AdwCleaner --> moegliche Bereinigung jetzt durchfuehren"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> AdwCleaner --> moegliche Bereinigung jetzt durchfuehren"
 
 start-process adwcleaner -windowstyle Maximized
 

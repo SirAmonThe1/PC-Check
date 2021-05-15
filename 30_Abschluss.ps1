@@ -84,14 +84,14 @@ Write-Host
 # PC-Informationen
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- Systeminfos"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Windows"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Windows"
 Write-Host
 
 Get-ComputerInfo |
   Select-Object -Property OsName,OsArchitecture,OsBuildNumber,OsLanguage,CsPCSystemType,OsSerialNumber,WindowsInstallDateFromRegistry
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>>  Windows Lizenz-Auslesen (evtl. nicht erfolgreich)"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>>  Windows Lizenz-Auslesen (evtl. nicht erfolgreich)"
 Write-Host
 
 wmic path softwarelicensingservice get OA3xOriginalProductKey
@@ -105,10 +105,10 @@ Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Microsoft Office Lizenz auslesen"
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> 32-Bit Systeme"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> 32-Bit Systeme"
 cscript "C:\Program Files (x86)\Microsoft Office\Office16\OSPP.VBS" /dstatus
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> 64-Bit Systeme"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> 64-Bit Systeme"
 cscript "C:\Program Files\Microsoft Office\Office16\OSPP.VBS" /dstatus
 
 Write-Host
@@ -152,22 +152,22 @@ Write-Host -BackgroundColor Black -ForegroundColor Cyan "#######################
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Hardware"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Mainboard"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Mainboard"
 
 Get-WmiObject Win32_BaseBoard | Format-List -Property Manufacturer,Product,SerialNumber
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Prozessor"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Prozessor"
 
 Get-WmiObject win32_processor | Format-List -Property Name,NumberOfCores,NumberOfLogicalProcessors,MaxClockSpeed,SocketDesignation
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Grafikkarte"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Grafikkarte"
 
 Get-Wmiobject Win32_VideoController | Format-List -Property DeviceID,Caption,@{n='AdapterRAM (Gb)' ;e={"{0:n2}" -f ($_.AdapterRAM/1gb)}},VideoModeDescription,AdapterCompatibility,DriverVersion
 Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Arbeitsspeicher (RAM)"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Arbeitsspeicher (RAM)"
 Write-Host
 
 Get-WMIObject -class Win32_Physicalmemory | Format-Table -Property PartNumber, @{n='Capacity (Gb)' ;e={"{0:n2}" -f ($_.capacity/1gb)}}, Speed, ConfiguredVoltage, DeviceLocator, Tag
@@ -176,7 +176,7 @@ Write-Host
 $date = Get-Date; $date=$date.AddDays(-1)
 get-eventlog system -erroraction silentlycontinue -after $date -source Microsoft-Windows-MemoryDiagnostics-Results | Select EntryType,InstanceID,Message | format-list 
 
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Festplatten"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Festplatten"
 Write-Host
 
 $FullSize = 
@@ -200,7 +200,7 @@ $PercentFree =
 Get-WmiObject -Class Win32_LogicalDisk | Where-Object {$_.VolumeName -ne 'Remke IT-Service'} | Format-Table -autosize -Property DeviceID, VolumeName, FileSystem, Description, $FullSize, $Freespace, $PercentFree
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Netzwerk"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Netzwerk"
 Write-Host
 
 Get-CimInstance -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=$true | Format-List Description, MACAddress,IPSubnet,DefaultIPGateway,DNSServerSearchOrder, IPAddress
@@ -310,7 +310,7 @@ Write-Host
 # Leistungsindex abrufen
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- Leistungsindex"
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Leistungsindex Ergebnis"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Leistungsindex Ergebnis"
 
 gwmi win32_winsat | fl *score
 Write-Host
