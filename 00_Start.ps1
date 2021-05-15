@@ -2,26 +2,26 @@
 
 write-host -BackgroundColor Green -ForegroundColor White "Willkommen beim PC-Check"
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Pruefe Grundlagen fuer weitere Bearbeitung"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "Pruefe Grundlagen fuer weitere Bearbeitung"
 write-host
 
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Teste Internetverbindung"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "Teste Internetverbindung"
 
 if (-not (Test-Connection -ComputerName www.google.com -Quiet)){
  Write-Host -BackgroundColor Blue -ForegroundColor red "Keine Internetverbindung!"
  read-host "Hier manuelle Kopie vom Stick einfuegen per robocopy"
 } else {
-	Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Internetverbindung steht!"
+	Write-Host -BackgroundColor Black -ForegroundColor Magenta "Internetverbindung steht!"
 }
 
 # Settings
 $repoUri = 'https://github.com/SirAmonThe1/PC-Check.git'
 $setupPath = "C:/!_Checkup_Install"
 
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "$setupPath fuer die benoetigten Dateien bereinigen"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "$setupPath fuer die benoetigten Dateien bereinigen"
 
 Push-Location "/"
 # Clean if necessary
@@ -30,11 +30,11 @@ if (Test-Path -Path $setupPath) {
 }
 
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Repository auf das Laufwerk C:\ downloaden"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "Repository auf das Laufwerk C:\ downloaden"
 write-host
 Write-Host -BackgroundColor Blue -ForegroundColor Cyan ">>> Installiere chocolately"
 Write-Host 
@@ -64,13 +64,13 @@ Write-Host
 
 # Enter inside the repository and invoke the real set-up process
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Wechsle in Setup-Pfad"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "Wechsle in Setup-Pfad"
 Write-Host 
 
 Push-Location $setupPath
 write-host $setupPath
 
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Importiere Module"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "Importiere Module"
 Write-Host 
 Get-ChildItem .\10_modules\*.psm1 | Import-Module -Force
 
@@ -136,11 +136,11 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
     $x = $listBox.SelectedItem
 }
 
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Gewaehlt: $x"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "Gewaehlt: $x"
 write-host
 
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Arbeitsverzeichnis: $setupPath"
-Write-Host -BackgroundColor Blue -ForegroundColor Magenta "Starte .bat-Datei: $setupPath\$x.ps1"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "Arbeitsverzeichnis: $setupPath"
+Write-Host -BackgroundColor Black -ForegroundColor Magenta "Starte .bat-Datei: $setupPath\$x.ps1"
 start-process $setupPath\$x.bat -WindowStyle Maximized
 
 write-host
