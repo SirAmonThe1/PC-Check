@@ -126,11 +126,11 @@ function Uninstall-StoreApps {
 	foreach ($app in $apps) {
     Write-Output "Trying to remove $app"
 
-    Get-AppxPackage -ErrorAction SilentlyContinue -Name $app -AllUsers | Remove-AppxPackage -AllUsers
+    Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
 
     Get-AppXProvisionedPackage -Online |
         Where-Object DisplayName -EQ $app |
-        Remove-AppxProvisionedPackage -Online
+        Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
 }
 
     # Prevents Apps from re-installing

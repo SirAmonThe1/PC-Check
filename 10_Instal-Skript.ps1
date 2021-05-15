@@ -243,7 +243,8 @@ Write-Host
 	
 	# Installationen 
 	
-	cup PSWindowsUpdate PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt --ignore-checksums --limit-output -y
+	cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
+	cup  PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt --ignore-checksums --limit-output -y
 
 
 Write-Host -ForegroundColor Magenta ">>> Virenschutz bitte jetzt installieren"
