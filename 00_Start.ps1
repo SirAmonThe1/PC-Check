@@ -1,18 +1,18 @@
-# Begrüßung
+# Begrueßung
 
 write-host -BackgroundColor Green -ForegroundColor White "Willkommen beim PC-Check"
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor White "Pruefe Grundlagen fuer weitere Bearbeitung"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "Pruefe Grundlagen fuer weitere Bearbeitung"
 write-host
 
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
-Write-Host -BackgroundColor Blue -ForegroundColor White "Teste Internetverbindung"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "Teste Internetverbindung"
 
 if (-not (Test-Connection -ComputerName www.google.com -Quiet)){
  Write-Host -BackgroundColor Blue -ForegroundColor red "Keine Internetverbindung!"
- read-host "Hier manuelle Kopie vom Stick einfügen per robocopy"
+ read-host "Hier manuelle Kopie vom Stick einfuegen per robocopy"
 } else {
 	Write-Host -BackgroundColor Blue -ForegroundColor green "Internetverbindung steht!"
 }
@@ -21,7 +21,7 @@ if (-not (Test-Connection -ComputerName www.google.com -Quiet)){
 $repoUri = 'https://github.com/SirAmonThe1/PC-Check.git'
 $setupPath = "C:/!_Checkup_Install"
 
-Write-Host -BackgroundColor Blue -ForegroundColor White "$setupPath fuer die benoetigten Dateien bereinigen"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "$setupPath fuer die benoetigten Dateien bereinigen"
 
 Push-Location "/"
 # Clean if necessary
@@ -30,24 +30,24 @@ if (Test-Path -Path $setupPath) {
 }
 
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor White "############################################################"
-Write-Host -BackgroundColor Blue -ForegroundColor White "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "############################################################"
 
 Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White "Repository auf das Laufwerk C:\ downloaden"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "Repository auf das Laufwerk C:\ downloaden"
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor DarkGray ">>> Installiere chocolately"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere chocolately"
 Write-Host 
 
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor DarkGray ">>> Installiere gsudo (Tool zum privilegieren von PowerShell-Instanzen)"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere gsudo (Tool zum privilegieren von PowerShell-Instanzen)"
 Write-Host 
 
 cup gsudo -y -limit-output
 # Install git
-Write-Host -BackgroundColor Blue -ForegroundColor DarkGray ">>> Installiere git"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere git"
 Write-Host 
 
 & choco install git --confirm --limit-output
@@ -56,7 +56,7 @@ Write-Host
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 
 Write-Host 
-Write-Host -BackgroundColor Blue -ForegroundColor DarkGray ">>> Repository Clonen"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Repository Clonen"
 Write-Host 
 
 # Clone the setup repository
@@ -64,22 +64,22 @@ Write-Host
 
 # Enter inside the repository and invoke the real set-up process
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor White "Wechsle in Setup-Pfad"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "Wechsle in Setup-Pfad"
 Write-Host 
 
 Push-Location $setupPath
 write-host $setupPath
 
-Write-Host -BackgroundColor Blue -ForegroundColor White "Importiere Module"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "Importiere Module"
 Write-Host 
 Get-ChildItem .\10_modules\*.psm1 | Import-Module -Force
 
 Write-Host
 
 
-# Skript auswählen
+# Skript auswaehlen
 
-# $sel = "01_Startinfos", "10_Instal-Skript", "20_Checkup-Skript_BASIC", "21_Checkup-Skript_CHECK", "30_Abschluss", "TESTSKRIPT" | Out-GridView -PassThru -Title "Arbeitsschritt wählen"
+# $sel = "01_Startinfos", "10_Instal-Skript", "20_Checkup-Skript_BASIC", "21_Checkup-Skript_CHECK", "30_Abschluss", "TESTSKRIPT" | Out-GridView -PassThru -Title "Arbeitsschritt waehlen"
 
 do{
 
@@ -136,11 +136,11 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
     $x = $listBox.SelectedItem
 }
 
-Write-Host -BackgroundColor Blue -ForegroundColor White "Gewaehlt: $x"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "Gewaehlt: $x"
 write-host
 
-Write-Host -BackgroundColor Blue -ForegroundColor White "Arbeitsverzeichnis: $setupPath"
-Write-Host -BackgroundColor Blue -ForegroundColor White "Starte .bat-Datei: $setupPath\$x.ps1"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "Arbeitsverzeichnis: $setupPath"
+Write-Host -BackgroundColor Blue -ForegroundColor Green "Starte .bat-Datei: $setupPath\$x.ps1"
 start-process $setupPath\$x.bat -WindowStyle Maximized
 
 write-host
