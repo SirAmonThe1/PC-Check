@@ -6,8 +6,6 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit Admin-Rechten ausfuehren"
-[console]::beep(2000,250)
-[console]::beep(2000,250)
 gsudo
 write-host
 
@@ -72,7 +70,7 @@ Write-Host
 
 # Import all Modules
 
-Get-ChildItem .\modules\*.psm1 | Import-Module -Force
+Get-ChildItem $modulesPath\*.psm1 | Import-Module -Force
 
     
 	#####################
@@ -198,12 +196,12 @@ write-host
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Speicherplatz auf Festplatten pruefen"
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> TreeSizeFree wird gestartet und zudem Infos gelogged"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> TreeSizeFree wird gestartet" # und zudem Infos gelogged"
 
 start-process "C:\Program Files (x86)\JAM Software\TreeSize Free\treesizefree.exe" -windowstyle Maximized -verb runas
 
 write-host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Auflistung aller Ordner ueber 3 GB im Verzeichniss C:\Users\$Env:USERNAME"
+<# Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Auflistung aller Ordner ueber 3 GB im Verzeichniss C:\Users\$Env:USERNAME"
 Write-Host -ForegroundColor DarkGray "Sammeln der Infos kann etwas dauern ..."
 
 Get-DirectoryTreeSize -BasePath "C:\Users\$Env:USERNAME" | Sort-Object 'Size(Bytes)' -Descending | Select 'Size(GB)', 'FullPath'  | Where-Object {$_.'Size(GB)' -gt 3}
@@ -222,7 +220,7 @@ do{
 		Get-DirectoryTreeSize -BasePath "${LWBuchstabe}:\" | Sort-Object 'Size(Bytes)' -Descending | Select 'Size(GB)', 'FullPath'  | Where-Object {$_.'Size(GB)' -gt 3}
 		write-host
 	}
-}while($confirmation -eq 'n')
+}while($confirmation -eq 'n') #>
 
 
 write-host	

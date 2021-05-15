@@ -6,8 +6,6 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit Admin-Rechten ausfuehren"
-[console]::beep(2000,250)
-[console]::beep(2000,250)
 gsudo
 write-host
 
@@ -92,7 +90,7 @@ Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://cho
 
 # Import all Modules
 
-Get-ChildItem .\modules\*.psm1 | Import-Module -Force
+Get-ChildItem $modulesPath\*.psm1 | Import-Module -Force
 
     
 	#####################

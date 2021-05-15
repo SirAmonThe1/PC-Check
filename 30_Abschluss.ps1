@@ -6,8 +6,6 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit Admin-Rechten ausfuehren"
-[console]::beep(2000,250)
-[console]::beep(2000,250)
 gsudo
 write-host
 
