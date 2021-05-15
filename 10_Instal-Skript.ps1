@@ -184,10 +184,10 @@ Write-Host
 	Write-Host "## Set-FolderViewOptions"
     Set-FolderViewOptions
 	write-host "OK"
-    
+	
 	Write-Host
-	Write-Host "## Disable-AeroShaking"
-    Disable-AeroShaking
+	Write-Host "## Privacy Settings einstellen"
+    Protect-Privacy
 	write-host "OK"
 	
 	Write-Host

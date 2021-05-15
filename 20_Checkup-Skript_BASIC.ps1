@@ -200,12 +200,12 @@ Write-Host
 	Write-Host "## Set-FolderViewOptions"
     Set-FolderViewOptions
 	write-host "OK"
-    
-	Write-Host
-	Write-Host "## Disable-AeroShaking"
-    Disable-AeroShaking
-	write-host "OK"
 	
+	Write-Host
+	Write-Host "## Privacy Settings einstellen"
+    Protect-Privacy
+	write-host "OK"
+
 	Write-Host
 	Write-host "## Enable Photo Viewer"
 	reg import $registryPath\enable-photo-viewer.reg

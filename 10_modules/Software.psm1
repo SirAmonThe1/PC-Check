@@ -13,71 +13,73 @@ function New-MakeDirectoryForce([string]$path) {
 function Uninstall-StoreApps {
 	$apps = @(
         # default Windows 10 apps
-        "*3DBuilder"
-        "*Appconnector"
-        "*BingFinance"
-        "*BingNews"
-        "*BingSports"
-        "*BingTranslator"
-        "*BingWeather"
-        #"*FreshPaint"
-        "*Microsoft3DViewer"
-        "*MicrosoftOfficeHub"
-        "*MicrosoftSolitaireCollection"
-        "*MicrosoftPowerBIForWindows"
-        "*MinecraftUWP"
-        "*MicrosoftStickyNotes*"
-        "*NetworkSpeedTest"
-        "*Office.OneNote"
-        #"*OneConnect"
-        "*People"
-        "*Print3D"
-        "*SkypeApp"
-        "*Wallet"
-        #"*Windows.Photos"
-        "*WindowsAlarms"
-        #"*WindowsCalculator"
-        #"*WindowsCamera"
-        "*windowscommunicationsapps"
-        "*WindowsMaps"
-        "*WindowsPhone"
-        "*WindowsSoundRecorder"
-        #"*WindowsStore"
-        "*XboxApp"
-        "*XboxGameOverlay"
-        "*XboxGamingOverlay"
-        "*XboxSpeechToTextOverlay"
-        "*Xbox.TCUI"
-        "*ZuneMusic"
-        "*ZuneVideo"
-        
-        # Threshold 2 apps
-        "*CommsPhone"
-        "*ConnectivityStore"
-        "*GetHelp"
-        "*Getstarted"
-        "*Messaging"
-        "*Office.Sway"
-        #"*OneConnect"
-        "*WindowsFeedbackHub"
+    #"Microsoft.549981C3F5F10" #Cortana
+    "Microsoft.3DBuilder"
+    "Microsoft.Appconnector"
+    "Microsoft.BingFinance"
+    "Microsoft.BingNews"
+    "Microsoft.BingSports"
+    "Microsoft.BingTranslator"
+    "Microsoft.BingWeather"
+    #"Microsoft.FreshPaint"
+    "Microsoft.GamingServices"
+    "Microsoft.Microsoft3DViewer"
+    "Microsoft.MicrosoftOfficeHub"
+    "Microsoft.MicrosoftPowerBIForWindows"
+    "Microsoft.MicrosoftSolitaireCollection"
+    #"Microsoft.MicrosoftStickyNotes"
+    "Microsoft.MinecraftUWP"
+    "Microsoft.NetworkSpeedTest"
+    "Microsoft.Office.OneNote"
+    "Microsoft.People"
+    "Microsoft.Print3D"
+    "Microsoft.SkypeApp"
+    "Microsoft.Wallet"
+    #"Microsoft.Windows.Photos"
+    "Microsoft.WindowsAlarms"
+    #"Microsoft.WindowsCalculator"
+    #"Microsoft.WindowsCamera"
+    "microsoft.windowscommunicationsapps"
+    "Microsoft.WindowsMaps"
+    "Microsoft.WindowsPhone"
+    "Microsoft.WindowsSoundRecorder"
+    #"Microsoft.WindowsStore"   # can't be re-installed
+    "Microsoft.Xbox.TCUI"
+    "Microsoft.XboxApp"
+    "Microsoft.XboxGameOverlay"
+    "Microsoft.XboxGamingOverlay"
+    "Microsoft.XboxSpeechToTextOverlay"
+    "Microsoft.YourPhone"
+    "Microsoft.ZuneMusic"
+    "Microsoft.ZuneVideo"
 
-        # Creators Update apps
-        "*Microsoft3DViewer"
-        #"*MSPaint"
+    # Threshold 2 apps
+    "Microsoft.CommsPhone"
+    "Microsoft.ConnectivityStore"
+    "Microsoft.GetHelp"
+    "Microsoft.Getstarted"
+    "Microsoft.Messaging"
+    "Microsoft.Office.Sway"
+    "Microsoft.OneConnect"
+    "Microsoft.WindowsFeedbackHub"
 
-        #Redstone apps
-        "*BingFoodAndDrink"
-        "*BingTravel"
-        "*BingHealthAndFitness"
-        "*WindowsReadingList"
+    # Creators Update apps
+    "Microsoft.Microsoft3DViewer"
+    #"Microsoft.MSPaint"
 
-        # Redstone 5 apps
-        "*MixedReality.Portal"
-        "*ScreenSketch"
-        "*XboxGamingOverlay"
-        "*YourPhone"
+    #Redstone apps
+    "Microsoft.BingFoodAndDrink"
+    "Microsoft.BingHealthAndFitness"
+    "Microsoft.BingTravel"
+    "Microsoft.WindowsReadingList"
 
-        # non-Microsoft
+    # Redstone 5 apps
+    "Microsoft.MixedReality.Portal"
+    "Microsoft.ScreenSketch"
+    "Microsoft.XboxGamingOverlay"
+    "Microsoft.YourPhone"
+
+    # non-Microsoft
     "2FE3CB00.PicsArt-PhotoStudio"
     "46928bounde.EclipseManager"
     "4DF9E0F8.Netflix"
@@ -108,7 +110,7 @@ function Uninstall-StoreApps {
     "ShazamEntertainmentLtd.Shazam"
     "SlingTVLLC.SlingTV"
     "SpotifyAB.SpotifyMusic"
-    #"TheNewYorkTimes.NYTCrossword"
+    "TheNewYorkTimes.NYTCrossword"
     "ThumbmunkeysLtd.PhototasticCollage"
     "TuneIn.TuneInRadio"
     "WinZipComputing.WinZipUniversal"
@@ -119,18 +121,27 @@ function Uninstall-StoreApps {
     "king.com.CandyCrushSaga"
     "king.com.CandyCrushSodaSaga"
 
-        # apps which other apps depend on
-        "*Advertising.Xaml"
+    # apps which cannot be removed using Remove-AppxPackage
+    #"Microsoft.BioEnrollment"
+    #"Microsoft.MicrosoftEdge"
+    #"Microsoft.Windows.Cortana"
+    #"Microsoft.WindowsFeedback"
+    #"Microsoft.XboxGameCallableUI"
+    #"Microsoft.XboxIdentityProvider"
+    #"Windows.ContactSupport"
+
+    # apps which other apps depend on
+    "Microsoft.Advertising.Xaml"
+
     ) 
 	
 	foreach ($app in $apps) {
     Write-Output "Trying to remove $app"
-
-    Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
-
-    Get-AppXProvisionedPackage -Online |
-        Where-Object DisplayName -EQ $app |
-        Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+	
+	Get-AppxPackage -ErrorAction SilentlyContinue -Name $app| Remove-AppxPackage -ErrorAction SilentlyContinue
+    Get-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue | Where-Object DisplayName -like $app | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+    #Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
+    #Get-AppXProvisionedPackage -Online | Where-Object DisplayName -EQ $app | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
 }
 
     # Prevents Apps from re-installing
