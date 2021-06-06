@@ -13,7 +13,7 @@ $setupPath = "C:/!_Checkup_Install"
 $modulesPath = "C:/!_Checkup_Install/10_modules"
 $registryPath = "C:/!_Checkup_Install/11_registry"
 $softwarePath = "C:/!_Checkup_Install/12_software"
-$sophiaPath = "C:/!_Checkup_Install/12_software/Sophia Script v5.10.6"
+$sophiaPath = "C:/!_Checkup_Install/12_software/Sophia_Script_v5.10.6"
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -182,6 +182,9 @@ write-host
 	# powercfg -duplicatescheme  8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c  # (Hoechstleistung)
 	powercfg -duplicatescheme  94bd7b55-a0ae-4c21-9de4-96bebb1ba1d6  # (Ultimative Leistung)
 	Write-Host
+	
+	[console]::beep(2000,250)
+    [console]::beep(2000,250)
 	
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Weitere Einstellungen werden durch das Sophia Script eingestellt"
 	Write-Host -BackgroundColor Blue -ForegroundColor White "--> Sophia Script wird aufgerufen..."
