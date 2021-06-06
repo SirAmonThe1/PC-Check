@@ -92,7 +92,7 @@ MappedDrivesAppElevatedAccess -Enable
 DeliveryOptimization -Disable
 WaitNetworkStartup -Enable
 WindowsManageDefaultPrinter -Disable
-WindowsFeatures -Enable
+WindowsFeatures -Disable
 WindowsCapabilities -Uninstall
 UpdateMicrosoftProducts -Enable
 PowerManagementScheme -High
