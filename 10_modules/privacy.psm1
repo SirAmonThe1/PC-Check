@@ -135,13 +135,13 @@ Function Protect-Privacy {
     Get-ScheduledTask  DmClient | Disable-ScheduledTask -ErrorAction silentlyContinue | Select-Object TaskName
     Get-ScheduledTask  DmClientOnScenarioDownload | Disable-ScheduledTask -ErrorAction silentlyContinue | Select-Object TaskName
 
-    Write-Output -ForegroundColor DarkGray "Stopping and disabling Diagnostics Tracking Service"
+    Write-Host -ForegroundColor DarkGray "Stopping and disabling Diagnostics Tracking Service"
     #Disabling the Diagnostics Tracking Service
     Stop-Service "DiagTrack"
     Set-Service "DiagTrack" -StartupType Disabled
 
     Write-Host
-    Write-Output -ForegroundColor DarkGray "Removing CloudStore from registry if it exists"
+    Write-Host -ForegroundColor DarkGray "Removing CloudStore from registry if it exists"
     $CloudStore = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\CloudStore'
     If (Test-Path $CloudStore) {
         Stop-Process Explorer.exe -Force

@@ -200,8 +200,7 @@ write-host
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Deactivate XPS and FAX-Services"
     @(
-        "Printing-XPSServices-Features"
-        "Printing-XPSServices-Features"
+        # "Printing-XPSServices-Features"
         "FaxServicesClientPackage"
     ) | ForEach-Object { Disable-WindowsOptionalFeature -FeatureName $_ -Online -NoRestart -ErrorAction silentlycontinue}
 
