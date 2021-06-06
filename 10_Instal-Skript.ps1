@@ -13,6 +13,7 @@ $setupPath = "C:/!_Checkup_Install"
 $modulesPath = "C:/!_Checkup_Install/10_modules"
 $registryPath = "C:/!_Checkup_Install/11_registry"
 $softwarePath = "C:/!_Checkup_Install/12_software"
+$sophiaPath = "C:/!_Checkup_Install/12_software/Sophia Script v5.10.6"
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -100,45 +101,9 @@ write-host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
 	Write-Host
-
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-HidePeopleOnTaskbar $true"
-    Set-HidePeopleOnTaskbar $true
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-    
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-ShowSearchOnTaskbar $value"
-    Set-ShowSearchOnTaskbar "1"
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 	
-		<#SearchboxTaskbarMode:
-		0 = In der Taskleiste wird kein Suchfeld und kein Suchsymbol angezeugt.
-		1 = In der Taskleiste wird nur das Suchsymbol fuer die Suche angezeigt.
-		2 = In der Taskleiste wird direkt zur Eingabe das Suchfeld angezeigt. (Standard)
-		#>
-	
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-AllowCortana $value"
-    Set-AllowCortana "0"
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-		#0 = Disable / 1 or delete = Enable
-    
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-SmallButtonsOnTaskbar $true"
-    Set-SmallButtonsOnTaskbar $true
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-    
-	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-MultiMonitorTaskbarMode "2""
     Set-MultiMonitorTaskbarMode "2"
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-    
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-DisableWindowsDefender $true"
-    Set-DisableWindowsDefender $false
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-    
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-DarkTheme"
-    Set-DarkTheme 
 	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
@@ -152,38 +117,13 @@ write-host
 	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
     
 	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-EnableLongPathsForWin32 $true"
-    Set-EnableLongPathsForWin32 $true
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-    
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-OtherWindowsStuff"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-OtherWindowsStuff z.B Taskbar Glom"
     Set-OtherWindowsStuff
 	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Disable-BingSearchInStartMenu"
 	Disable-BingSearchInStartMenu
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-    
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Disable-UselessServices"
-    Disable-UselessServices
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-	
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Disable-EasyAccessKeyboard"
-    Disable-EasyAccessKeyboard
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-    
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-FolderViewOptions"
-    Set-FolderViewOptions
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-	
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Privacy Settings einstellen"
-    Protect-Privacy
 	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 	
 	Write-Host
@@ -196,24 +136,25 @@ write-host
 	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
 	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
 	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
-	
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Deactivate XPS and FAX-Services"
-    @(
-        # "Printing-XPSServices-Features"
-        "FaxServicesClientPackage"
-    ) | ForEach-Object { Disable-WindowsOptionalFeature -FeatureName $_ -Online -NoRestart -ErrorAction silentlycontinue}
 
-### Energieeinstellungen setzen
+	### Energieeinstellungen setzen
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Schnellstart deaktivieren"
 	powercfg /hibernate off 
 	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 
-	powercfg -setactive 381b4222-f694-41f0-9685-ff5bb260df2e  # (Ausbalanciert)
+	# powercfg -setactive 381b4222-f694-41f0-9685-ff5bb260df2e  # (Ausbalanciert)
 	# powercfg -duplicatescheme  a1841308-3541-4fab-bc81-f71556f20b4a  # (Energiesparmodus)
 	# powercfg -duplicatescheme  8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c  # (Hoechstleistung)
 	powercfg -duplicatescheme  94bd7b55-a0ae-4c21-9de4-96bebb1ba1d6  # (Ultimative Leistung)
+	Write-Host
+	
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Weitere Einstellungen werden durch das Sophia Script eingestellt"
+	Write-Host -BackgroundColor Blue -ForegroundColor White "--> Sophia Script wird aufgerufen..."
+	Start-Process powershell.exe -ArgumentList "-file $sophiaPath\Sophia.ps1", "-WindowStyle Maximized", "-wait", "-Verb RunAs"
+	# start-process $sophiaPath\Sophia.bat -WindowStyle Maximized
+
+
 
 	write-host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Explorer neu starten"
