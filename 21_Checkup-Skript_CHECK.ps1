@@ -106,7 +106,8 @@ Get-ChildItem $modulesPath\*.psm1 | Import-Module -Force
 	if ($updates) {
 		Write-Host -BackgroundColor Black -ForegroundColor Cyan ">>> Updates found:"
 		Write-Host ($updates | Format-Table | Out-String)
-		Get-WindowsUpdate -Install -MicrosoftUpdate -AcceptAll -IgnoreReboot
+		Write-Host "--> ausgenommene Updates mit folgenden Wörtern im Titel: Lenovo"
+		Get-WindowsUpdate -Install -MicrosoftUpdate -AcceptAll -IgnoreReboot -NotTitle "Lenovo"
 	} else {
 		Write-Host -ForegroundColor Green ">>> No Windows Updates available!"
 	}
@@ -335,8 +336,6 @@ write-host
 	# Logging beenden
 Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wird beendet"
 
-$stoppuhr1
-$stoppuhr1.stop()
 stop-transcript
 
 Write-Host

@@ -117,7 +117,8 @@ write-host
 	if ($updates) {
 		Write-Host -BackgroundColor Black -ForegroundColor Cyan ">>> Updates found:"
 		Write-Host ($updates | Format-Table | Out-String)
-		Get-WindowsUpdate -Install -MicrosoftUpdate -AcceptAll -IgnoreReboot
+		Write-Host "--> ausgenommene Updates mit folgenden Wörtern im Titel: Lenovo"
+		Get-WindowsUpdate -Install -MicrosoftUpdate -AcceptAll -IgnoreReboot -NotTitle "Lenovo"
 	} else {
 		Write-Host -ForegroundColor Green ">>> No Windows Updates available!"
 	}
