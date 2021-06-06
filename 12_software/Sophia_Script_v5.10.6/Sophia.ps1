@@ -5,7 +5,7 @@ Import-Module -Name $PSScriptRoot\Sophia.psd1 -PassThru -Force
 Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -BaseDirectory $PSScriptRoot\Localizations
 Checkings -Warning
 
-#region Protection
+#region Protection2
 
 Logging
 CreateRestorePoint
