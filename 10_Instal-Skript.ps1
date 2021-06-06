@@ -24,7 +24,7 @@ Write-Host $setupPath
 if (Test-Path -Path $setupPath\10_modules) {
     Get-ChildItem $setupPath\10_modules\*.psm1 | Import-Module -Force
 	write-host
-	write-host "Importiert aus Install Pfad"
+	write-host "Module importiert aus Install Pfad"
 } else {
 	write-host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte zuerst das Start-Skript '00_Start.ps1' ausfueheren"
