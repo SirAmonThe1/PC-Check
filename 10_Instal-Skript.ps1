@@ -91,6 +91,40 @@ write-host
 	
 	Write-Host
 	
+	
+	
+	
+	#####################
+	# Windows Update
+	#####################
+
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Windows-Update"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	Write-Host 
+
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
+	Install-Module -Name PSWindowsUpdate -Force -allowclobber
+	
+	Write-Host
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Checking for Windows Updates"
+	Write-Host -ForegroundColor DarkGray "This will take a while ..."
+	Write-Host
+	$updates = Get-WUlist -MicrosoftUpdate
+	if ($updates) {
+		Write-Host -BackgroundColor Black -ForegroundColor Cyan ">>> Updates found:"
+		Write-Host ($updates | Format-Table | Out-String)
+		Get-WindowsUpdate -Install -MicrosoftUpdate -AcceptAll -IgnoreReboot
+	} else {
+		Write-Host -ForegroundColor Green ">>> No Windows Updates available!"
+	}
+	Write-Host
+	
+	
+	
 	#####################
 	# Windows-Einstellungen
 	#####################
@@ -162,95 +196,57 @@ write-host
 	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
 	
 	
-#####################
-# SOFTWARE
-#####################
+	#####################
+	# SOFTWARE
+	#####################
 
-Write-Host
+	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- SOFTWARE"
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-Write-Host
+	Write-Host
 	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Wichtige Software wird installiert"
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: PSWindowsUpdate PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt"
-Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Wichtige Software wird installiert"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: PSWindowsUpdate PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt"
+	Write-Host
 	
 	# Installationen 
 	
 	cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
 	cup  PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt --ignore-checksums --limit-output -y
 
-write-host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Virenschutz bitte jetzt installieren"
+	write-host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Virenschutz bitte jetzt installieren"
     [console]::beep(2000,250)
     [console]::beep(2000,250)
-$confirmation = Read-Host ">>> Kaspersky Internet Security installieren? [y/n]"
-    if ($confirmation -eq 'y') {
-		start-process $softwarePath\Kaspersky\kis.exe}
-	if ($confirmation -eq 'n') {
-		Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Bitte einen anderen Virenschutz aktivieren (evtl. Windows Defender)"
-	}
+	$confirmation = Read-Host ">>> Kaspersky Internet Security installieren? [y/n]"
+		if ($confirmation -eq 'y') {
+			start-process $softwarePath\Kaspersky\kis.exe}
+		if ($confirmation -eq 'n') {
+			Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Bitte einen anderen Virenschutz aktivieren (evtl. Windows Defender)"
+		}
     [console]::beep(2000,250)
     [console]::beep(2000,250)
-Read-Host ">>> Virenschutz fertig installiert? [Enter]"
-write-host
+	Read-Host ">>> Virenschutz fertig installiert? [Enter]"
+	write-host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
 
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installierte Programme"
-Write-Host
-
-Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-
-
-
-#####################
-# Windows Update
-#####################
-
-Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Windows-Update"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host 
-
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
-	Install-Module -Name PSWindowsUpdate -Force -allowclobber
-	
 	Write-Host
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Checking for Windows Updates"
-	Write-Host -ForegroundColor DarkGray "This will take a while ..."
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installierte Programme"
 	Write-Host
-	$updates = Get-WUlist -MicrosoftUpdate
-	if ($updates) {
-		Write-Host -BackgroundColor Black -ForegroundColor Cyan ">>> Updates found:"
-		Write-Host ($updates | Format-Table | Out-String)
-		Get-WindowsUpdate -Install -MicrosoftUpdate -AcceptAll -IgnoreReboot
-	} else {
-		Write-Host -ForegroundColor Green ">>> No Windows Updates available!"
-	}
-	Write-Host
-			
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan 
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- StoreApps deinstallieren"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan 
 
-    Uninstall-StoreApps
+	Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
+
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
 
 
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
@@ -268,10 +264,10 @@ Write-Host
     [console]::beep(2000,250)
 	
 	# Logging beenden
-Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wird beendet"
+	Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wird beendet"
 
-stop-transcript
-Write-Host
+	stop-transcript
+	Write-Host
 
 	
 	# Reboot
