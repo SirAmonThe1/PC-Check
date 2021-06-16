@@ -1,12 +1,12 @@
 Clear-Host
 $Host.UI.RawUI.WindowTitle = 'Windows 10 Sophia Script | Copyright farag & oZ-Zo, 2015 to 2021'
 Remove-Module -Name Sophia -Force -ErrorAction Ignore
-Import-Module -Name $PSScriptRoot\Manifest\Sophia.psd1 -PassThru -Force
+Import-Module -Name $PSScriptRoot\Sophia.psd1 -PassThru -Force
 Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -BaseDirectory $PSScriptRoot\Localizations
+Checkings -Warning
 
 #region Protection
 
-Checkings -Warning
 CreateRestorePoint
 
 #endregion Protection
@@ -82,7 +82,7 @@ StorageSense -Enable
 StorageSenseFrequency -Month
 StorageSenseTempFiles -Enable
 StorageSenseRecycleBin -Enable
-Hibernate -Disable
+Hibernate -Enable
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
 AdminApprovalMode -Disable
@@ -109,7 +109,7 @@ ThumbnailCacheRemoval -Disable
 SaveRestartableApps -Enable
 NetworkDiscovery -Enable
 SmartActiveHours -Enable
-DeviceRestartAfterUpdate -Enable
+DeviceRestartAfterUpdate -Disable
 
 #endregion System
 
