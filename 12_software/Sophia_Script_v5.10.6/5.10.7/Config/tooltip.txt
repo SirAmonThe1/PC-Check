@@ -1,7 +1,5 @@
 #region Protection
 
-Checkings -Warning;Checkings is required. The "-Warning" argument displays warning message about whether you've customized the preset file;
-Checkings;Checkings is required. No arguement therefore no warning message about whether you've customized the preset file;
 Logging;Enable script logging. The log will be being recorded into the script folder.To stop logging just close the console or type "Stop-Transcript";
 CreateRestorePoint;Create a restore point
 
@@ -58,10 +56,16 @@ CortanaButton -Hide;Hide Cortana button on the taskbar;
 CortanaButton -Show;Show Cortana button on the taskbar (default value);
 OneDriveFileExplorerAd -Hide;Do not show sync provider notification within File Explorer;
 OneDriveFileExplorerAd -Show;Show sync provider notification within File Explorer (default value);
+TaskViewButton -Hide;Hide Task View button on the taskbar;
+TaskViewButton -Show;Show Task View button on the taskbar (default value);
+PeopleTaskbar -Hide;Hide People button on the taskbar;
+PeopleTaskbar -Show;Show People button on the taskbar (default value);
+SecondsInSystemClock -Show;Show seconds on the taskbar clock;
+SecondsInSystemClock -Hide;Hide seconds on the taskbar clock (default value);
 SnapAssist -Disable;When I snap a window, do not show what I can snap next to it;
 SnapAssist -Enable;When I snap a window, show what I can snap next to it (default value);
-FileTransferDialog -Detailed;Show the file transfer dialog box in the detailed mode;
-FileTransferDialog -Compact;Show the file transfer dialog box in the compact mode (default value);
+FileTransferDialog -Detailed;Always open the file transfer dialog box in the detailed mode;
+FileTransferDialog -Compact;Always open the file transfer dialog box in the compact mode (default value);
 FileExplorerRibbon -Expanded;Expand the File Explorer ribbon;
 FileExplorerRibbon -Minimized;Minimize the File Explorer ribbon (default value);
 RecycleBinDeleteConfirmation -Enable;Display the recycle bin files delete confirmation;
@@ -72,15 +76,6 @@ QuickAccessFrequentFolders -Hide;Hide frequently used folders in "Quick access";
 QuickAccessFrequentFolders -Show;Show frequently used folders in "Quick access" (default value);
 QuickAccessRecentFiles -Hide;Do not show recently used files in Quick access;
 QuickAccessRecentFiles -Show;Show recently used files in Quick access (default value);
-TaskViewButton -Hide;Hide Task View button on the taskbar;
-TaskViewButton -Show;Show Task View button on the taskbar (default value);
-PeopleTaskbar -Hide;Hide People button on the taskbar;
-PeopleTaskbar -Show;Show People button on the taskbar (default value);
-SecondsInSystemClock -Show;Show seconds on the taskbar clock;
-SecondsInSystemClock -Hide;Hide seconds on the taskbar clock (default value);
-TaskbarSearch -Hide;Hide the search on the taskbar;
-TaskbarSearch -SearchIcon;Show the search icon on the taskbar;
-TaskbarSearch -SearchBox;Show the search box on the taskbar (default value);
 WindowsInkWorkspace -Hide;Do not show the "Windows Ink Workspace" button on the taskbar;
 WindowsInkWorkspace -Show;Show the "Windows Ink Workspace" button in taskbar (default value);
 TrayIcons -Show;Always show all icons in the notification area;
@@ -89,13 +84,13 @@ MeetNow -Hide;Hide the Meet Now icon in the notification area;
 MeetNow -Show;Show the Meet Now icon in the notification area (default value);
 NewsInterests -Hide;Hide "News and Interests" on the taskbar;
 NewsInterests -Show;Show "News and Interests" on the taskbar (default value);
-UnpinTaskbarShortcuts -Shortcuts;Unpin the "Microsoft Edge", "Microsoft Store", or "Mail" shortcuts from the taskbar;
-UnpinTaskbarShortcuts -Shortcuts Edge;Unpin the "Microsoft Edge" shortcut from the taskbar;
-UnpinTaskbarShortcuts -Shortcuts Store;Unpin the "Microsoft Store" shortcut from the taskbar;
-UnpinTaskbarShortcuts -Shortcuts Mail;Unpin the "Mail" shortcut from the taskbar;
+UnpinTaskbarEdgeStore;Unpin "Microsoft Edge" and "Microsoft Store" from the taskbar;
 ControlPanelView -Category;View the Control Panel icons by: category (default value);
 ControlPanelView -LargeIcons;View the Control Panel icons by: large icons;
 ControlPanelView -SmallIcons;View the Control Panel icons by: small icons;
+TaskbarSearch -Hide;Hide the search box or the search icon from the taskbar;
+TaskbarSearch -SearchIcon;Show the search icon on the taskbar;
+TaskbarSearch -SearchBox;Show the search box on the taskbar (default value);
 WindowsColorScheme -Dark;Set the Windows mode color scheme to the dark;
 WindowsColorScheme -Light;Set the Windows mode color scheme to the light;
 AppMode -Dark;Set the default app mode color scheme to the dark;
@@ -119,8 +114,8 @@ AppsLanguageSwitch -Enable;Do not let use a different input method for each app 
 
 #region OneDrive
 
-OneDrive -Uninstall;Uninstall OneDrive. The OneDrive user folder won't be removed;
-OneDrive -Install;Install OneDrive
+OneDrive -Uninstall;Uninstall OneDrive;
+OneDrive -Install;Install OneDrive (default value)
 
 #region System
 
@@ -152,21 +147,18 @@ WindowsManageDefaultPrinter -Disable;Do not let Windows decide which printer sho
 WindowsManageDefaultPrinter -Enable;Let Windows decide which printer should be the default one (default value);
 WindowsFeatures -Disable;Disable the Windows features using the pop-up dialog box;
 WindowsFeatures -Enable;Enable the Windows features using the pop-up dialog box;
-WindowsCapabilities -Uninstall;Uninstall optional features using the pop-up dialog box;
+WindowsCapabilities -Uninstall;	Uninstall optional features using the pop-up dialog box;
 WindowsCapabilities -Install;Install optional features using the pop-up dialog box;
 UpdateMicrosoftProducts -Enable;Receive updates for other Microsoft products when you update Windows;
 UpdateMicrosoftProducts -Disable;Do not receive updates for other Microsoft products when you update Windows (default value);
-PowerPlan -High;Set the power plan on "High performance". It isn't recommended to turn on the "High performance" power plan on laptops;
-PowerPlan -Balanced;Set the power plan on "Balanced" (default value);
+PowerManagementScheme -High;Set the power management scheme on "High performance";
+PowerManagementScheme -Balanced;Set the power management scheme on "Balanced" (default value);
 LatestInstalled.NET -Enable;Use latest installed .NET runtime for all apps;
 LatestInstalled.NET -Disable;Do not use latest installed .NET runtime for all apps (default value);
 PCTurnOffDevice -Disable;Do not allow the computer to turn off the network adapters to save power;
 PCTurnOffDevice -Enable;Allow the computer to turn off the network adapters to save power (default value);
 SetInputMethod -English;Override for default input method: English;
 SetInputMethod -Default;Override for default input method: use language list (default value);
-SetUserShellFolderLocation -Root;ove user folders location to the root of any drive using the interactive menu. User files or folders won't me moved to a new location. Move them manually. They're located in the %SystemDrive%\Users\%Username% folder by default;
-SetUserShellFolderLocation -Custom;Select folders for user folders location manually using a folder browser dialog User files or folders won't me moved to a new location. Move them manually. They're located in the %SystemDrive%\Users\%Username% folder by default;
-SetUserShellFolderLocation -Default;Change user folders location to the default values User files or folders won't me moved to a new location. Move them manually. They're located in the %SystemDrive%\Users\%Username% folder by default;
 WinPrtScrFolder -Desktop;Save screenshots by pressing Win+PrtScr on the Desktop;
 WinPrtScrFolder -Default;Save screenshots by pressing Win+PrtScr on the Pictures folder (default value);
 RecommendedTroubleshooting -Automatic;Run troubleshooters automatically, then notify. In order this feature to work the OS level of diagnostic data gathering will be set to "Optional diagnostic data" and the error reporting feature will be turned on;
@@ -200,7 +192,7 @@ DeviceRestartAfterUpdate -Disable;Do not restart this device as soon as possible
 
 WSL -Enable;Install the Windows Subsystem for Linux (WSL);
 WSL -Disable;Uninstall the Windows Subsystem for Linux (WSL);
-EnableWSL2;Download and install the Linux kernel update package. Set WSL 2 as the default version when installing a new Linux distribution. Run the function only after WSL installed and PC restart
+EnableWSL2;Download and install the Linux kernel update package. Set WSL 2 as the default version when installing a new Linux distribution. Run the function only after WSL installed and PC restart;
 
 #region Start menu
 
@@ -210,19 +202,19 @@ AppSuggestions -Hide;Hide app suggestions in the Start menu;
 AppSuggestions -Show;Show app suggestions in the Start menu (default value);
 RunPowerShellShortcut -Elevated;Run the Windows PowerShell shortcut from the Start menu as Administrator;
 RunPowerShellShortcut -NonElevated;Run the Windows PowerShell shortcut from the Start menu as user (default value);
-PinToStart -Tiles;Pin to Start the following shortcuts: Control Panel, Devices and Printers, PowerShell;
-PinToStart -Tiles ControlPanel;Pin the Control Panel shortcut to Start;
+PinToStart -Tiles;Pin to Start the following links: Control Panel, Devices and Printers, PowerShell;
+PinToStart -Tiles ControlPanel;Pin the Control Panel shortcut shortcut to Start;
 PinToStart -Tiles DevicesPrinters;Pin the "Devices & Printers" shortcut to Start;
 PinToStart -Tiles PowerShell;Pin the Windows PowerShell shortcut to Start;
 PinToStart -UnpinAll;Unpin all the Start tiles
 
 #region UWP apps
 
-UninstallUWPApps;Uninstall UWP apps using the pop-up dialog box;
+UninstallUWPApps;Uninstall UWP apps using the pop-up dialog box. If the "For All Users" is checked apps packages will not be installed for new users. The "For All Users" checkbox isn't checked by default;
 UninstallUWPApps -ForAllUsers;Uninstall UWP apps using the pop-up dialog box. If the "For All Users" is checked apps packages will not be installed for new users. The "For All Users" checkbox checked by default;
 RestoreUWPApps;Restore the default UWP apps using the pop-up dialog box. UWP apps can be restored only if they were uninstalled only for the current user;
 HEIF -Manual;Open Microsoft Store "HEVC Video Extensions from Device Manufacturer" page to install this extension manually to be able to open .heic and .heif image formats. The extension can be installed without Microsoft account;
-HEIF -Install;Download and install "HEVC Video Extensions from Device Manufacturer" to be able to open .heic and .heif formats;
+HEIF -Install;Open Microsoft Store "HEVC Video Extensions from Device Manufacturer" page to install this extension automatically to be able to open .heic and .heif image formats. The extension can be installed without Microsoft account;
 CortanaAutostart -Disable;Disable Cortana autostarting;
 CortanaAutostart -Enable;Enable Cortana autostarting (default value);
 BackgroundUWPApps -Disable;Do not let all UWP apps run in the background;
@@ -241,11 +233,11 @@ GPUScheduling -Disable;Turn off hardware-accelerated GPU scheduling (default val
 
 #region Scheduled tasks
 
-CleanupTask -Register;Create the "Windows Cleanup" scheduled task for cleaning up Windows unused files and updates. A native interactive toast notification pops up every 30 days. The task runs every 30 days;
-CleanupTask -Delete;Delete the "Windows Cleanup" and "Windows Cleanup Notification" scheduled tasks for cleaning up Windows unused files and updates;
-SoftwareDistributionTask -Register;Create the "SoftwareDistribution" scheduled task for cleaning up the %SystemRoot%\SoftwareDistribution\Download folder. The task will wait until the Windows Updates service finishes running. The task runs every 90 days;
+CleanupTask -Register;Create the "Windows Cleanup" scheduled task for cleaning up unused files and Windows updates;
+CleanupTask -Delete;Delete the "Windows Cleanup" scheduled task for cleaning up unused files and Windows updates;
+SoftwareDistributionTask -Register;Create the "SoftwareDistribution" scheduled task for cleaning up the %SystemRoot%\SoftwareDistribution\Download folder;
 SoftwareDistributionTask -Delete;Delete the "SoftwareDistribution" scheduled task for cleaning up the %SystemRoot%\SoftwareDistribution\Download folder;
-TempTask -Register;Create the "Temp" scheduled task for cleaning up the %TEMP% folder. The task runs every 60 days;
+TempTask -Register;Create the "Temp" scheduled task for cleaning up the %TEMP% folder;
 TempTask -Delete;Delete the "Temp" scheduled task for cleaning up the %TEMP% folder
 
 #region Microsoft Defender & Security
@@ -281,7 +273,7 @@ AppsSmartScreen -Enable;Enable apps and files checking within Microsofot Defende
 SaveZoneInformation -Disable;Disable the Attachment Manager marking files that have been downloaded from the Internet as unsafe;
 SaveZoneInformation -Enable;Enable the Attachment Manager marking files that have been downloaded from the Internet as unsafe (default value);
 WindowsScriptHost -Disable;Disable Windows Script Host. Blocks WSH from executing .js and .vbs files;
-WindowsScriptHost -Enable;Enable Windows Script Host (default value);
+WindowsScriptHost -Enable;Emable Windows Script Host (default value);
 WindowsSandbox -Enable;Enable Windows Sandbox;
 WindowsSandbox -Disable;Disable Windows Sandbox (default value)
 
@@ -289,7 +281,7 @@ WindowsSandbox -Disable;Disable Windows Sandbox (default value)
 
 MSIExtractContext -Add;Add the "Extract all" item to Windows Installer (.msi) context menu;
 MSIExtractContext -Remove;Remove the "Extract all" item from Windows Installer (.msi) context menu (default value);
-CABInstallContext -Add;Add the "Install" item to the .cab archives context menu. If the .cab file extension type associated to open with a third party app by default, the "Install" context menu item won't be displayed, so the default association for the .cab file type will be restored forcedly;
+CABInstallContext -Add;Add the "Install" item to the .cab archives context menu;
 CABInstallContext -Remove;Remove the "Install" item from the .cab archives context menu (default value);
 RunAsDifferentUserContext -Add;Add the "Run as different user" item to the .exe files types context menu;
 RunAsDifferentUserContext -Remove;Remove the "Run as different user" item from the .exe files types context menu (default value);
@@ -325,5 +317,17 @@ UseStoreOpenWith -Hide;Hide the "Look for an app in the Microsoft Store" item in
 UseStoreOpenWith -Show;Show the "Look for an app in the Microsoft Store" item in the "Open with" dialog (default value);
 PreviousVersionsPage -Hide;Hide the "Previous Versions" tab from files and folders context menu and also the "Restore previous versions" context menu item;
 PreviousVersionsPage -Show;Show the "Previous Versions" tab from files and folders context menu and also the "Restore previous versions" context menu item (default value)
+
+#region Other
+
+ControlPanelView -Category;View the Control Panel icons by: category (default value);
+ControlPanelView -LargeIcons;View the Control Panel icons by: large icons;
+ControlPanelView -SmallIcons;View the Control Panel icons by: small icons;
+TaskbarSearch -Hide;Hide the search box or the search icon from the taskbar;
+TaskbarSearch -SearchIcon;Show the search icon on the taskbar;
+TaskbarSearch -SearchBox;Show the search box on the taskbar (default value);
+SetUserShellFolderLocation -Root;Move user folders location to the root of any drive using the interactive menu;
+SetUserShellFolderLocation -Custom;Select folders for user folders location manually using a folder browser dialog;
+SetUserShellFolderLocation -Default;Change user folders location to the default values
 
 <#end#>
