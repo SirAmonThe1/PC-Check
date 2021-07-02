@@ -140,6 +140,7 @@ CheckUWPAppsUpdates
 
 XboxGameBar -Disable
 XboxGameTips -Disable
+GPUScheduling -Enable
 SetAppGraphicsPerformance
 
 #endregion Gaming
