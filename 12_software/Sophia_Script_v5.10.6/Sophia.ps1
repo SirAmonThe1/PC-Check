@@ -7,6 +7,7 @@ Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -Base
 #region Protection
 
 Checkings -Warning
+Logging
 CreateRestorePoint
 
 #endregion Protection
@@ -22,7 +23,7 @@ LanguageListAccess -Disable
 AdvertisingID -Disable
 ShareAcrossDevices -Disable
 WindowsWelcomeExperience -Hide
-WindowsTips -Enable
+WindowsTips -Disable
 SettingsSuggestedContent -Hide
 AppsSilentInstalling -Disable
 WhatsNewInWindows -Disable
@@ -67,7 +68,7 @@ RestartNotification -Show
 ShortcutsSuffix -Disable
 PrtScnSnippingTool -Enable
 AppsLanguageSwitch -Disable
-UnpinTaskbarEdgeStore
+UnpinTaskbarShortcuts -Shortcuts Edge, Store, Mail
 
 #endregion UI & Personalization
 
@@ -93,11 +94,10 @@ WindowsManageDefaultPrinter -Disable
 WindowsFeatures -Disable
 WindowsCapabilities -Uninstall
 UpdateMicrosoftProducts -Enable
-PowerManagementScheme -High
+PowerPlan -High
 LatestInstalled.NET -Enable
 PCTurnOffDevice -Disable
-SetUserShellFolderLocation -Root
-WinPrtScrFolder -Desktop
+WinPrtScrFolder -Default
 RecommendedTroubleshooting -Automatic
 FoldersLaunchSeparateProcess -Enable
 ReservedStorage -Disable
@@ -141,7 +141,6 @@ CheckUWPAppsUpdates
 
 XboxGameBar -Disable
 XboxGameTips -Disable
-GPUScheduling -Enable
 SetAppGraphicsPerformance
 
 #endregion Gaming
@@ -197,5 +196,5 @@ PreviousVersionsPage -Hide
 
 #endregion Context menu
 
-Refresh
+RefreshEnvironment
 Errors
