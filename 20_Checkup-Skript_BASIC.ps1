@@ -13,7 +13,7 @@ $setupPath = "C:/!_Checkup_Install"
 $modulesPath = "C:/!_Checkup_Install/10_modules"
 $registryPath = "C:/!_Checkup_Install/11_registry"
 $softwarePath = "C:/!_Checkup_Install/12_software"
-$sophiaPath = "C:/!_Checkup_Install/12_software/Sophia_Script_v5.10.6"
+$sophiaPath = "C:/!_Checkup_Install/12_software/Sophia_Script"
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -202,10 +202,25 @@ Get-ChildItem $modulesPath\*.psm1 | Import-Module -Force
 	[console]::beep(2000,250)
     [console]::beep(2000,250)
 	
+	#####################
+	# SOFIA Skript
+	#####################
+	
+	
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Weitere Einstellungen werden durch das Sophia Script eingestellt"
-	Write-Host -BackgroundColor Blue -ForegroundColor White "--> Sophia Script wird aufgerufen..."
-	Start-Process powershell.exe -ArgumentList "-file $sophiaPath\Sophia.ps1", "-WindowStyle Maximized", "-wait", "-Verb RunAs"
-	# start-process $sophiaPath\Sophia.bat -WindowStyle Maximized
+	
+	$confirmation = Read-Host ">>> Welche Windows Version wird geupdated? [1 = Windows 11 / 2 = Windows 10]"
+    if ($confirmation -eq '1') {
+		Write-Host -BackgroundColor Blue -ForegroundColor White "--> Sophia Script fuer Windows 11 wird aufgerufen..."
+		Start-Process powershell.exe -ArgumentList "-file $sophiaPath\Win11\Sophia.ps1", "-WindowStyle Maximized", "-wait", "-Verb RunAs"
+		# start-process $sophiaPath\Sophia.bat -WindowStyle Maximized
+	}
+	if ($confirmation -eq '2') {
+		Write-Host -BackgroundColor Blue -ForegroundColor White "--> Sophia Script fuer Windows 10 wird aufgerufen..."
+		Start-Process powershell.exe -ArgumentList "-file $sophiaPath\Win10\Sophia.ps1", "-WindowStyle Maximized", "-wait", "-Verb RunAs"
+		# start-process $sophiaPath\Sophia.bat -WindowStyle Maximized
+	}
+
 
 
 
