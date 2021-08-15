@@ -38,7 +38,7 @@ HiddenItems -Enable
 FileExtensions -Show
 MergeConflicts -Show
 OpenFileExplorerTo -ThisPC
-FileExplorerCompactMode -Enable
+FileExplorerCompactMode -Disable
 OneDriveFileExplorerAd -Hide
 SnapAssistFlyout -Enable
 SnapAssist -Disable

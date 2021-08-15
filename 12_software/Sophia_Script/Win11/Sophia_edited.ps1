@@ -38,7 +38,7 @@ HiddenItems -Enable
 FileExtensions -Show
 MergeConflicts -Show
 OpenFileExplorerTo -ThisPC
-FileExplorerCompactMode -Enable
+FileExplorerCompactMode -Disable
 OneDriveFileExplorerAd -Hide
 SnapAssistFlyout -Enable
 SnapAssist -Disable
@@ -52,6 +52,7 @@ TaskbarSearch -Show
 TaskViewButton -Hide
 TaskbarWidgets -Hide
 TaskbarChat -Hide
+TaskbarSize -Default
 ControlPanelView -SmallIcons
 WindowsColorMode -Dark
 AppColorMode -Dark
@@ -79,7 +80,7 @@ StorageSenseTempFiles -Enable
 StorageSenseFrequency -Month
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
-AdminApprovalMode -Default
+AdminApprovalMode -Never
 MappedDrivesAppElevatedAccess -Enable
 DeliveryOptimization -Disable
 WaitNetworkStartup -Enable
