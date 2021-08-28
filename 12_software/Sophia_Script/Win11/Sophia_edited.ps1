@@ -1,5 +1,5 @@
-Clear-Host
-$Host.UI.RawUI.WindowTitle = 'Windows Sophia Script | Copyright farag2 & Inestic, 2015 to 2021'
+﻿Clear-Host
+$Host.UI.RawUI.WindowTitle = 'Windows Sophia Script | Copyright farag2 & Inestic, 2014 to 2021'
 Remove-Module -Name Sophia -Force -ErrorAction Ignore
 Import-Module -Name $PSScriptRoot\Manifest\Sophia.psd1 -PassThru -Force
 Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -BaseDirectory $PSScriptRoot\Localizations
@@ -17,6 +17,7 @@ DiagTrackService -Disable
 DiagnosticDataLevel -Minimal
 ErrorReporting -Disable
 FeedbackFrequency -Never
+ScheduledTasks -Disable
 SigninInfo -Disable
 LanguageListAccess -Disable
 AdvertisingID -Disable
@@ -48,12 +49,12 @@ RecycleBinDeleteConfirmation -Enable
 QuickAccessRecentFiles -Hide
 QuickAccessFrequentFolders -Hide
 TaskbarAlignment -Left
-TaskbarSearch -Show
+TaskbarSearch -Hide
 TaskViewButton -Hide
 TaskbarWidgets -Hide
 TaskbarChat -Hide
 TaskbarSize -Default
-ControlPanelView -SmallIcons
+ControlPanelView -LargeIcons
 WindowsColorMode -Dark
 AppColorMode -Dark
 FirstLogonAnimation -Disable
@@ -63,13 +64,15 @@ RestartNotification -Show
 ShortcutsSuffix -Disable
 PrtScnSnippingTool -Enable
 AppsLanguageSwitch -Disable
-AeroShaking -Disable
+AeroShaking -Enable
+NotificationAreaIcons
 UnpinTaskbarShortcuts -Shortcuts Edge, Store
 
 #endregion UI & Personalization
 
 #region OneDrive
 
+OneDrive -Uninstall
 
 #endregion OneDrive
 
@@ -78,6 +81,8 @@ UnpinTaskbarShortcuts -Shortcuts Edge, Store
 StorageSense -Enable
 StorageSenseTempFiles -Enable
 StorageSenseFrequency -Month
+Hibernation -Disable
+TempFolder -SystemDrive
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
 AdminApprovalMode -Never
@@ -91,8 +96,9 @@ UpdateMicrosoftProducts -Enable
 PowerPlan -High
 LatestInstalled.NET -Enable
 NetworkAdaptersSavePower -Disable
-IPv6Component -Disable
-WinPrtScrFolder -Default
+IPv6Component -Enable
+SetUserShellFolderLocation -Root
+WinPrtScrFolder -Desktop
 RecommendedTroubleshooting -Automatic
 FoldersLaunchSeparateProcess -Enable
 ReservedStorage -Disable
@@ -104,7 +110,8 @@ ThumbnailCacheRemoval -Disable
 SaveRestartableApps -Enable
 NetworkDiscovery -Enable
 ActiveHours -Automatically
-RestartDeviceAfterUpdate -Disable
+RestartDeviceAfterUpdate -Enable
+DefaultTerminalApp -WindowsTerminal
 
 #endregion System
 
@@ -124,7 +131,8 @@ RunPowerShellShortcut -Elevated
 
 HEIF -Install
 CortanaAutostart -Disable
-UninstallUWPApps
+TeamsAutostart -Disable
+UninstallUWPApps -ForAllUsers
 CheckUWPAppsUpdates
 
 #endregion UWP apps
@@ -151,6 +159,7 @@ NetworkProtection -Enable
 PUAppsDetection -Enable
 DefenderSandbox -Enable
 AuditProcess -Enable
+CommandLineProcessAudit -Enable
 EventViewerCustomView -Enable
 PowerShellModulesLogging -Enable
 PowerShellScriptsLogging -Enable
@@ -165,6 +174,9 @@ DismissSmartScreenFilter
 
 #region Context menu
 
+MSIExtractContext -Show
+CABInstallContext -Show
+RunAsDifferentUserContext -Show
 CastToDeviceContext -Hide
 ShareContext -Hide
 EditWithPhotosContext -Hide
@@ -173,8 +185,10 @@ PrintCMDContext -Hide
 IncludeInLibraryContext -Hide
 SendToContext -Hide
 BitLockerContext -Hide
+CompressedFolderNewContext -Hide
 MultipleInvokeContext -Enable
 UseStoreOpenWith -Hide
+OpenWindowsTerminalContext -Hide
 
 #endregion Context menu
 

@@ -373,3 +373,577 @@ BCUninstaller.exe Error: 0 : 09:09:30 - Unable to connect to any of the specifie
 09:10:01 - [Performance] Running command \\DS418-BC\Remke IT-Service\21_Tools und Skripte Vorlage\20_Checkup-Skript\software\BCUninstaller\StoreAppHelper.exe /query took 635ms
 09:10:01 - [Performance] Factory Suche nach Windows Store Anwendungen took 889ms to finish
 09:10:02 - Cache hits: 296/296
+--------------------------------------------------
+17:45:23 - Application startup
+17:45:27 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe  took 1226ms
+17:45:29 - [Performance] Factory RegistryFactory took 4171ms to finish
+17:45:29 - Cache hits: 45/140
+17:45:31 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe list -l -nocolor -y -r took 4094ms
+17:45:32 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v 7zip took 1122ms
+17:45:33 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v 7zip.install took 1109ms
+17:45:34 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v adobereader took 1002ms
+17:45:35 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v adwcleaner took 960ms
+17:45:36 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v allway-sync took 1009ms
+17:45:37 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v anydesk.install took 1030ms
+17:45:38 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v autohotkey.portable took 947ms
+17:45:39 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v ccenhancer took 1107ms
+BCUninstaller.exe Error: 0 : 17:45:40 - Unable to connect to any of the specified MySQL hosts.
+17:45:40 - MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   bei MySql.Data.MySqlClient.NativeDriver.Open()
+   bei MySql.Data.MySqlClient.Driver.Open()
+   bei MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   bei MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   bei MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   bei MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   bei MySql.Data.MySqlClient.MySqlConnection.Open()
+   bei BulkCrapUninstaller.Functions.Ratings.UninstallerRatingManager.FetchRatings()
+   bei BulkCrapUninstaller.Functions.Ratings.RatingManagerWrapper.<InitializeRatings>b__7_0()
+17:45:40 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v ccenhancer.install took 1018ms
+17:45:41 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v ccleaner took 1010ms
+17:45:41 - [Performance] Factory DirectoryFactory took 11960ms to finish
+17:45:42 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v checksum took 919ms
+17:45:43 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v chocolatey took 872ms
+17:45:44 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v chocolatey-core.extension took 921ms
+17:45:45 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v chocolatey-misc-helpers.extension took 856ms
+17:45:46 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v chocolatey-windowsupdate.extension took 859ms
+17:45:46 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v chocolateygui took 849ms
+17:45:47 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v cpu-z.install took 833ms
+17:45:48 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v crystaldiskinfo took 848ms
+17:45:49 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v crystaldiskinfo.portable took 840ms
+17:45:50 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v crystaldiskmark took 864ms
+17:45:51 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v desktopinfo took 861ms
+17:45:52 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v discord took 839ms
+17:45:53 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v discord.install took 1277ms
+17:45:55 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v DotNet4.5 took 2249ms
+17:45:58 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v DotNet4.5.2 took 2587ms
+17:46:01 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v dotnetcore-desktopruntime took 2704ms
+17:46:03 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v dotnetcore3-desktop-runtime took 2346ms
+17:46:05 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v driverbooster took 1750ms
+17:46:06 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v dropbox took 1642ms
+17:46:08 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v etcher took 1884ms
+17:46:10 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v Everything took 1781ms
+17:46:12 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v Firefox took 1865ms
+17:46:14 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v geforce-experience took 1826ms
+17:46:16 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v geforce-game-ready-driver took 1936ms
+17:46:18 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v git took 2260ms
+17:46:19 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v git.install took 1352ms
+17:46:20 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v github-desktop took 1003ms
+17:46:21 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v goggalaxy took 856ms
+17:46:22 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v google-backup-and-sync took 875ms
+17:46:23 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v GoogleChrome took 852ms
+17:46:24 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v googledrive took 852ms
+17:46:25 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v gotomeeting took 910ms
+17:46:26 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v gsudo took 1408ms
+17:46:27 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v irfanview took 994ms
+17:46:28 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v javaruntime took 890ms
+17:46:29 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v jre8 took 1087ms
+17:46:30 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB2533623 took 873ms
+17:46:31 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB2919355 took 876ms
+17:46:32 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB2919442 took 803ms
+17:46:33 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB2999226 took 728ms
+17:46:33 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB3033929 took 716ms
+17:46:34 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB3035131 took 722ms
+17:46:35 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB3063858 took 739ms
+17:46:36 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v keepassxc took 744ms
+17:46:36 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v logitechgaming took 727ms
+17:46:37 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v microsoft-teams took 712ms
+17:46:38 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v microsoft-teams.install took 747ms
+17:46:39 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v mousewithoutborders took 750ms
+17:46:39 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v notepadplusplus took 749ms
+17:46:40 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v notepadplusplus.install took 924ms
+17:46:41 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v office365proplus took 771ms
+17:46:42 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v openssh took 722ms
+17:46:42 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v opera-gx took 716ms
+17:46:43 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v pdf24 took 740ms
+17:46:44 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v portfolio took 716ms
+17:46:45 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v PowerShell took 731ms
+17:46:45 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v powertoys took 738ms
+17:46:46 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v PSWindowsUpdate took 706ms
+17:46:47 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v putty.install took 749ms
+17:46:48 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v rufus took 746ms
+17:46:48 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v shutup10 took 711ms
+17:46:49 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v skype took 729ms
+17:46:50 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v sonos-controller took 728ms
+17:46:51 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v sonos-s1-controller took 756ms
+17:46:51 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v steam took 720ms
+17:46:52 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v steam-client took 702ms
+17:46:53 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v syncthing-gtk took 711ms
+17:46:54 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v synologydrive took 701ms
+17:46:54 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v teamviewer took 714ms
+17:46:55 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v treesizefree took 695ms
+17:46:56 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v twitch took 704ms
+17:46:56 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v vcredist140 took 712ms
+17:46:57 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v vcredist2015 took 695ms
+17:46:58 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v veracrypt took 711ms
+17:46:59 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v vlc took 705ms
+17:46:59 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v vyprvpn took 718ms
+17:47:00 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v WhatsApp took 695ms
+17:47:01 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v wmiexplorer took 699ms
+17:47:01 - [Performance] Factory Suche nach Chocolatey Paketen took 95376ms to finish
+17:47:01 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\OculusHelper.exe /query took 65ms
+17:47:01 - [Performance] Factory Oculus Anwendungen took 84ms to finish
+17:47:01 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\SteamHelper.exe steam took 62ms
+17:47:01 - [Performance] Factory Nach Anwendungsvorlagen suchen took 81ms to finish
+17:47:01 - [Performance] Factory Searching for Scoop packages took 2ms to finish
+17:47:01 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\ScriptHelper.exe  took 516ms
+17:47:01 - [Performance] Factory Nach Anwendungsvorlagen suchen took 552ms to finish
+17:47:01 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\SteamHelper.exe list took 64ms
+17:47:02 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\SteamHelper.exe info 433340 took 60ms
+17:47:02 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\SteamHelper.exe info 477160 took 64ms
+17:47:02 - [Performance] Factory Suche nach Steam Anwendungen took 226ms to finish
+17:47:03 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\StoreAppHelper.exe /query took 962ms
+17:47:03 - [Performance] Factory Suche nach Windows Store Anwendungen took 1216ms to finish
+17:47:03 - Cache hits: 110/292
+17:59:22 - Crash while processing COM GUID: {08728914-3F57-4D52-9E31-49DAECA5A80A} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {10964DDD-6A53-4C60-917F-7B5723014344} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {2EF44DE8-80C9-42D9-8541-F40EF0862FA3} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {3213CD15-4DF2-415F-83F2-9FC58F3AEB3A} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {3522D7AF-4617-4237-AAD8-5860231FC9BA} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {36383E77-35C2-4B45-8277-329E4BEDF47F} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {3886CA90-AB09-49D1-A047-7A62D096D275} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {3CD3CA1E-2232-4BBF-A733-18B700409DA0} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {45F2C32F-ED16-4C94-8493-D72EF93A051B} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {5FFAB5C8-9A36-4B65-9FC6-FB69F451F99C} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {6CED0DAA-4CDE-49C9-BA3A-AE163DC3D7AF} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {82345212-6ACA-4B38-8CD7-BF9DE8ED07BD} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {849F5497-5C61-4023-8E10-A28F1A8C6A70} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {88866959-07B0-4ED8-8EF5-54BC7443D28C} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {8E67B5C5-BAD3-4263-9F80-F769D50884F7} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {C8DFF91D-B243-4797-BAE6-C461B65EDED3} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {DBF393FC-230C-46CC-8A85-E9C599A81EFB} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {E041C90B-68BA-42C9-991E-477B73A75C90} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {E3C9166D-1D39-4D4E-A45D-BC7BE9B00578} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+17:59:22 - Crash while processing COM GUID: {E476E4C0-409C-43CD-BBC0-5905B4138494} - System.ArgumentException: Illegales Zeichen im Pfad.
+   bei System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   bei System.IO.DirectoryInfo.Init(String path, Boolean checkHost)
+   bei UninstallTools.Junk.Finders.Registry.ComScanner.GetClsidEntries(ICollection`1 results, RegistryKey classes)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\Program Files (x86)\BrainYoo2\uninst.exe konnte nicht gefunden werden.
+Dateiname: "C:\Program Files (x86)\BrainYoo2\uninst.exe"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\rdani\AppData\Local\BrainYoo Ltd\BrainYoo2 konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.ArgumentException: Eine Unterschlüsselstruktur kann nicht gelöscht werden, da der Unterschlüssel nicht vorhanden ist.
+   bei System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   bei Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   bei UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MCOMM.EXE-A151C28B.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MCOMM.EXE-A151C28B.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MSTART.EXE-76C5B29D.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MSTART.EXE-76C5B29D.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUPDATE.EXE-B00EDD56.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUPDATE.EXE-B00EDD56.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUPLOAD.EXE-D85B2398.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUPLOAD.EXE-D85B2398.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MLAUNCHER.EXE-4EDA8381.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MLAUNCHER.EXE-4EDA8381.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MINSTALLER.EXE-15B9F555.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MINSTALLER.EXE-15B9F555.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUNINSTALL.EXE-61A472D9.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUNINSTALL.EXE-61A472D9.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\Rdani\Appdata\Local\GoToMeeting\19598 konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\rdani\AppData\Local\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files (x86)\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.ArgumentException: Eine Unterschlüsselstruktur kann nicht gelöscht werden, da der Unterschlüssel nicht vorhanden ist.
+   bei System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   bei Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   bei UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MCOMM.EXE-A151C28B.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MCOMM.EXE-A151C28B.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MSTART.EXE-76C5B29D.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MSTART.EXE-76C5B29D.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUPDATE.EXE-B00EDD56.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUPDATE.EXE-B00EDD56.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUPLOAD.EXE-D85B2398.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUPLOAD.EXE-D85B2398.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MLAUNCHER.EXE-4EDA8381.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MLAUNCHER.EXE-4EDA8381.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MINSTALLER.EXE-15B9F555.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MINSTALLER.EXE-15B9F555.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUNINSTALL.EXE-61A472D9.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUNINSTALL.EXE-61A472D9.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\Rdani\Appdata\Local\GoToMeeting\19709 konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\rdani\AppData\Local\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files (x86)\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.ArgumentException: Eine Unterschlüsselstruktur kann nicht gelöscht werden, da der Unterschlüssel nicht vorhanden ist.
+   bei System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   bei Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   bei UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MCOMM.EXE-A151C28B.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MCOMM.EXE-A151C28B.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MSTART.EXE-76C5B29D.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MSTART.EXE-76C5B29D.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUPDATE.EXE-B00EDD56.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUPDATE.EXE-B00EDD56.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUPLOAD.EXE-D85B2398.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUPLOAD.EXE-D85B2398.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MLAUNCHER.EXE-4EDA8381.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MLAUNCHER.EXE-4EDA8381.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MINSTALLER.EXE-15B9F555.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MINSTALLER.EXE-15B9F555.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUNINSTALL.EXE-61A472D9.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUNINSTALL.EXE-61A472D9.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\Rdani\Appdata\Local\GoToMeeting\19228 konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\rdani\AppData\Local\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files (x86)\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.ArgumentException: Eine Unterschlüsselstruktur kann nicht gelöscht werden, da der Unterschlüssel nicht vorhanden ist.
+   bei System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   bei Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   bei UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MCOMM.EXE-A151C28B.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MCOMM.EXE-A151C28B.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MSTART.EXE-76C5B29D.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MSTART.EXE-76C5B29D.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUPDATE.EXE-B00EDD56.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUPDATE.EXE-B00EDD56.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUPLOAD.EXE-D85B2398.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUPLOAD.EXE-D85B2398.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MLAUNCHER.EXE-4EDA8381.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MLAUNCHER.EXE-4EDA8381.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MINSTALLER.EXE-15B9F555.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MINSTALLER.EXE-15B9F555.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.FileNotFoundException: Die Datei C:\WINDOWS\Prefetch\G2MUNINSTALL.EXE-61A472D9.pf konnte nicht gefunden werden.
+Dateiname: "C:\WINDOWS\Prefetch\G2MUNINSTALL.EXE-61A472D9.pf"
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\Rdani\Appdata\Local\GoToMeeting\18962 konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\rdani\AppData\Local\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files (x86)\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.ArgumentException: Eine Unterschlüsselstruktur kann nicht gelöscht werden, da der Unterschlüssel nicht vorhanden ist.
+   bei System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   bei Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   bei UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\rdani\AppData\Local\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files (x86)\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.ArgumentException: Eine Unterschlüsselstruktur kann nicht gelöscht werden, da der Unterschlüssel nicht vorhanden ist.
+   bei System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   bei Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   bei UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\rdani\AppData\Local\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files (x86)\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.ArgumentException: Eine Unterschlüsselstruktur kann nicht gelöscht werden, da der Unterschlüssel nicht vorhanden ist.
+   bei System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   bei Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   bei UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Users\rdani\AppData\Local\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files (x86)\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files (x86)\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files (x86)\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files (x86)\GoToMeeting konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Das Verzeichnis C:\Program Files\Allway Sync konnte nicht gefunden werden.
+   bei Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   bei UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   bei BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+18:00:43 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe list -l -nocolor -y -r took 1180ms
+18:00:43 - [Performance] Factory RegistryFactory took 1592ms to finish
+18:00:43 - Cache hits: 117/128
+18:00:44 - [Performance] Factory DirectoryFactory took 131ms to finish
+18:00:44 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v 7zip took 706ms
+18:00:44 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v 7zip.install took 654ms
+18:00:45 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v adobereader took 667ms
+18:00:46 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v adwcleaner took 643ms
+18:00:46 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v anydesk.install took 656ms
+18:00:47 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v autohotkey.portable took 642ms
+18:00:48 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v ccenhancer took 645ms
+18:00:48 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v ccenhancer.install took 660ms
+18:00:49 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v ccleaner took 657ms
+18:00:50 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v checksum took 641ms
+18:00:50 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v chocolatey took 638ms
+18:00:51 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v chocolatey-core.extension took 644ms
+18:00:52 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v chocolatey-misc-helpers.extension took 643ms
+18:00:52 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v chocolatey-windowsupdate.extension took 650ms
+18:00:53 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v chocolateygui took 664ms
+18:00:54 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v cpu-z.install took 637ms
+18:00:54 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v crystaldiskinfo took 650ms
+18:00:55 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v crystaldiskinfo.portable took 644ms
+18:00:56 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v crystaldiskmark took 649ms
+18:00:56 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v desktopinfo took 643ms
+18:00:57 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v discord took 644ms
+18:00:58 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v discord.install took 641ms
+18:00:58 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v DotNet4.5 took 643ms
+18:00:59 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v DotNet4.5.2 took 642ms
+18:01:00 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v dotnetcore-desktopruntime took 666ms
+18:01:00 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v dotnetcore3-desktop-runtime took 644ms
+18:01:01 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v dropbox took 639ms
+18:01:02 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v etcher took 670ms
+18:01:02 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v Everything took 659ms
+18:01:03 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v Firefox took 651ms
+18:01:04 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v geforce-experience took 667ms
+18:01:04 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v geforce-game-ready-driver took 662ms
+18:01:05 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v git took 644ms
+18:01:06 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v git.install took 664ms
+18:01:06 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v github-desktop took 645ms
+18:01:07 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v goggalaxy took 636ms
+18:01:08 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v google-backup-and-sync took 661ms
+18:01:08 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v GoogleChrome took 659ms
+18:01:09 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v googledrive took 657ms
+18:01:10 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v gsudo took 640ms
+18:01:10 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v irfanview took 661ms
+18:01:11 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v javaruntime took 646ms
+18:01:12 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v jre8 took 658ms
+18:01:12 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB2533623 took 670ms
+18:01:13 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB2919355 took 783ms
+18:01:14 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB2919442 took 882ms
+18:01:15 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB2999226 took 878ms
+18:01:16 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB3033929 took 879ms
+18:01:17 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB3035131 took 863ms
+18:01:17 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v KB3063858 took 871ms
+18:01:18 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v keepassxc took 943ms
+18:01:19 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v logitechgaming took 933ms
+18:01:20 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v microsoft-teams took 935ms
+18:01:21 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v microsoft-teams.install took 921ms
+18:01:22 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v mousewithoutborders took 877ms
+18:01:23 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v notepadplusplus took 830ms
+18:01:24 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v notepadplusplus.install took 949ms
+18:01:25 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v office365proplus took 971ms
+18:01:26 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v openssh took 937ms
+18:01:27 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v opera-gx took 969ms
+18:01:28 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v pdf24 took 959ms
+18:01:29 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v portfolio took 920ms
+18:01:30 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v PowerShell took 922ms
+18:01:30 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v powertoys took 709ms
+18:01:31 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v PSWindowsUpdate took 675ms
+18:01:32 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v putty.install took 693ms
+18:01:32 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v shutup10 took 669ms
+18:01:33 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v skype took 694ms
+18:01:34 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v sonos-controller took 694ms
+18:01:35 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v steam took 674ms
+18:01:35 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v steam-client took 669ms
+18:01:36 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v syncthing-gtk took 696ms
+18:01:37 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v synologydrive took 690ms
+18:01:37 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v teamviewer took 686ms
+18:01:38 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v treesizefree took 679ms
+18:01:39 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v twitch took 681ms
+18:01:39 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v vcredist140 took 684ms
+18:01:40 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v vcredist2015 took 677ms
+18:01:41 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v veracrypt took 700ms
+18:01:42 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v vlc took 688ms
+18:01:42 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v vyprvpn took 695ms
+18:01:43 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v WhatsApp took 686ms
+18:01:44 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe info -l -nocolor -y -v wmiexplorer took 679ms
+18:01:44 - [Performance] Factory Suche nach Chocolatey Paketen took 61717ms to finish
+18:01:44 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\OculusHelper.exe /query took 57ms
+18:01:44 - [Performance] Factory Oculus Anwendungen took 67ms to finish
+18:01:44 - [Performance] Factory Nach Anwendungsvorlagen suchen took 2ms to finish
+18:01:44 - [Performance] Factory Searching for Scoop packages took 0ms to finish
+18:01:44 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\ScriptHelper.exe  took 420ms
+18:01:44 - [Performance] Factory Nach Anwendungsvorlagen suchen took 440ms to finish
+18:01:44 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\SteamHelper.exe list took 62ms
+18:01:44 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\SteamHelper.exe info 433340 took 59ms
+18:01:44 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\SteamHelper.exe info 477160 took 58ms
+18:01:44 - [Performance] Factory Suche nach Steam Anwendungen took 214ms to finish
+18:01:45 - [Performance] Running command C:\Users\rdani\Documents\GitHub\PC-Check\12_software\BCUninstaller\StoreAppHelper.exe /query took 520ms
+18:01:45 - [Performance] Factory Suche nach Windows Store Anwendungen took 652ms to finish
+18:01:45 - Cache hits: 266/266

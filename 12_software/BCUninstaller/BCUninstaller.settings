@@ -15,7 +15,7 @@
   <AdvancedDisplayOrphans>True</AdvancedDisplayOrphans>
   <FilterShowUpdates>False</FilterShowUpdates>
   <ScanWinFeatures>False</ScanWinFeatures>
-  <MiscFeedbackNagShown>False</MiscFeedbackNagShown>
+  <MiscFeedbackNagShown>True</MiscFeedbackNagShown>
   <FoldersAutoDetect>True</FoldersAutoDetect>
   <MiscFeedbackNagNeverShow>False</MiscFeedbackNagNeverShow>
   <DESKTOP-2020-D>
@@ -89,4 +89,14 @@
     <WindowPosition>52, 52</WindowPosition>
     <WindowState>Normal</WindowState>
   </FV-BC-ADMIN-PC>
+  <LT-DANIEL>
+    <_CacheUpdateRate>10.00:00:00</_CacheUpdateRate>
+    <WindowSize>0, 0</WindowSize>
+    <BackupLeftovers>Ask</BackupLeftovers>
+    <BackupLeftoversDirectory>
+    </BackupLeftoversDirectory>
+    <MiscNet4NagShown>False</MiscNet4NagShown>
+    <WindowPosition>0, 0</WindowPosition>
+    <WindowState>Maximized</WindowState>
+  </LT-DANIEL>
 </Settings>

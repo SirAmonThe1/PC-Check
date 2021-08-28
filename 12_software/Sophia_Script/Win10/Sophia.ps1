@@ -1,5 +1,5 @@
 Clear-Host
-$Host.UI.RawUI.WindowTitle = 'Windows Sophia Script | Copyright farag2 & Inestic, 2015 to 2021'
+$Host.UI.RawUI.WindowTitle = 'Windows Sophia Script | Copyright farag2 & Inestic, 2014 to 2021'
 Remove-Module -Name Sophia -Force -ErrorAction Ignore
 Import-Module -Name $PSScriptRoot\Manifest\Sophia.psd1 -PassThru -Force
 Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -BaseDirectory $PSScriptRoot\Localizations
@@ -13,12 +13,14 @@ CreateRestorePoint
 
 #region Privacy & Telemetry
 
+DiagTrackService -Disable
 DiagnosticDataLevel -Minimal
 ErrorReporting -Disable
+FeedbackFrequency -Never
+ScheduledTasks -Disable
 SigninInfo -Disable
 LanguageListAccess -Disable
 AdvertisingID -Disable
-WindowsWelcomeExperience -Hide
 WindowsTips -Disable
 SettingsSuggestedContent -Hide
 AppsSilentInstalling -Disable
@@ -31,29 +33,30 @@ BingSearch -Disable
 #region UI & Personalization
 
 ThisPC -Show
+Windows10FileExplorer -Enable
 CheckBoxes -Disable
 HiddenItems -Enable
 FileExtensions -Show
 MergeConflicts -Show
 OpenFileExplorerTo -ThisPC
-CortanaButton -Hide
+FileExplorerCompactMode -Disable
 OneDriveFileExplorerAd -Hide
+SnapAssistFlyout -Enable
 SnapAssist -Disable
 FileTransferDialog -Detailed
 FileExplorerRibbon -Expanded
 RecycleBinDeleteConfirmation -Enable
-3DObjects -Hide
 QuickAccessRecentFiles -Hide
 QuickAccessFrequentFolders -Hide
-TaskViewButton -Hide
-PeopleTaskbar -Hide
-SecondsInSystemClock -Show
+TaskbarAlignment -Left
 TaskbarSearch -Hide
-WindowsInkWorkspace -Hide
-MeetNow -Hide
-NewsInterests -Disable
+TaskViewButton -Hide
+TaskbarWidgets -Hide
+TaskbarChat -Hide
+TaskbarSize -Default
 ControlPanelView -LargeIcons
-NewAppInstalledNotification -Hide
+WindowsColorMode -Dark
+AppColorMode -Dark
 FirstLogonAnimation -Disable
 JPEGWallpapersQuality -Max
 TaskManagerWindow -Expanded
@@ -61,7 +64,8 @@ RestartNotification -Show
 ShortcutsSuffix -Disable
 PrtScnSnippingTool -Enable
 AppsLanguageSwitch -Disable
-UnpinTaskbarShortcuts -Shortcuts Edge, Store, Mail
+AeroShaking -Enable
+NotificationAreaIcons
 
 #endregion UI & Personalization
 
@@ -75,9 +79,11 @@ UnpinTaskbarShortcuts -Shortcuts Edge, Store, Mail
 StorageSense -Enable
 StorageSenseTempFiles -Enable
 StorageSenseFrequency -Month
+Hibernation -Disable
+TempFolder -SystemDrive
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
-AdminApprovalMode -Default
+AdminApprovalMode -Never
 MappedDrivesAppElevatedAccess -Enable
 DeliveryOptimization -Disable
 WaitNetworkStartup -Enable
@@ -88,8 +94,10 @@ UpdateMicrosoftProducts -Enable
 PowerPlan -High
 LatestInstalled.NET -Enable
 NetworkAdaptersSavePower -Disable
-IPv6Component -Disable
-WinPrtScrFolder -Default
+IPv6Component -Enable
+InputMethod -Default
+SetUserShellFolderLocation -Root
+WinPrtScrFolder -Desktop
 RecommendedTroubleshooting -Automatic
 FoldersLaunchSeparateProcess -Enable
 ReservedStorage -Disable
@@ -102,6 +110,7 @@ SaveRestartableApps -Enable
 NetworkDiscovery -Enable
 ActiveHours -Automatically
 RestartDeviceAfterUpdate -Disable
+DefaultTerminalApp -WindowsTerminal
 
 #endregion System
 
@@ -113,10 +122,7 @@ RestartDeviceAfterUpdate -Disable
 #region Start menu
 
 RecentlyAddedApps -Hide
-AppSuggestions -Hide
 RunPowerShellShortcut -Elevated
-PinToStart -UnpinAll
-PinToStart -Tiles ControlPanel, DevicesPrinters, PowerShell
 
 #endregion Start menu
 
@@ -124,15 +130,14 @@ PinToStart -Tiles ControlPanel, DevicesPrinters, PowerShell
 
 HEIF -Install
 CortanaAutostart -Disable
-BackgroundUWPApps -Disable
-UninstallUWPApps
+TeamsAutostart -Disable
+UninstallUWPApps -ForAllUsers
 CheckUWPAppsUpdates
 
 #endregion UWP apps
 
 #region Gaming
 
-XboxGameBar -Disable
 XboxGameTips -Disable
 GPUScheduling -Enable
 SetAppGraphicsPerformance
@@ -153,6 +158,7 @@ NetworkProtection -Enable
 PUAppsDetection -Enable
 DefenderSandbox -Enable
 AuditProcess -Enable
+CommandLineProcessAudit -Enable
 EventViewerCustomView -Enable
 PowerShellModulesLogging -Enable
 PowerShellScriptsLogging -Enable
@@ -167,18 +173,21 @@ DismissSmartScreenFilter
 
 #region Context menu
 
+MSIExtractContext -Show
+CABInstallContext -Show
+RunAsDifferentUserContext -Show
 CastToDeviceContext -Hide
 ShareContext -Hide
-EditWithPaint3DContext -Hide
 EditWithPhotosContext -Hide
 CreateANewVideoContext -Hide
-ImagesEditContext -Hide
 PrintCMDContext -Hide
 IncludeInLibraryContext -Hide
 SendToContext -Hide
 BitLockerContext -Hide
+CompressedFolderNewContext -Hide
 MultipleInvokeContext -Enable
 UseStoreOpenWith -Hide
+OpenWindowsTerminalContext -Hide
 
 #endregion Context menu
 
