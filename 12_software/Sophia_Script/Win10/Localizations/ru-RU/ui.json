@@ -1,10 +1,12 @@
-[
+﻿[
   {
     "Id": "Menu",
     "Options": {
+      "menuImportExportPreset": "Импорт/экспорт",
       "menuImportPreset": "Импортировать пресет",
+      "menuExportPreset": "Экспортировать пресет",
       "menuPresets": "Пресеты",
-      "menuOpposite": "Наоборот",
+      "menuOpposite": "Противоположные значения",
       "menuClear": "Очистить",
       "menuTheme": "Тема",
       "menuThemeDark": "Тёмная",
@@ -17,7 +19,7 @@
     "Id": "Tab",
     "Options": {
       "tabSystemProtection": "Защита",
-      "tabPrivacyTelemetry": "Конфидениальность & телеметрия",
+      "tabPrivacyTelemetry": "Конфиденциальность & телеметрия",
       "tabUIPersonalization": "UI & персонализация",
       "tabOneDrive": "OneDrive",
       "tabSystem": "Система",
@@ -52,7 +54,8 @@
       "statusBarPowerShellSaveAs": "Скрипт для PowerShell создан!",
       "statusBarPowerShellSave": "Изменения сохранены в файл",
       "statusBarOpposite": "Выбраны обратные настройки!",
-      "statusBarClear": "Выбранные элементы очищены!"
+      "statusBarClear": "Выбранные элементы очищены!",
+      "statusBarDisabled": "Вы должны сначала \"Импортировать пресет\", чтобы использовать Wrapper. Импортируйте, чтобы включить элементы управления."
     }
   },
   {
@@ -63,7 +66,7 @@
       "messageBoxDoesNotExist": "не существует",
       "messageBoxPresetNotComp": "Пресет не совместим!",
       "messageBoxFilesMissingClose": "Отсутствуют необходимые файлы Sophia Script Wrapper. Программа будет закрыта",
-      "messageBoxConsoleEmpty": "Консоль пуста.\nНажмите кнопку \"Refresh Console\", чтобы создать скрипт, согласно вышим выборам"
+      "messageBoxConsoleEmpty": "Консоль пуста.\nНажмите кнопку \"Обновить консоль\", чтобы создать скрипт, согласно вышим выборам"
     }
   }
 ]

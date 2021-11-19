@@ -1,5 +1,17 @@
+#Requires -RunAsAdministrator
+#Requires -Version 5.1
+
+[CmdletBinding()]
+param
+(
+	[Parameter(Mandatory = $false)]
+	[string[]]
+	$Functions
+)
+
 Clear-Host
-$Host.UI.RawUI.WindowTitle = 'Windows Sophia Script | Copyright farag2 & Inestic, 2015 to 2021'
+
+$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 10 v5.12.5 | Made with $([char]::ConvertFromUtf32(0x1F497)) of Windows | $([char]0x00A9) farag & Inestic, 2014$([char]0x2013)2021"
 Remove-Module -Name Sophia -Force -ErrorAction Ignore
 Import-Module -Name $PSScriptRoot\Manifest\Sophia.psd1 -PassThru -Force
 Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -BaseDirectory $PSScriptRoot\Localizations
@@ -13,12 +25,15 @@ CreateRestorePoint
 
 #region Privacy & Telemetry
 
+DiagTrackService -Disable
 DiagnosticDataLevel -Minimal
 ErrorReporting -Disable
+FeedbackFrequency -Never
+ScheduledTasks -Disable
 SigninInfo -Disable
 LanguageListAccess -Disable
 AdvertisingID -Disable
-WindowsWelcomeExperience -Hide
+WindowsWelcomeExperience -Show
 WindowsTips -Disable
 SettingsSuggestedContent -Hide
 AppsSilentInstalling -Disable
@@ -50,9 +65,12 @@ PeopleTaskbar -Hide
 SecondsInSystemClock -Show
 TaskbarSearch -Hide
 WindowsInkWorkspace -Hide
+NotificationAreaIcons -Hide
 MeetNow -Hide
 NewsInterests -Disable
 ControlPanelView -LargeIcons
+WindowsColorMode -Dark
+AppColorMode -Dark
 NewAppInstalledNotification -Hide
 FirstLogonAnimation -Disable
 JPEGWallpapersQuality -Max
@@ -61,23 +79,27 @@ RestartNotification -Show
 ShortcutsSuffix -Disable
 PrtScnSnippingTool -Enable
 AppsLanguageSwitch -Disable
+AeroShaking -Disable
 UnpinTaskbarShortcuts -Shortcuts Edge, Store, Mail
 
 #endregion UI & Personalization
 
 #region OneDrive
 
+OneDrive -Uninstall
 
 #endregion OneDrive
 
 #region System
 
 StorageSense -Enable
-StorageSenseTempFiles -Enable
 StorageSenseFrequency -Month
+StorageSenseTempFiles -Enable
+Hibernation -Disable
+TempFolder -SystemDrive
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
-AdminApprovalMode -Default
+AdminApprovalMode -Never
 MappedDrivesAppElevatedAccess -Enable
 DeliveryOptimization -Disable
 WaitNetworkStartup -Enable
@@ -88,9 +110,11 @@ UpdateMicrosoftProducts -Enable
 PowerPlan -High
 LatestInstalled.NET -Enable
 NetworkAdaptersSavePower -Disable
-IPv6Component -Disable
-WinPrtScrFolder -Default
-RecommendedTroubleshooting -Automatic
+IPv6Component -Enable
+InputMethod -English
+SetUserShellFolderLocation -Root
+WinPrtScrFolder -Desktop
+RecommendedTroubleshooting -Automatically
 FoldersLaunchSeparateProcess -Enable
 ReservedStorage -Disable
 F1HelpPage -Disable
@@ -101,7 +125,7 @@ ThumbnailCacheRemoval -Disable
 SaveRestartableApps -Enable
 NetworkDiscovery -Enable
 ActiveHours -Automatically
-RestartDeviceAfterUpdate -Disable
+RestartDeviceAfterUpdate -Enable
 
 #endregion System
 
@@ -125,7 +149,7 @@ PinToStart -Tiles ControlPanel, DevicesPrinters, PowerShell
 HEIF -Install
 CortanaAutostart -Disable
 BackgroundUWPApps -Disable
-UninstallUWPApps
+UninstallUWPApps -ForAllUsers
 CheckUWPAppsUpdates
 
 #endregion UWP apps
@@ -153,6 +177,7 @@ NetworkProtection -Enable
 PUAppsDetection -Enable
 DefenderSandbox -Enable
 AuditProcess -Enable
+CommandLineProcessAudit -Enable
 EventViewerCustomView -Enable
 PowerShellModulesLogging -Enable
 PowerShellScriptsLogging -Enable
@@ -167,6 +192,9 @@ DismissSmartScreenFilter
 
 #region Context menu
 
+MSIExtractContext -Show
+CABInstallContext -Show
+RunAsDifferentUserContext -Show
 CastToDeviceContext -Hide
 ShareContext -Hide
 EditWithPaint3DContext -Hide
@@ -177,6 +205,9 @@ PrintCMDContext -Hide
 IncludeInLibraryContext -Hide
 SendToContext -Hide
 BitLockerContext -Hide
+BitmapImageNewContext -Hide
+RichTextDocumentNewContext -Hide
+CompressedFolderNewContext -Hide
 MultipleInvokeContext -Enable
 UseStoreOpenWith -Hide
 

@@ -1,14 +1,16 @@
-[
+﻿[
   {
     "Id": "Menu",
     "Options": {
+      "menuImportExportPreset": "Import/Export",
       "menuImportPreset": "Import Preset",
+      "menuExportPreset": "Export Preset",
       "menuPresets": "Presets",
       "menuOpposite": "Opposite",
       "menuClear": "Clear",
       "menuTheme": "Theme",
       "menuThemeDark": "Dark",
-      "menuThemeLight":  "Light",
+      "menuThemeLight": "Light",
       "menuLanguage": "Language",
       "menuAbout": "About"
     }
@@ -52,7 +54,8 @@
       "statusBarPowerShellSaveAs": "PowerShell script created!",
       "statusBarPowerShellSave": "Changes saved to",
       "statusBarOpposite": "Opposite selected!",
-      "statusBarClear": "Selections all cleared!"
+      "statusBarClear": "Selections all cleared!",
+      "statusBarDisabled": "You must 'Import Preset' first to enable use of Wrapper. Import to enable controls."
     }
   },
   {

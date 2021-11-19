@@ -1,5 +1,17 @@
-﻿Clear-Host
-$Host.UI.RawUI.WindowTitle = 'Windows Sophia Script | Copyright farag2 & Inestic, 2014 to 2021'
+#Requires -RunAsAdministrator
+#Requires -Version 5.1
+
+[CmdletBinding()]
+param
+(
+	[Parameter(Mandatory = $false)]
+	[string[]]
+	$Functions
+)
+
+Clear-Host
+
+$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 11 v6.0.6 | Made with $([char]::ConvertFromUtf32(0x1F497)) of Windows | $([char]0x00A9) farag & Inestic, 2014$([char]0x2013)2021"
 Remove-Module -Name Sophia -Force -ErrorAction Ignore
 Import-Module -Name $PSScriptRoot\Manifest\Sophia.psd1 -PassThru -Force
 Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -BaseDirectory $PSScriptRoot\Localizations
@@ -21,7 +33,8 @@ ScheduledTasks -Disable
 SigninInfo -Disable
 LanguageListAccess -Disable
 AdvertisingID -Disable
-WindowsTips -Disable
+WindowsWelcomeExperience -Hide
+WindowsTips -Enable
 SettingsSuggestedContent -Hide
 AppsSilentInstalling -Disable
 WhatsNewInWindows -Disable
@@ -33,7 +46,7 @@ BingSearch -Disable
 #region UI & Personalization
 
 ThisPC -Show
-Windows10FileExplorer -Disable
+Windows10FileExplorer -Enable
 CheckBoxes -Disable
 HiddenItems -Enable
 FileExtensions -Show
@@ -44,7 +57,6 @@ OneDriveFileExplorerAd -Hide
 SnapAssistFlyout -Enable
 SnapAssist -Disable
 FileTransferDialog -Detailed
-FileExplorerRibbon -Expanded
 RecycleBinDeleteConfirmation -Enable
 QuickAccessRecentFiles -Hide
 QuickAccessFrequentFolders -Hide
@@ -53,7 +65,6 @@ TaskbarSearch -Hide
 TaskViewButton -Hide
 TaskbarWidgets -Hide
 TaskbarChat -Hide
-TaskbarSize -Default
 ControlPanelView -LargeIcons
 WindowsColorMode -Dark
 AppColorMode -Dark
@@ -63,9 +74,8 @@ TaskManagerWindow -Expanded
 RestartNotification -Show
 ShortcutsSuffix -Disable
 PrtScnSnippingTool -Enable
-AppsLanguageSwitch -Disable
+AppsLanguageSwitch -Enable
 AeroShaking -Enable
-NotificationAreaIcons
 UnpinTaskbarShortcuts -Shortcuts Edge, Store
 
 #endregion UI & Personalization
@@ -79,10 +89,9 @@ OneDrive -Uninstall
 #region System
 
 StorageSense -Enable
-StorageSenseTempFiles -Enable
 StorageSenseFrequency -Month
+StorageSenseTempFiles -Enable
 Hibernation -Disable
-TempFolder -SystemDrive
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
 AdminApprovalMode -Never
@@ -96,10 +105,10 @@ UpdateMicrosoftProducts -Enable
 PowerPlan -High
 LatestInstalled.NET -Enable
 NetworkAdaptersSavePower -Disable
-IPv6Component -Enable
+IPv6Component -Disable
 SetUserShellFolderLocation -Root
 WinPrtScrFolder -Desktop
-RecommendedTroubleshooting -Automatic
+RecommendedTroubleshooting -Automatically
 FoldersLaunchSeparateProcess -Enable
 ReservedStorage -Disable
 F1HelpPage -Disable
@@ -122,7 +131,6 @@ DefaultTerminalApp -WindowsTerminal
 
 #region Start menu
 
-RecentlyAddedApps -Hide
 RunPowerShellShortcut -Elevated
 
 #endregion Start menu
@@ -165,8 +173,6 @@ PowerShellModulesLogging -Enable
 PowerShellScriptsLogging -Enable
 AppsSmartScreen -Disable
 SaveZoneInformation -Disable
-WindowsScriptHost -Disable
-WindowsSandbox -Enable
 DismissMSAccount
 DismissSmartScreenFilter
 
@@ -189,6 +195,8 @@ CompressedFolderNewContext -Hide
 MultipleInvokeContext -Enable
 UseStoreOpenWith -Hide
 OpenWindowsTerminalContext -Hide
+OpenWindowsTerminalAdminContext -Show
+Windows10ContextMenu -Disable
 
 #endregion Context menu
 
