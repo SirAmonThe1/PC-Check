@@ -2,7 +2,7 @@
   {
     "Id": "Menu",
     "Options": {
-      "menuImportExportPreset": "Importieren/Exportieren",
+      "menuImportExportPreset": "Importieren | Exportieren",
       "menuImportPreset": "Voreinstellung importieren",
       "menuExportPreset": "Voreinstellung exportieren",
       "menuPresets": "Voreinstellungen",
@@ -24,7 +24,7 @@
       "tabOneDrive": "OneDrive",
       "tabSystem": "System",
       "tabWSL": "WSL",
-      "tabStartMenu": "Start Menü",
+      "tabStartMenu": "Startmenü",
       "tabUWP": "UWP Apps",
       "tabGaming": "Gaming",
       "tabScheduledTasks": "Geplante Aufgaben",
@@ -37,8 +37,6 @@
     "Id": "Button",
     "Options": {
       "btnRefreshConsole": "Konsole aktualisieren",
-      "btnSave": "Speichern",
-      "btnSaveAs": "Speichern unter",
       "btnRunPowerShell": "PowerShell ausführen"
     }
   },
@@ -51,11 +49,11 @@
       "statusBarSophiaPreset": "Sophia Voreinstellung geladen!",
       "statusBarWindowsDefaultPreset": "Windows Standardvoreinstellung geladen!",
       "statusBarPowerShellScriptCreatedFromSelections": "PowerShell Skript, das anhand Ihrer Auswahlen erstellt wurde! Sie können es ausführen oder speichern.",
-      "statusBarPowerShellSaveAs": "PowerShell Skript erstellt!",
-      "statusBarPowerShellSave": "Änderungen gespeichert in",
+      "statusBarPowerShellExport": "PowerShell Skript erstellt!",
       "statusBarOpposite": "Umgekehrte Einstellungen ausgewählt!",
       "statusBarClear": "Auswahlen alle gelöscht!",
-      "statusBarDisabled": "Sie müssen zuerst 'Voreinstellung importieren', um die Verwendung von Wrapper zu aktivieren. Importieren, um Steuerelemente zu aktivieren."
+      "statusBarDisabled": "Sie müssen zuerst 'Voreinstellung importieren', um die Verwendung von Wrapper zu aktivieren. Importieren, um Steuerelemente zu aktivieren.",
+      "statusBarCurrentOS": "Aktuelles OS"
     }
   },
   {

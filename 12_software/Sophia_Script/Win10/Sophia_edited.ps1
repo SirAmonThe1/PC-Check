@@ -1,4 +1,4 @@
-#Requires -RunAsAdministrator
+﻿#Requires -RunAsAdministrator
 #Requires -Version 5.1
 
 [CmdletBinding()]
@@ -86,7 +86,6 @@ UnpinTaskbarShortcuts -Shortcuts Edge, Store, Mail
 
 #region OneDrive
 
-OneDrive -Uninstall
 
 #endregion OneDrive
 
@@ -96,7 +95,6 @@ StorageSense -Enable
 StorageSenseFrequency -Month
 StorageSenseTempFiles -Enable
 Hibernation -Disable
-TempFolder -SystemDrive
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
 AdminApprovalMode -Never
@@ -110,8 +108,7 @@ UpdateMicrosoftProducts -Enable
 PowerPlan -High
 LatestInstalled.NET -Enable
 NetworkAdaptersSavePower -Disable
-IPv6Component -Enable
-InputMethod -English
+IPv6Component -Disable
 SetUserShellFolderLocation -Root
 WinPrtScrFolder -Desktop
 RecommendedTroubleshooting -Automatically
@@ -122,10 +119,12 @@ NumLock -Enable
 StickyShift -Disable
 Autoplay -Disable
 ThumbnailCacheRemoval -Disable
-SaveRestartableApps -Enable
+SaveRestartableApps -Disable
 NetworkDiscovery -Enable
 ActiveHours -Automatically
-RestartDeviceAfterUpdate -Enable
+RestartDeviceAfterUpdate -Disable
+UninstallPCHealthCheck
+InstallVCRedistx64
 
 #endregion System
 
@@ -156,7 +155,6 @@ CheckUWPAppsUpdates
 
 #region Gaming
 
-XboxGameBar -Disable
 XboxGameTips -Disable
 GPUScheduling -Enable
 SetAppGraphicsPerformance
@@ -203,7 +201,7 @@ CreateANewVideoContext -Hide
 ImagesEditContext -Hide
 PrintCMDContext -Hide
 IncludeInLibraryContext -Hide
-SendToContext -Hide
+SendToContext -Show
 BitLockerContext -Hide
 BitmapImageNewContext -Hide
 RichTextDocumentNewContext -Hide

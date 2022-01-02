@@ -1376,15 +1376,26 @@
   {
     "Id": 535,
     "Region": "System",
-    "Function": "DefaultTerminalApp",
+    "Function": "PCHealthCheck",
     "Arg": {
       "Zero": {
-        "Tag": "WindowsTerminal",
-        "ToolTip": "Set Windows Terminal as default terminal app to host the user interface for command-line applications"
+        "Tag": "Block",
+        "ToolTip": "Uninstall the KB5005463 update and block it from the further intalling. The KB5005463 update installs the PC Health Check app to check if PC meets the system requirements of Windows 11"
       },
       "One": {
-        "Tag": "ConsoleHost",
-        "ToolTip": "Set Windows Console Host as default terminal app to host the user interface for command-line applications (default value)"
+        "Tag": "Unblock",
+        "ToolTip": "Unblock the KB5005463 update for the further intalling (default value)"
+      }
+    }
+  },
+  {
+    "Id": 536,
+    "Region": "System",
+    "Function": "InstallVCRedistx64",
+    "Arg": {
+      "Zero": {
+        "Tag": "",
+        "ToolTip": "Install the latest supported Microsoft Visual C++ Redistributable 2015—2022 x64"
       }
     }
   },
@@ -1395,7 +1406,7 @@
     "Arg": {
       "Zero": {
         "Tag": "",
-        "ToolTip": "Enable Windows Subsystem for Linux (WSL), install the latest WSL Linux kernel version, and a Linux distribution using a pop-up form. To receive kernel updates, enable the Windows Update setting: \"Receive updates for other Microsoft products\""
+        "ToolTip": "Enable Windows Subsystem for Linux (WSL), install the latest WSL Linux kernel version, and a Linux distribution using a pop-up form. The \"Receive updates for other Microsoft products\" setting will enabled automatically to receive kernel updates"
       }
     }
   },

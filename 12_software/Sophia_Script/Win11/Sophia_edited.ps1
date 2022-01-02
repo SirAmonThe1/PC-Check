@@ -82,7 +82,6 @@ UnpinTaskbarShortcuts -Shortcuts Edge, Store
 
 #region OneDrive
 
-OneDrive -Uninstall
 
 #endregion OneDrive
 
@@ -119,8 +118,9 @@ ThumbnailCacheRemoval -Disable
 SaveRestartableApps -Enable
 NetworkDiscovery -Enable
 ActiveHours -Automatically
-RestartDeviceAfterUpdate -Enable
+RestartDeviceAfterUpdate -Disable
 DefaultTerminalApp -WindowsTerminal
+InstallVCRedistx64
 
 #endregion System
 
@@ -132,6 +132,7 @@ DefaultTerminalApp -WindowsTerminal
 #region Start menu
 
 RunPowerShellShortcut -Elevated
+UnpinAllStartApps
 
 #endregion Start menu
 
@@ -189,14 +190,14 @@ EditWithPhotosContext -Hide
 CreateANewVideoContext -Hide
 PrintCMDContext -Hide
 IncludeInLibraryContext -Hide
-SendToContext -Hide
+SendToContext -Show
 BitLockerContext -Hide
 CompressedFolderNewContext -Hide
 MultipleInvokeContext -Enable
 UseStoreOpenWith -Hide
 OpenWindowsTerminalContext -Hide
 OpenWindowsTerminalAdminContext -Show
-Windows10ContextMenu -Disable
+Windows10ContextMenu -Enable
 
 #endregion Context menu
 

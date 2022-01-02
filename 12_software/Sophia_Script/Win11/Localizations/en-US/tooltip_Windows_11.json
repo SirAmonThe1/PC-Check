@@ -1312,7 +1312,7 @@
     "Arg": {
       "Zero": {
         "Tag": "",
-        "ToolTip": "Enable Windows Subsystem for Linux (WSL), install the latest WSL Linux kernel version, and a Linux distribution using a pop-up form. To receive kernel updates, enable the Windows Update setting: \"Receive updates for other Microsoft products\""
+        "ToolTip": "Enable Windows Subsystem for Linux (WSL), install the latest WSL Linux kernel version, and a Linux distribution using a pop-up form. The \"Receive updates for other Microsoft products\" setting will enabled automatically to receive kernel updates"
       }
     }
   },
@@ -1423,6 +1423,21 @@
   {
     "Id": 900,
     "Region": "Gaming",
+    "Function": "XboxGameBar",
+    "Arg": {
+      "Zero": {
+        "Tag": "Disable",
+        "ToolTip": "Disable Xbox Game Bar"
+      },
+      "One": {
+        "Tag": "Enable",
+        "ToolTip": "Enable Xbox Game Bar (default value)"
+      }
+    }
+  },
+  {
+    "Id": 901,
+    "Region": "Gaming",
     "Function": "XboxGameTips",
     "Arg": {
       "Zero": {
@@ -1436,7 +1451,7 @@
     }
   },
   {
-    "Id": 901,
+    "Id": 902,
     "Region": "Gaming",
     "Function": "SetAppGraphicsPerformance",
     "Arg": {
@@ -1447,7 +1462,7 @@
     }
   },
   {
-    "Id": 902,
+    "Id": 903,
     "Region": "Gaming",
     "Function": "GPUScheduling",
     "Arg": {

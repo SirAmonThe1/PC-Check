@@ -2,11 +2,11 @@
 	.SYNOPSIS
 	Sophia Script is a PowerShell module for Windows 10 & Windows 11 fine-tuning and automating the routine tasks
 
-	Version: v6.0.6
-	Date: 24.10.2021
+	Version: v6.0.11
+	Date: 31.12.2021
 
-	Copyright (c) 2014—2021 farag
-	Copyright (c) 2019—2021 farag & Inestic
+	Copyright (c) 2014—2022 farag
+	Copyright (c) 2019—2022 farag & Inestic
 
 	Thanks to all https://forum.ru-board.com members involved
 
@@ -16,7 +16,7 @@
 	.NOTES
 	Supported Windows 11 version
 	Version: 21H2
-	Build: 22000.258
+	Build: 22000.376
 	Editions: Home/Pro/Enterprise
 
 	.NOTES
@@ -66,8 +66,8 @@ function Checkings
 		}
 	}
 
-	# Check whether the OS minor build version is 258 minimum
-	switch ((Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows nt\CurrentVersion" -Name UBR) -ge 258)
+	# Check whether the OS minor build version is 376 minimum
+	switch ((Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows nt\CurrentVersion" -Name UBR) -ge 376)
 	{
 		$false
 		{
@@ -107,7 +107,7 @@ function Checkings
 	# Check whether the logged-in user is an admin
 	$CurrentUserName = (Get-Process -Id $PID -IncludeUserName).UserName | Split-Path -Leaf
 	$CurrentSessionId = (Get-Process -Id $PID -IncludeUserName).SessionId
-	$LoginUserName = (Get-Process -IncludeUserName -ErrorAction SilentlyContinue | Where-Object -FilterScript {($_.ProcessName -eq "explorer") -and ($_.SessionId -eq $CurrentSessionId)}).UserName | Select-Object -First 1 | Split-Path -Leaf
+	$LoginUserName = (Get-Process -IncludeUserName | Where-Object -FilterScript {($_.ProcessName -eq "explorer") -and ($_.SessionId -eq $CurrentSessionId)}).UserName | Select-Object -First 1 | Split-Path -Leaf
 
 	switch ($CurrentUserName -ne $LoginUserName)
 	{
@@ -132,7 +132,8 @@ function Checkings
 		exit
 	}
 
-	# Check whether the OS was infected by Win 10 Tweaker
+	# Check whether the OS was infected by Win 10 Tweaker's trojan
+	# https://win10tweaker.ru
 	if (Test-Path -Path "HKCU:\Software\Win 10 Tweaker")
 	{
 		Write-Warning -Message $Localization.Win10TweakerWarning
@@ -140,6 +141,14 @@ function Checkings
 		Start-Process -FilePath "https://youtu.be/na93MS-1EkM"
 		Start-Process -FilePath "https://pikabu.ru/story/byekdor_v_win_10_tweaker_ili_sovremennyie_metodyi_borbyi_s_piratstvom_8227558"
 
+		exit
+	}
+
+	# Check whether the OS was destroyed by Sycnex's Windows10Debloater script
+	# https://github.com/Sycnex/Windows10Debloater
+	if (Test-Path -Path $env:SystemDrive\Temp\Windows10Debloater)
+	{
+		Write-Warning -Message $Localization.Windows10DebloaterWarning
 		exit
 	}
 
@@ -180,8 +189,11 @@ function Checkings
 	# Display a warning message about whether a user has customized the preset file
 	if ($Warning)
 	{
+		# Get the name of a preset (e.g Sophia.ps1) regardless it was named
+		$PresetName = Split-Path -Path ((Get-PSCallStack).Position | Where-Object -FilterScript {$_.File -match ".ps1"}).File -Leaf
+
 		$Title = ""
-		$Message       = $Localization.CustomizationWarning
+		$Message       = $Localization.CustomizationWarning -f $PresetName
 		$Yes           = $Localization.Yes
 		$No            = $Localization.No
 		$Options       = "&$No", "&$Yes"
@@ -192,7 +204,7 @@ function Checkings
 		{
 			"0"
 			{
-				Invoke-Item -Path $PSScriptRoot\..\Sophia.ps1
+				Invoke-Item -Path $PSScriptRoot\..\$PresetName
 
 				Start-Sleep -Seconds 5
 
@@ -243,7 +255,7 @@ function Logging
 function CreateRestorePoint
 {
 	$SystemDriveUniqueID = (Get-Volume | Where-Object -FilterScript {$_.DriveLetter -eq "$($env:SystemDrive[0])"}).UniqueID
-	$SystemProtection = ((Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SPP\Clients")."{09F7EDC5-294E-4180-AF6A-FB0E6A0E9513}") | Where-Object -FilterScript {$_ -match [regex]::Escape($SystemDriveUniqueID)}
+	$SystemProtection = ((Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SPP\Clients" -ErrorAction Ignore)."{09F7EDC5-294E-4180-AF6A-FB0E6A0E9513}") | Where-Object -FilterScript {$_ -match [regex]::Escape($SystemDriveUniqueID)}
 
 	$ComputerRestorePoint = $false
 
@@ -3204,7 +3216,7 @@ function OneDrive
 				Stop-Process -Name FileCoAuth -Force -ErrorAction Ignore
 
 				# Getting link to the OneDriveSetup.exe and its' argument(s)
-				[string[]]$OneDriveSetup = ($UninstallString -Replace("\s*/",",/")).Split(",").Trim()
+				[string[]]$OneDriveSetup = ($UninstallString -Replace("\s*/", ",/")).Split(",").Trim()
 				if ($OneDriveSetup.Count -eq 2)
 				{
 					Start-Process -FilePath $OneDriveSetup[0] -ArgumentList $OneDriveSetup[1..1] -Wait
@@ -3244,7 +3256,7 @@ public static bool MarkFileDelete (string sourcefile)
 "@
 						}
 
-						# If there are some files or folders left in %LOCALAPPDATA%\Temp
+						# If there are some files or folders left in %OneDrive%
 						if ((Get-ChildItem -Path $env:OneDrive -ErrorAction Ignore | Measure-Object).Count -ne 0)
 						{
 							if (-not ("WinAPI.DeleteFiles" -as [type]))
@@ -3265,7 +3277,6 @@ public static bool MarkFileDelete (string sourcefile)
 					}
 					else
 					{
-						# Invoke-Item doesn't work
 						Start-Process -FilePath explorer -ArgumentList $env:OneDrive
 					}
 				}
@@ -3285,24 +3296,13 @@ public static bool MarkFileDelete (string sourcefile)
 				$Script:OpenedFolders = {(New-Object -ComObject Shell.Application).Windows() | ForEach-Object -Process {$_.Document.Folder.Self.Path}}.Invoke()
 
 				# Terminate the File Explorer process
-				New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoRestartShell -Value 0 -Force
+				New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoRestartShell -PropertyType DWord -Value 0 -Force
 				Stop-Process -Name explorer -Force
-
 				Start-Sleep -Seconds 3
-
-				# Restoring closed folders
-				foreach ($Script:OpenedFolder in $Script:OpenedFolders)
-				{
-					if (Test-Path -Path $Script:OpenedFolder)
-					{
-						Invoke-Item -Path $Script:OpenedFolder
-					}
-				}
-
-				New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoRestartShell -Value 1 -Force
+				New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoRestartShell -PropertyType DWord -Value 1 -Force
 
 				# Attempt to unregister FileSyncShell64.dll and remove
-				$FileSyncShell64dlls = Get-ChildItem -Path "$OneDriveFolder\*\amd64\FileSyncShell64.dll" -Force
+				$FileSyncShell64dlls = Get-ChildItem -Path "$OneDriveFolder\*\FileSyncShell64.dll" -Force
 				foreach ($FileSyncShell64dll in $FileSyncShell64dlls.FullName)
 				{
 					Start-Process -FilePath regsvr32.exe -ArgumentList "/u /s $FileSyncShell64dll" -Wait
@@ -3330,7 +3330,6 @@ public static bool MarkFileDelete (string sourcefile)
 				{
 					if (Test-Path -Path $OpenedFolder)
 					{
-						# Invoke-Item doesn't work
 						Start-Process -FilePath explorer -ArgumentList $OpenedFolder
 					}
 				}
@@ -3385,7 +3384,7 @@ public static bool MarkFileDelete (string sourcefile)
 						# Remove invalid chars
 						[xml]$OneDriveXML = $Content -replace "ï»¿", ""
 
-						$OneDriveURL = ($OneDriveXML).root.update.amd64binary.url[-1]
+						$OneDriveURL = ($OneDriveXML).root.update.amd64binary.url
 						$DownloadsFolder = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}"
 						$Parameters = @{
 							Uri             = $OneDriveURL
@@ -3714,7 +3713,7 @@ function TempFolder
 					New-Item -Path $env:LOCALAPPDATA\Temp -ItemType Directory -Force
 				}
 
-				# If there are some files or folders left in $env:LOCALAPPDATA\Temp
+				# If there are some files or folders left in %LOCALAPPDATA\Temp%
 				if ((Get-ChildItem -Path $env:TEMP -Force -ErrorAction Ignore | Measure-Object).Count -ne 0)
 				{
 					# https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-movefileexa
@@ -4211,7 +4210,7 @@ function WaitNetworkStartup
 	{
 		"Enable"
 		{
-			if ((Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain -eq $true)
+			if ((Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain)
 			{
 				if (-not (Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Winlogon"))
 				{
@@ -4222,7 +4221,7 @@ function WaitNetworkStartup
 		}
 		"Disable"
 		{
-			if ((Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain -eq $true)
+			if ((Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain)
 			{
 				Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name SyncForegroundPolicy -Force -ErrorAction Ignore
 			}
@@ -4519,7 +4518,6 @@ function WindowsFeatures
 	{
 		"Enable"
 		{
-
 			$State = @("Disabled", "DisablePending")
 			$ButtonContent = $Localization.Enable
 			$ButtonAdd_Click = {EnableButton}
@@ -4892,7 +4890,7 @@ function WindowsCapabilities
 					DisableKeepAlive = $true
 					UseBasicParsing  = $true
 				}
-				if (-not (Invoke-RestMethod @Parameters).StatusDescription)
+				if (-not (Invoke-WebRequest @Parameters).StatusDescription)
 				{
 					return
 				}
@@ -5036,7 +5034,7 @@ function UpdateMicrosoftProducts
 		}
 		"Disable"
 		{
-			if (((New-Object -ComObject Microsoft.Update.ServiceManager).Services | Where-Object -FilterScript {$_.ServiceID -eq "7971f918-a847-4430-9279-4a52d1efe18d"}).IsDefaultAUService -eq $true)
+			if (((New-Object -ComObject Microsoft.Update.ServiceManager).Services | Where-Object -FilterScript {$_.ServiceID -eq "7971f918-a847-4430-9279-4a52d1efe18d"}).IsDefaultAUService)
 			{
 				(New-Object -ComObject Microsoft.Update.ServiceManager).RemoveService("7971f918-a847-4430-9279-4a52d1efe18d")
 			}
@@ -6372,7 +6370,7 @@ public static string GetString(uint strId)
 	WinPrtScrFolder -Default
 
 	.NOTES
-	The function will be applied only if the preset is configured to remove OneDrive,
+	The function will be applied only if the preset is configured to remove the OneDrive application, or the app was already uninstalled
 	otherwise the backup functionality for the "Desktop" and "Pictures" folders in OneDrive breaks
 
 	.NOTES
@@ -6401,15 +6399,41 @@ function WinPrtScrFolder
 	{
 		"Desktop"
 		{
-			if ((Get-Content -Path $PSScriptRoot\..\Sophia.ps1 -Encoding UTF8 -Force | Select-String -SimpleMatch "OneDrive -Uninstall").Line.StartsWith("#") -eq $false)
+			# Check how the script was invoked: via a preset or Function.ps1
+			$PresetName = (Get-PSCallStack).Position | Where-Object -FilterScript {
+				(($_.File -match ".ps1") -and ($_.File -notmatch "Functions.ps1")) -and (($_.Text -eq "WinPrtScrFolder -Desktop") -or ($_.Text -match "Invoke-Expression"))
+			}
+			if ($null -ne $PresetName)
 			{
-				$DesktopFolder = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name Desktop
-				New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}" -Type ExpandString -Value $DesktopFolder -Force
+				# Get the name of a preset (e.g Sophia.ps1) regardless it was named
+				$PresetName = Split-Path -Path $PresetName.File -Leaf
+				# Check whether a preset contains the "OneDrive -Uninstall" string uncommented out
+				$OneDriveUninstallFunctionUncommented = (Get-Content -Path $PSScriptRoot\..\$PresetName -Encoding UTF8 -Force | Select-String -SimpleMatch "OneDrive -Uninstall").Line.StartsWith("#") -eq $false
+				$OneDriveInstalled = Get-Package -Name "Microsoft OneDrive" -ProviderName Programs -Force -ErrorAction Ignore
+				if ($OneDriveUninstallFunctionUncommented -or (-not $OneDriveInstalled))
+				{
+					$DesktopFolder = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name Desktop
+					New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}" -PropertyType ExpandString -Value $DesktopFolder -Force
+				}
+				else
+				{
+					Write-Warning -Message ($Localization.OneDriveWarning -f $MyInvocation.Line)
+					Write-Error -Message ($Localization.OneDriveWarning -f $MyInvocation.Line) -ErrorAction SilentlyContinue
+				}
 			}
 			else
 			{
-				Write-Warning -Message ($Localization.OneDriveWarning -f $MyInvocation.Line)
-				Write-Error -Message ($Localization.OneDriveWarning -f $MyInvocation.Line) -ErrorAction SilentlyContinue
+				# A preset file isn't taking a part so we ignore it and check only whether OneDrive was already uninstalled
+				if (-not (Get-Package -Name "Microsoft OneDrive" -ProviderName Programs -Force -ErrorAction Ignore))
+				{
+					$DesktopFolder = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name Desktop
+					New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}" -PropertyType ExpandString -Value $DesktopFolder -Force
+				}
+				else
+				{
+					Write-Warning -Message ($Localization.OneDriveWarning -f $MyInvocation.Line)
+					Write-Error -Message ($Localization.OneDriveWarning -f $MyInvocation.Line) -ErrorAction SilentlyContinue
+				}
 			}
 		}
 		"Default"
@@ -6955,11 +6979,11 @@ function SaveRestartableApps
 	{
 		"Enable"
 		{
-			New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name RestartApps -Value 1 -Force
+			New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name RestartApps -PropertyType DWord -Value 1 -Force
 		}
 		"Disable"
 		{
-			New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name RestartApps -Value 0 -Force
+			New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name RestartApps -PropertyType DWord -Value 0 -Force
 		}
 	}
 }
@@ -7004,11 +7028,9 @@ function NetworkDiscovery
 
 	$FirewallRules = @(
 		# File and printer sharing
-		# Общий доступ к файлам и принтерам
 		"@FirewallAPI.dll,-32752",
 
 		# Network discovery
-		# Сетевое обнаружение
 		"@FirewallAPI.dll,-28502"
 	)
 
@@ -7016,7 +7038,7 @@ function NetworkDiscovery
 	{
 		"Enable"
 		{
-			if ((Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain -eq $false)
+			if (-not (Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain)
 			{
 				Set-NetFirewallRule -Group $FirewallRules -Profile Private -Enabled True
 
@@ -7026,7 +7048,7 @@ function NetworkDiscovery
 		}
 		"Disable"
 		{
-			if ((Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain -eq $false)
+			if (-not (Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain)
 			{
 				Set-NetFirewallRule -Group $FirewallRules -Profile Private -Enabled False
 			}
@@ -7830,19 +7852,61 @@ function DefaultTerminalApp
 		{
 			if (Get-AppxPackage -Name Microsoft.WindowsTerminal)
 			{
-				if (-not (Test-Path -Path HKCU:\Console\%%Startup))
+				if (-not (Test-Path -Path "HKCU:\Console\%%Startup"))
 				{
-					New-Item -Path HKCU:\Console\%%Startup -Force
+					New-Item -Path "HKCU:\Console\%%Startup" -Force
 				}
-				New-ItemProperty -Path HKCU:\Console\%%Startup -Name DelegationConsole -PropertyType String -Value "{06EC847C-C0A5-46B8-92CB-7C92F6E35CD5}" -Force
-				New-ItemProperty -Path HKCU:\Console\%%Startup -Name DelegationTerminal -PropertyType String -Value "{86633F1F-6454-40EC-89CE-DA4EBA977EE2}" -Force
+
+				# Find the current GUID of Windows Terminal
+				$PackageFullName = (Get-AppxPackage -Name Microsoft.WindowsTerminal).PackageFullName
+				Get-ChildItem -Path "HKLM:\SOFTWARE\Classes\PackagedCom\Package\$PackageFullName\Class" | ForEach-Object -Process {
+					if ((Get-ItemPropertyValue -Path $_.PSPath -Name ServerId) -eq 0)
+					{
+						New-ItemProperty -Path "HKCU:\Console\%%Startup" -Name DelegationConsole -PropertyType String -Value $_.PSChildName -Force
+					}
+
+					if ((Get-ItemPropertyValue -Path $_.PSPath -Name ServerId) -eq 1)
+					{
+						New-ItemProperty -Path "HKCU:\Console\%%Startup" -Name DelegationTerminal -PropertyType String -Value $_.PSChildName -Force
+					}
+				}
 			}
 		}
 		"ConsoleHost"
 		{
-			Remove-Item -Path HKCU:\Console\%%Startup -Force -ErrorAction Ignore
+			New-ItemProperty -Path "HKCU:\Console\%%Startup" -Name DelegationConsole -PropertyType String -Value "{00000000-0000-0000-0000-000000000000}" -Force
+			New-ItemProperty -Path "HKCU:\Console\%%Startup" -Name DelegationTerminal -PropertyType String -Value "{00000000-0000-0000-0000-000000000000}" -Force
 		}
 	}
+}
+
+<#
+	.SYNOPSIS
+	Install the latest supported Microsoft Visual C++ Redistributable 2015—2022 x64
+
+	.EXAMPLE
+	InstallVCRedistx64
+
+	.LINK
+	https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist
+
+	.NOTES
+	Machine-wide
+#>
+function InstallVCRedistx64
+{
+	$DownloadsFolder = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}"
+	$Parameters = @{
+		Uri             = "https://aka.ms/vs/16/release/vc_redist.x64.exe"
+		OutFile         = "$DownloadsFolder\vc_redist.x64.exe"
+		UseBasicParsing = $true
+		Verbose         = $true
+	}
+	Invoke-WebRequest @Parameters
+
+	Start-Process -FilePath "$DownloadsFolder\vc_redist.x64.exe" -ArgumentList "/install /passive /norestart" -Wait
+
+	Remove-Item -Path "$DownloadsFolder\vc_redist.x64.exe", "$env:TEMP\dd_vcredist_amd64_*.log" -Force -ErrorAction Ignore
 }
 #endregion System
 
@@ -7858,7 +7922,7 @@ function DefaultTerminalApp
 	WSL
 
 	.NOTES
-	To receive kernel updates, enable the Windows Update setting: "Receive updates for other Microsoft products"
+	The "Receive updates for other Microsoft products" setting will be enabled automatically to receive kernel updates
 
 	.NOTES
 	Machine-wide
@@ -7961,7 +8025,7 @@ function WSL
 	function RadioButtonChecked
 	{
 		$Global:CommandTag = $_.OriginalSource.Tag
-		if ($ButtonInstall.IsEnabled -eq $false)
+		if (-not $ButtonInstall.IsEnabled)
 		{
 			$ButtonInstall.IsEnabled = $true
 		}
@@ -8028,10 +8092,33 @@ public static extern bool SetForegroundWindow(IntPtr hWnd);
 	# Force move the WPF form to the foreground
 	$Window.Add_Loaded({$Window.Activate()})
 	$Form.ShowDialog() | Out-Null
+
+	# Receive updates for other Microsoft products when you update Windows
+	(New-Object -ComObject Microsoft.Update.ServiceManager).AddService2("7971f918-a847-4430-9279-4a52d1efe18d", 7, "")
 }
 #endregion WSL
 
 #region Start menu
+<#
+	.SYNOPSIS
+	Unpin all Start apps
+
+	.EXAMPLE
+	UnpinAllStartApps
+
+	.NOTES
+	Current user
+#>
+function UnpinAllStartApps
+{
+	$Parameters = @{
+		Path        = "$PSScriptRoot\..\Start_Layout\start.bin"
+		Destination = "$env:LOCALAPPDATA\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState"
+		Force       = $true
+	}
+	Copy-Item @Parameters
+}
+
 <#
 	.SYNOPSIS
 	How to run the Windows PowerShell shortcut
@@ -8103,8 +8190,6 @@ function RunPowerShellShortcut
 	UninstallUWPApps -ForAllUsers
 
 	.NOTES
-
-	.NOTES
 	Current user
 #>
 function UninstallUWPApps
@@ -8122,8 +8207,8 @@ function UninstallUWPApps
 	#region Variables
 	# The following UWP apps will have their checkboxes unchecked
 	$UncheckedAppxPackages = @(
-		# AMD Radeon UWP panel
-		"AdvancedMicroDevicesInc*",
+		# AMD Radeon Software
+		"AdvancedMicroDevicesInc-2.AMDRadeonSoftware",
 
 		# Intel Graphics Control Center
 		"AppUp.IntelGraphicsControlPanel",
@@ -8152,7 +8237,6 @@ function UninstallUWPApps
 		"Microsoft.XboxIdentityProvider",
 
 		# Xbox Console Companion
-		# Компаньон консоли Xbox
 		"Microsoft.XboxApp",
 
 		# Xbox
@@ -8187,7 +8271,6 @@ function UninstallUWPApps
 		"Microsoft.DesktopAppInstaller",
 
 		# Store Experience Host
-		# Узел для покупок Microsoft Store
 		"Microsoft.StorePurchaseApp",
 
 		# Notepad
@@ -8969,7 +9052,7 @@ function HEIF
 							DisableKeepAlive = $true
 							UseBasicParsing  = $true
 						}
-						if (-not (Invoke-RestMethod @Parameters).StatusDescription)
+						if (-not (Invoke-WebRequest @Parameters).StatusDescription)
 						{
 							return
 						}
@@ -9204,6 +9287,65 @@ function CheckUWPAppsUpdates
 #endregion UWP apps
 
 #region Gaming
+<#
+	.SYNOPSIS
+	Xbox Game Bar
+
+	.PARAMETER Disable
+	Disable Xbox Game Bar
+
+	.PARAMETER Enable
+	Enable Xbox Game Bar
+
+	.EXAMPLE
+	XboxGameBar -Disable
+
+	.EXAMPLE
+	XboxGameBar -Enable
+
+	.NOTES
+	Current user
+#>
+function XboxGameBar
+{
+	param
+	(
+		[Parameter(
+			Mandatory = $true,
+			ParameterSetName = "Disable"
+		)]
+		[switch]
+		$Disable,
+
+		[Parameter(
+			Mandatory = $true,
+			ParameterSetName = "Enable"
+		)]
+		[switch]
+		$Enable
+	)
+
+	switch ($PSCmdlet.ParameterSetName)
+	{
+		"Disable"
+		{
+			if ((Get-AppxPackage -Name Microsoft.XboxGamingOverlay) -or (Get-AppxPackage -Name Microsoft.GamingApp))
+			{
+				New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR -Name AppCaptureEnabled -PropertyType DWord -Value 0 -Force
+				New-ItemProperty -Path HKCU:\System\GameConfigStore -Name GameDVR_Enabled -PropertyType DWord -Value 0 -Force
+			}
+		}
+		"Enable"
+		{
+			if ((Get-AppxPackage -Name Microsoft.XboxGamingOverlay) -or (Get-AppxPackage -Name Microsoft.GamingApp))
+			{
+				New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR -Name AppCaptureEnabled -PropertyType DWord -Value 1 -Force
+				New-ItemProperty -Path HKCU:\System\GameConfigStore -Name GameDVR_Enabled -PropertyType DWord -Value 1 -Force
+			}
+		}
+	}
+}
+
 <#
 	.SYNOPSIS
 	Xbox Game Bar tips
@@ -9442,34 +9584,27 @@ function CleanupTask
 
 			$VolumeCaches = @(
 				# Delivery Optimization Files
-				# Файлы оптимизации доставки
 				"Delivery Optimization Files",
 
 				# Device driver packages
-				# Пакеты драйверов устройств
 				"Device Driver Packages",
 
 				# Previous Windows Installation(s)
-				# Предыдущие установки Windows
 				"Previous Installations",
 
 				# Setup log files
-				# Файлы журнала установки
 				"Setup Log Files",
 
 				# Temporary Setup Files
-				# Временные файлы установки
 				"Temporary Setup Files",
 
 				# Windows Update Cleanup
-				# Очистка обновлений Windows
 				"Update Cleanup",
 
 				# Microsoft Defender
 				"Windows Defender",
 
 				# Windows upgrade log files
-				# Файлы журнала обновления Windows
 				"Windows Upgrade Log Files"
 			)
 			foreach ($VolumeCache in $VolumeCaches)
@@ -9572,7 +9707,7 @@ while (`$true)
 				New-Item -Path Registry::HKEY_CLASSES_ROOT\WindowsCleanup\shell\open\command -Force
 			}
 			New-ItemProperty -Path Registry::HKEY_CLASSES_ROOT\WindowsCleanup -Name "(default)" -PropertyType String -Value "URL:WindowsCleanup" -Force
-			New-ItemProperty -Path Registry::HKEY_CLASSES_ROOT\WindowsCleanup -Name "URL Protocol" -Value "" -Force
+			New-ItemProperty -Path Registry::HKEY_CLASSES_ROOT\WindowsCleanup -Name "URL Protocol" -PropertyType String -Value "" -Force
 			New-ItemProperty -Path Registry::HKEY_CLASSES_ROOT\WindowsCleanup -Name EditFlags -PropertyType DWord -Value 2162688 -Force
 
 			# Start the "Windows Cleanup" task if the "Run" button clicked
@@ -9898,14 +10033,14 @@ function NetworkProtection
 	{
 		"Enable"
 		{
-			if ((Get-MpComputerStatus).AntivirusEnabled -eq $true)
+			if ((Get-MpComputerStatus).AntivirusEnabled)
 			{
 				Set-MpPreference -EnableNetworkProtection Enabled
 			}
 		}
 		"Disable"
 		{
-			if ((Get-MpComputerStatus).AntivirusEnabled -eq $true)
+			if ((Get-MpComputerStatus).AntivirusEnabled)
 			{
 				Set-MpPreference -EnableNetworkProtection Disabled
 			}
@@ -9955,14 +10090,14 @@ function PUAppsDetection
 	{
 		"Enable"
 		{
-			if ((Get-MpComputerStatus).AntivirusEnabled -eq $true)
+			if ((Get-MpComputerStatus).AntivirusEnabled)
 			{
 				Set-MpPreference -PUAProtection Enabled
 			}
 		}
 		"Disable"
 		{
-			if ((Get-MpComputerStatus).AntivirusEnabled -eq $true)
+			if ((Get-MpComputerStatus).AntivirusEnabled)
 			{
 				Set-MpPreference -PUAProtection Disabled
 			}
@@ -10015,14 +10150,14 @@ function DefenderSandbox
 	{
 		"Enable"
 		{
-			if ((Get-MpComputerStatus).AntivirusEnabled -eq $true)
+			if ((Get-MpComputerStatus).AntivirusEnabled)
 			{
 				setx /M MP_FORCE_USE_SANDBOX 1
 			}
 		}
 		"Disable"
 		{
-			if ((Get-MpComputerStatus).AntivirusEnabled -eq $true)
+			if ((Get-MpComputerStatus).AntivirusEnabled)
 			{
 				setx /M MP_FORCE_USE_SANDBOX 0
 			}
@@ -10553,10 +10688,10 @@ function WindowsSandbox
 	{
 		"Disable"
 		{
-			if (Get-WindowsEdition -Online | Where-Object -FilterScript {$_.Edition -eq "Professional" -or $_.Edition -like "Enterprise*"})
+			if (Get-WindowsEdition -Online | Where-Object -FilterScript {($_.Edition -eq "Professional") -or ($_.Edition -like "Enterprise*")})
 			{
 				# Checking whether x86 virtualization is enabled in the firmware
-				if ((Get-CimInstance -ClassName CIM_Processor).VirtualizationFirmwareEnabled -eq $true)
+				if ((Get-CimInstance -ClassName CIM_Processor).VirtualizationFirmwareEnabled)
 				{
 					Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart
 				}
@@ -10565,7 +10700,7 @@ function WindowsSandbox
 					try
 					{
 						# Determining whether Hyper-V is enabled
-						if ((Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent -eq $true)
+						if ((Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent)
 						{
 							Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart
 						}
@@ -10579,10 +10714,10 @@ function WindowsSandbox
 		}
 		"Enable"
 		{
-			if (Get-WindowsEdition -Online | Where-Object -FilterScript {$_.Edition -eq "Professional" -or $_.Edition -like "Enterprise*"})
+			if (Get-WindowsEdition -Online | Where-Object -FilterScript {($_.Edition -eq "Professional") -or ($_.Edition -like "Enterprise*")})
 			{
 				# Checking whether x86 virtualization is enabled in the firmware
-				if ((Get-CimInstance -ClassName CIM_Processor).VirtualizationFirmwareEnabled -eq $true)
+				if ((Get-CimInstance -ClassName CIM_Processor).VirtualizationFirmwareEnabled)
 				{
 					Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart
 				}
@@ -10591,7 +10726,7 @@ function WindowsSandbox
 					try
 					{
 						# Determining whether Hyper-V is enabled
-						if ((Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent -eq $true)
+						if ((Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent)
 						{
 							Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart
 						}
@@ -10625,6 +10760,9 @@ function WindowsSandbox
 	.NOTES
 	The valid IPv4 addresses: 1.0.0.1, 1.1.1.1, 149.112.112.112, 8.8.4.4, 8.8.8.8, 9.9.9.9
 
+	.LINK
+	https://docs.microsoft.com/en-us/windows-server/networking/dns/doh-client-support
+
 	.NOTES
 	Machine-wide
 #>
@@ -10640,16 +10778,16 @@ function DNSoverHTTPS
 		[switch]
 		$Enable,
 
-		[Parameter(Mandatory = $true)]
+		[Parameter(Mandatory = $false)]
 		[ValidateSet("1.0.0.1", "1.1.1.1", "149.112.112.112", "8.8.4.4", "8.8.8.8", "9.9.9.9")]
-		# Carve up the IPv4 addresses only
+		# Isolate the IPv4 addresses only
 		[ValidateScript({(@((Get-ChildItem -Path HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters\DohWellKnownServers).PSChildName) | Where-Object {$_ -notmatch ":"}) -contains $_})]
 		[string]
 		$PrimaryDNS,
 
-		[Parameter(Mandatory = $true)]
+		[Parameter(Mandatory = $false)]
 		[ValidateSet("1.0.0.1", "1.1.1.1", "149.112.112.112", "8.8.4.4", "8.8.8.8", "9.9.9.9")]
-		# Carve up the IPv4 addresses only
+		# Isolate the IPv4 addresses only
 		[ValidateScript({(@((Get-ChildItem -Path HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters\DohWellKnownServers).PSChildName) | Where-Object {$_ -notmatch ":"}) -contains $_})]
 		[string]
 		$SecondaryDNS,
@@ -10666,12 +10804,24 @@ function DNSoverHTTPS
 	{
 		"Enable"
 		{
-			if ((Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain -eq $false)
+			if (-not (Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain)
 			{
-				# Set the DNS servers
-				Get-NetAdapter -Physical | Get-NetIPInterface -AddressFamily IPv4 | Set-DnsClientServerAddress -ServerAddresses $PrimaryDNS, $SecondaryDNS
+				# Determining whether Hyper-V is enabled
+				# After enabling Hyper-V feature a virtual switch breing created, so we need to use different method to isolate the proper adapter
+				if (-not (Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent)
+				{
+					# Set a primary and secondary DNS servers
+					Get-NetAdapter -Physical | Get-NetIPInterface -AddressFamily IPv4 | Set-DnsClientServerAddress -ServerAddresses $PrimaryDNS, $SecondaryDNS
+					$InterfaceGuid = (Get-NetAdapter -Physical).InterfaceGuid
+				}
+				else
+				{
+					# Set a primary and secondary DNS servers
+					Get-NetRoute | Where-Object -FilterScript {$_.DestinationPrefix -eq "0.0.0.0/0"} | Get-NetAdapter | Set-DnsClientServerAddress -ServerAddresses $PrimaryDNS, $SecondaryDNS
+					$InterfaceGuid = (Get-NetRoute | Where-Object -FilterScript {$_.DestinationPrefix -eq "0.0.0.0/0"} | Get-NetAdapter).InterfaceGuid
+				}
 
-				$InterfaceGuid = (Get-NetAdapter -Physical).InterfaceGuid
+				# Set the DNS servers
 				if (-not (Test-Path -Path "HKLM:\SYSTEM\ControlSet001\Services\Dnscache\InterfaceSpecificParameters\$InterfaceGuid\DohInterfaceSettings\Doh\$PrimaryDNS"))
 				{
 					New-Item -Path "HKLM:\SYSTEM\ControlSet001\Services\Dnscache\InterfaceSpecificParameters\$InterfaceGuid\DohInterfaceSettings\Doh\$PrimaryDNS" -Force
@@ -10687,10 +10837,19 @@ function DNSoverHTTPS
 		}
 		"Disable"
 		{
-			if ((Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain -eq $false)
+			if (-not (Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain)
 			{
-				# Configure the DNS servers automatically
-				Get-NetAdapter -Physical | Get-NetIPInterface -AddressFamily IPv4 | Set-DnsClientServerAddress -ResetServerAddresses
+				# Determining whether Hyper-V is enabled
+				if (-not (Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent)
+				{
+					# Configure DNS servers automatically
+					Get-NetAdapter -Physical | Get-NetIPInterface -AddressFamily IPv4 | Set-DnsClientServerAddress -ResetServerAddresses
+				}
+				else
+				{
+					# Configure DNS servers automatically
+					Get-NetRoute | Where-Object -FilterScript {$_.DestinationPrefix -eq "0.0.0.0/0"} | Get-NetAdapter | Set-DnsClientServerAddress -ResetServerAddresses
+				}
 
 				Remove-Item -Path "HKLM:\SYSTEM\ControlSet001\Services\Dnscache\InterfaceSpecificParameters\*" -Recurse -Force -ErrorAction Ignore
 			}
@@ -11758,7 +11917,7 @@ public static void PostMessage()
 			{
 				if (Test-Path -Path $Script:OpenedFolder)
 				{
-					Invoke-Item -Path $Script:OpenedFolder
+					Start-Process -FilePath explorer -ArgumentList $Script:OpenedFolder
 				}
 			}
 		}
