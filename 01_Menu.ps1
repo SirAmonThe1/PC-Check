@@ -34,23 +34,23 @@ $Opt0 = "PC-Check neu installieren / updaten"
 
 #.ps1 Dateien je Option
 
-$Skript1 = "01_Startinfos.ps1"
-$Skript2 = ""
-$Skript3 = ""
-$Skript4 = ""
-$Skript5 = ""
-$Skript6 = ""
+$Skript1 = "10_Systeminfo_erstellen.ps1"
+$Skript2 = "20_Grundeinrichtung.ps1"
+$Skript3 = "21_Grundeinrichtung - Admin.ps1"
+$Skript4 = "30_PCCheck_Part1_Vorbereitung.ps1"
+$Skript5 = "31_PCCheck_Part2.ps1"
+$Skript6 = "40_Abschlussbericht_Bereinugung.ps1"
 $Skript7 = "11_SWtoChoco.ps1"
 $Skript8 = ""
 $Skript9 = ""
-$Skript0 = ""
+$Skript0 = "00_Start.ps1"
 
 Write-Host ""
 Write-Host ""
 Write-Host ""
 Write-Host "###############"
 Write-Host ""
-Write-Host "PC-Check Menue"
+Write-Host "PC-Check Menü"
 Write-Host ""
 Write-Host "###############"
 Write-Host ""
@@ -96,7 +96,8 @@ elseif ( $opt -eq 9 ) { $result = $Opt9
 
 ""
 $result
-$result = $skriptPath + $Skript         
+$result = $skriptPath + $Skript 
+if ( $opt -eq 0 ) { $result = $setupPath + $Skript }        
 $result                                #Debugging
 
 

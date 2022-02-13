@@ -1,3 +1,122 @@
+
+
+
+
+
+
+	
+	#####################
+	# Windows Update
+	#####################
+
+function Start-WindowsUpdatex {
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Windows-Update"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	Write-Host 
+
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
+	Install-Module -Name PSWindowsUpdate -Force -allowclobber
+    cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
+	
+	Write-Host
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Checking for Windows Updates"
+	Write-Host -ForegroundColor DarkGray "This will take a while ..."
+	Write-Host
+	$updates = Get-WUlist -MicrosoftUpdate
+	if ($updates) {
+		Write-Host -BackgroundColor Black -ForegroundColor Cyan ">>> Updates found:"
+		Write-Host ($updates | Format-Table | Out-String)
+		Write-Host "--> ausgenommene Updates mit folgenden Wörtern im Titel: Lenovo"
+		Get-WindowsUpdate -Install -MicrosoftUpdate -AcceptAll -IgnoreReboot -NotTitle "Lenovo"
+	} else {
+		Write-Host -ForegroundColor Green ">>> No Windows Updates available!"
+	}
+	Write-Host
+	
+}
+
+
+
+
+
+
+
+	#####################
+	# Windows-Einstellungen
+	#####################
+
+
+function Set-WindowsSettings {
+	
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Windows-Einstellungen"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	Write-Host
+	
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-MultiMonitorTaskbarMode "2""
+    Set-MultiMonitorTaskbarMode "2"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+    
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-DisableLockScreen $true"
+    Set-DisableLockScreen $true
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+    
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-DisableAeroShake $true"
+    Set-DisableAeroShake $true
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+    
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-OtherWindowsStuff z.B Taskbar Glom"
+    Set-OtherWindowsStuff
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Disable-BingSearchInStartMenu"
+	Disable-BingSearchInStartMenu
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Enable Photo Viewer"
+	reg import $registryPath\enable-photo-viewer.reg
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Remove 3D Objects from This PC"
+	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
+	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+
+	### Energieeinstellungen setzen
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Schnellstart deaktivieren"
+	powercfg /hibernate off 
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+
+	# powercfg -setactive 381b4222-f694-41f0-9685-ff5bb260df2e  # (Ausbalanciert)
+	# powercfg -duplicatescheme  a1841308-3541-4fab-bc81-f71556f20b4a  # (Energiesparmodus)
+	# powercfg -duplicatescheme  8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c  # (Hoechstleistung)
+	powercfg -duplicatescheme  94bd7b55-a0ae-4c21-9de4-96bebb1ba1d6  # (Ultimative Leistung)
+	Write-Host
+
+}
+
+
+
+
+
+
+
+
+
+
 function Install-WindowsFeature($feature) {
     $featureState = Get-WindowsOptionalFeature -Online -FeatureName $feature
     if ($feature -ne "Enabled") {
