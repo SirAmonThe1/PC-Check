@@ -1,3 +1,19 @@
+#clear      #Debugging
+
+#Version
+#2022-02-12
+
+
+#Settings
+
+#$setupPath = "C:/!_Checkup_Install/"
+$setupPath = "D:/Coding/01_GitHub/PC-Check/"       #Debugging
+$skriptPath = $setupPath + "00_Skripte/"
+$menuPS1 = $setupPath + "01_Menu.ps1"
+
+
+#Skript
+
 
 write-host -BackgroundColor Green -ForegroundColor White "Willkommen beim PC-Check - Startinfos"
 write-host
@@ -107,14 +123,19 @@ do{
     Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell"
 	
 	} else {
-		Write-Host -ForegroundColor DarkGray ($PSWU | Format-Table | Out-String)
-		Write-Host -ForegroundColor Magenta ">>> Bitte PSWindowsUpdate installieren"
-		    [console]::beep(2000,250)
-			[console]::beep(2000,250)
-		Read-Host -Prompt "Fertig installiert? [Enter]" 
-		Write-Output "Get-WindowsUpdate"
-		$PSWU = Get-Package -Name PSWindowsUpdate
-			
+		cup PSWindowsUpdate -y -r --force
+        $PSWU = Get-Package -Name PSWindowsUpdate
+        if ($PSWU.Version -eq "2.2.0.2") {
+            Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell"
+		} else {
+            Write-Host -ForegroundColor DarkGray ($PSWU | Format-Table | Out-String)
+		    Write-Host -ForegroundColor Magenta ">>> Bitte PSWindowsUpdate installieren"
+		        [console]::beep(2000,250)
+			    [console]::beep(2000,250)
+		    Read-Host -Prompt "Fertig installiert? [Enter]" 
+		    Write-Output "Get-WindowsUpdate"
+		    $PSWU = Get-Package -Name PSWindowsUpdate
+			}
 	    [console]::beep(2000,250)
 		[console]::beep(2000,250)
 		Add-WUServiceManager -ServiceID "7971f918-a847-4430-9279-4a52d1efe18d" -AddServiceFlag 7
@@ -339,7 +360,7 @@ Write-Host
 
 
 
-# Exit
-Write-Host 
-Write-Host -ForegroundColor Yellow "Press any key to exit ..."
-$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+#zurück zum Menü
+
+Read-Host "Zurück zum Menü? [ENTER]"
+& $menuPS1

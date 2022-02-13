@@ -1,3 +1,22 @@
+#Version
+#2022-02-12
+
+
+# Settings
+$repoUri = 'https://github.com/SirAmonThe1/PC-Check.git'
+#$setupPath = "C:/!_Checkup_Install/"
+$setupPath = "D:\Coding\01_GitHub\PC-Check\"       #Debugging
+$menuPS1 = "C:/!_Checkup_Install/01_Menu.ps1"
+
+
+
+#Adminprozess
+gsudo
+
+
+#Skript
+
+
 # Begrueßung
 
 write-host -BackgroundColor Green -ForegroundColor White "Willkommen beim PC-Check"
@@ -17,9 +36,7 @@ if (-not (Test-Connection -ComputerName www.google.com -Quiet)){
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Internetverbindung steht!"
 }
 
-# Settings
-$repoUri = 'https://github.com/SirAmonThe1/PC-Check.git'
-$setupPath = "C:/!_Checkup_Install"
+
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "$setupPath fuer die benoetigten Dateien bereinigen"
 
@@ -79,71 +96,6 @@ Write-Host
 
 # Skript auswaehlen
 
-# $sel = "01_Startinfos", "10_Instal-Skript", "20_Checkup-Skript_BASIC", "21_Checkup-Skript_CHECK", "30_Abschluss", "TESTSKRIPT" | Out-GridView -PassThru -Title "Arbeitsschritt waehlen"
+ii $setupPath
 
-do{
-
-Add-Type -AssemblyName System.Windows.Forms
-Add-Type -AssemblyName System.Drawing
-
-$form = New-Object System.Windows.Forms.Form
-$form.Text = 'Waehle einen Arbeitsschritt'
-$form.Size = New-Object System.Drawing.Size(300,200)
-$form.StartPosition = 'CenterScreen'
-
-$okButton = New-Object System.Windows.Forms.Button
-$okButton.Location = New-Object System.Drawing.Point(75,120)
-$okButton.Size = New-Object System.Drawing.Size(75,23)
-$okButton.Text = 'OK'
-$okButton.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$form.AcceptButton = $okButton
-$form.Controls.Add($okButton)
-
-$cancelButton = New-Object System.Windows.Forms.Button
-$cancelButton.Location = New-Object System.Drawing.Point(150,120)
-$cancelButton.Size = New-Object System.Drawing.Size(75,23)
-$cancelButton.Text = 'Abbrechen'
-$cancelButton.DialogResult = [System.Windows.Forms.DialogResult]::Cancel
-$form.CancelButton = $cancelButton
-$form.Controls.Add($cancelButton)
-
-$label = New-Object System.Windows.Forms.Label
-$label.Location = New-Object System.Drawing.Point(10,20)
-$label.Size = New-Object System.Drawing.Size(280,20)
-$label.Text = 'Bitte waehle einen Arbeitsschrittr:'
-$form.Controls.Add($label)
-
-$listBox = New-Object System.Windows.Forms.ListBox
-$listBox.Location = New-Object System.Drawing.Point(10,40)
-$listBox.Size = New-Object System.Drawing.Size(260,20)
-$listBox.Height = 90
-
-[void] $listBox.Items.Add('01_Startinfos')
-[void] $listBox.Items.Add('10_Instal-Skript')
-[void] $listBox.Items.Add('20_Checkup-Skript_BASIC')
-[void] $listBox.Items.Add('21_Checkup-Skript_CHECK')
-[void] $listBox.Items.Add('30_Abschluss')
-[void] $listBox.Items.Add('TESTSKRIPT')
-
-$form.Controls.Add($listBox)
-
-$form.Topmost = $true
-
-$result = $form.ShowDialog()
-
-if ($result -eq [System.Windows.Forms.DialogResult]::OK)
-{
-    $x = $listBox.SelectedItem
-}
-
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Gewaehlt: $x"
-write-host
-
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Arbeitsverzeichnis: $setupPath"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Starte .bat-Datei: $setupPath\$x.ps1"
-start-process $setupPath\$x.bat -WindowStyle Maximized
-
-write-host
-$confirmation = Read-Host ">>> Weiteres Skript waehlen? [y/n]"
-
-} while ($confirmation -eq 'y')
+& '$menuPS1'
