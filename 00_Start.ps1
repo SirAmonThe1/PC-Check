@@ -4,8 +4,8 @@
 
 # Settings
 $repoUri = 'https://github.com/SirAmonThe1/PC-Check.git'
-#$setupPath = "C:/!_Checkup_Install/"
-$setupPath = "D:\Coding\01_GitHub\PC-Check\"       #Debugging
+$setupPath = "C:/!_Checkup_Install/"
+#$setupPath = "D:\Coding\01_GitHub\PC-Check\"       #Debugging
 $menuPS1 = "C:/!_Checkup_Install/01_Menu.ps1"
 
 

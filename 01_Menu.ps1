@@ -6,8 +6,8 @@
 
 #Settings
 
-#$setupPath = "C:/!_Checkup_Install/"
-$setupPath = "D:/Coding/01_GitHub/PC-Check/"       #Debugging
+$setupPath = "C:/!_Checkup_Install/"
+#$setupPath = "D:/Coding/01_GitHub/PC-Check/"       #Debugging
 $skriptPath = $setupPath + "00_Skripte/"
 
 

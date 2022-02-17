@@ -7,8 +7,8 @@
 #Settings
 
 $repoUrl = "https://raw.githubusercontent.com/SirAmonThe1/PC-Check/master/00_Start.ps1"
-#$setupPath = "C:/!_Checkup_Install/"
-$setupPath = "D:/Coding/01_GitHub/PC-Check/"       #Debugging
+$setupPath = "C:/!_Checkup_Install/"
+#$setupPath = "D:/Coding/01_GitHub/PC-Check/"       #Debugging
 $skriptPath = $setupPath + "00_Skripte/"
 $menuPS1 = $setupPath + "01_Menu.ps1"
 
