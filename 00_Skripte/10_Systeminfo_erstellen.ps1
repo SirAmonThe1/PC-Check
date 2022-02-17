@@ -33,6 +33,35 @@ Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit 
 gsudo
 write-host
 
+
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
+$scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
+Write-Host $scriptFolder
+
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "Install Pfad"
+Write-Host $setupPath
+
+if (Test-Path -Path $setupPath\10_modules) {
+    Get-ChildItem $setupPath\10_modules\*.psm1 | Import-Module -Force
+	write-host
+	write-host "Module importiert aus Install Pfad"
+} else {
+
+    #Zurück zum Menü
+
+	write-host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte zuerst das Skript installieren im Menü"
+	& $menuPS1
+}
+write-host
+
+
+
+
+
+
+
+
 # Leistungsindex 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- Leistungsindex erstellen"
 Write-Host
