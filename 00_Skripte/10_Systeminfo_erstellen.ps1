@@ -61,8 +61,18 @@ clear
 
 
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 
@@ -82,13 +92,33 @@ Write-Host
     get-sysWindows
     get-sysWindowsLicense
 
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
     get-sysOfficeLicense
 
-Write-Host "############################################################"
-Write-Host "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 
 
@@ -103,8 +133,18 @@ get-sysPSWindowsUpdateVersion
 
 
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 
@@ -115,8 +155,18 @@ Get-WUList | Format-Table
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Benutzerkonten"
@@ -126,8 +176,18 @@ Get-LocalUser | Format-Table
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- BIOS"
@@ -137,8 +197,18 @@ Get-ComputerInfo | Format-List -Property BiosManufacturer,BiosName,BiosVersion,B
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Hardware"
@@ -192,8 +262,18 @@ Get-CimInstance -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=$true
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Treiber"
@@ -204,16 +284,36 @@ Get-WmiObject Win32_PnPSignedDriver | Where-Object {$_.DeviceClass -ne $null} | 
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
 
 
 
+
+
+show-Trenner
+
+
+
+
+
+
+
+
+Get-sysVirenschutz
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installierte Programme"
@@ -222,8 +322,18 @@ Write-Host
 Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
 
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Systempower Bericht"
@@ -232,17 +342,20 @@ Write-Host
 powercfg /systempowerreport /output "C:\!_Checkup\02_Systempowerreport_1_fuer_$PCname.html"
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
-
-
-#Virenschutz erfragen
-Get-sysVirenshutz
-
-
-
 
 
 # Leistungsindex abrufen
@@ -253,8 +366,18 @@ Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Leistungsindex Erge
 gwmi win32_winsat | fl *score
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 
@@ -262,6 +385,17 @@ Write-Host
 
     [console]::beep(2000,250)
     [console]::beep(2000,250)
+
+
+    
+
+
+
+
+show-TrennerFertig
+
+
+
 
 
 

@@ -47,7 +47,7 @@ function get-sysOfficeLicense {
 
 
 
-function Get-sysVirenshutz {
+function Get-sysVirenschutz {
 
     Write-Host
     Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Virenschutz"

@@ -1,42 +1,65 @@
-write-host -BackgroundColor Green -ForegroundColor White "Willkommen beim PC-Check - Install-Skript"
+#clear      #Debugging
+
+#Version
+#2022-02-12
+
+
+#Settings
+
+$repoUrl = "https://raw.githubusercontent.com/SirAmonThe1/PC-Check/master/00_Start.ps1"
+#$setupPath = "C:/!_Checkup_Install/"
+$setupPath = "D:/Coding/01_GitHub/PC-Check/"       #Debugging
+$skriptPath = $setupPath + "00_Skripte/"
+$menuPS1 = $setupPath + "01_Menu.ps1"
+
+$modulesPath = $setupPath + "10_modules"
+$registryPath = $setupPath + "11_registry"
+$softwarePath = $setupPath + "12_software"
+$sophiaPath = $softwarePath + "/Sophia_Script"
+
+$PCname = hostname
+
+
+#Skript
+
+
+
+write-host -BackgroundColor Green -ForegroundColor White "Bereinigung"
 write-host
 
-# Settings
-Set-ExecutionPolicy Bypass -Scope Process -Force
+    # Settings
+    Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit Admin-Rechten ausfuehren"
-gsudo
-write-host
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit Admin-Rechten ausfuehren"
+    gsudo
+    write-host
 
-$setupPath = "C:/!_Checkup_Install"
-$modulesPath = "C:/!_Checkup_Install/10_modules"
-$registryPath = "C:/!_Checkup_Install/11_registry"
-$softwarePath = "C:/!_Checkup_Install/12_software"
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
-$scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
-Write-Host $scriptFolder
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
+    $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
+    Write-Host $scriptFolder
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Install Pfad"
-Write-Host $setupPath
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "Install Pfad"
+    Write-Host $setupPath
 
-if (Test-Path -Path $setupPath\10_modules) {
-    Get-ChildItem $setupPath\10_modules\*.psm1 | Import-Module -Force
-	write-host
-	write-host "Importiert aus Install Pfad"
-} else {
-	write-host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte zuerst das Start-Skript '00_Start.ps1' ausfueheren"
-	$confirmation = Read-Host ">>> jetzt ausfuehren? [y/n]"
-    if ($confirmation -eq 'y') {
-		iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/SirAmonThe1/PC-Check/master/00_Start.ps1'))
-	} else {
-		read-host ">>> beliebige Taste duercken zum beenden...   "
-		EXIT
-	}
-}
-write-host
+    if (Test-Path -Path $setupPath\10_modules) {
+        Get-ChildItem $setupPath\10_modules\*.psm1 | Import-Module -Force
+	    write-host
+	    write-host "Module importiert aus Install Pfad"
+    } else {
+
+        #Zurück zum Menü
+
+	    write-host
+	    Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte zuerst das Skript installieren im Menü"
+	    & $menuPS1
+    }
+    write-host
+
+
+
+
 
 #### Virenscan
 
@@ -46,8 +69,18 @@ Write-Host
 Read-Host ">>> Lauuft der Scan? [Enter]"
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+	
 write-host
 
 # Leistungsindex 
@@ -59,71 +92,81 @@ winsat formal
 
 clear
 
-# Logging starten
-Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wird gestartet"
 
-$PCname = hostname
-$date0 = Get-Date
-$LogName = "Infoblatt_fuer_$PCname"
 
-start-transcript C:\!_Checkup\$LogName.txt
+	#####################
+	# Vorbereitung
+	#####################
+
+
+    # Logging starten
+    Start-logging "Log_40_fuer_$PCname"         #   "LogName"
+
+
+	#####################
+	# Erhebung
+	#####################
+
+
+
+    # PC-Informationen
+
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- Systeminfos"
+    Write-Host
+
+    get-sysWindows
+    get-sysWindowsLicense
+
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
+
+    get-sysOfficeLicense
+
+    Write-Host
+
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
+
+    Write-Host
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- ausstehende Windows Updates"
+    Write-Host
+
+    Get-WUList | Format-Table
+
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "---- $LogName"
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-
-Write-Host
 
 
 
-# PC-Informationen
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- Systeminfos"
-Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Windows"
-Write-Host
 
-Get-ComputerInfo |
-  Select-Object -Property OsName,OsArchitecture,OsBuildNumber,OsLanguage,CsPCSystemType,OsSerialNumber,WindowsInstallDateFromRegistry
 
-Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>>  Windows Lizenz-Auslesen (evtl. nicht erfolgreich)"
-Write-Host
+show-Trenner
 
-wmic path softwarelicensingservice get OA3xOriginalProductKey
 
-Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
 
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Microsoft Office Lizenz auslesen"
-Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> 32-Bit Systeme"
-cscript "C:\Program Files (x86)\Microsoft Office\Office16\OSPP.VBS" /dstatus
-write-host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> 64-Bit Systeme"
-cscript "C:\Program Files\Microsoft Office\Office16\OSPP.VBS" /dstatus
 
-Write-Host
-
-Write-Host "############################################################"
-Write-Host "############################################################"
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- ausstehende Windows Updates"
-Write-Host
-
-Get-WUList | Format-Table
-
-Write-Host
-
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Benutzerkonten"
@@ -133,8 +176,18 @@ Get-LocalUser | Format-Table
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- BIOS"
@@ -144,8 +197,18 @@ Get-ComputerInfo | Format-List -Property BiosManufacturer,BiosName,BiosVersion,B
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Hardware"
@@ -205,8 +268,18 @@ Get-CimInstance -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=$true
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Treiber"
@@ -217,68 +290,37 @@ Get-WmiObject Win32_PnPSignedDriver | Where-Object {$_.DeviceClass -ne $null} | 
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Virenschutz"
-Write-Host
 
 
-    function Get-AntiVirusProduct {
-    [CmdletBinding()]
-    param (
-    [parameter(ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$true)]
-    [Alias('name')]
-    $computername=$env:computername
 
 
-    )
 
-    #$AntivirusProducts = Get-WmiObject -Namespace "root\SecurityCenter2" -Query $wmiQuery  @psboundparameters # -ErrorVariable myError -ErrorAction 'SilentlyContinue' # did not work            
-     $AntiVirusProducts = Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct  -ComputerName $computername
-
-    $ret = @()
-    foreach($AntiVirusProduct in $AntiVirusProducts){
-        #Switch to determine the status of antivirus definitions and real-time protection.
-        #The values in this switch-statement are retrieved from the following website: http://community.kaseya.com/resources/m/knowexch/1020.aspx
-        switch ($AntiVirusProduct.productState) {
-        "262144" {$defstatus = "Up to date" ;$rtstatus = "Disabled"}
-            "262160" {$defstatus = "Out of date" ;$rtstatus = "Disabled"}
-            "266240" {$defstatus = "Up to date" ;$rtstatus = "Enabled"}
-            "266256" {$defstatus = "Out of date" ;$rtstatus = "Enabled"}
-            "393216" {$defstatus = "Up to date" ;$rtstatus = "Disabled"}
-            "393232" {$defstatus = "Out of date" ;$rtstatus = "Disabled"}
-            "393488" {$defstatus = "Out of date" ;$rtstatus = "Disabled"}
-            "397312" {$defstatus = "Up to date" ;$rtstatus = "Enabled"}
-            "397328" {$defstatus = "Out of date" ;$rtstatus = "Enabled"}
-            "397584" {$defstatus = "Out of date" ;$rtstatus = "Enabled"}
-        default {$defstatus = "Unknown" ;$rtstatus = "Unknown"}
-            }
-
-        #Create hash-table for each computer
-        $ht = @{}
-        $ht.Computername = $computername
-        $ht.Name = $AntiVirusProduct.displayName
-        $ht.'Product GUID' = $AntiVirusProduct.instanceGuid
-        $ht.'Product Executable' = $AntiVirusProduct.pathToSignedProductExe
-        $ht.'Reporting Exe' = $AntiVirusProduct.pathToSignedReportingExe
-        $ht.'Definition Status' = $defstatus
-        $ht.'Real-time Protection Status' = $rtstatus
+show-Trenner
 
 
-        #Create a new object for each computer
-        $ret += New-Object -TypeName PSObject -Property $ht 
-    }
-    Return $ret
-} 
-Get-AntiVirusProduct | Format-List
+
+
+
+
+
+
+Get-sysVirenschutz
 
 
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installierte Programme"
@@ -287,8 +329,18 @@ Write-Host
 Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
 
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Systempower Bericht"
@@ -297,8 +349,18 @@ Write-Host
 powercfg /systempowerreport /output "C:\!_Checkup\02_Systempowerreport_1_fuer_$PCname.html"
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 
@@ -313,8 +375,18 @@ Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Leistungsindex Erge
 gwmi win32_winsat | fl *score
 Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 
@@ -322,17 +394,18 @@ Write-Host
 
     [console]::beep(2000,250)
     [console]::beep(2000,250)
+
+
+
+
 
 # Logging beenden
-Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wird beendet"
-
-stop-transcript
-Write-Host
+Stop-logging 
 
 
 
 
-# Exit
-Write-Host 
-Write-Host -ForegroundColor Yellow "Press any key to exit ..."
-$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+#zurück zum Menü
+
+Read-Host "Zurück zum Menü? [ENTER]"
+& $menuPS1

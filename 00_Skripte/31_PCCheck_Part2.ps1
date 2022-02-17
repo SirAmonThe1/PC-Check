@@ -1,81 +1,82 @@
-write-host -BackgroundColor Green -ForegroundColor White "Willkommen beim PC-Check - Install-Skript"
-write-host
+#clear      #Debugging
 
-# Settings
-Set-ExecutionPolicy Bypass -Scope Process -Force
+#Version
+#2022-02-12
 
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit Admin-Rechten ausfuehren"
-gsudo
-write-host
+#Settings
 
-$setupPath = "C:/!_Checkup_Install"
-$modulesPath = "C:/!_Checkup_Install/10_modules"
-$registryPath = "C:/!_Checkup_Install/11_registry"
-$softwarePath = "C:/!_Checkup_Install/12_software"
+$repoUrl = "https://raw.githubusercontent.com/SirAmonThe1/PC-Check/master/00_Start.ps1"
+#$setupPath = "C:/!_Checkup_Install/"
+$setupPath = "D:/Coding/01_GitHub/PC-Check/"       #Debugging
+$skriptPath = $setupPath + "00_Skripte/"
+$menuPS1 = $setupPath + "01_Menu.ps1"
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
-$scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
-Write-Host $scriptFolder
-
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Install Pfad"
-Write-Host $setupPath
-
-if (Test-Path -Path $setupPath\10_modules) {
-    Get-ChildItem $setupPath\10_modules\*.psm1 | Import-Module -Force
-	write-host
-	write-host "Importiert aus Install Pfad"
-} else {
-	write-host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte zuerst das Start-Skript '00_Start.ps1' ausfueheren"
-	$confirmation = Read-Host ">>> jetzt ausfuehren? [y/n]"
-    if ($confirmation -eq 'y') {
-		iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/SirAmonThe1/PC-Check/master/00_Start.ps1'))
-	} else {
-		read-host ">>> beliebige Taste duercken zum beenden...   "
-		EXIT
-	}
-}
-write-host
-
-# Logging starten
-Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wird gestartet"
+$modulesPath = $setupPath + "10_modules"
+$registryPath = $setupPath + "11_registry"
+$softwarePath = $setupPath + "12_software"
+$sophiaPath = $softwarePath + "/Sophia_Script"
 
 $PCname = hostname
-$LogName = "Checkup-Log_fuer_$PCname_(Checkup)"
 
-start-transcript C:\!_Checkup\$LogName.txt
-Write-Host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "---- $LogName"
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Ausfuehrung des Skriptes in $scriptFolder"
-Write-Host
-
-# PC-Rename
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- PC-Rename"
-Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Aktueller Computername"
-
-hostname
-
-Write-Host
+#Skript
 
 
 
-# Import all Modules
 
-Get-ChildItem $modulesPath\*.psm1 | Import-Module -Force
+    write-host -BackgroundColor Green -ForegroundColor White "Willkommen beim PC-Check - Install-Skript"
+    write-host
 
-    
+    # Settings
+    Set-ExecutionPolicy Bypass -Scope Process -Force
+
+
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit Admin-Rechten ausfuehren"
+    gsudo
+    write-host
+
+
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
+    $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
+    Write-Host $scriptFolder
+
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "Install Pfad"
+    Write-Host $setupPath
+
+    if (Test-Path -Path $setupPath\10_modules) {
+        Get-ChildItem $setupPath\10_modules\*.psm1 | Import-Module -Force
+	    write-host
+	    write-host "Module importiert aus Install Pfad"
+    } else {
+
+        #Zurück zum Menü
+
+	    write-host
+	    Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte zuerst das Skript installieren im Menü"
+	    & $menuPS1
+    }
+    write-host
+
+
+
+
+
+
+
 	#####################
 	# Vorbereitung
 	#####################
+
+
+    # Logging starten
+    Start-logging "Log_31_fuer_$PCname"         #   "LogName"
+
+
+    # PC-Rename
+    Request-RenamePC
+
+
 	
 
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
@@ -87,50 +88,51 @@ Get-ChildItem $modulesPath\*.psm1 | Import-Module -Force
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
 
 
-#####################
-# Windows Update
-#####################
-	
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "# ----- Windows-Update"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan  "****"
-	Write-Host
 
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Checking for Windows Updates"
-	Write-Host -ForegroundColor DarkGray "This will take a while ..."
-	Write-Host
-	$updates = Get-WUlist -MicrosoftUpdate
-	if ($updates) {
-		Write-Host -BackgroundColor Black -ForegroundColor Cyan ">>> Updates found:"
-		Write-Host ($updates | Format-Table | Out-String)
-		Write-Host "--> ausgenommene Updates mit folgenden WÃ¶rtern im Titel: Lenovo"
-		Get-WindowsUpdate -Install -MicrosoftUpdate -AcceptAll -IgnoreReboot -NotTitle "Lenovo"
-	} else {
-		Write-Host -ForegroundColor Green ">>> No Windows Updates available!"
-	}
-	Write-Host
+	#####################
+	# Windows Update
+	#####################
+
+	Start-WindowsUpdatex
+	
+	
 	
 	
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 write-host
 
 
 #### benoetigte SW install
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installiere notwendige Software fuer den Checkup"
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>>Pakete: hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree"
-write-host
 
-cup hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree --ignore-checksums --limit-output -y
+
+install-software "PCCheck"                    # Basic, optional, admin, pccheck
+
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 write-host
 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Schrit fuer Schritt Checkup"
@@ -142,8 +144,18 @@ start-process ccleaner -windowstyle Maximized
 Read-Host ">>> Mit CCleaner fertig aufgeraeumt? [Enter]"
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 write-host
 
 #### HWInfo
@@ -155,8 +167,18 @@ start-process hwinfo -windowstyle Maximized
 Read-Host ">>> Report unter C:\!_Checkup erstellt? [Enter]"
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+	
 write-host
 
 #### smart test
@@ -189,8 +211,18 @@ write-host
 get-content "$DiskInfoLoc\DiskInfo.txt" | select-string "model" -Context 4,25
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+	
 write-host
 
 #### Festplatte auf uebergroÃŸe Dateien pruefen
@@ -202,31 +234,20 @@ Write-Host -BackgroundColor Blue -ForegroundColor White ">>> TreeSizeFree wird g
 start-process "C:\Program Files (x86)\JAM Software\TreeSize Free\treesizefree.exe" -windowstyle Maximized -verb runas
 
 write-host
-<# Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Auflistung aller Ordner ueber 3 GB im Verzeichniss C:\Users\$Env:USERNAME"
-Write-Host -ForegroundColor DarkGray "Sammeln der Infos kann etwas dauern ..."
-
-Get-DirectoryTreeSize -BasePath "C:\Users\$Env:USERNAME" | Sort-Object 'Size(Bytes)' -Descending | Select 'Size(GB)', 'FullPath'  | Where-Object {$_.'Size(GB)' -gt 3}
-
-do{
-	$confirmation = Read-Host ">>> Weitere Festplatte geprueft werden? [y/n]"
-    if ($confirmation -eq 'n') {
-        Write-Host
-        break
-        }
-    if ($confirmation -eq 'y') {
-		$LWBuchstabe = Read-Host ">>> Von welcher Festplatte soll noch geprueft werden? Bitte Laufwerksbuchstaben eingeben"
-		Write-Host
-		Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Auflistung aller Ordner ueber 3 GB auf der Festplatte ${LWBuchstabe}:\"
-		write-host
-		Get-DirectoryTreeSize -BasePath "${LWBuchstabe}:\" | Sort-Object 'Size(Bytes)' -Descending | Select 'Size(GB)', 'FullPath'  | Where-Object {$_.'Size(GB)' -gt 3}
-		write-host
-	}
-}while($confirmation -eq 'n') #>
-
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 write-host
 
 
@@ -260,8 +281,18 @@ $confirmation = Read-Host ">>> Hat der Scan fehlgeschlagen? [y/n]"
 	}
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+	
 write-host
 
 #### ram test + ergebnisse abrufen
@@ -274,8 +305,18 @@ Get-winevent -FilterHashTable @{logname='System'; id='1101'}|?{$_.providername -
 Get-winevent -FilterHashTable @{logname='System'; id='1201'}|?{$_.providername -match 'MemoryDiagnostics-Results'}
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 write-host
 
 
@@ -293,8 +334,18 @@ start-process $softwarePath\DriverStoreExplorer\rapr.exe -windowstyle Maximized
 Read-Host ">>> Geprueft? [Enter]"
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+	
 write-host
 
 #### adwcleaner check
@@ -311,8 +362,18 @@ start-process adwcleaner -windowstyle Maximized
 Read-Host ">>> Geprueft? [Enter]"
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+	
 write-host
 
 
@@ -320,18 +381,35 @@ write-host
 #### benoetigte SW deinstall
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Deinstalliere temporaer fuer den Checkup installierte Software"
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: " $SW_PCCheck
 write-host
 
-choco uninstall hwinfo.install crystaldiskinfo.install ccleaner ccenhancer treesizefree --ignore-checksums --limit-output -y
+choco uninstall $SW_PCCheck --ignore-checksums --limit-output -y
 
 write-host	
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 write-host
 
     [console]::beep(2000,250)
     [console]::beep(2000,250)
+
+
+
+
+
+
+
 
 	# Logging beenden
 Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Logging wird beendet"
@@ -346,15 +424,18 @@ start-process adwcleaner -windowstyle Maximized
 
 Read-Host ">>> Geprueft? [Enter]"
 
-write-host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Fertig"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	write-host
+
+
+
+
+
+show-TrennerFertig
+
+
+
+
+
+
 	
 	# Reboot
 	Write-Host -BackgroundColor Red -ForegroundColor White "##### --- REBOOT STATUS"
@@ -364,3 +445,12 @@ write-host
 	if ($Reboot -like "*localhost: Reboot is not required*") {
 		Write-Host -ForegroundColor Green ">>> No reboot required"
 	} 
+
+
+
+
+
+        #zurück zum Menü
+
+        Read-Host "Zurück zum Menü? [ENTER]"
+        & $menuPS1

@@ -106,6 +106,17 @@ write-host
 
 
 
+
+
+show-Trenner
+
+
+
+
+
+
+
+
 	
 	
 	#####################
@@ -125,6 +136,17 @@ write-host
 
 
 
+show-Trenner
+
+
+
+
+
+
+
+
+
+
 	
 	#####################
 	# SOFIA Skript
@@ -132,6 +154,17 @@ write-host
 	
 
     Set-SophiaSkriptAdmin ""                 # Admin triggert Admin-Einstellungen
+
+
+
+
+
+
+
+show-Trenner
+
+
+
 
 
 
@@ -150,25 +183,8 @@ write-host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
 	Write-Host
 	
-    # Software
-
-
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Wichtige Software wird installiert"
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: " $SW_Basic
-	Write-Host
-	
-	# Installationen 
-	
-	cup  $SW_Basic --ignore-checksums --limit-output -y
-    foreach ($SW in $SW_optional) {
-        
-        $confirmation = Read-Host ">>> $SW installieren? [y/n]"
-		if ($confirmation -eq 'y') { cup $SW -y -r --ignore-checksum 
-                                     Write-Host "" }
-		if ($confirmation -eq 'n') { Write-Host -ForegroundColor darkgrey ">>> $SW wurde übersprungen"
-		}
-
-    }
+    install-software "Basic"                    # Basic, optional, admin, pccheck
+    
 
 
 
@@ -199,18 +215,24 @@ write-host
 
 
 
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 	Write-Host
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installierte Programme"
 	Write-Host
 
 	Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
-
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
 
 
 

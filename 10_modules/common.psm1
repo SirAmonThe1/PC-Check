@@ -1,5 +1,66 @@
 $tempDir = "./.tmp"
 
+
+
+function show-Trenner {
+
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+}
+
+function show-Trenner2 {
+
+}
+
+function show-Trenner3 {
+
+}
+
+function show-TrennerFertig {
+
+    write-host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Fertig"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	write-host
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function Reset-PathEnvironment() {
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 }

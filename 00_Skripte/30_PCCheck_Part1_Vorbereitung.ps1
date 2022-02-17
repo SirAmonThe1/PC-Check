@@ -19,13 +19,6 @@ $sophiaPath = $softwarePath + "/Sophia_Script"
 
 $PCname = hostname
 
-#geplante Software
-
-$SW_Basic = "PowerShell 7zip notepadplusplus keepassxc vlc firefox teamviewer javaruntime adobereader"
-$SW_optional = "googlechrome firefox anydesk.install Discord dropbox spotify driverbooster steam zoom onedrive"
-$SW_Admin = "googlechrome anydesk.install veracrypt HWinfo syncthing synctrayzor powertoys FiraCode Discord github"
-$SW_PCCheck = "adwcleaner HWInfo crystaldiskinfo crystaldiskmark driverbooster ccleaner"
-
 
 
 
@@ -114,6 +107,17 @@ write-host
 
 
 
+
+
+
+show-Trenner
+
+
+
+
+
+
+
 	
 	#####################
 	# Windows-Einstellungen
@@ -129,6 +133,17 @@ write-host
 
 
 
+
+
+show-Trenner
+
+
+
+
+
+
+
+
 	#####################
 	# SOFIA Skript
 	#####################
@@ -137,6 +152,17 @@ write-host
     Set-SophiaSkriptAdmin 1                # Admin triggert Admin-Einstellungen
 	
 	
+
+
+
+
+
+
+show-Trenner
+
+
+
+
 
 
 
@@ -160,18 +186,23 @@ Write-Host
 Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
 
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"	
 
-Write-Host 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Wichtige Software wird installiert"
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: PSWindowsUpdate PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt"
-Write-Host
+
+
+
+
+show-Trenner
+
+
+
+
+
 	
-	# Installationen 
-	
-	cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
-	cup PowerShell 7zip notepadplusplus keepassxc adwcleaner vlc googlechrome firefox teamviewer anydesk.install javaruntime adobereader veracrypt --ignore-checksums --limit-output -y
+
+
+install-software "Basic"                    # Basic, optional, admin, pccheck
+
+
 
 write-host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Virenschutz bitte jetzt installieren"
@@ -185,11 +216,24 @@ $confirmation = Read-Host ">>> Kaspersky Internet Security installieren? [y/n]"
 	}
     [console]::beep(2000,250)
     [console]::beep(2000,250)
+
+
+
 Read-Host ">>> Virenschutz fertig installiert? [Enter]"
 
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 Write-Host 
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Unnoetige Software manuell deinstallieren"
 Write-Host 
@@ -204,8 +248,18 @@ Write-Host -BackgroundColor Blue -ForegroundColor White ">>>  Unnoetige Software
 Read-Host "Fertig deinstalliert? [Enter]"
 write-host
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+
+
+
+
+
+show-Trenner
+
+
+
+
+
+
 
 Write-Host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installierte Programme nach Bereinigung"
@@ -213,16 +267,18 @@ Write-Host
 
 Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
 
-write-host
-	
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Fertig"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	write-host
+
+
+
+
+
+show-TrennerFertig
+
+
+
+
+
+
 	
 	[console]::beep(2000,250)
     [console]::beep(2000,250)
@@ -244,3 +300,12 @@ write-host
 	$confirmation = Read-Host ">>> jetzt nur Neustart durchfuehren? [y/n]"
     if ($confirmation -eq 'y') {
 		Restart-Computer}
+
+
+
+
+
+        #zurück zum Menü
+
+        Read-Host "Zurück zum Menü? [ENTER]"
+        & $menuPS1

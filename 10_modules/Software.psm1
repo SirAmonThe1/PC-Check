@@ -4,7 +4,40 @@
 $SW_Basic = "PowerShell 7zip notepadplusplus keepassxc vlc firefox teamviewer javaruntime adobereader"
 $SW_optional = "googlechrome firefox anydesk.install Discord dropbox spotify driverbooster steam zoom onedrive"
 $SW_Admin = "googlechrome anydesk.install veracrypt HWinfo syncthing synctrayzor powertoys FiraCode Discord github"
-$SW_PCCheck = "adwcleaner HWInfo crystaldiskinfo crystaldiskmark driverbooster ccleaner"
+$SW_PCCheck = "adwcleaner HWInfo crystaldiskinfo crystaldiskmark driverbooster ccleaner ccenhancer"
+
+    
+function install-software($SWoption) {                    # Basic, optional, admin, pccheck
+
+
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Wichtige Software wird installiert"
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: " $SW_Basic
+    Write-Host -BackgroundColor Blue -ForegroundColor White ">>> optionale Pakete mit Auswahl: " $SW_optional
+    if ($SWoption -eq 'admin') { Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Admin Pakete: " $SW_Admin }
+    if ($SWoption -eq 'PCCheck') { Write-Host -BackgroundColor Blue -ForegroundColor White ">>> PCCheck Pakete: " $SW_PCCheck }
+	Write-Host
+	
+	# Installationen 
+	
+	cup  $SW_Basic --ignore-checksums --limit-output -y
+    if ($SWoption -eq 'admin') { cup $SW_Admin --ignore-checksums --limit-output -y }
+    if ($SWoption -eq 'PCCheck') { cup $SW_PCCheck --ignore-checksums --limit-output -y }
+
+        [console]::beep(2000,250)
+        [console]::beep(2000,250)
+
+    foreach ($SW in $SW_optional) {
+        
+        $confirmation = Read-Host ">>> $SW installieren? [y/n]"
+		if ($confirmation -eq 'y') { cup $SW -y -r --ignore-checksum 
+                                     Write-Host "" }
+		if ($confirmation -eq 'n') { Write-Host -ForegroundColor darkgrey ">>> $SW wurde übersprungen"
+		}
+
+    } 
+
+}
+
 
 
 
