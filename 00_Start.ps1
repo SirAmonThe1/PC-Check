@@ -62,12 +62,12 @@ write-host
 Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere gsudo (Tool zum privilegieren von PowerShell-Instanzen)"
 Write-Host 
 
-cup gsudo -y -limit-output
+cup gsudo -y --limit-output
 # Install git
 Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere git"
 Write-Host 
 
-& choco install git --confirm --limit-output
+& choco install git -y --limit-output
 
 # Reset the path environment
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
