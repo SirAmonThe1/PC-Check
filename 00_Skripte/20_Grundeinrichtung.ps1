@@ -284,7 +284,7 @@ show-Trenner
 
 
     #zurück zum Menü
-
+    ""
     Read-Host "Zurück zum Menü? [ENTER]"
     & $menuPS1
 

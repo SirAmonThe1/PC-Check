@@ -239,17 +239,14 @@ write-host
 	Write-Host
 	Write-Host -ForegroundColor Red ">>> Muss ein Neustart durchgeführt werden?"
     Write-Host -ForegroundColor DarkGray "            Nach Neustart muss das Menü aus dem Pfad $setupPath gestartet werden"
-	$Reboot = Get-WURebootStatus
-	if ($Reboot -like "*localhost: Reboot is not required*") {
-		Write-Host -ForegroundColor Green ">>> Es ist kein Neustart des Systems nötig"
-        ""
+	
+
+    Get-WURebootStatus
 
 
+    #zurück zum Menü
+    ""
+    Read-Host "Zurück zum Menü? [ENTER]"
+    & $menuPS1
 
 
-
-        #zurück zum Menü
-
-        Read-Host "Zurück zum Menü? [ENTER]"
-        & $menuPS1
-	} 

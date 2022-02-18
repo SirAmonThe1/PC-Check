@@ -441,17 +441,16 @@ show-TrennerFertig
 	# Reboot
 	Write-Host -BackgroundColor Red -ForegroundColor White "##### --- REBOOT STATUS"
 	Write-Host
-	Write-Host -ForegroundColor Red ">>> Checking for reboot status"
-	$Reboot = Get-WURebootStatus
-	if ($Reboot -like "*localhost: Reboot is not required*") {
-		Write-Host -ForegroundColor Green ">>> No reboot required"
-	} 
+	Write-Host -ForegroundColor Red ">>> Muss ein Neustart durchgeführt werden?"
+    Write-Host -ForegroundColor DarkGray "            Nach Neustart muss das Menü aus dem Pfad $setupPath gestartet werden"
+	
+
+    Get-WURebootStatus
 
 
+    #zurück zum Menü
 
+    ""
+    Read-Host "Zurück zum Menü? [ENTER]"
+    & $menuPS1
 
-
-        #zurück zum Menü
-
-        Read-Host "Zurück zum Menü? [ENTER]"
-        & $menuPS1

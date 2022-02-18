@@ -291,21 +291,25 @@ show-TrennerFertig
 	Write-Host -BackgroundColor Red -ForegroundColor White "##### --- NEUSTARTEN"
 	Write-Host
 	Write-Host -ForegroundColor Red ">>> Bitte auf jeden Fall jetzt neu Starten"
+    ""
+
 	$confirmation = Read-Host ">>> jetzt Neustart mit RAM-Test durchfuehren? [y/n]"
-	if ($confirmation -eq 'y') {
-		mdsched
-	}
+
+	if ($confirmation -eq 'y') {  mdsched  }
 	 
 	Write-Host
+
+
 	$confirmation = Read-Host ">>> jetzt nur Neustart durchfuehren? [y/n]"
-    if ($confirmation -eq 'y') {
-		Restart-Computer}
+
+    if ($confirmation -eq 'y') {  Restart-Computer  }
 
 
 
 
 
-        #zurück zum Menü
+    #zurück zum Menü
 
-        Read-Host "Zurück zum Menü? [ENTER]"
-        & $menuPS1
+    ""
+    Read-Host "Zurück zum Menü? [ENTER]"
+    & $menuPS1
