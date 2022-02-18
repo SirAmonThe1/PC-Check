@@ -1,0 +1,106 @@
+﻿--------------------------------------------------
+17:58:43 - Application startup
+17:58:44 - System.IO.FileNotFoundException: Could not find file 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Avg.json'.
+File name: 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Avg.json'
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding)
+   at System.IO.File.ReadAllText(String path)
+   at BulkCrapUninstaller.Functions.Ratings.UninstallerRatingManager.LoadFromFile(String path, Dictionary`2 target)
+17:58:44 - System.IO.FileNotFoundException: Could not find file 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_User.json'.
+File name: 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_User.json'
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding)
+   at System.IO.File.ReadAllText(String path)
+   at BulkCrapUninstaller.Functions.Ratings.UninstallerRatingManager.LoadFromFile(String path, Dictionary`2 target)
+17:58:44 - System.IO.FileNotFoundException: Could not find file 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Pending.json'.
+File name: 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Pending.json'
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding)
+   at System.IO.File.ReadAllText(String path)
+   at BulkCrapUninstaller.Functions.Ratings.UninstallerRatingManager.LoadFromFile(String path, Dictionary`2 target)
+17:58:45 - Failed to extract reg entry HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Uplay Install 5595 - System.InvalidCastException: Unable to cast object of type 'System.String' to type 'System.Int32'.
+   at UninstallTools.Factory.RegistryFactory.GetEstimatedSize(RegistryKey uninstallerKey)
+   at UninstallTools.Factory.RegistryFactory.TryCreateFromRegistry(RegistryKey uninstallerKey, Boolean is64Bit)
+   at UninstallTools.Factory.RegistryFactory.<GetUninstallerEntries>g__WorkLogic|21_0(KeyValuePair`2 data, List`1 state)
+17:58:45 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe  took 575ms
+17:58:46 - [Performance] Factory RegistryFactory took 1346ms to finish
+17:58:46 - Cache hits: 0/164
+17:58:46 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe list -lo -nocolor --detail took 1198ms
+17:58:46 - [Performance] Factory Suche nach Chocolatey Paketen took 1803ms to finish
+17:58:46 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\OculusHelper.exe /query took 61ms
+17:58:46 - [Performance] Factory Oculus Anwendungen took 71ms to finish
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe steam took 78ms
+17:58:47 - [Performance] Factory Nach Anwendungsvorlagen suchen took 91ms to finish
+17:58:47 - [Performance] Factory Searching for Scoop packages took 2ms to finish
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\ScriptHelper.exe list took 84ms
+17:58:47 - [Performance] Factory Nach Anwendungsvorlagen suchen took 101ms to finish
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe list took 83ms
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 228980 took 83ms
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 228980 took 82ms
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 242760 took 82ms
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 242760 took 82ms
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 250900 took 83ms
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 250900 took 83ms
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 294100 took 82ms
+17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 294100 took 82ms
+17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 312660 took 81ms
+17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 312660 took 82ms
+17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 427520 took 81ms
+17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 427520 took 81ms
+17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 945360 took 81ms
+17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 945360 took 82ms
+17:58:48 - [Performance] Factory Suche nach Steam Anwendungen took 1381ms to finish
+17:58:49 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\StoreAppHelper.exe /query took 1021ms
+17:58:49 - [Performance] Factory Suche nach Windows Store Anwendungen took 1346ms to finish
+17:58:52 - [Performance] Factory DirectoryFactory took 5366ms to finish
+17:58:53 - Cache hits: 0/327
+--------------------------------------------------
+17:59:31 - Application startup
+17:59:33 - Failed to extract reg entry HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Uplay Install 5595 - System.InvalidCastException: Unable to cast object of type 'System.String' to type 'System.Int32'.
+   at UninstallTools.Factory.RegistryFactory.GetEstimatedSize(RegistryKey uninstallerKey)
+   at UninstallTools.Factory.RegistryFactory.TryCreateFromRegistry(RegistryKey uninstallerKey, Boolean is64Bit)
+   at UninstallTools.Factory.RegistryFactory.<GetUninstallerEntries>g__WorkLogic|21_0(KeyValuePair`2 data, List`1 state)
+17:59:33 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe  took 572ms
+17:59:34 - [Performance] Factory RegistryFactory took 1375ms to finish
+17:59:34 - Cache hits: 153/164
+17:59:34 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe list -lo -nocolor --detail took 882ms
+17:59:34 - [Performance] Factory Suche nach Chocolatey Paketen took 1485ms to finish
+17:59:34 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\OculusHelper.exe /query took 62ms
+17:59:34 - [Performance] Factory Oculus Anwendungen took 71ms to finish
+17:59:34 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe steam took 74ms
+17:59:34 - [Performance] Factory Nach Anwendungsvorlagen suchen took 85ms to finish
+17:59:34 - [Performance] Factory Searching for Scoop packages took 1ms to finish
+17:59:34 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\ScriptHelper.exe list took 83ms
+17:59:34 - [Performance] Factory Nach Anwendungsvorlagen suchen took 99ms to finish
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe list took 83ms
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 228980 took 80ms
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 228980 took 80ms
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 242760 took 81ms
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 242760 took 84ms
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 250900 took 83ms
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 250900 took 81ms
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 294100 took 80ms
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 294100 took 82ms
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 312660 took 84ms
+17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 312660 took 81ms
+17:59:36 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 427520 took 81ms
+17:59:36 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 427520 took 80ms
+17:59:36 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 945360 took 81ms
+17:59:36 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 945360 took 82ms
+17:59:36 - [Performance] Factory Suche nach Steam Anwendungen took 1370ms to finish
+17:59:37 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\StoreAppHelper.exe /query took 785ms
+17:59:37 - [Performance] Factory Suche nach Windows Store Anwendungen took 1049ms to finish
+17:59:56 - [Performance] Factory DirectoryFactory took 21717ms to finish
+17:59:57 - Cache hits: 327/327
