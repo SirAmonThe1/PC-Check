@@ -1,10 +1,10 @@
 
 #geplante Software
 
-$SW_Basic = "PowerShell / 7zip / notepadplusplus / keepassxc / vlc / firefox / teamviewer / javaruntime / adobereader"
-$SW_optional = "googlechrome / firefox / anydesk.install / Discord / dropbox / spotify / driverbooster / steam / zoom / onedrive"
-$SW_Admin = "googlechrome / anydesk.install / veracrypt / HWinfo / syncthing / synctrayzor / powertoys / FiraCode / Discord / github"
-$SW_PCCheck = "adwcleaner / HWInfo / crystaldiskinfo / crystaldiskmark / driverbooster / ccleaner / ccenhancer"
+$SW_Basic = "PowerShell,7zip,notepadplusplus,keepassxc,vlc,firefox,teamviewer,javaruntime,adobereader"
+$SW_optional = "googlechrome,anydesk.install,Discord,dropbox,spotify,driverbooster,steam,zoom,onedrive"
+$SW_Admin = "googlechrome,anydesk.install,veracrypt,HWinfo,syncthing,synctrayzor,powertoys,FiraCode,Discord,github"
+$SW_PCCheck = "adwcleaner,HWInfo,crystaldiskinfo,crystaldiskmark,driverbooster,ccleaner,ccenhancer"
 
     
 function install-software($SWoption) {                    # Basic, optional, admin, pccheck
@@ -19,7 +19,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
 	
 	# Installationen 
 	
-    $SW_Basic = $SW_Basic.Split(" / ")
+    $SW_Basic = $SW_Basic.Split(",")
 
         foreach ($SW in $SW_Basic) {
 
@@ -29,7 +29,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
     
     if ($SWoption -eq 'admin') { 
         
-        $SW_Admin = $SW_Admin.Split(" / ")
+        $SW_Admin = $SW_Admin.Split(",")
 
         foreach ($SW in $SW_Admin) {
 
@@ -41,7 +41,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
     if ($SWoption -eq 'PCCheck') { 
         
-        $SW_PCCheck = $SW_PCCheck.Split(" / ")
+        $SW_PCCheck = $SW_PCCheck.Split(",")
 
         foreach ($SW in $SW_PCCheck) {
 
@@ -57,15 +57,13 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
 
 
-    $SW_optional = $SW_optional.Split(" / ")
+    $SW_optional = $SW_optional.Split(",")
 
     foreach ($SW in $SW_optional) {
         
         $confirmation = Read-Host ">>> $SW installieren? [y/n]"
-		if ($confirmation -eq 'y') { cup $SW -y --limit-output --ignore-checksum 
-                                     Write-Host "" }
-		if ($confirmation -eq 'n') { Write-Host -ForegroundColor darkgrey ">>> $SW wurde übersprungen"
-		}
+		if ($confirmation -eq 'y') { cup $SW -y --limit-output --ignore-checksum  }
+		if ($confirmation -eq 'n') { Write-Host ">>> $SW wurde übersprungen" }
 
     } 
 
@@ -84,7 +82,7 @@ write-host
 
     if ($SWoption -eq 'PCCheck') { 
         
-        $SW_PCCheck = $SW_PCCheck.Split(" / ")
+        $SW_PCCheck = $SW_PCCheck.Split("/")
 
         foreach ($SW in $SW_PCCheck) {
 
