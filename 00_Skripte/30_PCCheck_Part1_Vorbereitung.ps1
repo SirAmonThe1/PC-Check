@@ -93,7 +93,6 @@ Request-RenamePC
 
 show-TrennerHeader2 "Windows Updates anzeigen"
 
-update-PSWindowsUpdatex
 Show-WindowsUpdatex
 
 
