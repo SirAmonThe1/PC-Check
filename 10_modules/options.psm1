@@ -85,15 +85,15 @@ function show-rebootstatusForce {
 
 
 
-<#
-function confirm-menu {
+function get-LIndex {
 
+    show-OutputGrey "läuft, bitte warten"
     ""
-    Read-Host "Zurück zum Menü? [ENTER]"
-    & $menuPS1
+    $LIndex = winsat formal
+    ""
+    show-Output "Erstellung erfolgreich"
 
 }
-#>
 
 
 
