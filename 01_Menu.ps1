@@ -45,8 +45,21 @@ $Skript8 = ""
 $Skript9 = ""
 $Skript0 = "00_Start.ps1"
 
-# Überschrift
-show-TrennerHeader1 "Menü"
+
+
+    ""
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "##############################"
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Menü"
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "##############################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	""
+
+
 
 Write-Host "Übersicht"
 Write-Host ""
