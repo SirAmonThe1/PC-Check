@@ -119,6 +119,13 @@ write-host
 
 install-software "PCCheck"                    # Basic, optional, admin, pccheck
 
+#### installierte SW zu chocolatey hinzufügen
+
+$resultY = $skriptPath + "11_SWtoChoco.ps1"
+
+    #Starte das Skript
+
+& $resultY
 
 write-host	
 
@@ -225,10 +232,10 @@ show-Trenner
 	
 write-host
 
-#### Festplatte auf uebergroÃŸe Dateien pruefen
+#### Festplatte auf Speicherfresser prüfen
 
 Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Speicherplatz auf Festplatten pruefen"
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "Speicherplatz auf Festplatten prüfen"
 Write-Host -BackgroundColor Blue -ForegroundColor White ">>> TreeSizeFree wird gestartet" # und zudem Infos gelogged"
 
 start-process "C:\Program Files (x86)\JAM Software\TreeSize Free\treesizefree.exe" -windowstyle Maximized -verb runas
