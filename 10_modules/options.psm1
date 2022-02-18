@@ -103,7 +103,7 @@ function start-SW($Var_Search) {
 
     $XPath
 
-    start-process $XPath -windowstyle Maximized
+    start-process $XPath -verb RunAs
 
 }
 
