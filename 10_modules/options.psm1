@@ -174,4 +174,5 @@ function get-SMARTinfo {
 
     get-content "$DiskInfoLoc\DiskInfo.txt" | select-string "model" -Context 4,25
 
+    ""
 }
