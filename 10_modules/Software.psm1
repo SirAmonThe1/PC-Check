@@ -78,7 +78,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
         ""
         $confirmation = Read-Host ">>> $SW installieren? [y/n]"
 		if ($confirmation -eq 'y') { cup $SW -y --limit-output --ignore-checksum  }
-		if ($confirmation -eq 'n') { Write-Host ">>> $SW wurde übersprungen" }
+		if ($confirmation -eq 'n') { show-Output "$SW wurde übersprungen" }
         show-TrennerKlein
 
     } 
@@ -112,61 +112,64 @@ function uninstall-softwarePCCheck {
 
 function get-SW2Choco {
 
-    Write-Host "Installierte Programme auflisten"
+    show-Output "Installierte Programme auflisten"
     ""
 
     Get-Package -Provider Programs | sort-object -Property name | Format-Table -Property Name
 
     ""
-    Write-Host "Welche Programme sollen importiert werden"
+    show-Output "Welche Programme sollen importiert werden?      [Leer lassen zum überspringen]"
     Write-Host -Foregroundcolor DarkGray ">>> Paketnamen mit Komma trennen (z.B.: 7-zip,TeamViewer,spotify)"
     ""
     $SW0 = Read-Host 
-    $SWArray = $SW0.Split(",")
-    ""
-    Write-Host "Diese Pakete sind ausgewählt:"
-    $SWArray
 
+    If ( $SW0 -eq "" ) {  show-Output "Keine Pakete importieren"  }
 
-    ""
-    Write-Host "Vergleiche mit Chocolatey Bibliothek"
-    Write-Host -Foregroundcolor DarkGray ">>> Bibliothek wird eingelesen, bitte warten..."
-    ""
+    Else {
 
-    foreach ($SW in $SWArray)
-        {
-            Write-Host "Verarbeite:" $SW
-            $SW_up = choco search $SW
-            if ($SW_up -like "*0 packages found*")
-                {
-                    Write-Host "---> Software nicht gefunden"   
+        $SWArray = $SW0.Split(",")
+        ""
+        show-Output "Diese Pakete sind ausgewählt:"
+        $SWArray
+        
+        ""
+        show-Output "Vergleiche mit Chocolatey Bibliothek"
+        Write-Host -Foregroundcolor DarkGray ">>> Bibliothek wird eingelesen, bitte warten..."
+        ""
+
+        foreach ($SW in $SWArray)
+            {
+                show-Output "Verarbeite:" $SW
+
+                $SW_up = cup $SW -y --ignore-checksums --limit-output
+
+                if ( $SW_up -like "*The package was not found with the source(s) listed*" ) {
+                
+                    show-Output "Software nicht genau genug"
+                    ""
+                    choco search $SW
+                    ""
+                    $SW1 = Read-Host  "---> Bitte in Liste prüfen und neu eingeben: "
+                    
+                    cup $SW1 -y --ignore-checksums --limit-output
+                    show-TrennerKlein
+                    
+                } else { 
+
+                    $SW_up 
+                    show-TrennerKlein
+
                 }
-            else
-                {
-                    $SW_up = cup $SW -y -r --ignore-checksum
-                    if ($SW_up -like "*The package was not found with the source(s) listed*")
-                        {
-                            Write-Host "---> Software nicht genau genug"
-                            ""
-                            choco search $SW
-                            ""
-                            $SW1 = Read-Host  "---> Bitte in Liste prüfen und neu eingeben: "
-                            $SW_up = cup $SW1 -y -r --ignore-checksum
-                            if ($SW_up -like "*Chocolatey upgraded 0/*")
-                                {
-                                    Write-host "---> Software bereits vorhanden"
-                                }
-                        }
-                    else {Write-host "---> Software installiert"}
-                }
-        }
 
-    ""
-    Write-Host "Abgeschlossen ---> aktuell installierte SW:"
-    ""
+            }
 
-    choco list -lo
+        ""
+        show-Output "Abgeschlossen ---> aktuell installierte SW:"
+        ""
 
+        choco list -lo
+
+    }
 
 }
 
