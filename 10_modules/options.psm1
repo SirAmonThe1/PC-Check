@@ -1,25 +1,21 @@
+#clear                      #Debugging
+
+#Version
+#2022-02-18
+
 
 
 function Request-RenamePC {
 
-    # PC-Rename
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- PC-Rename"
-    Write-Host
-    Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Aktueller Computername"
+    show-Output "Aktueller Computername"
 
     hostname
-
-    Write-Host
-
-
+    ""
     $confirmation = Read-Host ">>> Diesen Computer jetzt umbenennen? [y/n]"
         if ($confirmation -eq 'y') {
 		    $name = Read-Host ">>> Wie soll der Computer benannt werden?"
 		    Rename-Computer -NewName $name
 		    Echo " Der Computer muss neue gestartet werden!"}
-
-    write-host
-
 }
 
 
@@ -28,9 +24,7 @@ function Start-logging ( $LogName ) {
 
     start-transcript C:\!_Checkup\$LogName.txt
     ""
-    Write-Host -BackgroundColor Black -ForegroundColor white "---- $LogName"
-    ""
-    Write-Host -BackgroundColor Black -ForegroundColor white "Ausführung des Skriptes in $scriptFolder"
+    show-Output "Logname: $LogName"
     ""
 
 }
@@ -48,19 +42,18 @@ function Stop-logging {
 
 function Set-SystemCheckpoint ( $CheckpointName ) {         # "Text"
 
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- Systemwiederherstellung"
-    Write-Host
-    Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Aktivieren fuer Laufwerk C:\"
-    Write-Host
+    show-Output "Aktivieren fuer Laufwerk C:\"
+    
     Enable-ComputerRestore "C:\"
-    Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Neuen Wiederherstellungspunkt erstellen"
-    Write-Host
-    Checkpoint-Computer -Description $CheckpointName
-    Write-Host Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Alle Wiederherstellungspunkte anzeigen"
-    Write-Host
-    Get-ComputerRestorePoint
-    Write-Host
 
+    show-Output "Neuen Wiederherstellungspunkt erstellen"
+    
+    Checkpoint-Computer -Description $CheckpointName
+
+    show-Output "Alle Wiederherstellungspunkte anzeigen"
+   
+    Get-ComputerRestorePoint
+    
 }
 
 
@@ -68,10 +61,9 @@ function Set-SystemCheckpoint ( $CheckpointName ) {         # "Text"
 
 function show-rebootstatus {
 
-    Write-Host -ForegroundColor ">>> Muss ein Neustart durchgeführt werden?"
-    Write-Host -ForegroundColor Red "            Nach Neustart muss das Menü aus dem Pfad $setupPath gestartet werden"
+    show-Output "Muss ein Neustart durchgeführt werden?"
+    show-OutputAlert "Nach Neustart muss das Menü aus dem Pfad $setupPath gestartet werden"
 	
-
     Get-WURebootStatus
 
 }
@@ -79,7 +71,7 @@ function show-rebootstatus {
 
 function show-rebootstatusForce {
 
-    Write-Host -ForegroundColor Red ">>> Bitte auf jeden Fall jetzt neu Starten"
+    show-OutputAlert "Bitte auf jeden Fall jetzt neu Starten"
     ""
 
 	$confirmation = Read-Host ">>> jetzt Neustart mit RAM-Test durchfuehren? [y/n]"
@@ -112,24 +104,24 @@ function out-beep {
 
 function start-scannowtest {
 
-    Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Festplatten-Scan (sfc /Scannow) wird gestartet"
+    show-Output "Festplatten-Scan (sfc /Scannow) wird gestartet"
     sfc /scannow
 
-    write-host San beendet
+    show-Output "Scan beendet"
 
     out-beep
 
-    write-host
-
+    ""
 
     $confirmation = Read-Host ">>> Hat der Scan fehlgeschlagen? [y/n]"
         if ($confirmation -eq 'y') {
-		    Write-Host -ForegroundColor Red ">>> Windows Health Check wird gestartet"
+		    show-OutputAlert "Windows Health Check wird gestartet"
 		    dism /Online /Cleanup-Image /ScanHealth
-		    Write-Host -ForegroundColor Red ">>> Checkup wird gestartet"
+		    show-OutputAlert "Checkup wird gestartet"
 		    Dism /Online /Cleanup-Image /CheckHealth
-		    [console]::beep(2000,250)
-		    [console]::beep(2000,250)
+
+            out-beep
+
 		    $confirmation = Read-Host ">>> Fehler beheben? --> NUR WENN FEHLER GEFUNDEN WURDEN AUSFueHREN!!! [y/n]"
 		    if ($confirmation -eq 'y') {
 			    dism /Online /Cleanup-Image /RestoreHealth

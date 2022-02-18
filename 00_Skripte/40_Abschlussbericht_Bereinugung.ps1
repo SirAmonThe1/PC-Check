@@ -1,7 +1,7 @@
-#clear      #Debugging
+#clear                      #Debugging
 
 #Version
-#2022-02-12
+#2022-02-18
 
 
 #Settings
@@ -27,35 +27,35 @@ $PCname = hostname
 write-host -BackgroundColor Green -ForegroundColor White "Bereinigung"
 write-host
 
-    # Settings
-    Set-ExecutionPolicy Bypass -Scope Process -Force
+# Settings
+Set-ExecutionPolicy Bypass -Scope Process -Force
 
 
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit Admin-Rechten ausfuehren"
-    gsudo
-    write-host
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "PowerShell-Prozess mit Admin-Rechten ausfuehren"
+gsudo
+write-host
 
 
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
-    $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
-    Write-Host $scriptFolder
+show-Output "Aktueller Pfad"
+$scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
+Write-Host $scriptFolder
 
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "Install Pfad"
-    Write-Host $setupPath
+show-Output "Installationspfad"
+Write-Host $setupPath
 
-    if (Test-Path -Path $setupPath\10_modules) {
-        Get-ChildItem $setupPath\10_modules\*.psm1 | Import-Module -Force
-	    write-host
-	    write-host "Module importiert aus Install Pfad"
-    } else {
+if (Test-Path -Path $setupPath\10_modules) {
+    Get-ChildItem $setupPath\10_modules\*.psm1 | Import-Module -Force
+	write-host
+	show-Output "Module importiert aus Install Pfad"
+} else {
 
-        #Zurück zum Menü
+    #Zurück zum Menü
 
-	    write-host
-	    Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte zuerst das Skript installieren im Menü"
-	    & $menuPS1
-    }
-    write-host
+	write-host
+	show-Output "Bitte zuerst das Skript installieren im Menü"
+	& $menuPS1
+}
+write-host
 
 
 
@@ -64,7 +64,7 @@ write-host
 #### Virenscan
 
 write-host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte jetzt den Virenscan starten"
+show-Output "Bitte jetzt den Virenscan starten"
 Write-Host
 Read-Host ">>> Läuft der Scan? [Enter]"
 
@@ -178,7 +178,6 @@ show-TrennerInfo "Arbeitsspeicher (RAM)"
 show-TrennerKlein
 show-TrennerInfo "Festplatten"
 
-
 get-festplatte
 
 show-TrennerKlein
@@ -187,7 +186,7 @@ show-TrennerInfo "Netzwerk"
 Get-CimInstance -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=$true | Format-List Description, MACAddress,IPSubnet,DefaultIPGateway,DNSServerSearchOrder, IPAddress
 
 show-TrennerKlein
-show-TrennerInfo "--- Treiber"
+show-TrennerInfo "Treiber"
 
 Get-WmiObject Win32_PnPSignedDriver | Where-Object {$_.DeviceClass -ne $null} | Where-Object {$_.Manufacturer -notlike '*USB*'} | Where-Object {$_.DeviceName -ne 'Volume'} | Where-Object {!(($_.DeviceClass -eq 'System') -and ($_.Manufacturer -eq 'Microsoft'))} | Where-Object {$_.DeviceName -notlike 'HID*'} | Where-Object {$_.DeviceName -notlike 'WAN Miniport*'} | Where-Object {$_.Manufacturer -ne '(Standard system devices)'} | Where-Object {$_.DeviceName -ne 'Generic software device'} | Where-Object {$_.DeviceName -ne 'Generic volume shadow copy'} | Sort-Object -Property DeviceClass,DeviceName,FriendlyName | Format-Table -groupby DeviceClass -autosize -Property DeviceName,FriendlyName,Manufacturer
 

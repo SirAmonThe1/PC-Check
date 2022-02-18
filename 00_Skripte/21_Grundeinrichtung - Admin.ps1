@@ -1,7 +1,7 @@
-#clear      #Debugging
+#clear                      #Debugging
 
 #Version
-#2022-02-12
+#2022-02-18
 
 
 #Settings
@@ -38,23 +38,23 @@ gsudo
 write-host
 
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Aktueller Pfad"
+show-Output "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
 Write-Host $scriptFolder
 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Install Pfad"
+show-Output "Installationspfad"
 Write-Host $setupPath
 
 if (Test-Path -Path $setupPath\10_modules) {
     Get-ChildItem $setupPath\10_modules\*.psm1 | Import-Module -Force
 	write-host
-	write-host "Module importiert aus Install Pfad"
+	show-Output "Module importiert aus Install Pfad"
 } else {
 
     #Zurück zum Menü
 
 	write-host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte zuerst das Skript installieren im Menü"
+	show-Output "Bitte zuerst das Skript installieren im Menü"
 	& $menuPS1
 }
 write-host

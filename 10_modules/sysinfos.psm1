@@ -1,14 +1,13 @@
+#clear                      #Debugging
+
+#Version
+#2022-02-18
+
+
 
 function get-sysWindows {
 
-
-    Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Windows"
-    Write-Host
-
-    Get-ComputerInfo |
-      Select-Object -Property OsName,OsArchitecture,OsBuildNumber,OsLanguage,CsPCSystemType,OsSerialNumber,WindowsInstallDateFromRegistry
-
-    Write-Host
+    Get-ComputerInfo | Select-Object -Property OsName,OsArchitecture,OsBuildNumber,OsLanguage,CsPCSystemType,OsSerialNumber,WindowsInstallDateFromRegistry
 
 }
 
@@ -18,9 +17,8 @@ function get-sysWindowsLicense {
 
 
 
-    Write-Host Write-Host -BackgroundColor Blue -ForegroundColor White ">>>  Windows Lizenz-Auslesen (evtl. nicht erfolgreich)"
-    Write-Host
-
+    show-Output "Windows Lizenz-Auslesen (evtl. nicht erfolgreich)"
+    
     wmic path softwarelicensingservice get OA3xOriginalProductKey
 
     Write-Host
@@ -30,17 +28,13 @@ function get-sysWindowsLicense {
 
 function get-sysOfficeLicense {
 
-    Write-Host
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Microsoft Office Lizenz auslesen"
-    Write-Host
-
-    Write-Host -BackgroundColor Blue -ForegroundColor White ">>> 32-Bit Systeme"
+    show-Output "32-Bit Systeme"
     cscript "C:\Program Files (x86)\Microsoft Office\Office16\OSPP.VBS" /dstatus
-    write-host
-    Write-Host -BackgroundColor Blue -ForegroundColor White ">>> 64-Bit Systeme"
-    cscript "C:\Program Files\Microsoft Office\Office16\OSPP.VBS" /dstatus
+    
+    show-TrennerKlein
 
-    Write-Host
+    show-Output "64-Bit Systeme"
+    cscript "C:\Program Files\Microsoft Office\Office16\OSPP.VBS" /dstatus
 
 }
 
@@ -48,11 +42,6 @@ function get-sysOfficeLicense {
 
 
 function Get-sysVirenschutz {
-
-    Write-Host
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Virenschutz"
-    Write-Host
-
 
         function Get-AntiVirusProduct {
         [CmdletBinding()]
@@ -99,8 +88,10 @@ function Get-sysVirenschutz {
             #Create a new object for each computer
             $ret += New-Object -TypeName PSObject -Property $ht 
         }
+
         Return $ret
     } 
+
     Get-AntiVirusProduct | Format-List
 
 }
@@ -111,44 +102,38 @@ function Get-sysVirenschutz {
 
 function get-sysPSWindowsUpdateVersion {
 
-    Write-Host
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Pruefe PSWindowsUpdate Installation"
-    Write-Host
-
     $PSWU = Get-Package -Name PSWindowsUpdate
     $PSWU | Format-Table -Property Name,Version
 
     do{
-	    if ($PSWU.Version -eq "2.2.0.2") {
-        Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell"
-	
-	    } else {
-		    Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
-	        Install-Module -Name PSWindowsUpdate -Force -allowclobber
-            cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
-            $PSWU = Get-Package -Name PSWindowsUpdate
-            if ($PSWU.Version -eq "2.2.0.2") {
-                Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell"
-		    } else {
-                Write-Host -ForegroundColor DarkGray ($PSWU | Format-Table | Out-String)
-		        Write-Host -ForegroundColor Magenta ">>> Bitte PSWindowsUpdate über .bat Datei installieren"
-                x = $modulesPath + "\PSWindosUpdate Installieren"
-                ii x
+	    if ($PSWU.Version -eq "2.2.0.2") {  Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell"  } 
+            else {
+                Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
+	            Install-Module -Name PSWindowsUpdate -Force -allowclobber
+                cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
 
-		            [console]::beep(2000,250)
-			        [console]::beep(2000,250)
-		        Read-Host -Prompt "Fertig installiert? [Enter]" 
-		        Write-Output "Get-WindowsUpdate"
-		        $PSWU = Get-Package -Name PSWindowsUpdate
-			    }
-	        [console]::beep(2000,250)
-		    [console]::beep(2000,250)
-		    Add-WUServiceManager -ServiceID "7971f918-a847-4430-9279-4a52d1efe18d" -AddServiceFlag 7
+                $PSWU = Get-Package -Name PSWindowsUpdate
+
+                if ($PSWU.Version -eq "2.2.0.2") {  Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell" } 
+                    else {
+                        Write-Host -ForegroundColor DarkGray ($PSWU | Format-Table | Out-String)
+		                Write-Host -ForegroundColor Magenta ">>> Bitte PSWindowsUpdate über .bat Datei installieren"
+                        x = $modulesPath + "\PSWindosUpdate Installieren"
+                        ii x
+
+                        out-beep
+
+		                Read-Host -Prompt "Fertig installiert? [Enter]" 
+		                Write-Output "Get-WindowsUpdate"
+		                $PSWU = Get-Package -Name PSWindowsUpdate
+			        }
+
+                out-beep
+		        Add-WUServiceManager -ServiceID "7971f918-a847-4430-9279-4a52d1efe18d" -AddServiceFlag 7
 		    }
 	    }
-    while	($PSWU.Version -ne "2.2.0.2")
 
-    Write-Host
+    while	($PSWU.Version -ne "2.2.0.2")
 
 }
 

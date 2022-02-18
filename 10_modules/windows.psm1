@@ -1,3 +1,8 @@
+#clear                      #Debugging
+
+#Version
+#2022-02-18
+
 
 	
 	#####################
@@ -6,14 +11,14 @@
 
 function Start-WindowsUpdatex {
 
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
+	show-Output "PSWindowsUpdate installieren"
 	Install-Module -Name PSWindowsUpdate -Force -allowclobber
     cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
 	
-	Write-Host
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Suche Windows Updates"
+	""
+	show-Output "Suche Windows Updates"
 	Write-Host -ForegroundColor DarkGray "Bitte warten ..."
-	Write-Host
+	""
 
     Write-Host "Ausgeblendete Updates:"
     ""
@@ -22,7 +27,6 @@ function Start-WindowsUpdatex {
 
 	Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot | Format-Table
 
-	
 }
 
 
@@ -30,21 +34,21 @@ function Start-WindowsUpdatex {
 
 function Show-WindowsUpdatex {
 
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
+	show-Output "PSWindowsUpdate installieren"
 	Install-Module -Name PSWindowsUpdate -Force -allowclobber
     cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
 	
-	Write-Host
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Suche Windows Updates"
+	""
+	show-Output "Suche Windows Updates"
 	Write-Host -ForegroundColor DarkGray "Bitte warten ..."
-	Write-Host
+	""
 
-    Write-Host "Ausgeblendete Updates:"
+    show-Output "Ausgeblendete Updates:"
     ""
     Hide-WindowsUpdate -Title "Lenovo*"
     Hide-WindowsUpdate -Title "Advanced Micro*"
     ""
-    Write-Host "Ausstehende Updates:"
+    show-Output "Ausstehende Updates:"
     ""
 	Get-WUList | Format-Table
 	
@@ -70,53 +74,52 @@ function get-SWInstalled {
 
 function Set-WindowsSettings {
 	
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-MultiMonitorTaskbarMode "2""
+	show-TrennerInfo "Set-MultiMonitorTaskbarMode "2""
     Set-MultiMonitorTaskbarMode "2"
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	show-Output "OK"
     
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-DisableLockScreen $true"
+	
+	show-TrennerInfo "Set-DisableLockScreen $true"
     Set-DisableLockScreen $true
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	show-Output "OK"
     
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-DisableAeroShake $true"
+	
+	show-TrennerInfo "Set-DisableAeroShake $true"
     Set-DisableAeroShake $true
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	show-Output "OK"
     
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-OtherWindowsStuff z.B Taskbar Glom"
+	
+	show-TrennerInfo "Set-OtherWindowsStuff z.B Taskbar Glom"
     Set-OtherWindowsStuff
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	show-Output "OK"
 
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Disable-BingSearchInStartMenu"
+	
+	show-TrennerInfo "Disable-BingSearchInStartMenu"
 	Disable-BingSearchInStartMenu
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	show-Output "OK"
 	
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Enable Photo Viewer"
+	
+	show-TrennerInfo "Enable Photo Viewer"
 	reg import $registryPath\enable-photo-viewer.reg
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	show-Output "OK"
 	
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Remove 3D Objects from This PC"
+	
+	show-TrennerInfo "Remove 3D Objects from This PC"
 	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
 	Remove-Item -ErrorAction SilentlyContinue -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	show-Output "OK"
+
 
 	### Energieeinstellungen setzen
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Schnellstart deaktivieren"
+	show-TrennerInfo "Schnellstart deaktivieren"
 	powercfg /hibernate off 
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	show-Output "OK"
 
 	# powercfg -setactive 381b4222-f694-41f0-9685-ff5bb260df2e  # (Ausbalanciert)
 	# powercfg -duplicatescheme  a1841308-3541-4fab-bc81-f71556f20b4a  # (Energiesparmodus)
 	# powercfg -duplicatescheme  8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c  # (Hoechstleistung)
 	powercfg -duplicatescheme  94bd7b55-a0ae-4c21-9de4-96bebb1ba1d6  # (Ultimative Leistung)
-	Write-Host
-
+	
 }
 
 

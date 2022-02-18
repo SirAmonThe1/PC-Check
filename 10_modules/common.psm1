@@ -1,3 +1,9 @@
+#clear                      #Debugging
+
+#Version
+#2022-02-18
+
+
 $tempDir = "./.tmp"
 
 
@@ -14,7 +20,7 @@ function show-Trenner {
 function show-TrennerKlein {
     
     ""
-    Write-Host -BackgroundColor Black -ForegroundColor white "##############################"
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "##############################"
     ""
 
 }
@@ -23,15 +29,15 @@ function show-TrennerKlein {
 function show-TrennerHeader1($text) {
 
     ""
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "##############################"
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- " $text
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "##############################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "##############################"
+    Write-Host -BackgroundColor Green -ForegroundColor White "# ----- " $text
+    Write-Host -BackgroundColor Green -ForegroundColor White "##############################"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
 	""
 
 }
@@ -40,11 +46,11 @@ function show-TrennerHeader1($text) {
 function show-TrennerHeader2($text) {
 
     ""
-    Write-Host -BackgroundColor Black -ForegroundColor White "****"
-    Write-Host -BackgroundColor Black -ForegroundColor White "#####################"
-    Write-Host -BackgroundColor Black -ForegroundColor White "# ----- " $text
-    Write-Host -BackgroundColor Black -ForegroundColor White "#####################"
-    Write-Host -BackgroundColor Black -ForegroundColor White "****"
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- " $text
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
     ""
 
 }
@@ -53,8 +59,21 @@ function show-TrennerHeader2($text) {
 function show-TrennerInfo($text) {
 
     ""
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- " $text
+    Write-Host -BackgroundColor Black -ForegroundColor White "--- " $text
     ""
+
+}
+
+
+function show-Output($text) {
+
+    Write-Host -BackgroundColor Black -ForegroundColor yellow ">>> " $text
+
+}
+
+function show-OutputAlert($text) {
+
+    Write-Host -BackgroundColor Black -ForegroundColor Red "          !!! " $text
 
 }
 

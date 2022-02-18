@@ -1,7 +1,7 @@
-#clear      #Debugging
+#clear                      #Debugging
 
 #Version
-#2022-02-12
+#2022-02-18
 
 
 #Settings
@@ -48,15 +48,15 @@ $Skript0 = "00_Start.ps1"
 
 
     ""
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "##############################"
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Menü"
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "##############################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "##############################"
+    Write-Host -BackgroundColor Green -ForegroundColor White "# ----- Menü"
+    Write-Host -BackgroundColor Green -ForegroundColor White "##############################"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor White "********"
 	""
 
 

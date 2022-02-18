@@ -1,3 +1,9 @@
+#clear                      #Debugging
+
+#Version
+#2022-02-18
+
+
 
 #geplante Software
 
@@ -19,6 +25,8 @@ function install-software($SWoption) {                    # Basic, optional, adm
 	
 	# Installationen 
 	
+    #### BASIC
+    
     $SW_Basic = $SW_Basic.Split(",")
 
         foreach ($SW in $SW_Basic) {
@@ -28,6 +36,8 @@ function install-software($SWoption) {                    # Basic, optional, adm
             show-TrennerKlein
     
     }
+
+    #### ADMIN
     
     if ($SWoption -eq 'admin') { 
         
@@ -42,6 +52,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
         }
     }
 
+    #### PCCHECK
 
     if ($SWoption -eq 'PCCheck') { 
         
@@ -56,12 +67,9 @@ function install-software($SWoption) {                    # Basic, optional, adm
         }
     }
 
-        [console]::beep(2000,250)
-        [console]::beep(2000,250)
+    out-beep
 
-
-
-
+    #### OPTIONAL
 
     $SW_optional = $SW_optional.Split(",")
 
@@ -83,11 +91,6 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
 function uninstall-softwarePCCheck {
 
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Deinstalliere temporaer fuer den Checkup installierte Software"
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: " $SW_PCCheck
-write-host
-
     if ($SWoption -eq 'PCCheck') { 
         
         $SW_PCCheck = $SW_PCCheck.Split("/")
@@ -99,11 +102,6 @@ write-host
         
         }
     }
-
-write-host	
-
-
-
 }
 
 
@@ -114,28 +112,26 @@ write-host
 
 function get-SW2Choco {
 
-
-    Write-Host ""
     Write-Host "Installierte Programme auflisten"
-    Write-Host ""
+    ""
 
     Get-Package -Provider Programs | sort-object -Property name | Format-Table -Property Name
 
-    Write-Host ""
+    ""
     Write-Host "Welche Programme sollen importiert werden"
     Write-Host -Foregroundcolor DarkGray ">>> Paketnamen mit Komma trennen (z.B.: 7-zip,TeamViewer,spotify)"
-    Write-Host ""
+    ""
     $SW0 = Read-Host 
     $SWArray = $SW0.Split(",")
-    Write-Host ""
+    ""
     Write-Host "Diese Pakete sind ausgewählt:"
     $SWArray
 
 
-    Write-Host ""
+    ""
     Write-Host "Vergleiche mit Chocolatey Bibliothek"
     Write-Host -Foregroundcolor DarkGray ">>> Bibliothek wird eingelesen, bitte warten..."
-    Write-Host ""
+    ""
 
     foreach ($SW in $SWArray)
         {
@@ -165,9 +161,9 @@ function get-SW2Choco {
                 }
         }
 
-    Write-Host ""
+    ""
     Write-Host "Abgeschlossen ---> aktuell installierte SW:"
-    Write-Host ""
+    ""
 
     choco list -lo
 
@@ -253,8 +249,7 @@ function Set-SophiaSkript($Admin) {                 # Admin triggert Admin-Einst
     ""
     Write-host -Foregroundcolor red "Bitte das Sophia-Skript über die Sophia.bat Datei öffnen"
 
-    	[console]::beep(2000,250)
-        [console]::beep(2000,250)
+    out-beep
 
     Read-Host "--> nach Ausführung mit ENTER bestätigen"
 
