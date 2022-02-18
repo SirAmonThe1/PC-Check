@@ -114,7 +114,7 @@ show-TrennerInfo "Aufräumen mit CCleaner"
     
     show-Output "CCleaner wird gestartet"
     start-process ccleaner -windowstyle Maximized
-    Read-Host ">>> Mit CCleaner fertig aufgeraeumt? [Enter]"
+    Read-Host ">>> Mit CCleaner fertig aufgeräumt? [Enter]"
 
 show-TrennerKlein
 show-TrennerInfo "Systemreport mit HWInfo erstellen"
@@ -126,14 +126,18 @@ show-TrennerInfo "Systemreport mit HWInfo erstellen"
 show-TrennerKlein
 show-TrennerInfo "S.M.A.R.T Festplatteninfos auslesen mit CrystalDiskInfo"
 
-get-SMARTinfo
+#get-SMARTinfo
+
+    show-Output "CrystalDiskMark8 wird gestartet"
+    start-process "C:\Program Files\CrystalDiskMark8\DiskMark64.exe" -windowstyle Maximized -verb runas
+    Read-Host ">>> Geprüft? [Enter]"
 
 show-TrennerKlein
 show-TrennerInfo "Speicherplatz auf Festplatten prüfen"
 
     show-Output "TreeSizeFree wird gestartet"
     start-process "C:\Program Files (x86)\JAM Software\TreeSize Free\treesizefree.exe" -windowstyle Maximized -verb runas
-    Read-Host ">>> Geprueft? [Enter]"
+    Read-Host ">>> Geprüft? [Enter]"
 
 show-TrennerKlein
 show-TrennerInfo "Festplattentest mit ScanNow"
@@ -154,16 +158,16 @@ out-beep
 
     show-Output "DriverStoreExplorer wird gestartet"
     start-process $softwarePath\DriverStoreExplorer\rapr.exe -windowstyle Maximized
-    Read-Host ">>> Geprueft? [Enter]"
+    Read-Host ">>> Geprüft? [Enter]"
 
 show-TrennerKlein
-show-TrennerInfo "AdWare Pruefen"
+show-TrennerInfo "AdWare Prüfen"
 
 out-beep
 
-    show-Output "AdwCleaner wird gestartet --> Bitte Pruefen aber Bereinigung NICHT durchfuehren"
+    show-Output "AdwCleaner wird gestartet --> Bitte Prüfen aber Bereinigung NICHT durchführen"
     start-process adwcleaner -windowstyle Maximized
-    Read-Host ">>> Geprueft? [Enter]"
+    Read-Host ">>> Geprüft? [Enter]"
 
 
 #####################
