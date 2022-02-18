@@ -29,15 +29,15 @@ function show-TrennerKlein {
 function show-TrennerHeader1($text) {
 
     ""
-	Write-Host -BackgroundColor Green -ForegroundColor White "********"
-	Write-Host -BackgroundColor Green -ForegroundColor White "********"
-	Write-Host -BackgroundColor Green -ForegroundColor White "********"
-	Write-Host -BackgroundColor Green -ForegroundColor White "##############################"
-    Write-Host -BackgroundColor Green -ForegroundColor White "# ----- " $text
-    Write-Host -BackgroundColor Green -ForegroundColor White "##############################"
-	Write-Host -BackgroundColor Green -ForegroundColor White "********"
-	Write-Host -BackgroundColor Green -ForegroundColor White "********"
-	Write-Host -BackgroundColor Green -ForegroundColor White "********"
+	Write-Host -BackgroundColor Green -ForegroundColor Black "********"
+	Write-Host -BackgroundColor Green -ForegroundColor Black "********"
+	Write-Host -BackgroundColor Green -ForegroundColor Black "********"
+	Write-Host -BackgroundColor Green -ForegroundColor Black "##############################"
+    Write-Host -BackgroundColor Green -ForegroundColor Black "# ----- " $text
+    Write-Host -BackgroundColor Green -ForegroundColor Black "##############################"
+	Write-Host -BackgroundColor Green -ForegroundColor Black "********"
+	Write-Host -BackgroundColor Green -ForegroundColor Black "********"
+	Write-Host -BackgroundColor Green -ForegroundColor Black "********"
 	""
 
 }
