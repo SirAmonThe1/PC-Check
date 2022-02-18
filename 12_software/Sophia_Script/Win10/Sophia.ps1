@@ -11,7 +11,7 @@ param
 
 Clear-Host
 
-$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 10 v5.12.5 | Made with $([char]::ConvertFromUtf32(0x1F497)) of Windows | $([char]0x00A9) farag & Inestic, 2014$([char]0x2013)2021"
+$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 10 v5.12.11 | Made with $([char]::ConvertFromUtf32(0x1F497)) of Windows | $([char]0x00A9) farag & Inestic, 2014$([char]0x2013)2022"
 Remove-Module -Name Sophia -Force -ErrorAction Ignore
 Import-Module -Name $PSScriptRoot\Manifest\Sophia.psd1 -PassThru -Force
 Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -BaseDirectory $PSScriptRoot\Localizations
@@ -33,8 +33,8 @@ ScheduledTasks -Disable
 SigninInfo -Disable
 LanguageListAccess -Disable
 AdvertisingID -Disable
-WindowsWelcomeExperience -Show
-WindowsTips -Disable
+WindowsWelcomeExperience -Hide
+WindowsTips -Enable
 SettingsSuggestedContent -Hide
 AppsSilentInstalling -Disable
 WhatsNewInWindows -Disable
@@ -47,13 +47,13 @@ BingSearch -Disable
 
 ThisPC -Show
 CheckBoxes -Disable
-HiddenItems -Enable
+HiddenItems -Disable
 FileExtensions -Show
 MergeConflicts -Show
 OpenFileExplorerTo -ThisPC
 CortanaButton -Hide
 OneDriveFileExplorerAd -Hide
-SnapAssist -Disable
+SnapAssist -Enable
 FileTransferDialog -Detailed
 FileExplorerRibbon -Expanded
 RecycleBinDeleteConfirmation -Enable
@@ -65,7 +65,7 @@ PeopleTaskbar -Hide
 SecondsInSystemClock -Show
 TaskbarSearch -Hide
 WindowsInkWorkspace -Hide
-NotificationAreaIcons -Hide
+NotificationAreaIcons -Show
 MeetNow -Hide
 NewsInterests -Disable
 ControlPanelView -LargeIcons
@@ -75,11 +75,11 @@ NewAppInstalledNotification -Hide
 FirstLogonAnimation -Disable
 JPEGWallpapersQuality -Max
 TaskManagerWindow -Expanded
-RestartNotification -Show
-ShortcutsSuffix -Disable
+RestartNotification -Hide
+ShortcutsSuffix -Enable
 PrtScnSnippingTool -Enable
-AppsLanguageSwitch -Disable
-AeroShaking -Disable
+AppsLanguageSwitch -Enable
+AeroShaking -Enable
 UnpinTaskbarShortcuts -Shortcuts Edge, Store, Mail
 
 #endregion UI & Personalization
@@ -97,7 +97,7 @@ StorageSenseTempFiles -Enable
 Hibernation -Disable
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
-AdminApprovalMode -Never
+AdminApprovalMode -Default
 MappedDrivesAppElevatedAccess -Enable
 DeliveryOptimization -Disable
 WaitNetworkStartup -Enable
@@ -109,8 +109,7 @@ PowerPlan -High
 LatestInstalled.NET -Enable
 NetworkAdaptersSavePower -Disable
 IPv6Component -Disable
-SetUserShellFolderLocation -Root
-WinPrtScrFolder -Desktop
+WinPrtScrFolder -Default
 RecommendedTroubleshooting -Automatically
 FoldersLaunchSeparateProcess -Enable
 ReservedStorage -Disable
@@ -119,10 +118,10 @@ NumLock -Enable
 StickyShift -Disable
 Autoplay -Disable
 ThumbnailCacheRemoval -Disable
-SaveRestartableApps -Disable
+SaveRestartableApps -Enable
 NetworkDiscovery -Enable
 ActiveHours -Automatically
-RestartDeviceAfterUpdate -Disable
+RestartDeviceAfterUpdate -Enable
 UninstallPCHealthCheck
 InstallVCRedistx64
 
@@ -137,9 +136,8 @@ InstallVCRedistx64
 
 RecentlyAddedApps -Hide
 AppSuggestions -Hide
-RunPowerShellShortcut -Elevated
+RunPowerShellShortcut -NonElevated
 PinToStart -UnpinAll
-PinToStart -Tiles ControlPanel, DevicesPrinters, PowerShell
 
 #endregion Start menu
 
@@ -155,6 +153,7 @@ CheckUWPAppsUpdates
 
 #region Gaming
 
+XboxGameBar -Disable
 XboxGameTips -Disable
 GPUScheduling -Enable
 SetAppGraphicsPerformance
@@ -181,8 +180,6 @@ PowerShellModulesLogging -Enable
 PowerShellScriptsLogging -Enable
 AppsSmartScreen -Disable
 SaveZoneInformation -Disable
-WindowsScriptHost -Disable
-WindowsSandbox -Enable
 DismissMSAccount
 DismissSmartScreenFilter
 
@@ -190,22 +187,22 @@ DismissSmartScreenFilter
 
 #region Context menu
 
-MSIExtractContext -Show
+MSIExtractContext -Hide
 CABInstallContext -Show
-RunAsDifferentUserContext -Show
+RunAsDifferentUserContext -Hide
 CastToDeviceContext -Hide
-ShareContext -Hide
+ShareContext -Show
 EditWithPaint3DContext -Hide
 EditWithPhotosContext -Hide
 CreateANewVideoContext -Hide
 ImagesEditContext -Hide
 PrintCMDContext -Hide
 IncludeInLibraryContext -Hide
-SendToContext -Show
+SendToContext -Hide
 BitLockerContext -Hide
 BitmapImageNewContext -Hide
 RichTextDocumentNewContext -Hide
-CompressedFolderNewContext -Hide
+CompressedFolderNewContext -Show
 MultipleInvokeContext -Enable
 UseStoreOpenWith -Hide
 

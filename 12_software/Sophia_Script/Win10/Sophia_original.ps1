@@ -11,7 +11,7 @@ param
 
 Clear-Host
 
-$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 11 v6.0.12 | Made with $([char]::ConvertFromUtf32(0x1F497)) of Windows | $([char]0x00A9) farag & Inestic, 2014$([char]0x2013)2022"
+$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 10 v5.12.5 | Made with $([char]::ConvertFromUtf32(0x1F497)) of Windows | $([char]0x00A9) farag & Inestic, 2014$([char]0x2013)2021"
 Remove-Module -Name Sophia -Force -ErrorAction Ignore
 Import-Module -Name $PSScriptRoot\Manifest\Sophia.psd1 -PassThru -Force
 Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -BaseDirectory $PSScriptRoot\Localizations
@@ -33,7 +33,7 @@ ScheduledTasks -Disable
 SigninInfo -Disable
 LanguageListAccess -Disable
 AdvertisingID -Disable
-WindowsWelcomeExperience -Hide
+WindowsWelcomeExperience -Show
 WindowsTips -Disable
 SettingsSuggestedContent -Hide
 AppsSilentInstalling -Disable
@@ -46,37 +46,41 @@ BingSearch -Disable
 #region UI & Personalization
 
 ThisPC -Show
-Windows10FileExplorer -Disable
 CheckBoxes -Disable
-HiddenItems -Disable
+HiddenItems -Enable
 FileExtensions -Show
 MergeConflicts -Show
 OpenFileExplorerTo -ThisPC
-FileExplorerCompactMode -Enable
+CortanaButton -Hide
 OneDriveFileExplorerAd -Hide
-SnapAssistFlyout -Enable
 SnapAssist -Disable
 FileTransferDialog -Detailed
+FileExplorerRibbon -Expanded
 RecycleBinDeleteConfirmation -Enable
+3DObjects -Hide
 QuickAccessRecentFiles -Hide
 QuickAccessFrequentFolders -Hide
-TaskbarAlignment -Left
-TaskbarSearch -Hide
 TaskViewButton -Hide
-TaskbarWidgets -Hide
-TaskbarChat -Hide
+PeopleTaskbar -Hide
+SecondsInSystemClock -Show
+TaskbarSearch -Hide
+WindowsInkWorkspace -Hide
+NotificationAreaIcons -Hide
+MeetNow -Hide
+NewsInterests -Disable
 ControlPanelView -LargeIcons
 WindowsColorMode -Dark
 AppColorMode -Dark
+NewAppInstalledNotification -Hide
 FirstLogonAnimation -Disable
 JPEGWallpapersQuality -Max
 TaskManagerWindow -Expanded
-RestartNotification -Hide
+RestartNotification -Show
 ShortcutsSuffix -Disable
 PrtScnSnippingTool -Enable
-AppsLanguageSwitch -Enable
+AppsLanguageSwitch -Disable
 AeroShaking -Disable
-UnpinTaskbarShortcuts -Shortcuts Edge, Store
+UnpinTaskbarShortcuts -Shortcuts Edge, Store, Mail
 
 #endregion UI & Personalization
 
@@ -90,7 +94,7 @@ UnpinTaskbarShortcuts -Shortcuts Edge, Store
 StorageSense -Enable
 StorageSenseFrequency -Month
 StorageSenseTempFiles -Enable
-Hibernation -Enable
+Hibernation -Disable
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
 AdminApprovalMode -Never
@@ -105,7 +109,8 @@ PowerPlan -High
 LatestInstalled.NET -Enable
 NetworkAdaptersSavePower -Disable
 IPv6Component -Disable
-WinPrtScrFolder -Default
+SetUserShellFolderLocation -Root
+WinPrtScrFolder -Desktop
 RecommendedTroubleshooting -Automatically
 FoldersLaunchSeparateProcess -Enable
 ReservedStorage -Disable
@@ -114,11 +119,11 @@ NumLock -Enable
 StickyShift -Disable
 Autoplay -Disable
 ThumbnailCacheRemoval -Disable
-SaveRestartableApps -Enable
+SaveRestartableApps -Disable
 NetworkDiscovery -Enable
 ActiveHours -Automatically
 RestartDeviceAfterUpdate -Disable
-DefaultTerminalApp -WindowsTerminal
+UninstallPCHealthCheck
 InstallVCRedistx64
 
 #endregion System
@@ -130,8 +135,11 @@ InstallVCRedistx64
 
 #region Start menu
 
+RecentlyAddedApps -Hide
+AppSuggestions -Hide
 RunPowerShellShortcut -Elevated
-UnpinAllStartApps
+PinToStart -UnpinAll
+PinToStart -Tiles ControlPanel, DevicesPrinters, PowerShell
 
 #endregion Start menu
 
@@ -139,7 +147,7 @@ UnpinAllStartApps
 
 HEIF -Install
 CortanaAutostart -Disable
-TeamsAutostart -Disable
+BackgroundUWPApps -Disable
 UninstallUWPApps -ForAllUsers
 CheckUWPAppsUpdates
 
@@ -147,7 +155,6 @@ CheckUWPAppsUpdates
 
 #region Gaming
 
-XboxGameBar -Disable
 XboxGameTips -Disable
 GPUScheduling -Enable
 SetAppGraphicsPerformance
@@ -174,6 +181,8 @@ PowerShellModulesLogging -Enable
 PowerShellScriptsLogging -Enable
 AppsSmartScreen -Disable
 SaveZoneInformation -Disable
+WindowsScriptHost -Disable
+WindowsSandbox -Enable
 DismissMSAccount
 DismissSmartScreenFilter
 
@@ -181,23 +190,24 @@ DismissSmartScreenFilter
 
 #region Context menu
 
-MSIExtractContext -Hide
-CABInstallContext -Hide
+MSIExtractContext -Show
+CABInstallContext -Show
 RunAsDifferentUserContext -Show
 CastToDeviceContext -Hide
-ShareContext -Show
+ShareContext -Hide
+EditWithPaint3DContext -Hide
 EditWithPhotosContext -Hide
 CreateANewVideoContext -Hide
+ImagesEditContext -Hide
 PrintCMDContext -Hide
 IncludeInLibraryContext -Hide
-SendToContext -Hide
+SendToContext -Show
 BitLockerContext -Hide
+BitmapImageNewContext -Hide
+RichTextDocumentNewContext -Hide
 CompressedFolderNewContext -Hide
 MultipleInvokeContext -Enable
 UseStoreOpenWith -Hide
-OpenWindowsTerminalContext -Show
-OpenWindowsTerminalAdminContext -Show
-Windows10ContextMenu -Enable
 
 #endregion Context menu
 

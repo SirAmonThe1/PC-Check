@@ -11,7 +11,7 @@ param
 
 Clear-Host
 
-$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 10 v5.12.5 | Made with $([char]::ConvertFromUtf32(0x1F497)) of Windows | $([char]0x00A9) farag & Inestic, 2014$([char]0x2013)2021"
+$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 10 v5.12.11 | Made with $([char]::ConvertFromUtf32(0x1F497)) of Windows | $([char]0x00A9) farag & Inestic, 2014$([char]0x2013)2022"
 Remove-Module -Name Sophia -Force -ErrorAction Ignore
 Import-Module -Name $PSScriptRoot\Manifest\Sophia.psd1 -PassThru -Force
 Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -BaseDirectory $PSScriptRoot\Localizations
@@ -33,7 +33,7 @@ ScheduledTasks -Disable
 SigninInfo -Disable
 LanguageListAccess -Disable
 AdvertisingID -Disable
-WindowsWelcomeExperience -Show
+WindowsWelcomeExperience -Hide
 WindowsTips -Disable
 SettingsSuggestedContent -Hide
 AppsSilentInstalling -Disable
@@ -56,7 +56,7 @@ OneDriveFileExplorerAd -Hide
 SnapAssist -Disable
 FileTransferDialog -Detailed
 FileExplorerRibbon -Expanded
-RecycleBinDeleteConfirmation -Enable
+RecycleBinDeleteConfirmation -Disable
 3DObjects -Hide
 QuickAccessRecentFiles -Hide
 QuickAccessFrequentFolders -Hide
@@ -65,7 +65,7 @@ PeopleTaskbar -Hide
 SecondsInSystemClock -Show
 TaskbarSearch -Hide
 WindowsInkWorkspace -Hide
-NotificationAreaIcons -Hide
+NotificationAreaIcons -Show
 MeetNow -Hide
 NewsInterests -Disable
 ControlPanelView -LargeIcons
@@ -75,10 +75,10 @@ NewAppInstalledNotification -Hide
 FirstLogonAnimation -Disable
 JPEGWallpapersQuality -Max
 TaskManagerWindow -Expanded
-RestartNotification -Show
-ShortcutsSuffix -Disable
+RestartNotification -Hide
+ShortcutsSuffix -Enable
 PrtScnSnippingTool -Enable
-AppsLanguageSwitch -Disable
+AppsLanguageSwitch -Enable
 AeroShaking -Disable
 UnpinTaskbarShortcuts -Shortcuts Edge, Store, Mail
 
@@ -94,7 +94,7 @@ UnpinTaskbarShortcuts -Shortcuts Edge, Store, Mail
 StorageSense -Enable
 StorageSenseFrequency -Month
 StorageSenseTempFiles -Enable
-Hibernation -Disable
+Hibernation -Enable
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
 AdminApprovalMode -Never
@@ -109,8 +109,7 @@ PowerPlan -High
 LatestInstalled.NET -Enable
 NetworkAdaptersSavePower -Disable
 IPv6Component -Disable
-SetUserShellFolderLocation -Root
-WinPrtScrFolder -Desktop
+WinPrtScrFolder -Default
 RecommendedTroubleshooting -Automatically
 FoldersLaunchSeparateProcess -Enable
 ReservedStorage -Disable
@@ -119,10 +118,10 @@ NumLock -Enable
 StickyShift -Disable
 Autoplay -Disable
 ThumbnailCacheRemoval -Disable
-SaveRestartableApps -Disable
+SaveRestartableApps -Enable
 NetworkDiscovery -Enable
 ActiveHours -Automatically
-RestartDeviceAfterUpdate -Disable
+RestartDeviceAfterUpdate -Enable
 UninstallPCHealthCheck
 InstallVCRedistx64
 
@@ -155,6 +154,7 @@ CheckUWPAppsUpdates
 
 #region Gaming
 
+XboxGameBar -Disable
 XboxGameTips -Disable
 GPUScheduling -Enable
 SetAppGraphicsPerformance
@@ -181,8 +181,6 @@ PowerShellModulesLogging -Enable
 PowerShellScriptsLogging -Enable
 AppsSmartScreen -Disable
 SaveZoneInformation -Disable
-WindowsScriptHost -Disable
-WindowsSandbox -Enable
 DismissMSAccount
 DismissSmartScreenFilter
 
@@ -201,11 +199,11 @@ CreateANewVideoContext -Hide
 ImagesEditContext -Hide
 PrintCMDContext -Hide
 IncludeInLibraryContext -Hide
-SendToContext -Show
+SendToContext -Hide
 BitLockerContext -Hide
 BitmapImageNewContext -Hide
 RichTextDocumentNewContext -Hide
-CompressedFolderNewContext -Hide
+CompressedFolderNewContext -Show
 MultipleInvokeContext -Enable
 UseStoreOpenWith -Hide
 

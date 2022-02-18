@@ -1,4 +1,4 @@
-﻿#Requires -RunAsAdministrator
+#Requires -RunAsAdministrator
 #Requires -Version 5.1
 
 [CmdletBinding()]
@@ -34,7 +34,7 @@ SigninInfo -Disable
 LanguageListAccess -Disable
 AdvertisingID -Disable
 WindowsWelcomeExperience -Hide
-WindowsTips -Disable
+WindowsTips -Enable
 SettingsSuggestedContent -Hide
 AppsSilentInstalling -Disable
 WhatsNewInWindows -Disable
@@ -71,7 +71,7 @@ AppColorMode -Dark
 FirstLogonAnimation -Disable
 JPEGWallpapersQuality -Max
 TaskManagerWindow -Expanded
-RestartNotification -Show
+RestartNotification -Hide
 ShortcutsSuffix -Disable
 PrtScnSnippingTool -Enable
 AppsLanguageSwitch -Enable
@@ -97,15 +97,14 @@ AdminApprovalMode -Default
 MappedDrivesAppElevatedAccess -Enable
 DeliveryOptimization -Disable
 WaitNetworkStartup -Enable
-WindowsManageDefaultPrinter -Enable
-WindowsFeatures -Enable
+WindowsManageDefaultPrinter -Disable
+WindowsFeatures -Disable
 WindowsCapabilities -Uninstall
 UpdateMicrosoftProducts -Enable
 PowerPlan -High
 LatestInstalled.NET -Enable
 NetworkAdaptersSavePower -Disable
 IPv6Component -Disable
-InputMethod -Default
 WinPrtScrFolder -Default
 RecommendedTroubleshooting -Automatically
 FoldersLaunchSeparateProcess -Enable
@@ -182,11 +181,11 @@ DismissSmartScreenFilter
 
 #region Context menu
 
-MSIExtractContext -Show
-CABInstallContext -Show
-RunAsDifferentUserContext -Show
+MSIExtractContext -Hide
+CABInstallContext -Hide
+RunAsDifferentUserContext -Hide
 CastToDeviceContext -Hide
-ShareContext -Hide
+ShareContext -Show
 EditWithPhotosContext -Hide
 CreateANewVideoContext -Hide
 PrintCMDContext -Hide
@@ -198,7 +197,7 @@ MultipleInvokeContext -Enable
 UseStoreOpenWith -Hide
 OpenWindowsTerminalContext -Hide
 OpenWindowsTerminalAdminContext -Show
-Windows10ContextMenu -Enable
+Windows10ContextMenu -Disable
 
 #endregion Context menu
 
