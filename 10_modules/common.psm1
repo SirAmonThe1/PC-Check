@@ -77,6 +77,13 @@ function show-OutputAlert($text) {
 
 }
 
+
+function show-OutputGrey($text) {
+
+    Write-Host -ForegroundColor darkgrey ".... $text ..."
+
+}
+
 function show-TrennerFertig {
 
     ""

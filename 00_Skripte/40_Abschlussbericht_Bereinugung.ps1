@@ -60,36 +60,6 @@ write-host
 
 #### Virenscan
 
-write-host
-show-Output "Bitte jetzt den Virenscan starten"
-Write-Host
-Read-Host ">>> Läuft der Scan? [Enter]"
-
-write-host	
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-	
-write-host
-
-# Leistungsindex 
-Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- Leistungsindex erstellen"
-Write-Host
-Write-Host -ForegroundColor Red ">>> Leistungsindex wird gestartet"
-
-winsat formal
-
-clear
-
-
 
 
 
@@ -104,6 +74,18 @@ show-TrennerHeader2 "Vorbereitung"
 show-TrennerInfo "Logging starten"
 
 Start-logging "Log_40_fuer_$PCname"         #   "LogName"
+
+""
+show-Output "Bitte jetzt den Virenscan starten"
+""
+Read-Host ">>> Läuft der Scan? [Enter]"
+
+show-TrennerKlein
+show-TrennerInfo "Leistungsindex erstellen"
+
+    show-OutputGrey "läuft, bitte warten"
+    $LIndex = winsat formal
+    show-Output "Erstellung erfolgreich"
 
 
 #####################

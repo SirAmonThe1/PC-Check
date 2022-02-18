@@ -56,20 +56,7 @@ write-host
 
 
 
-
-
-# Leistungsindex 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- Leistungsindex erstellen"
-Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Leistungsindex wird gestartet"
-
-winsat formal
-
-clear
-
-
-
-show-TrennerHeader1 "PC-Check Menü"
+show-TrennerHeader1 "Systeminformationen erheben"
 
 #####################
 # Vorbereitung
@@ -86,6 +73,12 @@ show-TrennerInfo "Systemwiederherstellungspunkt erstellen"
 
 Set-SystemCheckpoint "PC-Check initial"         # "Text"
 
+show-TrennerKlein
+show-TrennerInfo "Leistungsindex erstellen"
+
+    show-OutputGrey "läuft, bitte warten"
+    $LIndex = winsat formal
+    show-Output "Erstellung erfolgreich"
 
 
 #####################
