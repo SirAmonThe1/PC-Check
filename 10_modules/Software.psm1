@@ -1,10 +1,10 @@
 
 #geplante Software
 
-$SW_Basic = "PowerShell 7zip notepadplusplus keepassxc vlc firefox teamviewer javaruntime adobereader"
-$SW_optional = "googlechrome firefox anydesk.install Discord dropbox spotify driverbooster steam zoom onedrive"
-$SW_Admin = "googlechrome anydesk.install veracrypt HWinfo syncthing synctrayzor powertoys FiraCode Discord github"
-$SW_PCCheck = "adwcleaner HWInfo crystaldiskinfo crystaldiskmark driverbooster ccleaner ccenhancer"
+$SW_Basic = "PowerShell / 7zip / notepadplusplus / keepassxc / vlc / firefox / teamviewer / javaruntime / adobereader"
+$SW_optional = "googlechrome / firefox / anydesk.install / Discord / dropbox / spotify / driverbooster / steam / zoom / onedrive"
+$SW_Admin = "googlechrome / anydesk.install / veracrypt / HWinfo / syncthing / synctrayzor / powertoys / FiraCode / Discord / github"
+$SW_PCCheck = "adwcleaner / HWInfo / crystaldiskinfo / crystaldiskmark / driverbooster / ccleaner / ccenhancer"
 
     
 function install-software($SWoption) {                    # Basic, optional, admin, pccheck
@@ -19,17 +19,50 @@ function install-software($SWoption) {                    # Basic, optional, adm
 	
 	# Installationen 
 	
-	cup  $SW_Basic --ignore-checksums --limit-output -y
-    if ($SWoption -eq 'admin') { cup $SW_Admin --ignore-checksums --limit-output -y }
-    if ($SWoption -eq 'PCCheck') { cup $SW_PCCheck --ignore-checksums --limit-output -y }
+    $SW_Basic = $SW_Basic.Split(" / ")
+
+        foreach ($SW in $SW_Basic) {
+
+	        cup  $SW -y --ignore-checksums --limit-output
+    
+    }
+    
+    if ($SWoption -eq 'admin') { 
+        
+        $SW_Admin = $SW_Admin.Split(" / ")
+
+        foreach ($SW in $SW_Admin) {
+
+	        cup  $SW -y --ignore-checksums --limit-output
+        
+        }
+    }
+
+
+    if ($SWoption -eq 'PCCheck') { 
+        
+        $SW_PCCheck = $SW_PCCheck.Split(" / ")
+
+        foreach ($SW in $SW_PCCheck) {
+
+	        cup  $SW -y --ignore-checksums --limit-output
+        
+        }
+    }
 
         [console]::beep(2000,250)
         [console]::beep(2000,250)
+
+
+
+
+
+    $SW_optional = $SW_optional.Split(" / ")
 
     foreach ($SW in $SW_optional) {
         
         $confirmation = Read-Host ">>> $SW installieren? [y/n]"
-		if ($confirmation -eq 'y') { cup $SW -y -r --ignore-checksum 
+		if ($confirmation -eq 'y') { cup $SW -y --limit-output --ignore-checksum 
                                      Write-Host "" }
 		if ($confirmation -eq 'n') { Write-Host -ForegroundColor darkgrey ">>> $SW wurde übersprungen"
 		}
@@ -37,6 +70,35 @@ function install-software($SWoption) {                    # Basic, optional, adm
     } 
 
 }
+
+
+
+
+
+function uninstall-softwarePCCheck {
+
+Write-Host
+Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Deinstalliere temporaer fuer den Checkup installierte Software"
+Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: " $SW_PCCheck
+write-host
+
+    if ($SWoption -eq 'PCCheck') { 
+        
+        $SW_PCCheck = $SW_PCCheck.Split(" / ")
+
+        foreach ($SW in $SW_PCCheck) {
+
+	        choco uninstall  $SW -y --ignore-checksums --limit-output
+        
+        }
+    }
+
+write-host	
+
+
+
+}
+
 
 
 

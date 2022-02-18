@@ -386,14 +386,8 @@ write-host
 
 
 #### benoetigte SW deinstall
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Deinstalliere temporaer fuer den Checkup installierte Software"
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Pakete: " $SW_PCCheck
-write-host
 
-choco uninstall $SW_PCCheck --ignore-checksums --limit-output -y
-
-write-host	
+uninstall-softwarePCCheck
 
 
 
