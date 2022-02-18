@@ -22,7 +22,8 @@ function install-software($SWoption) {                    # Basic, optional, adm
     $SW_Basic = $SW_Basic.Split(",")
 
         foreach ($SW in $SW_Basic) {
-
+            
+            ""
 	        cup  $SW -y --ignore-checksums --limit-output
     
     }
@@ -33,6 +34,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
         foreach ($SW in $SW_Admin) {
 
+            ""
 	        cup  $SW -y --ignore-checksums --limit-output
         
         }
@@ -45,6 +47,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
         foreach ($SW in $SW_PCCheck) {
 
+            ""
 	        cup  $SW -y --ignore-checksums --limit-output
         
         }
@@ -61,6 +64,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
     foreach ($SW in $SW_optional) {
         
+        ""
         $confirmation = Read-Host ">>> $SW installieren? [y/n]"
 		if ($confirmation -eq 'y') { cup $SW -y --limit-output --ignore-checksum  }
 		if ($confirmation -eq 'n') { Write-Host ">>> $SW wurde übersprungen" }
