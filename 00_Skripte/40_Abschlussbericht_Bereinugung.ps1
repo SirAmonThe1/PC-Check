@@ -36,23 +36,20 @@ gsudo
 write-host
 
 
-show-Output "Aktueller Pfad"
 $scriptFolder   = Split-Path -Parent $MyInvocation.MyCommand.Path
-Write-Host $scriptFolder
-
-show-Output "Installationspfad"
-Write-Host $setupPath
+write-host "Aktueller Pfad: " $scriptFolder
+Write-Host "Installationspfad:" $setupPath
 
 if (Test-Path -Path $setupPath\10_modules) {
     Get-ChildItem $setupPath\10_modules\*.psm1 | Import-Module -Force
 	write-host
-	show-Output "Module importiert aus Install Pfad"
+	write-host "Module importiert aus Installationspfad"
 } else {
 
     #Zurück zum Menü
 
 	write-host
-	show-Output "Bitte zuerst das Skript installieren im Menü"
+	write-host "Bitte zuerst das Skript installieren im Menü"
 	& $menuPS1
 }
 write-host
