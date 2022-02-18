@@ -43,17 +43,17 @@ function Stop-logging {
 function Set-SystemCheckpoint ( $CheckpointName ) {         # "Text"
 
     show-Output "Aktivieren fuer Laufwerk C:\"
-    
     Enable-ComputerRestore "C:\"
+    show-Output "OK"
 
     show-Output "Neuen Wiederherstellungspunkt erstellen"
-    
     Checkpoint-Computer -Description $CheckpointName
+    show-Output "OK"
 
     show-Output "Alle Wiederherstellungspunkte anzeigen"
-   
     Get-ComputerRestorePoint
-    
+    show-Output "OK"
+    ""
 }
 
 
