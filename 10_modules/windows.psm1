@@ -40,6 +40,39 @@ function Start-WindowsUpdatex {
 
 
 
+function Show-WindowsUpdatex {
+	Write-Host
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Windows-Update"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+	Write-Host 
+
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
+	Install-Module -Name PSWindowsUpdate -Force -allowclobber
+    cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
+	
+	Write-Host
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Suche Windows Updates"
+	Write-Host -ForegroundColor DarkGray "Bitte warten ..."
+	Write-Host
+
+    Write-Host "Ausgeblendete Updates:"
+    ""
+    Hide-WindowsUpdate -Title "Lenovo*"
+    Hide-WindowsUpdate -Title "Advanced Micro*"
+    ""
+    Write-Host "Ausstehende Updates:"
+    ""
+	Get-WUList | Format-Table
+
+	
+}
+
+
+
+
 
 
 

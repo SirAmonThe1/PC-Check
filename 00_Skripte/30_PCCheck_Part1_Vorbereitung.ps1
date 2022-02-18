@@ -100,7 +100,7 @@ write-host
 	# Windows Update
 	#####################
 
-	Start-WindowsUpdatex
+	Show-WindowsUpdatex
 	
 	
 
