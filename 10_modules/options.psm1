@@ -96,6 +96,17 @@ function get-LIndex {
 }
 
 
+function start-SW($Var_Search) {
+
+    $XPath = Get-ChildItem -Path "C:\Program Files*" "$Var_Search" -Recurse -ErrorAction SilentlyContinue | select FullName
+    $XPath = $XPath.fullname
+
+    $XPath
+
+    start-process $XPath -windowstyle Maximized
+
+}
+
 
 function out-beep {
 

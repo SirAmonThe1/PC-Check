@@ -128,16 +128,6 @@ show-TrennerInfo "Installierte Programme vor der Bereinigung"
 get-SWInstalled
 
 show-TrennerKlein
-show-TrennerInfo "Basic Software installieren"
-	
-install-software "Basic"                    # Basic, optional, admin, pccheck
-
-show-TrennerKlein
-show-TrennerInfo "Virenschutz installieren"
-
-install-antivir
-
-show-TrennerKlein
 show-TrennerInfo "Unnoetige Software mit Bulk Crap Uninstaller manuell deinstallieren"
  
 show-Output "BCUninstaller wird gestartet"
@@ -155,6 +145,29 @@ show-TrennerKlein
 show-TrennerInfo "Installierte Programme nach der Bereinigung"
 
 get-SWInstalled
+
+show-TrennerKlein
+show-TrennerInfo "Basic und PC-Check Software installieren"
+	
+install-software "pccheck"                    # Basic, optional, admin, pccheck
+
+show-TrennerKlein
+show-TrennerInfo "Virenschutz installieren"
+
+install-antivir
+
+
+
+#####################
+# Treiber
+#####################
+
+show-TrennerHeader2 "Treiber"
+
+show-TrennerInfo "Treiber mit DriverBooster prüfen"
+
+start-SW "DriverBooster.exe"
+Read-Host ">>> Geprüft? [Enter]"
 
 
 #####################

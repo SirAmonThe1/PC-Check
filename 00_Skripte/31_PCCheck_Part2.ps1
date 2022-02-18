@@ -94,11 +94,6 @@ Start-WindowsUpdatex
 
 show-TrennerHeader2 "Software"
 
-show-TrennerInfo "Software für PC-Check installieren"
-
-install-software "PCCheck"                    # Basic, optional, admin, pccheck
-
-show-TrennerKlein
 show-TrennerInfo "installierte Software zu Chocolatey hinzufügen"
 
 get-SW2Choco
@@ -126,17 +121,20 @@ show-TrennerInfo "Systemreport mit HWInfo erstellen"
 show-TrennerKlein
 show-TrennerInfo "S.M.A.R.T Festplatteninfos auslesen mit CrystalDiskInfo"
 
-#get-SMARTinfo
+get-SMARTinfo
+
+show-TrennerKlein
+show-TrennerInfo "R/W Geschwindigkeit prüfen mit CrystalDiskMark"
 
     show-Output "CrystalDiskMark8 wird gestartet"
-    start-process "C:\Program Files\CrystalDiskMark8\DiskMark64.exe" -windowstyle Maximized -verb runas
+    start-SW "DiskMark64.exe"
     Read-Host ">>> Geprüft? [Enter]"
 
 show-TrennerKlein
 show-TrennerInfo "Speicherplatz auf Festplatten prüfen"
 
     show-Output "TreeSizeFree wird gestartet"
-    start-process "C:\Program Files (x86)\JAM Software\TreeSize Free\treesizefree.exe" -windowstyle Maximized -verb runas
+    start-SW "treesizefree.exe"
     Read-Host ">>> Geprüft? [Enter]"
 
 show-TrennerKlein
