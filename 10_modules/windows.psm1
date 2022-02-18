@@ -23,19 +23,17 @@ function Start-WindowsUpdatex {
     cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
 	
 	Write-Host
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Checking for Windows Updates"
-	Write-Host -ForegroundColor DarkGray "This will take a while ..."
+	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Suche Windows Updates"
+	Write-Host -ForegroundColor DarkGray "Bitte warten ..."
 	Write-Host
-	$updates = Get-WUlist -MicrosoftUpdate
-	if ($updates) {
-		Write-Host -BackgroundColor Black -ForegroundColor Cyan ">>> Updates found:"
-		Write-Host ($updates | Format-Table | Out-String)
-		Write-Host "--> ausgenommene Updates mit folgenden Wörtern im Titel: Lenovo"
-		Get-WindowsUpdate -Install -MicrosoftUpdate -AcceptAll -IgnoreReboot -NotTitle "Lenovo"
-	} else {
-		Write-Host -ForegroundColor Green ">>> No Windows Updates available!"
-	}
-	Write-Host
+
+    Write-Host "Ausgeblendete Updates:"
+    ""
+    Hide-WindowsUpdate -Title "Lenovo*"
+    Hide-WindowsUpdate -Title "Advanced Micro*"
+
+	Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot | Format-Table
+
 	
 }
 
