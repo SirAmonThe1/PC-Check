@@ -69,8 +69,8 @@ function Set-SophiaSkript($Admin) {                 # Admin triggert Admin-Einst
 
     if ( $SophiaLivePath -like "*Windows 10*" ) {    
         
-        $SophiaPath10 = $SophiaPath + "\Win10\"
-        $SophiaPath10A = $SophiaPath + "\Win10_Admin\"
+        $SophiaPath10 = "C:\!_Checkup_Install\12_software\Win10\"
+        $SophiaPath10A = "C:\!_Checkup_Install\12_software\Win10_Admin\"
 
         Write-host "Quellen: " + $SophiaPath10 + $SophiaPath10A
 
@@ -88,8 +88,8 @@ function Set-SophiaSkript($Admin) {                 # Admin triggert Admin-Einst
     
     if ( $SophiaLivePath -like "*Windows 11*" ) {    
         
-        $SophiaPath11 = $SophiaPath + "\Win11\"
-        $SophiaPath11A = $SophiaPath + "\Win11_Admin\"
+        $SophiaPath11 = "C:\!_Checkup_Install\12_software\Win11\"
+        $SophiaPath11A = "C:\!_Checkup_Install\12_software\Win11_Admin\"
 
         Write-host "Quellen: " + $SophiaPath11 + $SophiaPath11A
 
