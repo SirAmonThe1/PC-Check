@@ -84,6 +84,8 @@ function show-rebootstatusForce {
 }
 
 
+
+<#
 function confirm-menu {
 
     ""
@@ -91,6 +93,7 @@ function confirm-menu {
     & $menuPS1
 
 }
+#>
 
 
 

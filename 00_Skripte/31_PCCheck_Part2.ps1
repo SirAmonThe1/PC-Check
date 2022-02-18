@@ -191,5 +191,6 @@ show-rebootstatus
 show-TrennerKlein
 show-TrennerInfo "Zurück zum Menü?"
 
-confirm-menu
-
+""
+Read-Host "Zurück zum Menü? [ENTER]"
+& $menuPS1

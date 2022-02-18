@@ -133,4 +133,4 @@ Write-Host
 
 ii $setupPath
 
-& '$menuPS1'
+& $menuPS1
