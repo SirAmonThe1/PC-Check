@@ -11,11 +11,6 @@
 
 function Start-WindowsUpdatex {
 
-	show-Output "PSWindowsUpdate installieren"
-	Install-Module -Name PSWindowsUpdate -Force -allowclobber
-    cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
-	
-	""
 	show-Output "Suche Windows Updates"
 	show-OutputGray "bitte warten"
 	""
@@ -31,14 +26,17 @@ function Start-WindowsUpdatex {
 
 
 
-
-function Show-WindowsUpdatex {
+function update-PSWindowsUpdatex {
 
 	show-Output "PSWindowsUpdate installieren"
 	Install-Module -Name PSWindowsUpdate -Force -allowclobber
-    cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
-	
-	""
+    cinst PSWindowsUpdate -y --ignore-checksums --limit-output -f
+		
+}
+
+
+function Show-WindowsUpdatex {
+
 	show-Output "Suche Windows Updates"
 	show-OutputGray "bitte warten"
 	""

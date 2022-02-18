@@ -109,9 +109,7 @@ function get-sysPSWindowsUpdateVersion {
     do{
 	    if ($PSWU.Version -eq "2.2.0.2") {  Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell"  } 
             else {
-                show-Output "PSWindowsUpdate installieren"
-	            Install-Module -Name PSWindowsUpdate -Force -allowclobber
-                cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
+                update-PSWindowsUpdatex
 
                 $PSWU = Get-Package -Name PSWindowsUpdate
 
