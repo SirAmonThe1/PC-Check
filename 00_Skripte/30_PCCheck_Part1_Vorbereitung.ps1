@@ -149,7 +149,7 @@ show-Trenner
 	#####################
 	
 	
-    Set-SophiaSkriptAdmin 1                # Admin triggert Admin-Einstellungen
+    Set-SophiaSkript "Basic"               # Admin triggert Admin-Einstellungen
 	
 	
 

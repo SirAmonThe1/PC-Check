@@ -47,7 +47,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
 	#####################
 	
 
-function Set-SophiaSkriptAdmin($Admin) {                 # Admin triggert Admin-Einstellungen
+function Set-SophiaSkript($Admin) {                 # Admin triggert Admin-Einstellungen
 		
 	""
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Weitere Einstellungen werden durch das Sophia Script eingestellt"
@@ -62,7 +62,7 @@ function Set-SophiaSkriptAdmin($Admin) {                 # Admin triggert Admin-
     $SophiaLivePath = ls $env:USERPROFILE "*Sophia Script*" -Recurse -Directory | select FullName
     $SophiaLivePath = $SophiaLivePath.fullname
         
-    Write-host "Ziel: $SophiaLivePath"
+    Write-host "Downloadordner: " + $SophiaLivePath
     
 
     $Admin
@@ -72,7 +72,7 @@ function Set-SophiaSkriptAdmin($Admin) {                 # Admin triggert Admin-
         $SophiaPath10 = $SophiaPath + "\Win10\"
         $SophiaPath10A = $SophiaPath + "\Win10_Admin\"
 
-        Write-host "Quelle: $SophiaPath10 + $SophiaPath10A"
+        Write-host "Quellen: " + $SophiaPath10 + $SophiaPath10A
 
         if ($Admin -contains 'Admin') {  robocopy $SophiaLivePath $sophiaPath10A /e /xf sophia.ps1 
                             Write-Host "Sophia.ps1 wurde von $SophiaLivePath in $sophiaPath10A kopiert "
@@ -91,7 +91,7 @@ function Set-SophiaSkriptAdmin($Admin) {                 # Admin triggert Admin-
         $SophiaPath11 = $SophiaPath + "\Win11\"
         $SophiaPath11A = $SophiaPath + "\Win11_Admin\"
 
-        Write-host "Quelle: $SophiaPath11 + $SophiaPath11A"
+        Write-host "Quellen: " + $SophiaPath11 + $SophiaPath11A
 
         if ($Admin -contains 'Admin') {  robocopy $SophiaLivePath $sophiaPath11A /e /xf sophia.ps1 
                             Write-Host "Sophia.ps1 wurde von $SophiaLivePath in $sophiaPath11A kopiert "

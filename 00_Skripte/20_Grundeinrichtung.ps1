@@ -15,6 +15,7 @@ $menuPS1 = $setupPath + "01_Menu.ps1"
 $modulesPath = $setupPath + "10_modules"
 $registryPath = $setupPath + "11_registry"
 $softwarePath = $setupPath + "12_software"
+
 $sophiaPath = $softwarePath + "/Sophia_Script"
 
 $PCname = hostname
@@ -153,7 +154,7 @@ show-Trenner
 	#####################
 	
 
-    Set-SophiaSkriptAdmin ""                 # Admin triggert Admin-Einstellungen
+    Set-SophiaSkript "Basic"                 # Admin triggert Admin-Einstellungen
 
 
 

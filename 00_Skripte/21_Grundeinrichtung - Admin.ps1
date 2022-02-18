@@ -133,7 +133,7 @@ write-host
 	
 
 
-    Set-SophiaSkriptAdmin "Admin"                 # Admin triggert Admin-Einstellungen
+    Set-SophiaSkript "Admin"                 # Admin triggert Admin-Einstellungen
 
 
 
