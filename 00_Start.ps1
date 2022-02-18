@@ -58,16 +58,31 @@ Write-Host
 
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
+
+
+
+
+
+
 write-host
 Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere gsudo (Tool zum privilegieren von PowerShell-Instanzen)"
 Write-Host 
 
 cup gsudo -y --limit-output
 # Install git
+
+
+
+""
 Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere git"
 Write-Host 
 
 & choco install git -y --limit-output
+
+
+
+
+
 
 # Reset the path environment
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
@@ -76,8 +91,18 @@ Write-Host
 Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Repository Clonen"
 Write-Host 
 
+
+
+
+
+
 # Clone the setup repository
 & git clone $repoUri $setupPath
+
+
+
+
+
 
 # Enter inside the repository and invoke the real set-up process
 write-host
@@ -92,6 +117,14 @@ Write-Host
 Get-ChildItem .\10_modules\*.psm1 | Import-Module -Force
 
 Write-Host
+
+
+
+
+
+
+
+
 
 
 # Skript auswaehlen
