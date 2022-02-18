@@ -91,16 +91,14 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
 function uninstall-softwarePCCheck {
 
-    if ($SWoption -eq 'PCCheck') { 
-        
-        $SW_PCCheck = $SW_PCCheck.Split("/")
+    $SW_PCCheck = $SW_PCCheck.Split(",")
 
-        foreach ($SW in $SW_PCCheck) {
-
-	        choco uninstall  $SW -y --ignore-checksums --limit-output
-            show-TrennerKlein
+    foreach ($SW in $SW_PCCheck) {
         
-        }
+        ""
+	    choco uninstall  $SW -y --ignore-checksums --limit-output
+        show-TrennerKlein
+        
     }
 }
 
