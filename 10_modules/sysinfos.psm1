@@ -151,3 +151,32 @@ function get-sysPSWindowsUpdateVersion {
     Write-Host
 
 }
+
+
+
+
+
+function get-festplatte {
+
+    $FullSize = 
+    @{
+      Expression = {[int]($_.Size/1GB)}
+      Name = 'Space (GB)'
+    }
+
+    $Freespace = 
+    @{
+      Expression = {[int]($_.Freespace/1GB)}
+      Name = 'Free Space (GB)'
+    }
+
+    $PercentFree = 
+    @{
+      Expression = {[int]($_.Freespace*100/$_.Size)}
+      Name = 'Free (%)'
+    }
+
+    Get-WmiObject -Class Win32_LogicalDisk | Where-Object {$_.VolumeName -ne 'Remke IT-Service'} | Format-Table -autosize -Property DeviceID, VolumeName, FileSystem, Description, $FullSize, $Freespace, $PercentFree
+
+
+}

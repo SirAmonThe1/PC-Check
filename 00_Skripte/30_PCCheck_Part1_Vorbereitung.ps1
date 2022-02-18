@@ -66,250 +66,117 @@ write-host
 
 
 
-	#####################
-	# Vorbereitung
-	#####################
-
-
-    # Logging starten
-    Start-logging "Log_30_fuer_$PCname"         #   "LogName"
-
-
-    # PC-Rename
-    Request-RenamePC
-	
-
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Beginning the Set-Up"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host
-	
 
 
 
+show-TrennerHeader1 "Vorbereitungen für PC-Check treffen"
 
 
+#####################
+# Vorbereitung
+#####################
 
 
+show-TrennerHeader2 "Vorbereitung"
 
-	#####################
-	# Windows Update
-	#####################
+show-TrennerInfo "Logging starten"
 
-	Show-WindowsUpdatex
-	
-	
+Start-logging "Log_30_fuer_$PCname"         #   "LogName"
 
+show-TrennerKlein
+show-TrennerInfo "PC umbenennen"
 
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
+Request-RenamePC
 
 	
-	#####################
-	# Windows-Einstellungen
-	#####################
+
+#####################
+# Windows Update
+#####################
+
+show-TrennerHeader2 "Windows Updates anzeigen"
+
+Show-WindowsUpdatex
+
+
+#####################
+# Windows-Einstellungen
+#####################
+
+show-TrennerHeader2 "Windows Einstellungen"
 	
-    Set-WindowsSettings
+Set-WindowsSettings
 	
-	[console]::beep(2000,250)
-    [console]::beep(2000,250)
+out-beep
+
 	
-
-
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-
-	#####################
-	# SOFIA Skript
-	#####################
+#####################
+# SOFIA Skript
+#####################
 	
-	
-    Set-SophiaSkript "Basic"               # Admin triggert Admin-Einstellungen
-	
-	
+show-TrennerHeader2 "Sophia-Skript"
 
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-
+Set-SophiaSkript "Basic"                 # Admin triggert Admin-Einstellungen
 
 	
 #####################
 # SOFTWARE
 #####################
 
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- SOFTWARE"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
+show-TrennerHeader2 "Software"
 
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installierte Programme vor der Bereinigung"
-Write-Host
+show-TrennerInfo "Installierte Programme vor der Bereinigung"
 
-Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
+get-SWInstalled
 
-Write-Host
-
-
-
-
-
-show-Trenner
-
-
-
-
-
+show-TrennerKlein
+show-TrennerInfo "Basic Software installieren"
 	
-
-
 install-software "Basic"                    # Basic, optional, admin, pccheck
 
+show-TrennerKlein
+show-TrennerInfo "Virenschutz installieren"
 
+install-antivir
 
-write-host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Virenschutz bitte jetzt installieren"
-    [console]::beep(2000,250)
-    [console]::beep(2000,250)
-$confirmation = Read-Host ">>> Kaspersky Internet Security installieren? [y/n]"
-    if ($confirmation -eq 'y') {
-		start-process $softwarePath\Kaspersky\kis.exe}
-	if ($confirmation -eq 'n') {
-		Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Bitte einen anderen Virenschutz aktivieren (evtl. Windows Defender)"
-	}
-    [console]::beep(2000,250)
-    [console]::beep(2000,250)
-
-
-
-Read-Host ">>> Virenschutz fertig installiert? [Enter]"
-
-Write-Host
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-Write-Host 
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "Unnoetige Software manuell deinstallieren"
-Write-Host 
+show-TrennerKlein
+show-TrennerInfo "Unnoetige Software mit Bulk Crap Uninstaller manuell deinstallieren"
+ 
 Write-Host -BackgroundColor Blue -ForegroundColor White ">>> BCUninstaller wird gestartet"
 
 start-process $softwarePath\BCUninstaller\BCUninstaller.exe -windowstyle Maximized
 
 write-host
 Write-Host -BackgroundColor Blue -ForegroundColor White ">>>  Unnoetige Software bitte jetzt deinstallieren"
-    [console]::beep(2000,250)
-    [console]::beep(2000,250)
+
+out-beep
+
 Read-Host "Fertig deinstalliert? [Enter]"
-write-host
+
+show-TrennerKlein
+show-TrennerInfo "Installierte Programme nach der Bereinigung"
+
+get-SWInstalled
 
 
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installierte Programme nach Bereinigung"
-Write-Host
-
-Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
-
-
-
-
-
+#####################
+# Fertig
+#####################
 
 show-TrennerFertig
-
-
-
-
-
-
 	
-	[console]::beep(2000,250)
-    [console]::beep(2000,250)
-	
-	# Logging beenden
-    Stop-logging 
+out-beep
 
-	
-	# Reboot
-	Write-Host -BackgroundColor Red -ForegroundColor White "##### --- NEUSTARTEN"
-	Write-Host
-	Write-Host -ForegroundColor Red ">>> Bitte auf jeden Fall jetzt neu Starten"
-    ""
+show-TrennerInfo "Logging beenden"
 
-	$confirmation = Read-Host ">>> jetzt Neustart mit RAM-Test durchfuehren? [y/n]"
+Stop-logging 
 
-	if ($confirmation -eq 'y') {  mdsched  }
-	 
-	Write-Host
+show-TrennerKlein
+show-TrennerInfo "NEUSTARTEN"
 
+show-rebootstatusForce
 
-	$confirmation = Read-Host ">>> jetzt nur Neustart durchfuehren? [y/n]"
+show-TrennerKlein
+show-TrennerInfo "Zurück zum Menü?"
 
-    if ($confirmation -eq 'y') {  Restart-Computer  }
-
-
-
-
-
-    #zurück zum Menü
-
-    ""
-    Read-Host "Zurück zum Menü? [ENTER]"
-    & $menuPS1
+confirm-menu

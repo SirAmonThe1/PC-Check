@@ -3,23 +3,64 @@ $tempDir = "./.tmp"
 
 
 function show-Trenner {
-
+    
+    ""
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
+    ""
 
 }
 
-function show-Trenner2 {
+function show-TrennerKlein {
+    
+    ""
+    Write-Host -BackgroundColor Black -ForegroundColor white "##############################"
+    ""
 
 }
 
-function show-Trenner3 {
+
+function show-TrennerHeader1($text) {
+
+    ""
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "##############################"
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- " $text
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "##############################"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	Write-Host -BackgroundColor Black -ForegroundColor Cyan "********"
+	""
+
+}
+
+
+function show-TrennerHeader2($text) {
+
+    ""
+    Write-Host -BackgroundColor Black -ForegroundColor White "****"
+    Write-Host -BackgroundColor Black -ForegroundColor White "#####################"
+    Write-Host -BackgroundColor Black -ForegroundColor White "# ----- " $text
+    Write-Host -BackgroundColor Black -ForegroundColor White "#####################"
+    Write-Host -BackgroundColor Black -ForegroundColor White "****"
+    ""
+
+}
+
+
+function show-TrennerInfo($text) {
+
+    ""
+    Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- " $text
+    ""
 
 }
 
 function show-TrennerFertig {
 
-    write-host
+    ""
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
@@ -27,7 +68,7 @@ function show-TrennerFertig {
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	write-host
+	""
 
 }
 

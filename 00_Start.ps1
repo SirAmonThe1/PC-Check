@@ -17,7 +17,7 @@ gsudo
 #Skript
 
 
-# Begrueßung
+# Einleitung
 
 write-host -BackgroundColor Green -ForegroundColor White "Willkommen beim PC-Check"
 write-host

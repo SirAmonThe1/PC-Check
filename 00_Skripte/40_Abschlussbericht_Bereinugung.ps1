@@ -66,7 +66,7 @@ write-host
 write-host
 Write-Host -BackgroundColor Black -ForegroundColor Cyan "Bitte jetzt den Virenscan starten"
 Write-Host
-Read-Host ">>> Lauuft der Scan? [Enter]"
+Read-Host ">>> Läuft der Scan? [Enter]"
 
 write-host	
 
@@ -94,318 +94,149 @@ clear
 
 
 
-	#####################
-	# Vorbereitung
-	#####################
 
 
-    # Logging starten
-    Start-logging "Log_40_fuer_$PCname"         #   "LogName"
+show-TrennerHeader1 "Abschlussbericht erstellen und PC bereinigen"
+
+#####################
+# Vorbereitung
+#####################
+
+show-TrennerHeader2 "Vorbereitung"
+
+show-TrennerInfo "Logging starten"
+
+Start-logging "Log_40_fuer_$PCname"         #   "LogName"
 
 
-	#####################
-	# Erhebung
-	#####################
+#####################
+# SOFTWARE
+#####################
+
+show-TrennerHeader2 "Software"
+
+show-TrennerInfo "Software für PC-Check wieder deinstallieren"
+
+uninstall-softwarePCCheck
 
 
+#####################
+# Erhebung
+#####################
 
-    # PC-Informationen
+show-TrennerHeader2 "Erhebung der Systeminformationen für Abschlussbericht"
 
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- Systeminfos"
-    Write-Host
+show-TrennerInfo "Windows"
 
-    get-sysWindows
-    get-sysWindowsLicense
+get-sysWindows
+get-sysWindowsLicense
 
+show-TrennerKlein
+show-TrennerInfo "Office"
 
+get-sysOfficeLicense
 
+show-TrennerKlein
+show-TrennerInfo "ausstehende Windows Updates"
 
-
-
-show-Trenner
-
-
-
-
-
-
-
-    get-sysOfficeLicense
-
-    Write-Host
-
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-    Write-Host
-    Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- ausstehende Windows Updates"
-    Write-Host
-
-    Get-WUList | Format-Table
+Get-WUList | Format-Table
 
 Write-Host
 
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Benutzerkonten"
-Write-Host
+show-TrennerKlein
+show-TrennerInfo "Benutzerkonten"
 
 Get-LocalUser | Format-Table
 
 Write-Host
 
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- BIOS"
-Write-Host
+show-TrennerKlein
+show-TrennerInfo "BIOS"
 
 Get-ComputerInfo | Format-List -Property BiosManufacturer,BiosName,BiosVersion,BiosReleaseDate,BiosFirmwareType,SerialNumber
 
 Write-Host
 
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Hardware"
-Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Mainboard"
+show-TrennerKlein
+show-TrennerInfo "Mainboard"
 
 Get-WmiObject Win32_BaseBoard | Format-List -Property Manufacturer,Product,SerialNumber
-Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Prozessor"
+show-TrennerKlein
+show-TrennerInfo "Prozessor"
 
 Get-WmiObject win32_processor | Format-List -Property Name,NumberOfCores,NumberOfLogicalProcessors,MaxClockSpeed,SocketDesignation
-Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Grafikkarte"
+show-TrennerKlein
+show-TrennerInfo "Grafikkarte"
 
 Get-Wmiobject Win32_VideoController | Format-List -Property DeviceID,Caption,@{n='AdapterRAM (Gb)' ;e={"{0:n2}" -f ($_.AdapterRAM/1gb)}},VideoModeDescription,AdapterCompatibility,DriverVersion
-Write-Host
 
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Arbeitsspeicher (RAM)"
-Write-Host
+show-TrennerKlein
+show-TrennerInfo "Arbeitsspeicher (RAM)"
 
-Get-WMIObject -class Win32_Physicalmemory | Format-Table -Property PartNumber, @{n='Capacity (Gb)' ;e={"{0:n2}" -f ($_.capacity/1gb)}}, Speed, ConfiguredVoltage, DeviceLocator, Tag
-Write-Host
+show-TrennerKlein
+show-TrennerInfo "Festplatten"
 
-$date = Get-Date; $date=$date.AddDays(-1)
-get-eventlog system -erroraction silentlycontinue -after $date -source Microsoft-Windows-MemoryDiagnostics-Results | Select EntryType,InstanceID,Message | format-list 
 
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Festplatten"
-Write-Host
+get-festplatte
 
-$FullSize = 
-@{
-  Expression = {[int]($_.Size/1GB)}
-  Name = 'Space (GB)'
-}
-
-$Freespace = 
-@{
-  Expression = {[int]($_.Freespace/1GB)}
-  Name = 'Free Space (GB)'
-}
-
-$PercentFree = 
-@{
-  Expression = {[int]($_.Freespace*100/$_.Size)}
-  Name = 'Free (%)'
-}
-
-Get-WmiObject -Class Win32_LogicalDisk | Where-Object {$_.VolumeName -ne 'Remke IT-Service'} | Format-Table -autosize -Property DeviceID, VolumeName, FileSystem, Description, $FullSize, $Freespace, $PercentFree
-
-Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Netzwerk"
-Write-Host
+show-TrennerKlein
+show-TrennerInfo "Netzwerk"
 
 Get-CimInstance -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=$true | Format-List Description, MACAddress,IPSubnet,DefaultIPGateway,DNSServerSearchOrder, IPAddress
 
-Write-Host
-
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Treiber"
-Write-Host
+show-TrennerKlein
+show-TrennerInfo "--- Treiber"
 
 Get-WmiObject Win32_PnPSignedDriver | Where-Object {$_.DeviceClass -ne $null} | Where-Object {$_.Manufacturer -notlike '*USB*'} | Where-Object {$_.DeviceName -ne 'Volume'} | Where-Object {!(($_.DeviceClass -eq 'System') -and ($_.Manufacturer -eq 'Microsoft'))} | Where-Object {$_.DeviceName -notlike 'HID*'} | Where-Object {$_.DeviceName -notlike 'WAN Miniport*'} | Where-Object {$_.Manufacturer -ne '(Standard system devices)'} | Where-Object {$_.DeviceName -ne 'Generic software device'} | Where-Object {$_.DeviceName -ne 'Generic volume shadow copy'} | Sort-Object -Property DeviceClass,DeviceName,FriendlyName | Format-Table -groupby DeviceClass -autosize -Property DeviceName,FriendlyName,Manufacturer
 
-
-Write-Host
-
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
+show-TrennerKlein
+show-TrennerInfo "Virenschutz"
 
 Get-sysVirenschutz
 
-
-Write-Host
-
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installierte Programme"
-Write-Host
+show-TrennerKlein
+show-TrennerInfo "Installierte Programme"
 
 Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
 
-Write-Host
+show-TrennerKlein
+show-TrennerInfo "Systempower Bericht"
 
+powercfg /systempowerreport /output "C:\!_Checkup\02_Systempowerreport_2_fuer_$PCname.html"
 
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-Write-Host
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Systempower Bericht"
-Write-Host
-
-powercfg /systempowerreport /output "C:\!_Checkup\02_Systempowerreport_1_fuer_$PCname.html"
-Write-Host
-
-
-
-
-
-
-show-Trenner
-
-
-
-
-
-
-
-Write-Host
-
-
-
-
-# Leistungsindex abrufen
-Write-Host -BackgroundColor Black -ForegroundColor Cyan "##### --- Leistungsindex"
-Write-Host
-Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Leistungsindex Ergebnis"
+show-TrennerKlein
+show-TrennerInfo "Leistungsindex abrufen"
 
 gwmi win32_winsat | fl *score
-Write-Host
+
+show-TrennerKlein
+show-TrennerInfo "Systemwiederherstellungspunkt erstellen"
+
+Set-SystemCheckpoint "PC-Check Abschluss"         # "Text"
 
 
+#####################
+# Fertig
+#####################
 
+show-TrennerFertig
 
+out-beep
 
-
-show-Trenner
-
-
-
-
-
-
-
-Write-Host
-
-
-
-    [console]::beep(2000,250)
-    [console]::beep(2000,250)
-
-
-
-
-
-# Logging beenden
 Stop-logging 
 
+show-TrennerKlein
+show-TrennerInfo "Zurück zum Menü?"
+
+confirm-menu
 
 
 
-#zurück zum Menü
 
-Read-Host "Zurück zum Menü? [ENTER]"
-& $menuPS1
+
+
+
+
+

@@ -1,22 +1,10 @@
 
-
-
-
-
-
 	
 	#####################
 	# Windows Update
 	#####################
 
 function Start-WindowsUpdatex {
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Windows-Update"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host 
 
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
 	Install-Module -Name PSWindowsUpdate -Force -allowclobber
@@ -41,13 +29,6 @@ function Start-WindowsUpdatex {
 
 
 function Show-WindowsUpdatex {
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Windows-Update"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host 
 
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
 	Install-Module -Name PSWindowsUpdate -Force -allowclobber
@@ -66,11 +47,17 @@ function Show-WindowsUpdatex {
     Write-Host "Ausstehende Updates:"
     ""
 	Get-WUList | Format-Table
-
 	
 }
 
 
+
+
+function get-SWInstalled {
+
+    Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
+
+}
 
 
 
@@ -82,13 +69,6 @@ function Show-WindowsUpdatex {
 
 
 function Set-WindowsSettings {
-	
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Windows-Einstellungen"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host
 	
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Set-MultiMonitorTaskbarMode "2""
     Set-MultiMonitorTaskbarMode "2"

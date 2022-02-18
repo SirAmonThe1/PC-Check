@@ -62,191 +62,96 @@ write-host
 
 
 
-	#####################
-	# Vorbereitung
-	#####################
-
-
-    # Logging starten
-    Start-logging "Log_21_fuer_$PCname"         #   "LogName"
-
-
-    # PC-Rename
-    Request-RenamePC
-
-
-
-	
-
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Beginning the Set-Up"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	
-	Write-Host
-	
-	
-	
 
 
 
 
+
+show-TrennerHeader1 "Grundeinrichtung für Admins starten"
+
+#####################
+# Vorbereitung
+#####################
+
+show-TrennerHeader2 "Vorbereitung"
+
+show-TrennerInfo "Logging starten"
+
+Start-logging "Log_21_fuer_$PCname"         #   "LogName"
+
+show-TrennerKlein
+show-TrennerInfo "PC umbenennen"
+
+Request-RenamePC
 
 	
-	#####################
-	# Windows Update
-	#####################
+#####################
+# Windows Update
+#####################
 
-    Start-Windows-Update
+show-TrennerHeader2 "Windows Update ausführen"
+
+Start-WindowsUpdatex
+
+
+#####################
+# Windows-Einstellungen
+#####################
+
+show-TrennerHeader2 "Windows Einstellungen"
 	
-
-
-
-
-
-
+Set-WindowsSettings
 	
+out-beep
+
+
+#####################
+# SOFIA Skript
+#####################
 	
-	#####################
-	# Windows-Einstellungen
-	#####################
+show-TrennerHeader2 "Sophia-Skript"
+
+Set-SophiaSkript "Admin"                 # Admin triggert Admin-Einstellungen
+
+
+#####################
+# SOFTWARE
+#####################
+
+show-TrennerHeader2 "Software für Admins"
 	
-    Set-WindowsSettings
+install-software "Admin"                    # Basic, optional, admin, pccheck
+
+show-TrennerKlein
+show-TrennerInfo "Virenschutz installieren"
+
+install-antivir
+
+show-TrennerKlein
+show-TrennerInfo "Installierte Programme"
+
+get-SWInstalled
+
+
+#####################
+# Fertig
+#####################
+
+show-TrennerFertig
 	
-	[console]::beep(2000,250)
-    [console]::beep(2000,250)
-	
-	
+out-beep
 
+show-TrennerInfo "Logging beenden"
 
+Stop-logging 
 
+show-TrennerKlein
+show-TrennerInfo "Reboot Status"
 
+show-rebootstatus
 
+show-TrennerKlein
+show-TrennerInfo "Zurück zum Menü?"
 
-
-	#####################
-	# SOFIA Skript
-	#####################
-	
-
-
-    Set-SophiaSkript "Admin"                 # Admin triggert Admin-Einstellungen
-
-
-
-
-
-
-	
-	#####################
-	# SOFTWARE
-	#####################
-
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- SOFTWARE"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host
-	
-    install-software "Admin"                    # Basic, optional, admin, pccheck
-
-
-
-
-    #Virenschutz
-
-	write-host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Virenschutz bitte jetzt installieren"
-    [console]::beep(2000,250)
-    [console]::beep(2000,250)
-	$confirmation = Read-Host ">>> Kaspersky Internet Security installieren? [y/n]"
-		if ($confirmation -eq 'y') {
-			start-process $softwarePath\Kaspersky\kis.exe}
-		if ($confirmation -eq 'n') {
-			Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Bitte einen anderen Virenschutz aktivieren (evtl. Windows Defender)"
-		}
-    [console]::beep(2000,250)
-    [console]::beep(2000,250)
-	Read-Host ">>> Virenschutz fertig installiert? [Enter]"
-	write-host
-
-
-
-
-
-
-
-
-
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "--- Installierte Programme"
-	Write-Host
-
-	Get-Package -Provider Programs -IncludeWindowsInstaller | sort-object -Property name | Format-Table -Property Name, Version
-
-	Write-Host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "############################################################"
-
-
-
-
-
-
-
-
-
-
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# ----- Fertig"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "# "
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "#####################"
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "****"
-
-	Write-Host
-	Write-Host
-	
-	[console]::beep(2000,250)
-    [console]::beep(2000,250)
-	
-
-
-
-
-
-
-	# Logging beenden
-    Stop-logging 
-
-
-
-
-
-
-	
-	# Reboot
-	Write-Host -BackgroundColor Red -ForegroundColor White "##### --- REBOOT STATUS"
-	Write-Host
-	Write-Host -ForegroundColor Red ">>> Muss ein Neustart durchgeführt werden?"
-    Write-Host -ForegroundColor DarkGray "            Nach Neustart muss das Menü aus dem Pfad $setupPath gestartet werden"
-	
-
-    Get-WURebootStatus
-
-
-    #zurück zum Menü
-    ""
-    Read-Host "Zurück zum Menü? [ENTER]"
-    & $menuPS1
-
+confirm-menu
 
