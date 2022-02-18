@@ -78,9 +78,9 @@ function show-OutputAlert($text) {
 }
 
 
-function show-OutputGrey($text) {
+function show-OutputGray($text) {
 
-    Write-Host -ForegroundColor darkgrey ".... $text ..."
+    Write-Host -ForegroundColor darkgray ".... $text ..."
 
 }
 

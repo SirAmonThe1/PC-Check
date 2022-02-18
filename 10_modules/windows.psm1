@@ -17,10 +17,10 @@ function Start-WindowsUpdatex {
 	
 	""
 	show-Output "Suche Windows Updates"
-	Write-Host -ForegroundColor DarkGray "Bitte warten ..."
+	show-OutputGray "bitte warten"
 	""
 
-    Write-Host "Ausgeblendete Updates:"
+    show-Output "Ausgeblendete Updates:"
     ""
     Hide-WindowsUpdate -Title "Lenovo*"
     Hide-WindowsUpdate -Title "Advanced Micro*"
@@ -40,7 +40,7 @@ function Show-WindowsUpdatex {
 	
 	""
 	show-Output "Suche Windows Updates"
-	Write-Host -ForegroundColor DarkGray "Bitte warten ..."
+	show-OutputGray "bitte warten"
 	""
 
     show-Output "Ausgeblendete Updates:"

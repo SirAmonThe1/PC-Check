@@ -87,7 +87,7 @@ function show-rebootstatusForce {
 
 function get-LIndex {
 
-    show-OutputGrey "läuft, bitte warten"
+    show-OutputGray "läuft, bitte warten"
     ""
     $LIndex = winsat formal
     ""

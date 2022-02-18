@@ -17,7 +17,8 @@ function get-sysWindowsLicense {
 
 
 
-    show-Output "Windows Lizenz-Auslesen (evtl. nicht erfolgreich)"
+    show-Output "Windows Lizenz-Auslesen"
+    show-OutputGray "Abfrage ist evtl. nicht erfolgreich"
     
     wmic path softwarelicensingservice get OA3xOriginalProductKey
 
@@ -108,7 +109,7 @@ function get-sysPSWindowsUpdateVersion {
     do{
 	    if ($PSWU.Version -eq "2.2.0.2") {  Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell"  } 
             else {
-                Write-Host -BackgroundColor Black -ForegroundColor Cyan "PSWindowsUpdate installieren"
+                show-Output "PSWindowsUpdate installieren"
 	            Install-Module -Name PSWindowsUpdate -Force -allowclobber
                 cinst PSWindowsUpdate --ignore-checksums --limit-output -y -f
 
