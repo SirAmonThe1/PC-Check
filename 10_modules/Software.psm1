@@ -7,8 +7,8 @@
 
 #geplante Software
 
-$SW_Basic = "PowerShell,7zip,notepadplusplus,keepassxc,vlc,brave,teamviewer,javaruntime,adobereader"
-$SW_optional = "firefox,googlechrome,anydesk.install,Discord,dropbox,spotify,driverbooster,steam,zoom,onedrive"
+$SW_Basic = "PowerShell,7zip,notepadplusplus,keepassxc,vlc,firefox,teamviewer,javaruntime,adobereader"
+$SW_optional = "googlechrome,anydesk.install,Discord,dropbox,spotify,driverbooster,steam,zoom,onedrive"
 $SW_Admin = "googlechrome,anydesk.install,veracrypt,HWinfo,syncthing,synctrayzor,powertoys,FiraCode,Discord,github"
 $SW_PCCheck = "adwcleaner,HWInfo,crystaldiskinfo.portable,crystaldiskmark,driverbooster,ccleaner,ccenhancer,treesizefree"
 
@@ -85,6 +85,57 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
 }
 
+
+
+
+function confirm-software {
+    
+    $SW_Basic = $SW_Basic.Split(",")
+    $SW_PCCheck = $SW_PCCheck.Split(",")
+    $SW_optional = $SW_optional.Split(",")
+    $SW_Admin = $SW_Admin.Split(",")
+
+    foreach ($SW in $SW_Basic) {
+        
+        ""
+        $confirmation = Read-Host ">>> $SW installieren [i] / deinstallieren [u] / überspringen [z]"
+        if ($confirmation -eq 'i') { cup $SW -y --limit-output --ignore-checksum  }
+	    if ($confirmation -eq 'u') { choco uninstall $SW -y --limit-output  }
+        if ($confirmation -eq 'z') { show-Output "$SW wurde übersprungen" }
+        show-TrennerKlein
+    }
+
+    foreach ($SW in $SW_PCCheck) {
+        
+        ""
+        $confirmation = Read-Host ">>> $SW installieren [i] / deinstallieren [u] / überspringen [z]"
+        if ($confirmation -eq 'i') { cup $SW -y --limit-output --ignore-checksum  }
+	    if ($confirmation -eq 'u') { choco uninstall $SW -y --limit-output  }
+        if ($confirmation -eq 'z') { show-Output "$SW wurde übersprungen" }
+        show-TrennerKlein
+    }
+
+    foreach ($SW in $SW_optional) {
+        
+        ""
+        $confirmation = Read-Host ">>> $SW installieren [i] / deinstallieren [u] / überspringen [z]"
+        if ($confirmation -eq 'i') { cup $SW -y --limit-output --ignore-checksum  }
+	    if ($confirmation -eq 'u') { choco uninstall $SW -y --limit-output  }
+        if ($confirmation -eq 'z') { show-Output "$SW wurde übersprungen" }
+        show-TrennerKlein
+    }
+
+    foreach ($SW in $SW_Admin) {
+        
+        ""
+        $confirmation = Read-Host ">>> $SW installieren [i] / deinstallieren [u] / überspringen [z]"
+        if ($confirmation -eq 'i') { cup $SW -y --limit-output --ignore-checksum  }
+	    if ($confirmation -eq 'u') { choco uninstall $SW -y --limit-output  }
+        if ($confirmation -eq 'z') { show-Output "$SW wurde übersprungen" }
+        show-TrennerKlein
+    }
+
+}
 
 
 
