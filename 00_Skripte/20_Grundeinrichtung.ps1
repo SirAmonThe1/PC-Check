@@ -125,6 +125,12 @@ show-TrennerInfo "Virenschutz installieren"
 install-antivir
 
 show-TrennerKlein
+show-TrennerInfo "Adobe Reader zum Standard für .pdf machen"
+
+Start-Process "C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe"
+Read-Host "Fertig? [ENTER]"
+
+show-TrennerKlein
 show-TrennerInfo "Installierte Programme"
 
 get-SWInstalled
