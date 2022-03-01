@@ -242,16 +242,50 @@ function Set-SophiaSkript($Admin) {                 # Admin triggert Admin-Einst
 	Write-Host -BackgroundColor Black -ForegroundColor Cyan "## Weitere Einstellungen werden durch das Sophia Script eingestellt"
 	""
 
+
+
+    #Deleting old Folders
+
+    show-Output "Prüfen, ob ältere Downloads von Sophia Skript vorhanden sind"
+
+    $SophiaLivePath = ls $env:USERPROFILE "*Sophia Script*" -Recurse -Directory | select FullName
+    $SophiaLivePath = $SophiaLivePath.fullname
+
+    show-Output "Gefundene Pfade: " $SophiaLivePath.count  
+    show-Output "Bitte alle Löschungen manuell prüfen und bestätigen"
+
+    foreach ($path in $SophiaLivePath) {
+        
+        show-Output "Löschen: " $path
+        $confirmation = Read-Host ">>> $path ----> löschen? [y/n]"
+        if ($confirmation -eq 'y') { Remove-Item –path $path –recurse 
+                                     show-Output "Fertig" }
+        if ($confirmation -eq 'n') { show-Output "übersprungen" }
+        show-TrennerKlein       
+
+    }
+
+
+
+
+
+
     #Download Sophia-Skript
 
     irm script.sophi.app | iex
+
+
+
+
+
+
 
     #Sophia.ps1 in Ziel speichern und ausführen
 
     $SophiaLivePath = ls $env:USERPROFILE "*Sophia Script*" -Recurse -Directory | select FullName
     $SophiaLivePath = $SophiaLivePath.fullname
         
-    Write-host "Downloadordner: " + $SophiaLivePath
+    show-Output "Downloadordner: " $SophiaLivePath
     
 
     $Admin
@@ -264,12 +298,12 @@ function Set-SophiaSkript($Admin) {                 # Admin triggert Admin-Einst
         Write-host "Quellen: " + $SophiaPath10 + $SophiaPath10A
 
         if ($Admin -contains 'Admin') {  robocopy $SophiaLivePath $sophiaPath10A /e /xf sophia.ps1 
-                            Write-Host "Sophia.ps1 wurde von $SophiaLivePath in $sophiaPath10A kopiert "
+                            show-Output "Sophia.ps1 wurde von $SophiaLivePath in $sophiaPath10A kopiert "
                             ii $sophiaPath10A
                             }
 
         else {  robocopy $SophiaLivePath $sophiaPath10 /e /xf sophia.ps1 
-                            Write-Host "Sophia.ps1 wurde von $SophiaLivePath in $sophiaPath10 kopiert "
+                            show-Output "Sophia.ps1 wurde von $SophiaLivePath in $sophiaPath10 kopiert "
                             ii $sophiaPath10
                             }
     
@@ -283,12 +317,12 @@ function Set-SophiaSkript($Admin) {                 # Admin triggert Admin-Einst
         Write-host "Quellen: " + $SophiaPath11 + $SophiaPath11A
 
         if ($Admin -contains 'Admin') {  robocopy $SophiaLivePath $sophiaPath11A /e /xf sophia.ps1 
-                            Write-Host "Sophia.ps1 wurde von $SophiaLivePath in $sophiaPath11A kopiert "
+                            show-Output "Sophia.ps1 wurde von $SophiaLivePath in $sophiaPath11A kopiert "
                             ii $sophiaPath11A
                             } 
 
         else {  robocopy $SophiaLivePath $sophiaPath11 /e /xf sophia.ps1 
-                            Write-Host "Sophia.ps1 wurde von $SophiaLivePath in $sophiaPath11 kopiert "
+                            show-Output "Sophia.ps1 wurde von $SophiaLivePath in $sophiaPath11 kopiert "
                             ii $sophiaPath11
                             }
  
@@ -299,16 +333,16 @@ function Set-SophiaSkript($Admin) {                 # Admin triggert Admin-Einst
 
     ""
     ""
-    Write-host -Foregroundcolor red "Bitte das Sophia-Skript über die Sophia.bat Datei öffnen"
+    show-OutputAlert "Bitte das Sophia-Skript über die Sophia.bat Datei öffnen"
 
     out-beep
 
     Read-Host "--> nach Ausführung mit ENTER bestätigen"
 
 	write-host
-	Write-Host -BackgroundColor Black -ForegroundColor Cyan "Explorer neu starten"
+	show-Output "Explorer neu starten"
 	#Stop-Process -ProcessName explorer	
-	Write-Host -BackgroundColor Blue -ForegroundColor White ">>> OK"
+	show-Output "OK"
 
 }
 
