@@ -39,7 +39,6 @@ function install-software($SWoption) {                    # Basic, optional, adm
             Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
 	    if ($confirmation -eq 'S') {
 			cup teamviewer -y --ignore-checksums --limit-output}
-    }
 	
     
     $SW_Basic = $SW_Basic.Split(",")
