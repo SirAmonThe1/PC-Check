@@ -7,7 +7,7 @@
 
 #geplante Software
 
-$SW_Basic = "PowerShell,7zip,notepadplusplus,brave,teamviewer,javaruntime,adobereader,keepassxc,vlc"
+$SW_Basic = "PowerShell,7zip,notepadplusplus,brave,javaruntime,adobereader,keepassxc,vlc"
 $SW_optional = "firefox,googlechrome,dropbox,onedrive,spotify,Discord,steam,zoom,microsoft-teams,driverbooster"
 $SW_Admin = "veracrypt,HWinfo,syncthing,synctrayzor,powertoys,FiraCode,Discord,github"
 $SW_PCCheck = "adwcleaner,HWInfo,crystaldiskinfo.portable,crystaldiskmark,driverbooster,ccleaner,ccenhancer,treesizefree"
@@ -26,6 +26,21 @@ function install-software($SWoption) {                    # Basic, optional, adm
 	# Installationen 
 	
     #### BASIC
+	
+	$confirmation = Read-Host ">>> TeamViewer RITS-Full-Client (F) / RITS-Host-Client (H) / RITS-QuickSupport-Client (Q) oder Standard-Client (S) installieren? [ENTER = Überspringen]"
+		if ($confirmation -eq 'F') {
+			start-process "http://tvf.remke-it-service.de"
+            Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
+		if ($confirmation -eq 'H') {
+			start-process "http://tvh.remke-it-service.de"
+            Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
+		if ($confirmation -eq 'Q') {
+			start-process "http://tvq.remke-it-service.de"
+            Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
+	    if ($confirmation -eq 'S') {
+			cup teamviewer -y --ignore-checksums --limit-output}
+    }
+	
     
     $SW_Basic = $SW_Basic.Split(",")
 
