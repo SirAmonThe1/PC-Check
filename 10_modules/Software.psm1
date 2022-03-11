@@ -7,9 +7,9 @@
 
 #geplante Software
 
-$SW_Basic = "PowerShell,7zip,notepadplusplus,brave,javaruntime,adobereader,keepassxc,vlc"
-$SW_optional = "firefox,googlechrome,dropbox,onedrive,spotify,Discord,steam,zoom,microsoft-teams,driverbooster"
-$SW_Admin = "veracrypt,HWinfo,syncthing,synctrayzor,powertoys,FiraCode,Discord,github"
+$SW_Basic = "PowerShell,7zip,notepadplusplus,jre8,adobereader,keepassxc,vlc"
+$SW_optional = "brave,firefox,googlechrome,dropbox,onedrive,spotify,Discord,steam,zoom,microsoft-teams,driverbooster"
+$SW_Admin = "brave,veracrypt,HWinfo,syncthing,synctrayzor,powertoys,FiraCode,Discord,github"
 $SW_PCCheck = "adwcleaner,HWInfo,crystaldiskinfo.portable,crystaldiskmark,driverbooster,ccleaner,ccenhancer,treesizefree"
 
     
