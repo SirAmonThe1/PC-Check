@@ -75,7 +75,16 @@ if ($Reboot -like "*localhost: Reboot is not required*") {
     Write-Host -ForegroundColor Green ">>> No reboot required"
 } 
 
-# Exit
-Write-Host 
-Write-Host -ForegroundColor Yellow "Press any key to exit ..."
-$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
+
+#####################
+# Fertig
+#####################
+
+
+
+"Zurück zum Menü?"
+
+""
+Read-Host "Zurück zum Menü? [ENTER]"
+& $menuPS1
