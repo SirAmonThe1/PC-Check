@@ -46,7 +46,7 @@ BingSearch -Disable
 #region UI & Personalization
 
 ThisPC -Show
-Windows10FileExplorer -Disable
+Windows10FileExplorer -Enable
 CheckBoxes -Disable
 HiddenItems -Disable
 FileExtensions -Show
@@ -197,7 +197,7 @@ MultipleInvokeContext -Enable
 UseStoreOpenWith -Hide
 OpenWindowsTerminalContext -Hide
 OpenWindowsTerminalAdminContext -Show
-Windows10ContextMenu -Disable
+Windows10ContextMenu -enable
 
 #endregion Context menu
 
