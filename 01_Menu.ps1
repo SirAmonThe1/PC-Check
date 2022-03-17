@@ -29,7 +29,7 @@ $Opt5 = "PC-Prüfung durchführen ---> Bitte zuvor Menüpunkt 4 zur Vorbereitung au
 $Opt6 = "Abschlussbericht erstellen und bereinigen"
 $Opt7 = "Installierte Software in Chocolatey importieren"
 $Opt8 = "Softwareliste prüfen (installieren oder deinstallieren)"
-$Opt9 = ""
+$Opt9 = "Windows und Software updaten"
 $Opt0 = "PC-Check neu installieren / updaten"
 
 #.ps1 Dateien je Option
@@ -42,7 +42,7 @@ $Skript5 = "31_PCCheck_Part2.ps1"
 $Skript6 = "40_Abschlussbericht_Bereinugung.ps1"
 $Skript7 = "11_SWtoChoco.ps1"
 $Skript8 = "41_SW-Options.ps1"
-$Skript9 = ""
+$Skript9 = "12_do-full-upgrade.ps1"
 $Skript0 = "00_Start.ps1"
 
 
