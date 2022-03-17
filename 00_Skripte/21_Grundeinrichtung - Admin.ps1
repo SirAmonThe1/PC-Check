@@ -125,6 +125,20 @@ show-TrennerInfo "Virenschutz installieren"
 install-antivir
 
 show-TrennerKlein
+show-TrennerInfo "Unnoetige Software mit Bulk Crap Uninstaller manuell deinstallieren"
+ 
+show-Output "BCUninstaller wird gestartet"
+
+start-process $softwarePath\BCUninstaller\BCUninstaller.exe -windowstyle Maximized
+
+write-host
+show-Output "Unnoetige Software bitte jetzt deinstallieren"
+
+out-beep
+
+Read-Host "Fertig deinstalliert? [Enter]"
+
+show-TrennerKlein
 show-TrennerInfo "Installierte Programme"
 
 get-SWInstalled
