@@ -85,18 +85,24 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
     #### OPTIONAL
 
+	$SWList = ""
     $SW_optional = $SW_optional.Split(",")
 
     foreach ($SW in $SW_optional) {
         
         ""
         $confirmation = Read-Host ">>> $SW installieren? [y/n]"
-		if ($confirmation -eq 'y') { cup $SW -y --limit-output --ignore-checksum  }
+		if ($confirmation -eq 'y') { $SWList = $SWList + "," + $SW  }
 		if ($confirmation -eq 'n') { show-Output "$SW wurde übersprungen" }
         show-TrennerKlein
 
     } 
-
+	
+	show-Output "Die gewählten Programme werden nun installiert"
+    Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
+	cup $SWList -y --limit-output --ignore-checksum
+	show-TrennerKlein
+	
 }
 
 
@@ -108,13 +114,14 @@ function confirm-software {
     $SW_PCCheck = $SW_PCCheck.Split(",")
     $SW_optional = $SW_optional.Split(",")
     $SW_Admin = $SW_Admin.Split(",")
+	$SWList = ""
 
     foreach ($SW in $SW_Basic) {
         
         ""
         $confirmation = Read-Host ">>> $SW installieren [i] / deinstallieren [u] / überspringen [z]"
-        if ($confirmation -eq 'i') { cup $SW -y --limit-output --ignore-checksum  }
-	    if ($confirmation -eq 'u') { choco uninstall $SW -y --limit-output  }
+        if ($confirmation -eq 'i') { $SWList = $SWList + "," + $SW  }
+	    if ($confirmation -eq 'u') { $SWListUninst = $SWListUninst + "," + $SW  }
         if ($confirmation -eq 'z') { show-Output "$SW wurde übersprungen" }
         show-TrennerKlein
     }
@@ -123,8 +130,8 @@ function confirm-software {
         
         ""
         $confirmation = Read-Host ">>> $SW installieren [i] / deinstallieren [u] / überspringen [z]"
-        if ($confirmation -eq 'i') { cup $SW -y --limit-output --ignore-checksum  }
-	    if ($confirmation -eq 'u') { choco uninstall $SW -y --limit-output  }
+        if ($confirmation -eq 'i') { $SWList = $SWList + "," + $SW  }
+	    if ($confirmation -eq 'u') { $SWListUninst = $SWListUninst + "," + $SW  }
         if ($confirmation -eq 'z') { show-Output "$SW wurde übersprungen" }
         show-TrennerKlein
     }
@@ -133,8 +140,8 @@ function confirm-software {
         
         ""
         $confirmation = Read-Host ">>> $SW installieren [i] / deinstallieren [u] / überspringen [z]"
-        if ($confirmation -eq 'i') { cup $SW -y --limit-output --ignore-checksum  }
-	    if ($confirmation -eq 'u') { choco uninstall $SW -y --limit-output  }
+        if ($confirmation -eq 'i') { $SWList = $SWList + "," + $SW  }
+	    if ($confirmation -eq 'u') { $SWListUninst = $SWListUninst + "," + $SW  }
         if ($confirmation -eq 'z') { show-Output "$SW wurde übersprungen" }
         show-TrennerKlein
     }
@@ -143,12 +150,29 @@ function confirm-software {
         
         ""
         $confirmation = Read-Host ">>> $SW installieren [i] / deinstallieren [u] / überspringen [z]"
-        if ($confirmation -eq 'i') { cup $SW -y --limit-output --ignore-checksum  }
-	    if ($confirmation -eq 'u') { choco uninstall $SW -y --limit-output  }
+        if ($confirmation -eq 'i') { $SWList = $SWList + "," + $SW  }
+	    if ($confirmation -eq 'u') { $SWListUninst = $SWListUninst + "," + $SW  }
         if ($confirmation -eq 'z') { show-Output "$SW wurde übersprungen" }
         show-TrennerKlein
     }
-
+	
+	show-Output "Die gewählten Programme werden nun installiert"
+    Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
+	
+	show-TrennerKlein
+	
+	show-Output "Die gewählten Programme werden nun installiert"
+    Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
+	
+	show-TrennerKlein
+	
+	cup $SWList -y --limit-output --ignore-checksum 
+	
+	show-TrennerKlein
+		
+	cup $SWList -y --limit-output --ignore-checksum 
+	
+	show-TrennerKlein
 }
 
 
