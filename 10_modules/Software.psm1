@@ -100,7 +100,8 @@ function install-software($SWoption) {                    # Basic, optional, adm
 	
 	#### Durchführung
 	
-	$SWList = $SWList.TrimStart(",")	
+	$SWList = $SWList.TrimStart(",")
+	$SWList = $SWList.Split(",")
 	show-Output "Die gewählten Programme werden nun installiert"
     Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
 	
@@ -170,6 +171,8 @@ function confirm-software {
 	
 	$SWList = $SWList.TrimStart(",")
 	$SWListUninst = $SWListUninst.TrimStart(",")
+	$SWList = $SWList.Split(",")
+	$SWListUninst = $SWListUninst.Split(",")
 	show-Output "Die gewählten Programme werden nun installiert"
     Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
 	
