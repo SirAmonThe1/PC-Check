@@ -98,6 +98,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
     } 
 	
+	$SWList = $SWList.TrimStart(",")
 	show-Output "Die gewählten Programme werden nun installiert"
     Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
 	cup $SWList -y --limit-output --ignore-checksum
@@ -156,13 +157,16 @@ function confirm-software {
         show-TrennerKlein
     }
 	
+	$SWList = $SWList.TrimStart(",")
+	$SWListUninst = $SWListUninst.TrimStart(",")
+	
 	show-Output "Die gewählten Programme werden nun installiert"
     Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
 	
 	show-TrennerKlein
 	
 	show-Output "Die gewählten Programme werden nun installiert"
-    Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
+    Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWListUninst
 	
 	show-TrennerKlein
 	
@@ -170,7 +174,7 @@ function confirm-software {
 	
 	show-TrennerKlein
 		
-	cup $SWList -y --limit-output --ignore-checksum 
+	cup $SWListUninst -y --limit-output --ignore-checksum 
 	
 	show-TrennerKlein
 }
