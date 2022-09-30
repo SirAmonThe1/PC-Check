@@ -169,7 +169,7 @@ function confirm-software {
 		#### Durchführung
 	
 	$SWList = $SWList.TrimStart(",")
-	$SWList = $SWListUninst.TrimStart(",")
+	$SWListUninst = $SWListUninst.TrimStart(",")
 	show-Output "Die gewählten Programme werden nun installiert"
     Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
 	
