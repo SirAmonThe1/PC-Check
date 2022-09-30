@@ -109,7 +109,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
         
 		""
 		show-Output ">>> $SW installieren"
-		choco install $SW -y --limit-output --ignore-checksum
+		cup $SW -y --limit-output --ignore-checksum
 		show-TrennerKlein
 		
 	}
@@ -180,7 +180,7 @@ function confirm-software {
         
 		""
 		show-Output ">>> $SW installieren"
-		choco install $SW -y --limit-output --ignore-checksum
+		cup $SW -y --limit-output --ignore-checksum
 		show-TrennerKlein
 		
 	}
@@ -192,7 +192,7 @@ function confirm-software {
         
 		""
 		show-Output ">>> $SW installieren"
-		choco uninstall $SW -y --limit-output --ignore-checksum
+		choco uninstall  $SW -y --limit-output --ignore-checksum
 		show-TrennerKlein
 		
 	}
