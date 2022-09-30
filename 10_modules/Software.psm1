@@ -98,12 +98,20 @@ function install-software($SWoption) {                    # Basic, optional, adm
 
     } 
 	
-	$SWList = $SWList.TrimStart(",")
+	#### Durchführung
+	
+	$SWList = $SWList.TrimStart(",")	
 	show-Output "Die gewählten Programme werden nun installiert"
     Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
-	cup $SWList -y --limit-output --ignore-checksum
-	show-TrennerKlein
 	
+	foreach ($SW in $SWList) {
+        
+		""
+		show-Output ">>> $SW installieren"
+		cup $SW -y --limit-output --ignore-checksum
+		show-TrennerKlein
+		
+	}
 }
 
 
@@ -157,26 +165,35 @@ function confirm-software {
         show-TrennerKlein
     }
 	
-	$SWList = $SWList.TrimStart(",")
-	$SWListUninst = $SWListUninst.TrimStart(",")
 	
+		#### Durchführung
+	
+	$SWList = $SWList.TrimStart(",")
+	$SWList = $SWListUninst.TrimStart(",")
 	show-Output "Die gewählten Programme werden nun installiert"
     Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWList
 	
-	show-TrennerKlein
+	foreach ($SW in $SWList) {
+        
+		""
+		show-Output ">>> $SW installieren"
+		cup $SW -y --limit-output --ignore-checksum
+		show-TrennerKlein
+		
+	}
 	
-	show-Output "Die gewählten Programme werden nun installiert"
+	show-Output "Die gewählten Programme werden nun deinstalliert"
     Write-Host -Foregroundcolor DarkGray ">>> Paketnamen: " $SWListUninst
 	
-	show-TrennerKlein
-	
-	cup $SWList -y --limit-output --ignore-checksum 
-	
-	show-TrennerKlein
+	foreach ($SW in $SWListUninst) {
+        
+		""
+		show-Output ">>> $SW installieren"
+		cup $SW -y --limit-output --ignore-checksum
+		show-TrennerKlein
 		
-	cup $SWListUninst -y --limit-output --ignore-checksum 
+	}
 	
-	show-TrennerKlein
 }
 
 
