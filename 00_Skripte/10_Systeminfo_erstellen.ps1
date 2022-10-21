@@ -176,6 +176,7 @@ show-TrennerInfo "Leistungsindex abrufen"
 gwmi win32_winsat | fl *score
 
 
+
 #####################
 # Fertig
 #####################

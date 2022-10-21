@@ -12,6 +12,23 @@ $SW_optional = "brave,firefox,googlechrome,dropbox,onedrive,spotify,Discord,stea
 $SW_Admin = "brave,veracrypt,HWinfo,syncthing,synctrayzor,powertoys,FiraCode,Discord,github"
 $SW_PCCheck = "adwcleaner,HWInfo,crystaldiskinfo.portable,crystaldiskmark,driverbooster,ccleaner,ccenhancer,treesizefree"
 
+function install-teamviewer () {
+
+	$confirmation = Read-Host ">>> TeamViewer RITS-Full-Client (F) / RITS-Host-Client (H) / RITS-QuickSupport-Client (Q) oder Standard-Client (S) installieren? [ENTER = Überspringen]"
+		if ($confirmation -eq 'F') {
+			start-process "http://tvf.remke-it-service.de"
+            Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
+		if ($confirmation -eq 'H') {
+			start-process "http://tvh.remke-it-service.de"
+            Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
+		if ($confirmation -eq 'Q') {
+			start-process "http://tvq.remke-it-service.de"
+            Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
+	    if ($confirmation -eq 'S') {
+			cup teamviewer -y --ignore-checksums --limit-output}
+	
+}
+
     
 function install-software($SWoption) {                    # Basic, optional, admin, pccheck
 
@@ -26,20 +43,6 @@ function install-software($SWoption) {                    # Basic, optional, adm
 	# Installationen 
 	
     #### BASIC
-	
-	$confirmation = Read-Host ">>> TeamViewer RITS-Full-Client (F) / RITS-Host-Client (H) / RITS-QuickSupport-Client (Q) oder Standard-Client (S) installieren? [ENTER = Überspringen]"
-		if ($confirmation -eq 'F') {
-			start-process "http://tvf.remke-it-service.de"
-            Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
-		if ($confirmation -eq 'H') {
-			start-process "http://tvh.remke-it-service.de"
-            Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
-		if ($confirmation -eq 'Q') {
-			start-process "http://tvq.remke-it-service.de"
-            Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
-	    if ($confirmation -eq 'S') {
-			cup teamviewer -y --ignore-checksums --limit-output}
-	
     
     $SW_Basic = $SW_Basic.Split(",")
 

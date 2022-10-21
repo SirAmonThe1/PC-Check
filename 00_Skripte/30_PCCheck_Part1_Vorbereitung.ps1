@@ -80,6 +80,8 @@ show-TrennerInfo "Logging starten"
 
 Start-logging "Log_30_fuer_$PCname"         #   "LogName"
 
+install-teamviewer
+
 show-TrennerKlein
 show-TrennerInfo "PC umbenennen"
 

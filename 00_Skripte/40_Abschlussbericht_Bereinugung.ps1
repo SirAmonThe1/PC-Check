@@ -192,6 +192,18 @@ Set-SystemCheckpoint "PC-Check Abschluss"         # "Text"
 
 
 #####################
+# SupportInfos
+#####################
+
+show-TrennerHeader2 "SupportInformationen schreiben"
+
+show-TrennerInfo "Registry Einträge löschen und neu anlegen"
+
+show-Output "Über TeamViewer per Skript anlegen"
+Read-Host "Erledigt? Bestätigen mit [ENTER]"
+
+
+#####################
 # Fertig
 #####################
 

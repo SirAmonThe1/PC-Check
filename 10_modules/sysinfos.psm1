@@ -164,3 +164,21 @@ function get-festplatte {
 
 
 }
+
+
+function set-supportInfo () {
+	
+	# Remove:
+
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation\" -Name "SupportProvider"
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation\" -Name "Manufacturer"
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation\" -Name "SupportPhone"
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation\" -Name "SupportURL"
+	
+	# New:
+
+	New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation\" -Name "Manufacturer" -Value ”Firmenname”  -PropertyType "String"
+	New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation\" -Name "SupportPhone" -Value ””  -PropertyType "String"
+	New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation\" -Name "SupportURL" -Value ””  -PropertyType "String"
+	
+}

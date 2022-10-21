@@ -69,9 +69,11 @@ Write-Host "3 = " $Opt3
 Write-Host "4 = " $Opt4
 Write-Host "5 = " $Opt5
 Write-Host "6 = " $Opt6
+""
 Write-Host "7 = " $Opt7
 Write-Host "8 = " $Opt8
 Write-Host "9 = " $Opt9
+""
 Write-Host "0 = " $Opt0
 
 Write-Host ""
