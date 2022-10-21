@@ -253,13 +253,13 @@ function get-SW2Choco {
 
         foreach ($SW in $SWArray)
             {
-                show-Output "Verarbeite:" $SW
+                show-Output "Verarbeite: $SW"
 
                 $SW_up = cup $SW -y --ignore-checksums --limit-output
 
                 if ( $SW_up -like "*The package was not found with the source(s) listed*" ) {
                 
-                    show-Output "Software nicht genau genug"
+                    show-Output "$SW ---> nicht genau genug"
                     ""
                     choco search $SW
                     ""
@@ -270,7 +270,7 @@ function get-SW2Choco {
                     
                 } else { 
 
-                    $SW_up 
+                    $SW_up
                     show-TrennerKlein
 
                 }
