@@ -1,4 +1,4 @@
-#Requires -RunAsAdministrator
+﻿#Requires -RunAsAdministrator
 #Requires -Version 5.1
 
 [CmdletBinding()]
@@ -11,14 +11,45 @@ param
 
 Clear-Host
 
-$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 11 v6.0.12 | Made with $([char]::ConvertFromUtf32(0x1F497)) of Windows | $([char]0x00A9) farag & Inestic, 2014$([char]0x2013)2022"
+$Host.UI.RawUI.WindowTitle = "Sophia Script for Windows 11 v6.2.0 | Made with $([char]::ConvertFromUtf32(0x1F497)) of Windows | $([char]0x00A9) farag & Inestic, 2014$([char]0x2013)2022"
+
 Remove-Module -Name Sophia -Force -ErrorAction Ignore
 Import-Module -Name $PSScriptRoot\Manifest\Sophia.psd1 -PassThru -Force
-Import-LocalizedData -BindingVariable Global:Localization -FileName Sophia -BaseDirectory $PSScriptRoot\Localizations
+
+Import-LocalizedData -BindingVariable Global:Localization -BaseDirectory $PSScriptRoot\Localizations -FileName Sophia
+
+<#
+	.SYNOPSIS
+	Run the script by specifying functions as an argument
+	Запустить скрипт, указав в качестве аргумента функции
+
+	.EXAMPLE
+	.\Sophia.ps1 -Functions "DiagTrackService -Disable", "DiagnosticDataLevel -Minimal", UninstallUWPApps
+
+	.NOTES
+	Use commas to separate funtions
+	Разделяйте функции запятыми
+#>
+if ($Functions)
+{
+	Invoke-Command -ScriptBlock {Checks}
+
+	foreach ($Function in $Functions)
+	{
+		Invoke-Expression -Command $Function
+	}
+
+	# The "RefreshEnvironment" and "Errors" functions will be executed at the end
+	Invoke-Command -ScriptBlock {RefreshEnvironment; Errors}
+
+	exit
+}
+
 
 #region Protection
 
-Checkings -Warning
+Checks -Warning
+Logging
 CreateRestorePoint
 
 #endregion Protection
@@ -46,9 +77,8 @@ BingSearch -Disable
 #region UI & Personalization
 
 ThisPC -Show
-Windows10FileExplorer -Disable
 CheckBoxes -Disable
-HiddenItems -Disable
+HiddenItems -Enable
 FileExtensions -Show
 MergeConflicts -Show
 OpenFileExplorerTo -ThisPC
@@ -70,12 +100,12 @@ WindowsColorMode -Dark
 AppColorMode -Dark
 FirstLogonAnimation -Disable
 JPEGWallpapersQuality -Max
-TaskManagerWindow -Expanded
-RestartNotification -Hide
+RestartNotification -Show
 ShortcutsSuffix -Disable
 PrtScnSnippingTool -Enable
 AppsLanguageSwitch -Enable
 AeroShaking -Disable
+Cursors -Dark
 UnpinTaskbarShortcuts -Shortcuts Edge, Store
 
 #endregion UI & Personalization
@@ -90,12 +120,12 @@ UnpinTaskbarShortcuts -Shortcuts Edge, Store
 StorageSense -Enable
 StorageSenseFrequency -Month
 StorageSenseTempFiles -Enable
-Hibernation -Enable
+Hibernation -Disable
 Win32LongPathLimit -Disable
 BSoDStopError -Enable
 AdminApprovalMode -Never
 MappedDrivesAppElevatedAccess -Enable
-DeliveryOptimization -Disable
+DeliveryOptimization -Enable
 WaitNetworkStartup -Enable
 WindowsManageDefaultPrinter -Disable
 WindowsFeatures -Disable
@@ -105,7 +135,8 @@ PowerPlan -High
 LatestInstalled.NET -Enable
 NetworkAdaptersSavePower -Disable
 IPv6Component -Disable
-WinPrtScrFolder -Default
+SetUserShellFolderLocation -Root
+WinPrtScrFolder -Desktop
 RecommendedTroubleshooting -Automatically
 FoldersLaunchSeparateProcess -Enable
 ReservedStorage -Disable
@@ -119,7 +150,8 @@ NetworkDiscovery -Enable
 ActiveHours -Automatically
 RestartDeviceAfterUpdate -Disable
 DefaultTerminalApp -WindowsTerminal
-InstallVCRedistx64
+InstallVCRedist
+InstallDotNetRuntime6
 
 #endregion System
 
@@ -131,6 +163,7 @@ InstallVCRedistx64
 #region Start menu
 
 RunPowerShellShortcut -Elevated
+StartLayout -Default
 UnpinAllStartApps
 
 #endregion Start menu
@@ -150,7 +183,6 @@ CheckUWPAppsUpdates
 XboxGameBar -Disable
 XboxGameTips -Disable
 GPUScheduling -Enable
-SetAppGraphicsPerformance
 
 #endregion Gaming
 
@@ -166,7 +198,6 @@ TempTask -Register
 
 NetworkProtection -Enable
 PUAppsDetection -Enable
-DefenderSandbox -Enable
 AuditProcess -Enable
 CommandLineProcessAudit -Enable
 EventViewerCustomView -Enable
@@ -176,30 +207,36 @@ AppsSmartScreen -Disable
 SaveZoneInformation -Disable
 DismissMSAccount
 DismissSmartScreenFilter
+DNSoverHTTPS -Enable -PrimaryDNS 1.0.0.1 -SecondaryDNS 1.1.1.1
 
 #endregion Microsoft Defender & Security
 
 #region Context menu
 
-MSIExtractContext -Hide
-CABInstallContext -Hide
+MSIExtractContext -Show
+CABInstallContext -Show
 RunAsDifferentUserContext -Show
 CastToDeviceContext -Hide
-ShareContext -Show
+ShareContext -Hide
 EditWithPhotosContext -Hide
 CreateANewVideoContext -Hide
 PrintCMDContext -Hide
 IncludeInLibraryContext -Hide
 SendToContext -Hide
-BitLockerContext -Hide
 CompressedFolderNewContext -Hide
-MultipleInvokeContext -Enable
+MultipleInvokeContext -Disable
 UseStoreOpenWith -Hide
 OpenWindowsTerminalContext -Show
-OpenWindowsTerminalAdminContext -Show
+OpenWindowsTerminalAdminContext -Enable
 Windows10ContextMenu -Enable
 
 #endregion Context menu
+
+#region Update Policies
+
+UpdateLGPEPolicies
+
+#endregion Update Policies
 
 RefreshEnvironment
 Errors
