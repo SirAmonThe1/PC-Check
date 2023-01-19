@@ -118,6 +118,8 @@ if (-Not (Test-Path "$($env:ProgramData)\chocolatey\choco.exe")) {
 $requiredPackages = @([pscustomobject]@{Name="notepadplusplus";Trust=$False},
                       [pscustomobject]@{Name="7zip.install";Trust=$False},
                       [pscustomobject]@{Name="firefox";Trust=$False},
+					  [pscustomobject]@{Name="Sophia";Trust=$False},
+					  [pscustomobject]@{Name="sophiapp";Trust=$False},
                       [pscustomobject]@{Name="googlechrome";Trust=$True})
 
 # Load installed packages
