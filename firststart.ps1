@@ -163,4 +163,61 @@ if (Test-Path $pathCustomizeScript -PathType Leaf) {
 }
 
 Write-Host "Installation done"
-Start-Sleep -s 60
+# Start-Sleep -s 60
+
+# Chocolatey
+Write-Host -BackgroundColor Blue -ForegroundColor White "##### --- CHOCOLATEY"
+Write-Host
+Write-Host -ForegroundColor Red ">>> Checking for outdated software-packages via Chocolatey"
+$choco = choco outdated
+if ($choco -like "*Chocolatey has determined 0 package(s) are outdated*") {
+    Write-Host -ForegroundColor Green ">>> No updates available via Chocolatey"
+} else {
+	Write-Host -ForegroundColor DarkGray ($choco | Format-Table | Out-String)
+	Write-Host -ForegroundColor Magenta ">>> Outdated software found"
+    <#$confirmation = Read-Host "Update all with Chocolatey? [y/n]"
+    if ($confirmation -eq 'y') {
+        cup all -y -r#>
+	cup all -y -r
+}
+Write-Host
+
+# Windows Update
+Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- WINDOWS UPDATE"
+Write-Host
+Write-Host -ForegroundColor Red ">>> Checking the tool PSWindowsUpdate"
+$PS = cup PSWindowsUpdate -y -r
+if ($PS -like "*Chocolatey upgraded 0/1 packages*") {
+    Write-Host -ForegroundColor Green ">>> Up to date"
+}
+Write-Host
+
+
+
+Write-Host -ForegroundColor Red ">>> Checking for Windows Updates"
+Write-Host -ForegroundColor DarkGray "This will take a while ..."
+
+Hide-WindowsUpdate -Title "Lenovo*" -hide -confirm:$false
+Hide-WindowsUpdate -Title "Advanced Micro*" -hide -confirm:$false
+
+$updates = Get-WUlist -MicrosoftUpdate
+
+if ($updates) {
+	Write-Host -ForegroundColor Magenta ">>> Updates found:"
+    Write-Host ($updates | Format-Table | Out-String)
+
+	Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot | Format-Table
+	}
+else {
+    Write-Host -ForegroundColor Green ">>> No Windows Updates available!"
+}
+Write-Host
+
+# Reboot
+Write-Host -BackgroundColor Red -ForegroundColor White "##### --- REBOOT STATUS"
+Write-Host
+Write-Host -ForegroundColor Red ">>> Checking for reboot status"
+$Reboot = Get-WURebootStatus
+if ($Reboot -like "*localhost: Reboot is not required*") {
+    Write-Host -ForegroundColor Green ">>> No reboot required"
+} 
