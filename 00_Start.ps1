@@ -70,7 +70,7 @@ write-host
 Write-Host -BackgroundColor Blue -ForegroundColor White ">>> Installiere gsudo (Tool zum privilegieren von PowerShell-Instanzen)"
 Write-Host 
 
-cup gsudo -y --limit-output
+choco upgrade gsudo -y --limit-output
 # Install git
 
 

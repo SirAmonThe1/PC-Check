@@ -177,8 +177,8 @@ if ($choco -like "*Chocolatey has determined 0 package(s) are outdated*") {
 	Write-Host -ForegroundColor Magenta ">>> Outdated software found"
     <#$confirmation = Read-Host "Update all with Chocolatey? [y/n]"
     if ($confirmation -eq 'y') {
-        cup all -y -r#>
-	cup all -y -r
+        choco upgrade all -y -r#>
+	choco upgrade all -y -r
 }
 Write-Host
 
@@ -186,7 +186,7 @@ Write-Host
 Write-Host -BackgroundColor Magenta -ForegroundColor White "##### --- WINDOWS UPDATE"
 Write-Host
 Write-Host -ForegroundColor Red ">>> Checking the tool PSWindowsUpdate"
-$PS = cup PSWindowsUpdate -y -r
+$PS = choco upgrade PSWindowsUpdate -y -r
 if ($PS -like "*Chocolatey upgraded 0/1 packages*") {
     Write-Host -ForegroundColor Green ">>> Up to date"
 }

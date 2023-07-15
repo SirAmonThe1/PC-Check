@@ -25,7 +25,7 @@ function install-teamviewer () {
 			start-process "http://tvq.remke-it-service.de"
             Read-Host ">>> TeamViewer fertig installiert? [Enter]"}
 	    if ($confirmation -eq 'S') {
-			cup teamviewer -y --ignore-checksums --limit-output}
+			choco upgrade teamviewer -y --ignore-checksums --limit-output}
 	
 }
 
@@ -49,7 +49,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
         foreach ($SW in $SW_Basic) {
             
             ""
-	        cup  $SW -y --ignore-checksums --limit-output
+	        choco upgrade  $SW -y --ignore-checksums --limit-output
             show-TrennerKlein
     
     }
@@ -63,7 +63,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
         foreach ($SW in $SW_Admin) {
 
             ""
-	        cup  $SW -y --ignore-checksums --limit-output
+	        choco upgrade  $SW -y --ignore-checksums --limit-output
             show-TrennerKlein
 
         }
@@ -78,7 +78,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
         foreach ($SW in $SW_PCCheck) {
 
             ""
-	        cup  $SW -y --ignore-checksums --limit-output
+	        choco upgrade  $SW -y --ignore-checksums --limit-output
             show-TrennerKlein
 
         }
@@ -112,7 +112,7 @@ function install-software($SWoption) {                    # Basic, optional, adm
         
 		""
 		show-Output ">>> $SW installieren"
-		cup $SW -y --limit-output --ignore-checksum
+		choco upgrade $SW -y --limit-output --ignore-checksum
 		show-TrennerKlein
 		
 	}
@@ -183,7 +183,7 @@ function confirm-software {
         
 		""
 		show-Output ">>> $SW installieren"
-		cup $SW -y --limit-output --ignore-checksum
+		choco upgrade $SW -y --limit-output --ignore-checksum
 		show-TrennerKlein
 		
 	}
@@ -255,7 +255,7 @@ function get-SW2Choco {
             {
                 show-Output "Verarbeite: $SW"
 
-                $SW_up = cup $SW -y --ignore-checksums --limit-output
+                $SW_up = choco upgrade $SW -y --ignore-checksums --limit-output
 
                 if ( $SW_up -like "*The package was not found with the source(s) listed*" ) {
                 
@@ -265,7 +265,7 @@ function get-SW2Choco {
                     ""
                     $SW1 = Read-Host  "---> Bitte in Liste prüfen und neu eingeben: "
                     
-                    cup $SW1 -y --ignore-checksums --limit-output
+                    choco upgrade $SW1 -y --ignore-checksums --limit-output
                     show-TrennerKlein
                     
                 } else { 
