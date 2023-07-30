@@ -1,106 +1,322 @@
 ﻿--------------------------------------------------
-17:58:43 - Application startup
-17:58:44 - System.IO.FileNotFoundException: Could not find file 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Avg.json'.
-File name: 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Avg.json'
-   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
-   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
-   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+12:47:46 - Application startup
+12:47:48 - System.IO.FileNotFoundException: Could not find file 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Avg.json'.
+File name: 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Avg.json'
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategy(FileStream fileStream, String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, Int64 preallocationSize)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks)
    at System.IO.File.InternalReadAllText(String path, Encoding encoding)
    at System.IO.File.ReadAllText(String path)
    at BulkCrapUninstaller.Functions.Ratings.UninstallerRatingManager.LoadFromFile(String path, Dictionary`2 target)
-17:58:44 - System.IO.FileNotFoundException: Could not find file 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_User.json'.
-File name: 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_User.json'
-   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
-   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
-   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+12:47:48 - System.IO.FileNotFoundException: Could not find file 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_User.json'.
+File name: 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_User.json'
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategy(FileStream fileStream, String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, Int64 preallocationSize)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks)
    at System.IO.File.InternalReadAllText(String path, Encoding encoding)
    at System.IO.File.ReadAllText(String path)
    at BulkCrapUninstaller.Functions.Ratings.UninstallerRatingManager.LoadFromFile(String path, Dictionary`2 target)
-17:58:44 - System.IO.FileNotFoundException: Could not find file 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Pending.json'.
-File name: 'D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Pending.json'
-   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
-   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
-   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+12:47:48 - System.IO.FileNotFoundException: Could not find file 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Pending.json'.
+File name: 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\RatingCashe_Pending.json'
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategy(FileStream fileStream, String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, Int64 preallocationSize)
    at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
-   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks)
    at System.IO.File.InternalReadAllText(String path, Encoding encoding)
    at System.IO.File.ReadAllText(String path)
    at BulkCrapUninstaller.Functions.Ratings.UninstallerRatingManager.LoadFromFile(String path, Dictionary`2 target)
-17:58:45 - Failed to extract reg entry HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Uplay Install 5595 - System.InvalidCastException: Unable to cast object of type 'System.String' to type 'System.Int32'.
-   at UninstallTools.Factory.RegistryFactory.GetEstimatedSize(RegistryKey uninstallerKey)
-   at UninstallTools.Factory.RegistryFactory.TryCreateFromRegistry(RegistryKey uninstallerKey, Boolean is64Bit)
-   at UninstallTools.Factory.RegistryFactory.<GetUninstallerEntries>g__WorkLogic|21_0(KeyValuePair`2 data, List`1 state)
-17:58:45 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe  took 575ms
-17:58:46 - [Performance] Factory RegistryFactory took 1346ms to finish
-17:58:46 - Cache hits: 0/164
-17:58:46 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe list -lo -nocolor --detail took 1198ms
-17:58:46 - [Performance] Factory Suche nach Chocolatey Paketen took 1803ms to finish
-17:58:46 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\OculusHelper.exe /query took 61ms
-17:58:46 - [Performance] Factory Oculus Anwendungen took 71ms to finish
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe steam took 78ms
-17:58:47 - [Performance] Factory Nach Anwendungsvorlagen suchen took 91ms to finish
-17:58:47 - [Performance] Factory Searching for Scoop packages took 2ms to finish
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\ScriptHelper.exe list took 84ms
-17:58:47 - [Performance] Factory Nach Anwendungsvorlagen suchen took 101ms to finish
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe list took 83ms
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 228980 took 83ms
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 228980 took 82ms
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 242760 took 82ms
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 242760 took 82ms
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 250900 took 83ms
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 250900 took 83ms
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 294100 took 82ms
-17:58:47 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 294100 took 82ms
-17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 312660 took 81ms
-17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 312660 took 82ms
-17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 427520 took 81ms
-17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 427520 took 81ms
-17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 945360 took 81ms
-17:58:48 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 945360 took 82ms
-17:58:48 - [Performance] Factory Suche nach Steam Anwendungen took 1381ms to finish
-17:58:49 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\StoreAppHelper.exe /query took 1021ms
-17:58:49 - [Performance] Factory Suche nach Windows Store Anwendungen took 1346ms to finish
-17:58:52 - [Performance] Factory DirectoryFactory took 5366ms to finish
-17:58:53 - Cache hits: 0/327
---------------------------------------------------
-17:59:31 - Application startup
-17:59:33 - Failed to extract reg entry HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Uplay Install 5595 - System.InvalidCastException: Unable to cast object of type 'System.String' to type 'System.Int32'.
-   at UninstallTools.Factory.RegistryFactory.GetEstimatedSize(RegistryKey uninstallerKey)
-   at UninstallTools.Factory.RegistryFactory.TryCreateFromRegistry(RegistryKey uninstallerKey, Boolean is64Bit)
-   at UninstallTools.Factory.RegistryFactory.<GetUninstallerEntries>g__WorkLogic|21_0(KeyValuePair`2 data, List`1 state)
-17:59:33 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe  took 572ms
-17:59:34 - [Performance] Factory RegistryFactory took 1375ms to finish
-17:59:34 - Cache hits: 153/164
-17:59:34 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe list -lo -nocolor --detail took 882ms
-17:59:34 - [Performance] Factory Suche nach Chocolatey Paketen took 1485ms to finish
-17:59:34 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\OculusHelper.exe /query took 62ms
-17:59:34 - [Performance] Factory Oculus Anwendungen took 71ms to finish
-17:59:34 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe steam took 74ms
-17:59:34 - [Performance] Factory Nach Anwendungsvorlagen suchen took 85ms to finish
-17:59:34 - [Performance] Factory Searching for Scoop packages took 1ms to finish
-17:59:34 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\ScriptHelper.exe list took 83ms
-17:59:34 - [Performance] Factory Nach Anwendungsvorlagen suchen took 99ms to finish
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe list took 83ms
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 228980 took 80ms
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 228980 took 80ms
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 242760 took 81ms
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 242760 took 84ms
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 250900 took 83ms
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 250900 took 81ms
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 294100 took 80ms
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 294100 took 82ms
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 312660 took 84ms
-17:59:35 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 312660 took 81ms
-17:59:36 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 427520 took 81ms
-17:59:36 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 427520 took 80ms
-17:59:36 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 945360 took 81ms
-17:59:36 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe info 945360 took 82ms
-17:59:36 - [Performance] Factory Suche nach Steam Anwendungen took 1370ms to finish
-17:59:37 - [Performance] Running command D:\Coding\01_GitHub\PC-Check\12_software\BCUninstaller\win-x64\StoreAppHelper.exe /query took 785ms
-17:59:37 - [Performance] Factory Suche nach Windows Store Anwendungen took 1049ms to finish
-17:59:56 - [Performance] Factory DirectoryFactory took 21717ms to finish
-17:59:57 - Cache hits: 327/327
+12:47:49 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe  took 716ms
+12:47:49 - [Performance] Factory RegistryFactory took 1474ms to finish
+12:47:50 - FastSizeGenerator: Everything search engine is not available - es.exe failed to connect to Everything
+12:47:50 - Cache hits: 0/153
+12:47:50 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe list -lo -nocolor --detail took 1014ms
+12:47:50 - [Performance] Factory ChocolateyFactory took 1807ms to finish
+12:47:51 - [Performance] Running command D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\OculusHelper.exe /query took 353ms
+12:47:51 - [Performance] Factory OculusFactory took 452ms to finish
+12:47:51 - [Performance] Factory PredefinedFactory took 0ms to finish
+12:47:51 - [Performance] Factory ScoopFactory took 2ms to finish
+12:47:51 - [Performance] Running command D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\ScriptHelper.exe list took 200ms
+12:47:51 - [Performance] Factory ScriptFactory took 250ms to finish
+12:47:51 - [Performance] Running command D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe steam took 107ms
+12:47:51 - [Performance] Running command D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe l /i took 80ms
+12:47:51 - [Performance] Factory SteamFactory took 241ms to finish
+12:47:54 - [Performance] Running command D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\StoreAppHelper.exe /query took 2757ms
+12:47:54 - [Performance] Factory StoreAppFactory took 2918ms to finish
+12:48:12 - [Performance] Factory DirectoryFactory took 21428ms to finish
+12:48:12 - Cache hits: 0/330
+12:48:55 - The current version is the latest
+12:56:16 - Exception when uninstalling Mouse Acceleration: System.IO.IOException: Uninstaller-Fehlercode:59
+   at UninstallTools.Uninstaller.BulkUninstallEntry.UninstallThread(Object parameters)
+12:56:19 - Exception when uninstalling Mouse Acceleration: System.IO.IOException: Uninstaller-Fehlercode:59
+   at UninstallTools.Uninstaller.BulkUninstallEntry.UninstallThread(Object parameters)
+12:56:21 - Exception when uninstalling Subscribed content (Auto-install suggested apps): System.IO.IOException: Uninstaller-Fehlercode:59
+   at UninstallTools.Uninstaller.BulkUninstallEntry.UninstallThread(Object parameters)
+12:56:23 - Exception when uninstalling Subscribed content (Auto-install suggested apps): System.IO.IOException: Uninstaller-Fehlercode:59
+   at UninstallTools.Uninstaller.BulkUninstallEntry.UninstallThread(Object parameters)
+12:56:38 - Exception when uninstalling AnyDesk Exe (Portable or Install): System.IO.IOException: Uninstaller-Fehlercode:1
+   at UninstallTools.Uninstaller.BulkUninstallEntry.UninstallThread(Object parameters)
+12:56:41 - Exception when uninstalling AnyDesk Exe (Portable or Install): System.IO.IOException: Uninstaller-Fehlercode:1
+   at UninstallTools.Uninstaller.BulkUninstallEntry.UninstallThread(Object parameters)
+12:57:55 - Exception when uninstalling Mouse Acceleration: System.IO.IOException: Uninstaller-Fehlercode:59
+   at UninstallTools.Uninstaller.BulkUninstallEntry.UninstallThread(Object parameters)
+12:57:56 - Exception when uninstalling Subscribed content (Auto-install suggested apps): System.IO.IOException: Uninstaller-Fehlercode:59
+   at UninstallTools.Uninstaller.BulkUninstallEntry.UninstallThread(Object parameters)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthProxyStub.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:06 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:07 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:07 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:07 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:07 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:07 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:07 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:07 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:07 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthSSO.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:07 - System.IO.IOException: Die Syntax für den Dateinamen, Verzeichnisnamen oder die Datenträgerbezeichnung ist falsch. : 'D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\?\C:\Windows\System32\SecurityHealth\1.0.2306.10002-0\SecurityHealthAgent.dll'
+   at System.IO.FileSystemInfo.EnsureDataInitialized()
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(DirectoryInfo dir)
+   at UninstallTools.UninstallToolsGlobalConfig.IsSystemDirectory(String installLocation)
+12:58:18 - Attempt failed, skipping. Error: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Runtime.InteropServices.COMException (0x80270222): Zugriff auf Heimnetzgruppe nicht möglich. Möglicherweise ist die Heimnetzgruppe nicht eingerichtet, oder in der Heimnetzgruppe ist ein Fehler aufgetreten. (0x80270222)
+   at WinRT.ExceptionHelpers.<ThrowExceptionForHR>g__Throw|20_0(Int32 hr)
+   at WinRT.ExceptionHelpers.ThrowExceptionForHR(Int32 hr)
+   at ABI.Windows.Storage.IKnownFoldersStaticsMethods.get_HomeGroup(IObjectReference _obj)
+   at Windows.Storage.KnownFolders.get_HomeGroup()
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.PropertyInfo.GetValue(Object obj)
+   at UninstallTools.Junk.JunkManager.<>c.<GetProhibitedLocations>b__4_1(PropertyInfo p)
+   at Klocman.Extensions.EnumerableExtensions.Attempt[TIn,TOut](IEnumerable`1 baseEnumerable, Func`2 action)+MoveNext()
+13:14:39 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-1E5BBC6C.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-1E5BBC6C.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(String file, UIOption showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:39 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-6B9A6E0F.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-6B9A6E0F.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(String file, UIOption showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:39 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-B9D6F083.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-B9D6F083.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(String file, UIOption showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:39 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-FF128096.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-FF128096.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(String file, UIOption showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:39 - Exception while removing junk: System.ArgumentException: Cannot delete a subkey tree because the subkey does not exist.
+   at Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   at Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey)
+   at UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-1E5BBC6C.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-1E5BBC6C.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-6B9A6E0F.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-6B9A6E0F.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-B9D6F083.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-B9D6F083.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-FF128096.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-FF128096.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.ArgumentException: Cannot delete a subkey tree because the subkey does not exist.
+   at Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   at UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\WhatsApp'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Roaming\WhatsApp'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Local\WhatsApp'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.ArgumentException: Cannot delete a subkey tree because the subkey does not exist.
+   at Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   at UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Roaming\thedesk'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Program Files\TheDesk'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.ArgumentException: Cannot delete a subkey tree because the subkey does not exist.
+   at Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   at UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.ArgumentException: Cannot delete a subkey tree because the subkey does not exist.
+   at Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   at UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Roaming\Thunderbird'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Local\Thunderbird'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.ArgumentException: Cannot delete a subkey tree because the subkey does not exist.
+   at Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   at UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.ArgumentException: Cannot delete a subkey tree because the subkey does not exist.
+   at Microsoft.Win32.RegistryKey.DeleteSubKeyTree(String subkey, Boolean throwOnMissingSubKey)
+   at UninstallTools.Junk.Containers.RegistryKeyJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-1E5BBC6C.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-1E5BBC6C.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-6B9A6E0F.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-6B9A6E0F.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-B9D6F083.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-B9D6F083.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:41 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\UNINS000.EXE-FF128096.pf'.
+File name: 'C:\WINDOWS\Prefetch\UNINS000.EXE-FF128096.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:42 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Roaming\Docker'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:42 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Local\Docker'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:42 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Roaming\Docker'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:42 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Local\Docker'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:42 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Users\rdani\AppData\Roaming\thedesk'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:42 - Exception while removing junk: System.IO.DirectoryNotFoundException: Could not find directory 'C:\Program Files\TheDesk'.
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectoryInternal(String directory, DeleteDirectoryOption onDirectoryNotEmpty, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at UninstallTools.Junk.Containers.FileSystemJunk.Delete()
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:42 - Exception while removing junk: System.IO.FileNotFoundException: Could not find file 'C:\WINDOWS\Prefetch\GAMEBAR.EXE-6A7AAEDF.pf'.
+File name: 'C:\WINDOWS\Prefetch\GAMEBAR.EXE-6A7AAEDF.pf'
+   at Microsoft.VisualBasic.FileIO.FileSystem.DeleteFileInternal(String file, UIOptionInternal showUI, RecycleOption recycle, UICancelOption onUserCancel)
+   at BulkCrapUninstaller.Functions.AppUninstaller.<>c__DisplayClass20_0.<ShowJunkWindow>b__1(LoadingDialogInterface controller)
+13:14:44 - [Performance] Factory RegistryFactory took 1085ms to finish
+13:14:44 - Cache hits: 127/130
+13:14:44 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe  took 702ms
+13:14:45 - [Performance] Running command C:\ProgramData\chocolatey\bin\choco.exe list -lo -nocolor --detail took 936ms
+13:14:45 - [Performance] Factory ChocolateyFactory took 1647ms to finish
+13:14:45 - [Performance] Running command D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\OculusHelper.exe /query took 48ms
+13:14:45 - [Performance] Factory OculusFactory took 52ms to finish
+13:14:45 - [Performance] Factory PredefinedFactory took 0ms to finish
+13:14:45 - [Performance] Factory ScoopFactory took 0ms to finish
+13:14:46 - [Performance] Running command D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\ScriptHelper.exe list took 71ms
+13:14:46 - [Performance] Factory ScriptFactory took 93ms to finish
+13:14:46 - [Performance] Running command D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe steam took 397ms
+13:14:46 - [Performance] Running command D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\SteamHelper.exe l /i took 76ms
+13:14:46 - [Performance] Factory SteamFactory took 485ms to finish
+13:14:47 - [Performance] Running command D:\Coding\GitHub-Repos\PC-Check\12_software\BCUninstaller\win-x64\StoreAppHelper.exe /query took 885ms
+13:14:47 - [Performance] Factory StoreAppFactory took 1009ms to finish
+13:15:39 - [Performance] Factory DirectoryFactory took 54776ms to finish
+13:15:39 - Cache hits: 284/284
