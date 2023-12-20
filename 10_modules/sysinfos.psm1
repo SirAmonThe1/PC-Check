@@ -107,13 +107,13 @@ function get-sysPSWindowsUpdateVersion {
     $PSWU | Format-Table -Property Name,Version
 
     do{
-	    if ($PSWU.Version -eq "2.2.1.3") {  Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell"  } 
+	    if ($PSWU.Version -eq "2.2.1.4") {  Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell"  } 
             else {
                 update-PSWindowsUpdatex
 
                 $PSWU = Get-Package -Name PSWindowsUpdate
 
-                if ($PSWU.Version -eq "2.2.1.3") {  Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell" } 
+                if ($PSWU.Version -eq "2.2.1.4") {  Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell" } 
                     else {
                         Write-Host -ForegroundColor DarkGray ($PSWU | Format-Table | Out-String)
 		                Write-Host -ForegroundColor Magenta ">>> Bitte PSWindowsUpdate über .bat Datei installieren"
@@ -132,7 +132,7 @@ function get-sysPSWindowsUpdateVersion {
 		    }
 	    }
 
-    while	($PSWU.Version -ne "2.2.1.3")
+    while	($PSWU.Version -ne "2.2.1.4")
 
 }
 
