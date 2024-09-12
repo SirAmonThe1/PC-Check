@@ -109,7 +109,7 @@ function get-sysPSWindowsUpdateVersion {
     do{
 	    if ($PSWU.Version -eq "2.2.1.5") {  Write-Host -ForegroundColor Green ">>> PSWindowsUpdate ist aktuell"  } 
             else {
-                update-PSWindowsUpdatex
+                update-PSWindowsUpdate
 
                 $PSWU = Get-Package -Name PSWindowsUpdate
 
@@ -132,7 +132,7 @@ function get-sysPSWindowsUpdateVersion {
 		    }
 	    }
 
-    while	($PSWU.Version -ne "2.2.1.4")
+    while	($PSWU.Version -ne "2.2.1.5")
 
 }
 
